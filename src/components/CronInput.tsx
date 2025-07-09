@@ -62,7 +62,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					type="button"
 					className="flex items-center focus:outline-none shrink-0"
 					data-tooltip-id="cron-placeholder-tip"
-					data-tooltip-content="star/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
+					data-tooltip-content="*/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
 					aria-label="Cron format info"
 					tabIndex={0}
 				>
