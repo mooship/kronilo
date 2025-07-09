@@ -73,21 +73,23 @@ function App() {
 				onClose={handleCloseModal}
 				onMaybeLater={handleMaybeLater}
 			/>
-			<header className="w-full py-8">
-				<div className="text-center">
-					<h1 className="text-5xl font-bold text-primary mb-4">Kronilo</h1>
-					<h2 className="text-2xl text-base-content/90 mb-3">
+			<header className="w-full py-6 sm:py-8">
+				<div className="text-center px-2 sm:px-0">
+					<h1 className="text-3xl sm:text-5xl font-bold text-primary mb-2 sm:mb-4">
+						Kronilo
+					</h1>
+					<h2 className="text-lg sm:text-2xl text-base-content/90 mb-2 sm:mb-3">
 						Dead Simple Cron Translator
 					</h2>
-					<p className="text-lg text-base-content/70">
+					<p className="text-base sm:text-lg text-base-content/70">
 						Translate cron expressions to plain English instantly
 					</p>
 				</div>
 			</header>
-			<main className="flex-1 flex flex-col items-center justify-center px-6 py-12">
-				<div className="w-full max-w-5xl">
-					<div className="card bg-base-200/50 shadow-2xl border border-base-300">
-						<div className="card-body p-8">
+			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 py-6 sm:py-12">
+				<div className="w-full max-w-full sm:max-w-5xl">
+					<div className="card bg-base-200/50 shadow-2xl border border-base-300 rounded-lg sm:rounded-2xl">
+						<div className="card-body p-4 sm:p-8">
 							<CronInput
 								value={cron}
 								onChange={handleCronChange}
@@ -99,9 +101,9 @@ function App() {
 					</div>
 				</div>
 			</main>
-			<footer className="w-full py-6 bg-base-200/80 border-t border-base-300">
-				<div className="text-center">
-					<p className="text-base-content/60">
+			<footer className="w-full py-4 sm:py-6 bg-base-200/80 border-t border-base-300">
+				<div className="text-center px-2 sm:px-0">
+					<p className="text-xs sm:text-base text-base-content/60">
 						Built with{" "}
 						<span className="text-primary" aria-hidden="true">
 							♥
