@@ -1,0 +1,13 @@
+@import "@fontsource/poppins";
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+	font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+}
