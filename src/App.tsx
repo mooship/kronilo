@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
+import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-	const [cron, setCron] = useState("");
+	const [cron, setCron] = useLocalStorage<string>("kronilo-cron", "");
 	const { error, clearError } = useCronValidation(cron);
 	const {
 		donationModalOpen,

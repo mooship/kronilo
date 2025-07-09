@@ -16,7 +16,6 @@ interface KroniloState {
 	canShowDonationModal: () => boolean;
 }
 
-// Helper functions for localStorage
 const getStoredDismissedUntil = (): Date | null => {
 	try {
 		const stored = localStorage.getItem("kronilo-dismissed-until");
@@ -33,14 +32,15 @@ const setStoredDismissedUntil = (date: Date | null): void => {
 		} else {
 			localStorage.removeItem("kronilo-dismissed-until");
 		}
-	} catch {
-		// Silently fail if localStorage is not available
-	}
+	} catch {}
 };
 
 export const useKroniloStore = create<KroniloState>((set, get) => ({
 	darkMode: false,
-	setDarkMode: (value) => set({ darkMode: value }),
+	setDarkMode: (value) => {
+		set({ darkMode: value });
+		setDarkModeStorage(value);
+	},
 
 	donationModalOpen: false,
 	setDonationModalOpen: (open) => set({ donationModalOpen: open }),
@@ -60,3 +60,9 @@ export const useKroniloStore = create<KroniloState>((set, get) => ({
 		return new Date() > dismissedUntil;
 	},
 }));
+
+const setDarkModeStorage = (value: boolean) => {
+	try {
+		localStorage.setItem("kronilo-dark-mode", JSON.stringify(value));
+	} catch {}
+};

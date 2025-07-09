@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useDebouncedEffect } from "../hooks/useDebouncedEffect";
 import { isValidCronFormat } from "../utils/cronValidation";
 
 export function useCronValidation(cron: string) {
 	const [error, setError] = useState<string | undefined>(undefined);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
+	useDebouncedEffect(
+		() => {
 			if (cron.length > 100) {
 				setError("Input too long (max 100 characters)");
 			} else if (cron && !isValidCronFormat(cron)) {
@@ -15,10 +16,11 @@ export function useCronValidation(cron: string) {
 			} else {
 				setError(undefined);
 			}
-		}, 500);
-
-		return () => clearTimeout(timer);
-	}, [cron]);
+			return undefined;
+		},
+		[cron],
+		500,
+	);
 
 	const clearError = () => {
 		if (error && cron.length <= 100) {

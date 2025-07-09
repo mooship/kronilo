@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useClipboard as useClipboardHook } from "../hooks/useClipboard";
 
 interface CopyButtonProps {
 	value: string;
@@ -13,20 +13,12 @@ export function CopyButton({
 	label = "Copy",
 	disabled = false,
 }: CopyButtonProps) {
-	const [copied, setCopied] = useState(false);
-	const [error, setError] = useState<string | null>(null);
+	const { copied, error, copy } = useClipboardHook();
 
 	const isSmall = className.includes("btn-sm");
 
-	async function handleCopy() {
-		try {
-			await navigator.clipboard.writeText(value);
-			setCopied(true);
-			setError(null);
-			setTimeout(() => setCopied(false), 1200);
-		} catch {
-			setError("Failed to copy");
-		}
+	function handleCopy() {
+		copy(value);
 	}
 
 	return (
