@@ -46,7 +46,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					value={value}
 					label="Copy"
 					disabled={!value || !!error}
-					className="shrink-0 btn btn-primary h-12 px-2 sm:px-6 min-w-[100px] sm:min-w-[80px]"
+					className="shrink-0"
 				/>
 				<Tooltip
 					id="cron-placeholder-tip"
