@@ -1,10 +1,6 @@
-# Kronilo
+# Kronilo [![Node.js CI](https://github.com/mooship/kronilo/actions/workflows/node.js.yml/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/node.js.yml) [![CodeQL](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql)
 
 Kronilo is a minimal, modern web app for translating and understanding cron expressions. Built with React, TypeScript, and Vite, it provides a fast, intuitive interface for working with cron schedules. The project includes code quality checks using Biome and is styled with Tailwind CSS.
-
-[![Node.js CI](https://github.com/mooship/kronilo/actions/workflows/node.js.yml/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/node.js.yml)
-
-[![CodeQL](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
 
