@@ -45,9 +45,7 @@ export function CopyButton({
 						<span>✓</span> Copied!
 					</span>
 				) : (
-					<span className="flex items-center gap-2">
-						<span>📋</span> {label}
-					</span>
+					<span className="flex items-center gap-2">{label}</span>
 				)}
 			</button>
 			{error && (

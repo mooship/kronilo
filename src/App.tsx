@@ -1,66 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
 import { NextRuns } from "./components/NextRuns";
-import { useKroniloStore } from "./store";
+import { useCronValidation } from "./hooks/useCronValidation";
+import { useDonationModal } from "./hooks/useDonationModal";
 
 function App() {
 	const [cron, setCron] = useState("");
-	const [error, setError] = useState<string | undefined>(undefined);
-	const donationModalOpen = useKroniloStore((s) => s.donationModalOpen);
-	const setDonationModalOpen = useKroniloStore((s) => s.setDonationModalOpen);
-	const usageCount = useKroniloStore((s) => s.usageCount);
-	const resetUsage = useKroniloStore((s) => s.resetUsage);
-	const canShowDonationModal = useKroniloStore((s) => s.canShowDonationModal);
-	const setDismissedUntil = useKroniloStore((s) => s.setDismissedUntil);
-
-	// Debounce error checking to be less aggressive
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			if (cron.length > 100) {
-				setError("Input too long (max 100 characters)");
-			} else {
-				setError(undefined);
-			}
-		}, 1000); // Wait 1 second before showing error
-
-		return () => clearTimeout(timer);
-	}, [cron]);
-
-	useEffect(() => {
-		if (usageCount === 5 && canShowDonationModal()) {
-			setDonationModalOpen(true);
-			resetUsage(); // Reset so modal doesn't trigger again
-		}
-	}, [usageCount, setDonationModalOpen, resetUsage, canShowDonationModal]);
+	const { error, clearError } = useCronValidation(cron);
+	const {
+		donationModalOpen,
+		handleFooterDonateClick,
+		handleCloseModal,
+		handleMaybeLater,
+	} = useDonationModal();
 
 	function handleCronChange(val: string) {
 		setCron(val);
-		// Clear immediate error when user is typing
-		if (error && val.length <= 100) {
-			setError(undefined);
-		}
-		// Removed automatic usage increment - will be handled by successful translations
-	}
-
-	function handleFooterDonateClick(e: React.MouseEvent) {
-		e.preventDefault();
-		setDonationModalOpen(true);
-	}
-
-	function handleCloseModal() {
-		setDonationModalOpen(false);
-		resetUsage(); // Reset usage count when modal is closed
-	}
-
-	function handleMaybeLater() {
-		// Set dismiss date to 14 days from now
-		const dismissUntil = new Date();
-		dismissUntil.setDate(dismissUntil.getDate() + 14);
-		setDismissedUntil(dismissUntil);
-		setDonationModalOpen(false);
-		resetUsage();
+		clearError();
 	}
 
 	return (
@@ -73,8 +31,8 @@ function App() {
 				onClose={handleCloseModal}
 				onMaybeLater={handleMaybeLater}
 			/>
-			<header className="w-full py-4 sm:py-8">
-				<div className="w-full max-w-xs sm:max-w-2xl mx-auto text-center px-2 sm:px-0">
+			<header className="w-full pt-4 sm:pt-8 pb-2 sm:pb-3">
+				<div className="w-full max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto text-center px-2 sm:px-0">
 					<h1 className="text-2xl xs:text-3xl sm:text-5xl font-bold text-primary mb-2 sm:mb-4 break-words leading-tight">
 						Kronilo
 					</h1>
@@ -86,10 +44,10 @@ function App() {
 					</p>
 				</div>
 			</header>
-			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 py-6 sm:py-12">
-				<div className="w-full max-w-full sm:max-w-5xl">
-					<div className="card bg-base-200/50 shadow-2xl border border-base-300 rounded-lg sm:rounded-2xl">
-						<div className="card-body p-4 sm:p-6">
+			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-2 sm:pt-4 pb-4 sm:pb-12 lg:pb-16">
+				<div className="w-full max-w-2xl mx-auto">
+					<div className="card bg-base-200/50 shadow-2xl border border-base-300 rounded-lg sm:rounded-2xl px-2 sm:px-6 py-4 sm:py-8">
+						<div className="card-body p-0">
 							<CronInput
 								value={cron}
 								onChange={handleCronChange}
