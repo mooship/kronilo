@@ -17,7 +17,7 @@ Kronilo is a minimal, modern web app for translating and understanding cron expr
 
 ### Prerequisites
 
-- Node.js (v20 or newer recommended)
+- Node.js (v22 or newer recommended)
 - npm (v11 or newer recommended)
 
 ### Install dependencies
