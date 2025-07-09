@@ -73,15 +73,15 @@ function App() {
 				onClose={handleCloseModal}
 				onMaybeLater={handleMaybeLater}
 			/>
-			<header className="w-full py-6 sm:py-8">
-				<div className="text-center px-2 sm:px-0">
-					<h1 className="text-3xl sm:text-5xl font-bold text-primary mb-2 sm:mb-4">
+			<header className="w-full py-4 sm:py-8">
+				<div className="w-full max-w-xs sm:max-w-2xl mx-auto text-center px-2 sm:px-0">
+					<h1 className="text-2xl xs:text-3xl sm:text-5xl font-bold text-primary mb-2 sm:mb-4 break-words leading-tight">
 						Kronilo
 					</h1>
-					<h2 className="text-lg sm:text-2xl text-base-content/90 mb-2 sm:mb-3">
+					<h2 className="text-base xs:text-lg sm:text-2xl text-base-content/90 mb-2 sm:mb-3 break-words leading-snug">
 						Dead Simple Cron Translator
 					</h2>
-					<p className="text-base sm:text-lg text-base-content/70">
+					<p className="text-sm xs:text-base sm:text-lg text-base-content/70 break-words">
 						Translate cron expressions to plain English instantly
 					</p>
 				</div>
@@ -89,7 +89,7 @@ function App() {
 			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 py-6 sm:py-12">
 				<div className="w-full max-w-full sm:max-w-5xl">
 					<div className="card bg-base-200/50 shadow-2xl border border-base-300 rounded-lg sm:rounded-2xl">
-						<div className="card-body p-4 sm:p-8">
+						<div className="card-body p-4 sm:p-6">
 							<CronInput
 								value={cron}
 								onChange={handleCronChange}

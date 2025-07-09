@@ -17,10 +17,10 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 			>
 				Cron Expression
 			</label>
-			<div className="flex items-center justify-center gap-4 max-w-3xl mx-auto">
+			<div className="flex items-center justify-center gap-3 max-w-4xl mx-auto w-full">
 				<button
 					type="button"
-					className="flex items-center focus:outline-none"
+					className="flex items-center focus:outline-none shrink-0"
 					data-tooltip-id="cron-placeholder-tip"
 					data-tooltip-content="*/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
 					aria-label="Cron format info"
@@ -32,7 +32,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					id="cron-input"
 					name="cron-input"
 					type="text"
-					className={`input input-bordered input-lg bg-base-100 text-base-content placeholder-base-content/60 font-mono text-lg px-6 py-4 w-96 rounded-xl border-2 transition-all duration-200 ${error ? "border-yellow-400/40 bg-yellow-400/5" : "border-base-300 hover:border-primary/50 focus:border-primary focus:ring-2 focus:ring-primary/20"}`}
+					className={`input input-bordered bg-base-100 text-base-content placeholder-base-content/60 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none ${error ? "border-yellow-400/40 bg-yellow-400/5" : "border-base-300 hover:border-primary/50 focus:border-primary"}`}
 					placeholder="*/5 * * * *"
 					maxLength={100}
 					aria-label="Enter cron expression"
@@ -41,6 +41,12 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					autoComplete="off"
 					aria-invalid={!!error}
 					aria-describedby={error ? "cron-error" : undefined}
+				/>
+				<CopyButton
+					value={value}
+					label="Copy"
+					disabled={!value || !!error}
+					className="shrink-0 btn btn-primary h-12 px-2 sm:px-6 min-w-[100px] sm:min-w-[80px]"
 				/>
 				<Tooltip
 					id="cron-placeholder-tip"
@@ -55,7 +61,6 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 						padding: "0.75rem 1.25rem",
 					}}
 				/>
-				<CopyButton value={value} label="Copy" disabled={!value || !!error} />
 			</div>
 			{error && (
 				<div id="cron-error" className="mt-4 max-w-3xl mx-auto">
