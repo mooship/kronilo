@@ -1,16 +1,16 @@
 import clsx from "clsx";
-import { useLocalStorage, useMedia, useWindowSize } from "react-use";
+import { useMedia, useWindowSize } from "react-use";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
+import { useKroniloStore } from "./store";
 
 function App() {
-	const [cronRaw, setCron] = useLocalStorage<string>("kronilo-cron", "");
-	const cron = cronRaw ?? "";
-	const { error, clearError } = useCronValidation(cron);
+	const cron = useKroniloStore((s) => s.cron);
+	const { error } = useCronValidation(cron);
 	const { width } = useWindowSize();
 	const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)");
 	const isSmallScreen = width < 640;
@@ -21,11 +21,6 @@ function App() {
 		handleCloseModal,
 		handleMaybeLater,
 	} = useDonationModal();
-
-	function handleCronChange(val: string) {
-		setCron(val);
-		clearError();
-	}
 
 	return (
 		<div
@@ -80,11 +75,7 @@ function App() {
 						)}
 					>
 						<div className="p-0">
-							<CronInput
-								value={cron}
-								onChange={handleCronChange}
-								error={error}
-							/>
+							<CronInput error={error} />
 							<CronTranslation cron={cron} />
 							<NextRuns cron={cron} disabled={!!error} />
 						</div>

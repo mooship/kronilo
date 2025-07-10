@@ -3,20 +3,21 @@ import { useMemo, useRef, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 import { useClickAway } from "react-use";
+import { useKroniloStore } from "../store";
 import { CRON_SUGGESTIONS } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
 
 interface CronInputProps {
-	value: string;
-	onChange: (value: string) => void;
 	error?: string;
 }
 
-export function CronInput({ value, onChange, error }: CronInputProps) {
+export function CronInput({ error }: CronInputProps) {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
 	const [infoPressed, setInfoPressed] = useState(false);
+	const cron = useKroniloStore((s) => s.cron);
+	const setCron = useKroniloStore((s) => s.setCron);
 
 	useClickAway(suggestionsRef, () => {
 		setShowSuggestions(false);
@@ -44,7 +45,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 	};
 
 	const handleFocus = () => {
-		if (!value) {
+		if (!cron) {
 			setShowSuggestions(true);
 		}
 	};
@@ -52,7 +53,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 	const handleSuggestionClick = (
 		suggestion: (typeof CRON_SUGGESTIONS)[number],
 	) => {
-		onChange(suggestion.expression);
+		setCron(suggestion.expression);
 		setShowSuggestions(false);
 		inputRef.current?.focus();
 	};
@@ -95,8 +96,8 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 						placeholder="*/5 * * * *"
 						maxLength={100}
 						aria-label="Enter cron expression"
-						value={value}
-						onChange={(e) => onChange(e.target.value)}
+						value={cron}
+						onChange={(e) => setCron(e.target.value)}
 						onKeyDown={handleKeyDown}
 						onFocus={handleFocus}
 						autoComplete="off"
@@ -128,9 +129,9 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					)}
 				</div>
 				<CopyButton
-					value={value}
+					value={cron}
 					label="Copy"
-					disabled={!value || !!error}
+					disabled={!cron || !!error}
 					className="shrink-0"
 				/>
 				<Tooltip
