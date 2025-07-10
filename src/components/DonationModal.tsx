@@ -32,7 +32,9 @@ export function DonationModal({
 					firstFocusable.current,
 					lastFocusable.current,
 				].filter(Boolean) as HTMLElement[];
-				if (focusableEls.length === 0) return;
+				if (focusableEls.length === 0) {
+					return;
+				}
 				const [first, last] = focusableEls;
 				if (e.shiftKey) {
 					if (document.activeElement === first) {
