@@ -26,7 +26,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =
-			"input input-bordered bg-white text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
+			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
 		const errorClasses = "border-yellow-400/40 bg-yellow-100";
 		const normalClasses =
 			"border-gray-200 hover:border-blue-600/50 focus:border-blue-600";
@@ -113,7 +113,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						<div
 							ref={suggestionsRef}
 							id="cron-suggestions-list"
-							className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
+							className="absolute top-full left-0 right-0 mt-1 bg-gray-50 border border-gray-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button

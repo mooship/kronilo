@@ -127,23 +127,23 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 					<span>{error}</span>
 				</div>
 			) : loading ? (
-				<div className="flex items-center gap-2 bg-white rounded-xl p-6 text-black">
+				<div className="flex items-center gap-2 bg-gray-50 rounded-xl p-6 text-black">
 					<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
 					Calculating next runs...
 				</div>
 			) : runs.length === 0 ? (
-				<div className="bg-white rounded-xl p-6 text-gray-500 text-center">
+				<div className="bg-gray-50 rounded-xl p-6 text-gray-500 text-center">
 					No upcoming runs found.
 				</div>
 			) : (
-				<div className="bg-white rounded-xl p-6">
+				<div className="bg-gray-50 rounded-xl p-6">
 					<ul className="space-y-3">
 						{runs.map((run, index) => (
 							<li key={run} className="flex items-center gap-3">
-								<span className="badge bg-white text-black badge-lg font-medium">
+								<span className="badge bg-gray-50 text-black badge-lg font-medium">
 									{index + 1}
 								</span>
-								<span className="font-mono text-base text-black bg-white px-3 py-2 rounded-lg">
+								<span className="font-mono text-base text-black bg-gray-50 px-3 py-2 rounded-lg">
 									{run}
 								</span>
 							</li>

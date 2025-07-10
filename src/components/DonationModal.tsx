@@ -86,7 +86,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="bg-white text-gray-900 max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
+			<div className="bg-gray-50 text-gray-900 max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
 				<button
 					type="button"
 					className={`absolute right-3 top-3 text-blue-600 hover:text-gray-900 text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
