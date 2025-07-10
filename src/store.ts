@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { isValidCronFormat } from "./utils/cronValidation";
 
 interface KroniloState {
 	donationModalOpen: boolean;
@@ -46,7 +47,11 @@ const getStoredCron = (): string => {
 
 const setStoredCron = (cron: string): void => {
 	try {
-		localStorage.setItem("kronilo-cron", cron);
+		if (isValidCronFormat(cron)) {
+			localStorage.setItem("kronilo-cron", cron);
+		} else {
+			localStorage.removeItem("kronilo-cron");
+		}
 	} catch {}
 };
 

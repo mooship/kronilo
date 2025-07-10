@@ -1,9 +1,8 @@
 import cronParser from "cron-parser";
 import { useEffect, useMemo, useState } from "react";
 import { useTimeoutFn } from "react-use";
+import { WHITESPACE_REGEX } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
-
-const WHITESPACE_REGEX = /\s+/;
 
 interface NextRunsProps {
 	cron: string;

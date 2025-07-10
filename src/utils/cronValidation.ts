@@ -1,9 +1,11 @@
+export const WHITESPACE_REGEX = /\s+/;
+
 export function isValidCronFormat(cron: string): boolean {
 	if (!cron || typeof cron !== "string") {
 		return false;
 	}
 
-	const parts = cron.trim().split(/\s+/);
+	const parts = cron.trim().split(WHITESPACE_REGEX);
 
 	if (parts.length !== 5) {
 		return false;
