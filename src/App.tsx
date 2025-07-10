@@ -84,7 +84,7 @@ function App() {
 			</main>
 			<footer
 				className={clsx(
-					"w-full py-6 sm:py-8 border-t",
+					"w-full py-4 sm:py-8 border-t",
 					"bg-light-muted border-light-border",
 				)}
 			>
