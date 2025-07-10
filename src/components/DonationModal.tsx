@@ -104,7 +104,6 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
-					<h2 className="text-3xl mb-2">☕</h2>
 					<p className="mb-6 text-base-content leading-relaxed">
 						Kronilo is a free, open-source tool that respects your privacy—no
 						ads, no trackers, no account.
