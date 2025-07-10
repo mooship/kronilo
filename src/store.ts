@@ -1,9 +1,6 @@
 import { create } from "zustand";
 
 interface KroniloState {
-	darkMode: boolean;
-	setDarkMode: (value: boolean) => void;
-
 	donationModalOpen: boolean;
 	setDonationModalOpen: (open: boolean) => void;
 
@@ -14,6 +11,9 @@ interface KroniloState {
 	dismissedUntil: Date | null;
 	setDismissedUntil: (date: Date | null) => void;
 	canShowDonationModal: () => boolean;
+
+	cron: string;
+	setCron: (cron: string) => void;
 }
 
 const getStoredDismissedUntil = (): Date | null => {
@@ -35,13 +35,22 @@ const setStoredDismissedUntil = (date: Date | null): void => {
 	} catch {}
 };
 
-export const useKroniloStore = create<KroniloState>((set, get) => ({
-	darkMode: false,
-	setDarkMode: (value) => {
-		set({ darkMode: value });
-		setDarkModeStorage(value);
-	},
+const getStoredCron = (): string => {
+	try {
+		const stored = localStorage.getItem("kronilo-cron");
+		return stored ?? "";
+	} catch {
+		return "";
+	}
+};
 
+const setStoredCron = (cron: string): void => {
+	try {
+		localStorage.setItem("kronilo-cron", cron);
+	} catch {}
+};
+
+export const useKroniloStore = create<KroniloState>((set, get) => ({
 	donationModalOpen: false,
 	setDonationModalOpen: (open) => set({ donationModalOpen: open }),
 
@@ -59,10 +68,10 @@ export const useKroniloStore = create<KroniloState>((set, get) => ({
 		if (!dismissedUntil) return true;
 		return new Date() > dismissedUntil;
 	},
-}));
 
-const setDarkModeStorage = (value: boolean) => {
-	try {
-		localStorage.setItem("kronilo-dark-mode", JSON.stringify(value));
-	} catch {}
-};
+	cron: getStoredCron(),
+	setCron: (cron) => {
+		setStoredCron(cron);
+		set({ cron });
+	},
+}));

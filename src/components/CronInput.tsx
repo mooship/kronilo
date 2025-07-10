@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useMemo, useRef, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
@@ -27,7 +28,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 		const normalClasses =
 			"border-base-300 hover:border-primary/50 focus:border-primary";
 
-		return `${baseClasses} ${error ? errorClasses : normalClasses}`;
+		return clsx(baseClasses, error ? errorClasses : normalClasses);
 	}, [error]);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -80,7 +81,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 						id="cron-input"
 						name="cron-input"
 						type="text"
-						className={`${inputClassName} w-full`}
+						className={clsx(inputClassName, "w-full")}
 						placeholder="*/5 * * * *"
 						maxLength={100}
 						aria-label="Enter cron expression"
@@ -125,10 +126,10 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 					id="cron-placeholder-tip"
 					place="top"
 					className="max-w-xs text-sm !bg-[#282a36] !text-[#f8f8f2] !border-[#44475a] !rounded-lg !shadow-xl !px-4 !py-2"
+					border="#44475a"
 					style={{
 						background: "#282a36",
 						color: "#f8f8f2",
-						border: "1px solid #44475a",
 						borderRadius: "0.75rem",
 						boxShadow: "0 4px 24px 0 #0006",
 						padding: "0.75rem 1.25rem",

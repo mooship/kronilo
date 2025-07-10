@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useCopyToClipboard, useTimeoutFn } from "react-use";
 
@@ -34,12 +35,13 @@ export function CopyButton({
 	}
 
 	return (
-		<div className={`relative inline-block ${className}`}>
+		<div className={clsx("relative inline-block", className)}>
 			<button
 				type="button"
-				className={`btn btn-primary rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 ${
-					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3"
-				}`}
+				className={clsx(
+					"btn btn-primary rounded-xl font-medium shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50",
+					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3",
+				)}
 				aria-label={label}
 				onClick={handleCopy}
 				disabled={disabled || !value}
