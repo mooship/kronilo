@@ -119,7 +119,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 								<button
 									key={suggestion.expression}
 									type="button"
-									className="w-full px-4 py-3 text-left hover:bg-gray-100 flex flex-col gap-1 border-b border-gray-200 last:border-b-0 first:rounded-t-xl last:rounded-b-xl"
+									className="w-full px-4 py-3 text-left hover:bg-gray-100 flex flex-col gap-1 border-b border-gray-200 last:border-b-0 first:rounded-t-lg last:rounded-b-lg"
 									onClick={() => handleSuggestionClick(suggestion)}
 								>
 									<code className="font-mono text-blue-600">
