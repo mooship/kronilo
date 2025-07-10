@@ -38,9 +38,9 @@ const setStoredDismissedUntil = (date: Date | null): void => {
 const getStoredCron = (): string => {
 	try {
 		const stored = localStorage.getItem("kronilo-cron");
-		return stored ?? "";
+		return stored ?? "*/5 * * * *";
 	} catch {
-		return "";
+		return "*/5 * * * *";
 	}
 };
 
