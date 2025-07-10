@@ -67,7 +67,7 @@ function App() {
 				</div>
 			</header>
 			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-1 sm:pt-4 pb-1 sm:pb-12 lg:pb-16 min-h-0">
-				<div className="w-full max-w-2xl mx-auto">
+				<div className="w-full max-w-3xl mx-auto">
 					<div
 						className={clsx(
 							"shadow-2xl border rounded-lg sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
