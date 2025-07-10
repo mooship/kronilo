@@ -27,7 +27,7 @@ function App() {
 			className={clsx(
 				"min-h-screen flex flex-col",
 				!prefersReducedMotion && "transition-colors duration-200",
-				"bg-light-background text-light-foreground",
+				"bg-white text-black",
 			)}
 		>
 			<DonationModal
@@ -41,7 +41,7 @@ function App() {
 						className={clsx(
 							"font-bold mb-2 sm:mb-4 break-words leading-tight",
 							isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl",
-							"text-light-primary",
+							"text-black",
 						)}
 					>
 						Kronilo
@@ -50,7 +50,7 @@ function App() {
 						className={clsx(
 							"mb-2 sm:mb-3 break-words leading-snug",
 							isSmallScreen ? "text-base" : "text-base xs:text-lg sm:text-2xl",
-							"text-light-foreground opacity-90",
+							"text-black opacity-90",
 						)}
 					>
 						Dead Simple Cron Translator
@@ -59,7 +59,7 @@ function App() {
 						className={clsx(
 							"break-words",
 							isSmallScreen ? "text-sm" : "text-sm xs:text-base sm:text-lg",
-							"text-light-foreground opacity-70",
+							"text-black opacity-70",
 						)}
 					>
 						Translate cron expressions to plain English instantly
@@ -71,7 +71,7 @@ function App() {
 					<div
 						className={clsx(
 							"shadow-2xl border rounded-lg sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
-							"bg-light-muted border-light-border",
+							"bg-white border-gray-200",
 						)}
 					>
 						<div className="p-0">
@@ -85,24 +85,19 @@ function App() {
 			<footer
 				className={clsx(
 					"w-full py-4 sm:py-6 border-t",
-					"bg-light-muted border-light-border",
+					"bg-white border-gray-200",
 				)}
 			>
 				<div className="text-center px-2 sm:px-0">
-					<p
-						className={clsx(
-							"text-xs sm:text-base",
-							"text-light-foreground opacity-60",
-						)}
-					>
+					<p className={clsx("text-xs sm:text-base", "text-black opacity-60")}>
 						Built with{" "}
-						<span className="text-light-primary" aria-hidden="true">
+						<span className="text-black" aria-hidden="true">
 							♥
 						</span>{" "}
 						in South Africa ·{" "}
 						<button
 							type="button"
-							className="underline text-light-primary hover:text-light-foreground hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer"
+							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer"
 							onClick={handleFooterDonateClick}
 						>
 							Support Kronilo <span aria-hidden="true">☕</span>
@@ -112,7 +107,7 @@ function App() {
 							href="https://github.com/mooship/kronilo"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="underline text-light-primary hover:text-light-foreground hover:no-underline transition-colors text-xs sm:text-base font-semibold"
+							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold"
 						>
 							GitHub
 						</a>

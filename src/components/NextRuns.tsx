@@ -40,7 +40,19 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			const interval = cronParser.parse(cron, { tz });
 			const nextDates: string[] = [];
 			for (let i = 0; i < 5; i++) {
-				nextDates.push(interval.next().toLocaleString());
+				const date = interval.next().toDate();
+				nextDates.push(
+					date.toLocaleString(undefined, {
+						weekday: "long",
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+						hour: "2-digit",
+						minute: "2-digit",
+						second: "2-digit",
+						timeZoneName: "short",
+					}),
+				);
 			}
 			setRuns(nextDates);
 			setError(null);
@@ -84,7 +96,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			</div>
 
 			{hasAmbiguousSchedule && (
-				<div className="bg-orange-400/10 border border-orange-400/30 text-orange-400 rounded-xl p-4 mb-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 mb-4">
 					<div className="flex items-start gap-2">
 						<svg
 							className="w-5 h-5 mt-0.5 flex-shrink-0"
@@ -111,27 +123,27 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			)}
 
 			{error ? (
-				<div className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 rounded-xl p-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4">
 					<span>{error}</span>
 				</div>
 			) : loading ? (
-				<div className="flex items-center gap-2 bg-base-300/30 rounded-xl p-6 text-base-content">
-					<span className="animate-spin inline-block w-5 h-5 border-2 border-primary border-t-transparent rounded-full"></span>
+				<div className="flex items-center gap-2 bg-white rounded-xl p-6 text-black">
+					<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
 					Calculating next runs...
 				</div>
 			) : runs.length === 0 ? (
-				<div className="bg-base-300/30 rounded-xl p-6 text-base-content/60 text-center">
+				<div className="bg-white rounded-xl p-6 text-gray-500 text-center">
 					No upcoming runs found.
 				</div>
 			) : (
-				<div className="bg-base-300/30 rounded-xl p-6">
+				<div className="bg-white rounded-xl p-6">
 					<ul className="space-y-3">
 						{runs.map((run, index) => (
 							<li key={run} className="flex items-center gap-3">
-								<span className="badge badge-primary badge-lg font-medium">
+								<span className="badge bg-white text-black badge-lg font-medium">
 									{index + 1}
 								</span>
-								<span className="font-mono text-base text-base-content bg-base-100/50 px-3 py-2 rounded-lg">
+								<span className="font-mono text-base text-black bg-white px-3 py-2 rounded-lg">
 									{run}
 								</span>
 							</li>

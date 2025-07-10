@@ -26,10 +26,10 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =
-			"input input-bordered bg-base-100 text-base-content placeholder-base-content/60 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
-		const errorClasses = "border-yellow-400/40 bg-yellow-400/5";
+			"input input-bordered bg-white text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
+		const errorClasses = "border-yellow-400/40 bg-yellow-100";
 		const normalClasses =
-			"border-base-300 hover:border-primary/50 focus:border-primary";
+			"border-gray-200 hover:border-blue-600/50 focus:border-blue-600";
 
 		return clsx(baseClasses, error ? errorClasses : normalClasses);
 	}, [error]);
@@ -113,20 +113,19 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						<div
 							ref={suggestionsRef}
 							id="cron-suggestions-list"
-							className="absolute top-full left-0 right-0 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
-							style={{ background: "var(--dropdown-bg, #fff)" }}
+							className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button
 									key={suggestion.expression}
 									type="button"
-									className="w-full px-4 py-3 text-left hover:bg-base-200 flex flex-col gap-1 border-b border-base-300 last:border-b-0"
+									className="w-full px-4 py-3 text-left hover:bg-gray-100 flex flex-col gap-1 border-b border-gray-200 last:border-b-0"
 									onClick={() => handleSuggestionClick(suggestion)}
 								>
-									<code className="font-mono text-primary">
+									<code className="font-mono text-blue-600">
 										{suggestion.expression}
 									</code>
-									<span className="text-sm text-base-content/60">
+									<span className="text-sm text-gray-500">
 										{suggestion.description}
 									</span>
 								</button>
@@ -156,7 +155,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 			</div>
 			{error && (
 				<div id="cron-error" className="mt-4 w-full">
-					<div className="bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 rounded-xl p-4 w-full">
+					<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full">
 						<span>{error}</span>
 					</div>
 				</div>

@@ -86,10 +86,10 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="bg-white text-base-content max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-base-300 relative max-h-[90vh] overflow-y-auto">
+			<div className="bg-white text-gray-900 max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
 				<button
 					type="button"
-					className={`absolute right-3 top-3 text-light-primary hover:text-base-content text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-base-200 transition-colors z-10${
+					className={`absolute right-3 top-3 text-blue-600 hover:text-gray-900 text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
 						isPressed ? " scale-95" : ""
 					}`}
 					aria-label="Close donation modal"
@@ -104,7 +104,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
-					<p className="mb-6 text-base-content leading-relaxed">
+					<p className="mb-6 text-gray-900 leading-relaxed">
 						Kronilo is a free, open-source tool that respects your privacy—no
 						ads, no trackers, no account.
 						<br />
@@ -118,7 +118,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn btn-accent btn-lg px-6 py-3 font-semibold flex items-center gap-2${
+							className={`btn bg-blue-600 hover:bg-blue-700 text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2${
 								isCoffeePressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
@@ -136,7 +136,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost${isMaybePressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost text-blue-600 hover:text-blue-700${isMaybePressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
 							onMouseDown={() => setIsMaybePressed(true)}
 							onMouseUp={() => setIsMaybePressed(false)}
