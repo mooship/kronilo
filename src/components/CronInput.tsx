@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import type { FC } from "react";
 import { useMemo, useRef, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
@@ -11,7 +12,7 @@ interface CronInputProps {
 	error?: string;
 }
 
-export function CronInput({ error }: CronInputProps) {
+export const CronInput: FC<CronInputProps> = ({ error }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
@@ -162,4 +163,4 @@ export function CronInput({ error }: CronInputProps) {
 			)}
 		</div>
 	);
-}
+};

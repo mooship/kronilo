@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounce } from "react-use";
 import { isValidCronFormat } from "../utils/cronValidation";
 
-export function useCronValidation(cron: string) {
-	const [error, setError] = useState<string | undefined>(undefined);
+export interface UseCronValidation {
+	error: string | undefined;
+	clearError: () => void;
+}
 
+export function useCronValidation(cron: string): UseCronValidation {
+	const [error, setError] = useState<string | undefined>(undefined);
 	const [debouncedCron, setDebouncedCron] = useState(cron);
 
 	useDebounce(
@@ -25,11 +29,11 @@ export function useCronValidation(cron: string) {
 		}
 	}, [debouncedCron]);
 
-	const clearError = () => {
+	const clearError = useCallback(() => {
 		if (error && cron.length <= 100) {
 			setError(undefined);
 		}
-	};
+	}, [error, cron]);
 
-	return { error, clearError };
+	return useMemo(() => ({ error, clearError }), [error, clearError]);
 }

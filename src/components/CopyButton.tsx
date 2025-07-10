@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { useCopyToClipboard, useTimeoutFn } from "react-use";
 
@@ -9,12 +10,12 @@ interface CopyButtonProps {
 	disabled?: boolean;
 }
 
-export function CopyButton({
+export const CopyButton: FC<CopyButtonProps> = ({
 	value,
 	className = "",
 	label = "Copy",
 	disabled = false,
-}: CopyButtonProps) {
+}) => {
 	const [copyState, copyToClipboard] = useCopyToClipboard();
 	const [copied, setCopied] = useState(false);
 	const [isPressed, setIsPressed] = useState(false);
@@ -76,4 +77,4 @@ export function CopyButton({
 			)}
 		</div>
 	);
-}
+};

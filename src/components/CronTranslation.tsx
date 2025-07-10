@@ -1,4 +1,5 @@
 import cronstrue from "cronstrue";
+import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import { useKroniloStore } from "../store";
@@ -8,7 +9,7 @@ interface CronTranslationProps {
 	cron: string;
 }
 
-export function CronTranslation({ cron }: CronTranslationProps) {
+export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [loading, setLoading] = useState(false);
@@ -89,4 +90,4 @@ export function CronTranslation({ cron }: CronTranslationProps) {
 			)}
 		</div>
 	);
-}
+};

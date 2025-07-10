@@ -1,7 +1,14 @@
 import { useEffect } from "react";
 import { useKroniloStore } from "../store";
 
-export function useDonationModal() {
+export interface UseDonationModal {
+	donationModalOpen: boolean;
+	handleFooterDonateClick: (e: React.MouseEvent) => void;
+	handleCloseModal: () => void;
+	handleMaybeLater: () => void;
+}
+
+export function useDonationModal(): UseDonationModal {
 	const donationModalOpen = useKroniloStore((s) => s.donationModalOpen);
 	const setDonationModalOpen = useKroniloStore((s) => s.setDonationModalOpen);
 	const usageCount = useKroniloStore((s) => s.usageCount);

@@ -1,4 +1,5 @@
 import cronParser from "cron-parser";
+import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import { WHITESPACE_REGEX } from "../utils/cronValidation";
@@ -9,7 +10,7 @@ interface NextRunsProps {
 	disabled?: boolean;
 }
 
-export function NextRuns({ cron, disabled }: NextRunsProps) {
+export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const [runs, setRuns] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
@@ -140,4 +141,4 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 			)}
 		</div>
 	);
-}
+};

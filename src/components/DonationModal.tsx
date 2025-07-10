@@ -1,3 +1,4 @@
+import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -7,11 +8,11 @@ interface DonationModalProps {
 	onMaybeLater: () => void;
 }
 
-export function DonationModal({
+export const DonationModal: FC<DonationModalProps> = ({
 	open,
 	onClose,
 	onMaybeLater,
-}: DonationModalProps) {
+}) => {
 	const modalRef = useRef<HTMLDivElement>(null);
 	const firstFocusable = useRef<HTMLButtonElement | null>(null);
 	const lastFocusable = useRef<HTMLButtonElement | null>(null);
@@ -153,4 +154,4 @@ export function DonationModal({
 		</div>,
 		document.body,
 	);
-}
+};
