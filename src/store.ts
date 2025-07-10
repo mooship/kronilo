@@ -65,7 +65,9 @@ export const useKroniloStore = create<KroniloState>((set, get) => ({
 	},
 	canShowDonationModal: () => {
 		const { dismissedUntil } = get();
-		if (!dismissedUntil) return true;
+		if (!dismissedUntil) {
+			return true;
+		}
 		return new Date() > dismissedUntil;
 	},
 

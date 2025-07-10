@@ -99,9 +99,9 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 						<div>
 							<p className="font-medium mb-1">Ambiguous Schedule Detected</p>
 							<p className="text-sm">
-								This cron expression specifies both a specific day of the month
-								AND a specific day of the week. It will run on EITHER condition
-								(OR logic), not both together.
+								This cron expression specifies both a day of the month and a day
+								of the week; the job will run when either condition is met (OR
+								logic), not only when both match.
 							</p>
 						</div>
 					</div>
