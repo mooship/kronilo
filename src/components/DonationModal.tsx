@@ -89,7 +89,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 			<div className="bg-gray-50 text-gray-900 max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
 				<button
 					type="button"
-					className={`absolute right-3 top-3 text-blue-600 hover:text-gray-900 text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
+					className={`absolute right-3 top-3 text-gray-900 hover:text-black text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
 						isPressed ? " scale-95" : ""
 					}`}
 					aria-label="Close donation modal"
@@ -118,7 +118,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn bg-blue-600 hover:bg-blue-700 text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2${
+							className={`btn bg-gray-900 hover:bg-black text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-full${
 								isCoffeePressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
@@ -136,7 +136,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost text-blue-600 hover:text-blue-700${isMaybePressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost text-gray-900 hover:text-black rounded-full${isMaybePressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
 							onMouseDown={() => setIsMaybePressed(true)}
 							onMouseUp={() => setIsMaybePressed(false)}

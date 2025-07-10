@@ -96,7 +96,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			</div>
 
 			{hasAmbiguousSchedule && (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 mb-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 mb-4">
 					<div className="flex items-start gap-2">
 						<svg
 							className="w-5 h-5 mt-0.5 flex-shrink-0"
@@ -123,20 +123,20 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			)}
 
 			{error ? (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4">
 					<span>{error}</span>
 				</div>
 			) : loading ? (
-				<div className="flex items-center gap-2 bg-gray-50 rounded-xl p-6 text-black">
+				<div className="flex items-center gap-2 bg-gray-50 rounded-lg p-6 text-black">
 					<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
 					Calculating next runs...
 				</div>
 			) : runs.length === 0 ? (
-				<div className="bg-gray-50 rounded-xl p-6 text-gray-500 text-center">
+				<div className="bg-gray-50 rounded-lg p-6 text-gray-500 text-center">
 					No upcoming runs found.
 				</div>
 			) : (
-				<div className="bg-gray-50 rounded-xl p-6">
+				<div className="bg-gray-50 rounded-lg p-6">
 					<ul className="space-y-3">
 						{runs.map((run, index) => (
 							<li key={run} className="flex items-center gap-3">

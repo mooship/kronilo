@@ -48,7 +48,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	if (!cron.trim()) {
 		return (
 			<div className="mb-8">
-				<div className="bg-gray-50 rounded-xl p-6 text-center">
+				<div className="bg-gray-50 rounded-lg p-6 text-center">
 					<span className="text-gray-500 text-lg">
 						Enter a cron expression to see the translation
 					</span>
@@ -71,11 +71,11 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				/>
 			</div>
 			{error ? (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4">
 					<span>{error}</span>
 				</div>
 			) : (
-				<div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+				<div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
 					{loading ? (
 						<div className="flex items-center gap-2 text-xl text-black font-medium leading-relaxed">
 							<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>

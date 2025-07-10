@@ -26,7 +26,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =
-			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
+			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-lg border-2 transition-colors duration-200 focus:outline-none";
 		const errorClasses = "border-yellow-400/40 bg-yellow-100";
 		const normalClasses =
 			"border-gray-200 hover:border-blue-600/50 focus:border-blue-600";
@@ -119,7 +119,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 								<button
 									key={suggestion.expression}
 									type="button"
-									className="w-full px-4 py-3 text-left hover:bg-gray-100 flex flex-col gap-1 border-b border-gray-200 last:border-b-0"
+									className="w-full px-4 py-3 text-left hover:bg-gray-100 flex flex-col gap-1 border-b border-gray-200 last:border-b-0 first:rounded-t-xl last:rounded-b-xl"
 									onClick={() => handleSuggestionClick(suggestion)}
 								>
 									<code className="font-mono text-blue-600">
@@ -155,7 +155,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 			</div>
 			{error && (
 				<div id="cron-error" className="mt-4 w-full">
-					<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full">
+					<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 w-full">
 						<span>{error}</span>
 					</div>
 				</div>
