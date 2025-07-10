@@ -1,6 +1,10 @@
 @import "@fontsource/poppins";
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+	themes:
+		light --default,
+		dark --prefersdark;
+}
 
 :root {
 	font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;

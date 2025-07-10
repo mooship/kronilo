@@ -1,5 +1,6 @@
 import cronstrue from "cronstrue";
 import { useEffect, useState } from "react";
+import { useTimeoutFn } from "react-use";
 import { useKroniloStore } from "../store";
 import { CopyButton } from "./CopyButton";
 
@@ -13,35 +14,35 @@ export function CronTranslation({ cron }: CronTranslationProps) {
 	const [loading, setLoading] = useState(false);
 	const incrementUsage = useKroniloStore((s) => s.incrementUsage);
 
+	const translateCron = () => {
+		try {
+			const result = cronstrue.toString(cron, {
+				throwExceptionOnParseError: true,
+			});
+			setTranslation(result);
+			setError(undefined);
+			incrementUsage();
+		} catch (e) {
+			setTranslation("");
+			setError(e instanceof Error ? e.message : "Invalid cron expression");
+		}
+		setLoading(false);
+	};
+
+	const [, cancel, reset] = useTimeoutFn(translateCron, 500);
+
 	useEffect(() => {
 		if (!cron.trim()) {
 			setTranslation("");
 			setError(undefined);
 			setLoading(false);
+			cancel();
 			return;
 		}
 
 		setLoading(true);
-		const timer = setTimeout(() => {
-			try {
-				const result = cronstrue.toString(cron, {
-					throwExceptionOnParseError: true,
-				});
-				setTranslation(result);
-				setError(undefined);
-				incrementUsage();
-			} catch (e) {
-				setTranslation("");
-				setError(e instanceof Error ? e.message : "Invalid cron expression");
-			}
-			setLoading(false);
-		}, 500);
-
-		return () => {
-			clearTimeout(timer);
-			setLoading(false);
-		};
-	}, [cron, incrementUsage]);
+		reset();
+	}, [cron, cancel, reset]);
 
 	if (!cron.trim()) {
 		return (

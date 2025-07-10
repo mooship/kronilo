@@ -1,20 +1,26 @@
+import { useLocalStorage, useMedia, useWindowSize } from "react-use";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-	const [cron, setCron] = useLocalStorage<string>("kronilo-cron", "");
+	const [cronRaw, setCron] = useLocalStorage<string>("kronilo-cron", "");
+	const cron = cronRaw ?? "";
 	const { error, clearError } = useCronValidation(cron);
+	const { width } = useWindowSize();
+	const prefersDark = useMedia("(prefers-color-scheme: dark)");
+	const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)");
 	const {
 		donationModalOpen,
 		handleFooterDonateClick,
 		handleCloseModal,
 		handleMaybeLater,
 	} = useDonationModal();
+
+	const isSmallScreen = width < 640;
 
 	function handleCronChange(val: string) {
 		setCron(val);
@@ -23,8 +29,10 @@ function App() {
 
 	return (
 		<div
-			className="min-h-screen bg-base-100 text-base-content flex flex-col"
-			data-theme="dracula"
+			className={`min-h-screen bg-base-100 text-base-content flex flex-col ${
+				prefersReducedMotion ? "" : "transition-colors duration-200"
+			}`}
+			data-theme={prefersDark ? "dark" : "light"}
 		>
 			<DonationModal
 				open={donationModalOpen}
@@ -33,13 +41,25 @@ function App() {
 			/>
 			<header className="w-full pt-4 sm:pt-8 pb-2 sm:pb-3">
 				<div className="w-full max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto text-center px-2 sm:px-0">
-					<h1 className="text-2xl xs:text-3xl sm:text-5xl font-bold text-primary mb-2 sm:mb-4 break-words leading-tight">
+					<h1
+						className={`font-bold text-primary mb-2 sm:mb-4 break-words leading-tight ${
+							isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl"
+						}`}
+					>
 						Kronilo
 					</h1>
-					<h2 className="text-base xs:text-lg sm:text-2xl text-base-content/90 mb-2 sm:mb-3 break-words leading-snug">
+					<h2
+						className={`text-base-content/90 mb-2 sm:mb-3 break-words leading-snug ${
+							isSmallScreen ? "text-base" : "text-base xs:text-lg sm:text-2xl"
+						}`}
+					>
 						Dead Simple Cron Translator
 					</h2>
-					<p className="text-sm xs:text-base sm:text-lg text-base-content/70 break-words">
+					<p
+						className={`text-base-content/70 break-words ${
+							isSmallScreen ? "text-sm" : "text-sm xs:text-base sm:text-lg"
+						}`}
+					>
 						Translate cron expressions to plain English instantly
 					</p>
 				</div>

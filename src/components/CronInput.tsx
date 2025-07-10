@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
+import { useClickAway } from "react-use";
 import { CRON_SUGGESTIONS } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
 
@@ -12,7 +13,12 @@ interface CronInputProps {
 
 export function CronInput({ value, onChange, error }: CronInputProps) {
 	const inputRef = useRef<HTMLInputElement>(null);
+	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
+
+	useClickAway(suggestionsRef, () => {
+		setShowSuggestions(false);
+	});
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =
@@ -82,13 +88,15 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 						onChange={(e) => onChange(e.target.value)}
 						onKeyDown={handleKeyDown}
 						onFocus={handleFocus}
-						onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
 						autoComplete="off"
 						aria-invalid={!!error}
 						aria-describedby={error ? "cron-error" : undefined}
 					/>
 					{showSuggestions && (
-						<div className="absolute top-full left-0 right-0 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto">
+						<div
+							ref={suggestionsRef}
+							className="absolute top-full left-0 right-0 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
+						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button
 									key={suggestion.expression}

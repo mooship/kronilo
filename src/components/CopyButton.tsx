@@ -1,4 +1,5 @@
-import { useClipboard as useClipboardHook } from "../hooks/useClipboard";
+import { useEffect, useState } from "react";
+import { useCopyToClipboard, useTimeoutFn } from "react-use";
 
 interface CopyButtonProps {
 	value: string;
@@ -13,12 +14,23 @@ export function CopyButton({
 	label = "Copy",
 	disabled = false,
 }: CopyButtonProps) {
-	const { copied, error, copy } = useClipboardHook();
+	const [copyState, copyToClipboard] = useCopyToClipboard();
+	const [copied, setCopied] = useState(false);
 
 	const isSmall = className.includes("btn-sm");
 
+	const resetCopiedState = () => setCopied(false);
+	const [, , resetCopiedTimeout] = useTimeoutFn(resetCopiedState, 1200);
+
+	useEffect(() => {
+		if (copyState.value === value && !copyState.error) {
+			setCopied(true);
+			resetCopiedTimeout();
+		}
+	}, [copyState, value, resetCopiedTimeout]);
+
 	function handleCopy() {
-		copy(value);
+		copyToClipboard(value);
 	}
 
 	return (
@@ -40,10 +52,10 @@ export function CopyButton({
 					<span className="flex items-center gap-2">{label}</span>
 				)}
 			</button>
-			{error && (
+			{copyState.error && (
 				<div className="absolute left-0 mt-1">
 					<div className="alert alert-error alert-sm rounded-lg">
-						<span className="text-xs">{error}</span>
+						<span className="text-xs">{copyState.error.message}</span>
 					</div>
 				</div>
 			)}
