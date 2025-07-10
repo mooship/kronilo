@@ -67,7 +67,7 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 		reset();
 	}, [cron, disabled, cancel, reset]);
 
-	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
+	const runsCopyValue = useMemo(() => runs.join("\n"), [runs]);
 
 	if (!cron.trim() || disabled) {
 		return null;
