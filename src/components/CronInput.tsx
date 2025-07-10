@@ -103,10 +103,15 @@ export function CronInput({ error }: CronInputProps) {
 						autoComplete="off"
 						aria-invalid={!!error}
 						aria-describedby={error ? "cron-error" : undefined}
+						aria-autocomplete="list"
+						aria-controls={
+							showSuggestions ? "cron-suggestions-list" : undefined
+						}
 					/>
 					{showSuggestions && (
 						<div
 							ref={suggestionsRef}
+							id="cron-suggestions-list"
 							className="absolute top-full left-0 right-0 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
 							style={{ background: "var(--dropdown-bg, #fff)" }}
 						>

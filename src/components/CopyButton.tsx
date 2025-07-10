@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useCopyToClipboard, useTimeoutFn } from "react-use";
 
 interface CopyButtonProps {
@@ -20,6 +20,10 @@ export function CopyButton({
 	const [isPressed, setIsPressed] = useState(false);
 
 	const isSmall = className.includes("btn-sm");
+
+	const errorId = useMemo(() => {
+		return `copy-error-${Math.random().toString(36).slice(2, 10)}`;
+	}, []);
 
 	const resetCopiedState = () => setCopied(false);
 	const [, , resetCopiedTimeout] = useTimeoutFn(resetCopiedState, 1200);
@@ -49,6 +53,7 @@ export function CopyButton({
 				aria-label={label}
 				onClick={handleCopy}
 				disabled={disabled || !value}
+				aria-describedby={copyState.error ? errorId : undefined}
 			>
 				{copied ? (
 					<span aria-live="polite" className="flex items-center gap-2">
@@ -60,7 +65,11 @@ export function CopyButton({
 			</button>
 			{copyState.error && (
 				<div className="absolute left-0 mt-1">
-					<div className="alert alert-error alert-sm rounded-lg">
+					<div
+						className="alert alert-error alert-sm rounded-lg"
+						id={errorId}
+						role="alert"
+					>
 						<span className="text-xs">{copyState.error.message}</span>
 					</div>
 				</div>

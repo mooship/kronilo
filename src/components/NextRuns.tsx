@@ -1,5 +1,5 @@
 import cronParser from "cron-parser";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import { CopyButton } from "./CopyButton";
 
@@ -12,7 +12,7 @@ interface NextRunsProps {
 
 export function NextRuns({ cron, disabled }: NextRunsProps) {
 	const [runs, setRuns] = useState<string[]>([]);
-	const [error, setError] = useState<string | undefined>(undefined);
+	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [hasAmbiguousSchedule, setHasAmbiguousSchedule] = useState(false);
 
@@ -43,7 +43,7 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 				nextDates.push(interval.next().toLocaleString());
 			}
 			setRuns(nextDates);
-			setError(undefined);
+			setError(null);
 		} catch (e) {
 			setRuns([]);
 			setError(e instanceof Error ? e.message : "Invalid cron expression");
@@ -57,7 +57,7 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 	useEffect(() => {
 		if (!cron.trim() || disabled) {
 			setRuns([]);
-			setError(undefined);
+			setError(null);
 			setLoading(false);
 			setHasAmbiguousSchedule(false);
 			cancel();
@@ -68,17 +68,19 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 		reset();
 	}, [cron, disabled, cancel, reset]);
 
+	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
+
 	if (!cron.trim() || disabled) {
 		return null;
 	}
 
 	return (
-		<div className="mb-6">
+		<div className="mb-6" aria-live="polite">
 			<div className="flex items-center justify-between mb-4">
 				<h3 className="text-xl font-semibold text-base-content">
 					Next 5 runs:
 				</h3>
-				<CopyButton value={runs.join("\n\n")} label="Copy" className="btn-sm" />
+				<CopyButton value={runsCopyValue} label="Copy" className="btn-sm" />
 			</div>
 
 			{hasAmbiguousSchedule && (
@@ -116,6 +118,10 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 				<div className="flex items-center gap-2 bg-base-300/30 rounded-xl p-6 text-base-content">
 					<span className="animate-spin inline-block w-5 h-5 border-2 border-primary border-t-transparent rounded-full"></span>
 					Calculating next runs...
+				</div>
+			) : runs.length === 0 ? (
+				<div className="bg-base-300/30 rounded-xl p-6 text-base-content/60 text-center">
+					No upcoming runs found.
 				</div>
 			) : (
 				<div className="bg-base-300/30 rounded-xl p-6">
