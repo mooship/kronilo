@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 interface DonationModalProps {
@@ -15,6 +15,9 @@ export function DonationModal({
 	const modalRef = useRef<HTMLDivElement>(null);
 	const firstFocusable = useRef<HTMLButtonElement | null>(null);
 	const lastFocusable = useRef<HTMLButtonElement | null>(null);
+	const [isPressed, setIsPressed] = useState(false);
+	const [isCoffeePressed, setIsCoffeePressed] = useState(false);
+	const [isMaybePressed, setIsMaybePressed] = useState(false);
 
 	useEffect(() => {
 		if (!open) {
@@ -80,19 +83,26 @@ export function DonationModal({
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="bg-[#282a36] text-[#f8f8f2] max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-[#44475a] relative max-h-[90vh] overflow-y-auto">
+			<div className="bg-white text-base-content max-w-lg w-full mx-4 rounded-lg p-8 shadow-2xl border border-base-300 relative max-h-[90vh] overflow-y-auto">
 				<button
 					type="button"
-					className="absolute right-3 top-3 text-[#6272a4] hover:text-[#f8f8f2] text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-[#44475a] transition-colors z-10"
+					className={`absolute right-3 top-3 text-light-primary hover:text-base-content text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-base-200 transition-colors z-10${
+						isPressed ? " scale-95" : ""
+					}`}
 					aria-label="Close donation modal"
 					onClick={onClose}
+					onMouseDown={() => setIsPressed(true)}
+					onMouseUp={() => setIsPressed(false)}
+					onMouseLeave={() => setIsPressed(false)}
+					onTouchStart={() => setIsPressed(true)}
+					onTouchEnd={() => setIsPressed(false)}
 					ref={firstFocusable}
 				>
 					✕
 				</button>
 				<div className="text-center">
 					<h2 className="text-3xl mb-2">☕</h2>
-					<p className="mb-6 text-[#f8f8f2] leading-relaxed">
+					<p className="mb-6 text-base-content leading-relaxed">
 						Kronilo is a free, open-source tool that respects your privacy—no
 						ads, no trackers, no account.
 						<br />
@@ -106,8 +116,15 @@ export function DonationModal({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="btn btn-accent btn-lg px-6 py-3 font-semibold flex items-center gap-2"
+							className={`btn btn-accent btn-lg px-6 py-3 font-semibold flex items-center gap-2${
+								isCoffeePressed ? " scale-95" : ""
+							}`}
 							aria-label="Support Kronilo on Ko-fi"
+							onMouseDown={() => setIsCoffeePressed(true)}
+							onMouseUp={() => setIsCoffeePressed(false)}
+							onMouseLeave={() => setIsCoffeePressed(false)}
+							onTouchStart={() => setIsCoffeePressed(true)}
+							onTouchEnd={() => setIsCoffeePressed(false)}
 						>
 							☕ Buy me a coffee
 						</a>
@@ -117,8 +134,13 @@ export function DonationModal({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className="btn btn-ghost"
+							className={`btn btn-ghost${isMaybePressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
+							onMouseDown={() => setIsMaybePressed(true)}
+							onMouseUp={() => setIsMaybePressed(false)}
+							onMouseLeave={() => setIsMaybePressed(false)}
+							onTouchStart={() => setIsMaybePressed(true)}
+							onTouchEnd={() => setIsMaybePressed(false)}
 							ref={lastFocusable}
 						>
 							Maybe Later
