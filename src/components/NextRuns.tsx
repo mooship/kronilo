@@ -50,7 +50,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 						hour: "2-digit",
 						minute: "2-digit",
 						second: "2-digit",
-						timeZoneName: "short",
+						timeZoneName: "long",
 					}),
 				);
 			}
