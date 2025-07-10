@@ -16,6 +16,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
+	const [infoPressed, setInfoPressed] = useState(false);
 
 	useClickAway(suggestionsRef, () => {
 		setShowSuggestions(false);
@@ -67,11 +68,20 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 			<div className="relative flex items-center justify-center gap-3 w-full">
 				<button
 					type="button"
-					className="flex items-center focus:outline-none shrink-0"
+					className={clsx(
+						"flex items-center focus:outline-none shrink-0 transition-transform duration-100",
+						infoPressed && "scale-95",
+					)}
 					data-tooltip-id="cron-placeholder-tip"
-					data-tooltip-content="star/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
+					data-tooltip-content="*/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
 					aria-label="Cron format info"
 					tabIndex={0}
+					onMouseDown={() => setInfoPressed(true)}
+					onMouseUp={() => setInfoPressed(false)}
+					onMouseLeave={() => setInfoPressed(false)}
+					onBlur={() => setInfoPressed(false)}
+					onTouchStart={() => setInfoPressed(true)}
+					onTouchEnd={() => setInfoPressed(false)}
 				>
 					<FaInfoCircle className="text-2xl text-primary hover:text-accent focus:text-accent transition-colors" />
 				</button>
@@ -97,6 +107,7 @@ export function CronInput({ value, onChange, error }: CronInputProps) {
 						<div
 							ref={suggestionsRef}
 							className="absolute top-full left-0 right-0 mt-1 bg-base-100 border border-base-300 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
+							style={{ background: "var(--dropdown-bg, #fff)" }}
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button

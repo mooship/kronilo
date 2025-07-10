@@ -18,7 +18,6 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 
 	const calculateNextRuns = () => {
 		try {
-			// Check for ambiguous schedule
 			const cronParts = cron.trim().split(WHITESPACE_REGEX);
 			if (cronParts.length >= 5) {
 				const dayOfMonth = cronParts[2];
@@ -79,7 +78,7 @@ export function NextRuns({ cron, disabled }: NextRunsProps) {
 				<h3 className="text-xl font-semibold text-base-content">
 					Next 5 runs:
 				</h3>
-				<CopyButton value={runs.join("\n")} label="Copy" className="btn-sm" />
+				<CopyButton value={runs.join("\n\n")} label="Copy" className="btn-sm" />
 			</div>
 
 			{hasAmbiguousSchedule && (

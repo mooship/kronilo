@@ -55,7 +55,7 @@ function App() {
 						className={clsx(
 							"mb-2 sm:mb-3 break-words leading-snug",
 							isSmallScreen ? "text-base" : "text-base xs:text-lg sm:text-2xl",
-							"text-light-foreground/90",
+							"text-light-foreground opacity-90",
 						)}
 					>
 						Dead Simple Cron Translator
@@ -64,18 +64,18 @@ function App() {
 						className={clsx(
 							"break-words",
 							isSmallScreen ? "text-sm" : "text-sm xs:text-base sm:text-lg",
-							"text-light-foreground/70",
+							"text-light-foreground opacity-70",
 						)}
 					>
 						Translate cron expressions to plain English instantly
 					</p>
 				</div>
 			</header>
-			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-2 sm:pt-4 pb-4 sm:pb-12 lg:pb-16">
+			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-2 sm:pt-4 pb-2 sm:pb-12 lg:pb-16 min-h-0">
 				<div className="w-full max-w-2xl mx-auto">
 					<div
 						className={clsx(
-							"shadow-2xl border rounded-lg sm:rounded-2xl px-2 sm:px-6 py-4 sm:py-8",
+							"shadow-2xl border rounded-lg sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
 							"bg-light-muted border-light-border",
 						)}
 					>
@@ -99,7 +99,10 @@ function App() {
 			>
 				<div className="text-center px-2 sm:px-0">
 					<p
-						className={clsx("text-xs sm:text-base", "text-light-foreground/60")}
+						className={clsx(
+							"text-xs sm:text-base",
+							"text-light-foreground opacity-60",
+						)}
 					>
 						Built with{" "}
 						<span className="text-light-primary" aria-hidden="true">
