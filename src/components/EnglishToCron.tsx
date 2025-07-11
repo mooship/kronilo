@@ -63,7 +63,7 @@ export function EnglishToCron() {
 					/>
 					<ActionButton
 						label={loading ? "Translating..." : "Generate Cron"}
-						disabled={!english.trim() || loading}
+						disabled={loading || english.trim().length === 0}
 						onClick={handleGenerate}
 						className={isPressed ? "scale-95" : ""}
 						onMouseDown={() => setIsPressed(true)}
