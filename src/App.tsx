@@ -11,6 +11,7 @@ import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
 import { EnglishToCron } from "./components/EnglishToCron";
 import { NextRuns } from "./components/NextRuns";
+import { NotFoundCard } from "./components/NotFoundCard";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { useKroniloStore } from "./store";
@@ -101,6 +102,7 @@ function App() {
 							<Routes>
 								<Route path="/" element={<MainContent />} />
 								<Route path="/english-to-cron" element={<MainContent />} />
+								<Route path="*" element={<NotFoundCard />} />
 							</Routes>
 						</div>
 					</div>
