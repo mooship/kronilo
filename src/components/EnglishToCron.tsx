@@ -10,11 +10,13 @@ export function EnglishToCron() {
 	const [isPressed, setIsPressed] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const [retrying, setRetrying] = useState(false);
 
 	async function handleGenerate() {
 		setError(null);
 		setCron("");
 		setLoading(true);
+		setRetrying(false);
 		let attempt = 0;
 		let lastError: Error | null = null;
 		while (attempt < 2) {
@@ -22,17 +24,21 @@ export function EnglishToCron() {
 				const result = await translateToCron(english);
 				setCron(result.cron);
 				setLoading(false);
+				setRetrying(false);
 				return;
 			} catch (err) {
 				lastError = err instanceof Error ? err : new Error(String(err));
 				attempt++;
 				if (attempt < 2) {
+					setRetrying(true);
 					await new Promise((res) => setTimeout(res, 500));
+					setRetrying(false);
 				}
 			}
 		}
 		setError(lastError ? lastError.message : "Unknown error");
 		setLoading(false);
+		setRetrying(false);
 	}
 
 	return (
@@ -67,7 +73,14 @@ export function EnglishToCron() {
 						onTouchEnd={() => setIsPressed(false)}
 					/>
 				</div>
-				{error && (
+				{retrying && (
+					<div className="mt-4 w-full">
+						<div className="bg-blue-100 border border-blue-300 text-blue-700 rounded-lg p-4 w-full text-center animate-pulse">
+							<span>Please wait, retrying...</span>
+						</div>
+					</div>
+				)}
+				{error && !retrying && (
 					<div className="mt-4 w-full">
 						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 w-full text-center">
 							<span>{error}</span>
@@ -76,7 +89,7 @@ export function EnglishToCron() {
 				)}
 			</div>
 
-			{cron && (
+			{cron && !retrying && (
 				<div className="mb-8">
 					<div className="flex items-center justify-between mb-4">
 						<h3 className="text-xl font-semibold text-base-content">
@@ -97,7 +110,7 @@ export function EnglishToCron() {
 				</div>
 			)}
 
-			<NextRuns cron={cron} disabled={!cron} />
+			<NextRuns cron={cron} disabled={!cron || retrying} />
 		</div>
 	);
 }

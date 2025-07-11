@@ -17,11 +17,30 @@ export async function translateToCron(input: string): Promise<ApiSuccess> {
 			.json<ApiResponse>();
 
 		if ("error" in response) {
-			throw new Error(response.error);
+			const safeMsg =
+				typeof response.error === "string" &&
+				response.error.length < 100 &&
+				!response.error.includes("http")
+					? response.error
+					: "Sorry, something went wrong. Please try again.";
+			throw new Error(safeMsg);
 		}
 
 		return response;
 	} catch (err) {
-		throw err instanceof Error ? err : new Error(String(err));
+		const msg = err instanceof Error ? err.message : String(err);
+		if (
+			msg === "Input cannot be empty" ||
+			msg.toLowerCase().includes("timeout") ||
+			msg.toLowerCase().includes("network")
+		) {
+			throw new Error(
+				"Network error. Please check your connection and try again.",
+			);
+		}
+		if (msg.includes("http") || msg.length > 100) {
+			throw new Error("Sorry, something went wrong. Please try again.");
+		}
+		throw new Error(msg);
 	}
 }
