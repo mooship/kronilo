@@ -83,7 +83,7 @@ function App() {
 					</p>
 				</div>
 			</header>
-			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-0 sm:pt-2 pb-1 sm:pb-12 lg:pb-16 min-h-0 mb-1 sm:mb-0">
+			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-0 sm:pt-2 pb-1 sm:pb-6 lg:pb-8 min-h-0 mb-1 sm:mb-0">
 				<div className="w-full max-w-3xl mx-auto">
 					<div
 						className={clsx(
