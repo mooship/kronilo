@@ -4,6 +4,7 @@ import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
 import { ActionButton } from "./ActionButton";
 import { CopyButton } from "./CopyButton";
+import { ModeToggle } from "./ModeToggle";
 import { NextRuns } from "./NextRuns";
 
 export function EnglishToCron() {
@@ -83,12 +84,12 @@ export function EnglishToCron() {
 	return (
 		<div className="flex flex-col gap-8">
 			<div className="mb-8 flex flex-col w-full">
-				<label
-					htmlFor="english-input"
-					className="block text-xl font-semibold text-base-content mb-6 text-center w-full"
-				>
-					English Schedule
-				</label>
+				<div className="flex items-center justify-between mb-6 w-full">
+					<span className="block text-xl font-semibold text-base-content">
+						English Schedule
+					</span>
+					<ModeToggle />
+				</div>
 				<div className="relative flex items-center justify-center gap-3 w-full">
 					<input
 						id="english-input"

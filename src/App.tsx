@@ -1,11 +1,9 @@
 import clsx from "clsx";
-import { useCallback, useState } from "react";
 import {
 	Route,
 	BrowserRouter as Router,
 	Routes,
 	useLocation,
-	useNavigate,
 } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
 import { CronInput } from "./components/CronInput";
@@ -16,42 +14,6 @@ import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { useKroniloStore } from "./store";
-
-function ModeToggle() {
-	const navigate = useNavigate();
-	const location = useLocation();
-	const isEnglishToCron = location.pathname === "/english-to-cron";
-	const [isPressed, setIsPressed] = useState(false);
-
-	const handleToggle = useCallback(() => {
-		navigate(isEnglishToCron ? "/" : "/english-to-cron");
-	}, [isEnglishToCron, navigate]);
-
-	return (
-		<div className="flex justify-center mb-8">
-			<button
-				type="button"
-				className={clsx(
-					"btn btn-secondary rounded-lg font-medium px-6 py-3 transition-colors duration-200",
-					isEnglishToCron
-						? "bg-gray-200 text-gray-900 border border-gray-300"
-						: "bg-gray-100 text-gray-900 border border-gray-200",
-					isPressed && "scale-95",
-				)}
-				onClick={handleToggle}
-				onMouseDown={() => setIsPressed(true)}
-				onMouseUp={() => setIsPressed(false)}
-				onMouseLeave={() => setIsPressed(false)}
-				onTouchStart={() => setIsPressed(true)}
-				onTouchEnd={() => setIsPressed(false)}
-			>
-				{isEnglishToCron
-					? "Switch to Cron → English"
-					: "Switch to English → Cron"}
-			</button>
-		</div>
-	);
-}
 
 function MainContent() {
 	const cron = useKroniloStore((s) => s.cron);
@@ -128,7 +90,6 @@ function App() {
 						</p>
 					</div>
 				</header>
-				<ModeToggle />
 				<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-1 sm:pt-4 pb-1 sm:pb-12 lg:pb-16 min-h-0 mb-1 sm:mb-0">
 					<div className="w-full max-w-3xl mx-auto">
 						<div

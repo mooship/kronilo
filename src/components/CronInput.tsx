@@ -8,6 +8,7 @@ import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
 import { CRON_SUGGESTIONS } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
+import { ModeToggle } from "./ModeToggle";
 
 interface CronInputProps {
 	error?: string;
@@ -62,12 +63,15 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 
 	return (
 		<div className="mb-8 flex flex-col w-full">
-			<label
-				htmlFor="cron-input"
-				className="block text-xl font-semibold text-base-content mb-6 text-center w-full"
-			>
-				Cron Expression
-			</label>
+			<div className="flex items-center justify-between mb-6 w-full">
+				<label
+					htmlFor="cron-input"
+					className="block text-xl font-semibold text-base-content"
+				>
+					Cron Expression
+				</label>
+				<ModeToggle />
+			</div>
 			<div className="relative flex items-center justify-center gap-3 w-full">
 				<button
 					type="button"
