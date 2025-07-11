@@ -1,6 +1,7 @@
 import type { FC } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { usePressAnimation } from "../hooks/usePressAnimation";
 
 interface DonationModalProps {
 	open: boolean;
@@ -16,9 +17,9 @@ export const DonationModal: FC<DonationModalProps> = ({
 	const modalRef = useRef<HTMLDivElement>(null);
 	const firstFocusable = useRef<HTMLButtonElement | null>(null);
 	const lastFocusable = useRef<HTMLButtonElement | null>(null);
-	const [isPressed, setIsPressed] = useState(false);
-	const [isCoffeePressed, setIsCoffeePressed] = useState(false);
-	const [isMaybePressed, setIsMaybePressed] = useState(false);
+	const closeBtnAnim = usePressAnimation();
+	const coffeeBtnAnim = usePressAnimation();
+	const maybeBtnAnim = usePressAnimation();
 
 	useEffect(() => {
 		if (!open) {
@@ -90,15 +91,15 @@ export const DonationModal: FC<DonationModalProps> = ({
 				<button
 					type="button"
 					className={`absolute right-3 top-3 text-gray-900 hover:text-black text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
-						isPressed ? " scale-95" : ""
+						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
 					aria-label="Close donation modal"
 					onClick={onClose}
-					onMouseDown={() => setIsPressed(true)}
-					onMouseUp={() => setIsPressed(false)}
-					onMouseLeave={() => setIsPressed(false)}
-					onTouchStart={() => setIsPressed(true)}
-					onTouchEnd={() => setIsPressed(false)}
+					onMouseDown={closeBtnAnim.handlePressStart}
+					onMouseUp={closeBtnAnim.handlePressEnd}
+					onMouseLeave={closeBtnAnim.handlePressEnd}
+					onTouchStart={closeBtnAnim.handlePressStart}
+					onTouchEnd={closeBtnAnim.handlePressEnd}
 					ref={firstFocusable}
 				>
 					✕
@@ -119,14 +120,14 @@ export const DonationModal: FC<DonationModalProps> = ({
 							target="_blank"
 							rel="noopener noreferrer"
 							className={`btn bg-gray-900 hover:bg-black text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-lg${
-								isCoffeePressed ? " scale-95" : ""
+								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
-							onMouseDown={() => setIsCoffeePressed(true)}
-							onMouseUp={() => setIsCoffeePressed(false)}
-							onMouseLeave={() => setIsCoffeePressed(false)}
-							onTouchStart={() => setIsCoffeePressed(true)}
-							onTouchEnd={() => setIsCoffeePressed(false)}
+							onMouseDown={coffeeBtnAnim.handlePressStart}
+							onMouseUp={coffeeBtnAnim.handlePressEnd}
+							onMouseLeave={coffeeBtnAnim.handlePressEnd}
+							onTouchStart={coffeeBtnAnim.handlePressStart}
+							onTouchEnd={coffeeBtnAnim.handlePressEnd}
 						>
 							☕ Buy me a coffee
 						</a>
@@ -136,13 +137,13 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost text-gray-900 hover:text-black rounded-lg${isMaybePressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost text-gray-900 hover:text-black rounded-lg${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
-							onMouseDown={() => setIsMaybePressed(true)}
-							onMouseUp={() => setIsMaybePressed(false)}
-							onMouseLeave={() => setIsMaybePressed(false)}
-							onTouchStart={() => setIsMaybePressed(true)}
-							onTouchEnd={() => setIsMaybePressed(false)}
+							onMouseDown={maybeBtnAnim.handlePressStart}
+							onMouseUp={maybeBtnAnim.handlePressEnd}
+							onMouseLeave={maybeBtnAnim.handlePressEnd}
+							onTouchStart={maybeBtnAnim.handlePressStart}
+							onTouchEnd={maybeBtnAnim.handlePressEnd}
 							ref={lastFocusable}
 						>
 							Maybe Later

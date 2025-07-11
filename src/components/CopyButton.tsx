@@ -2,6 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { useCopyToClipboard, useTimeoutFn } from "react-use";
+import { usePressAnimation } from "../hooks/usePressAnimation";
 
 interface CopyButtonProps {
 	value: string;
@@ -18,7 +19,7 @@ export const CopyButton: FC<CopyButtonProps> = ({
 }) => {
 	const [copyState, copyToClipboard] = useCopyToClipboard();
 	const [copied, setCopied] = useState(false);
-	const [isPressed, setIsPressed] = useState(false);
+	const { isPressed, handlePressStart, handlePressEnd } = usePressAnimation();
 
 	const isSmall = className.includes("btn-sm");
 
@@ -37,9 +38,9 @@ export const CopyButton: FC<CopyButtonProps> = ({
 	}, [copyState, value, resetCopiedTimeout]);
 
 	function handleCopy() {
-		setIsPressed(true);
+		handlePressStart();
 		copyToClipboard(value);
-		setTimeout(() => setIsPressed(false), 120);
+		setTimeout(() => handlePressEnd(), 120);
 	}
 
 	return (
@@ -55,6 +56,11 @@ export const CopyButton: FC<CopyButtonProps> = ({
 				onClick={handleCopy}
 				disabled={disabled || !value}
 				aria-describedby={copyState.error ? errorId : undefined}
+				onMouseDown={handlePressStart}
+				onMouseUp={handlePressEnd}
+				onMouseLeave={handlePressEnd}
+				onTouchStart={handlePressStart}
+				onTouchEnd={handlePressEnd}
 			>
 				{copied ? (
 					<span aria-live="polite" className="flex items-center gap-2">

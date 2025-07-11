@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { checkRateLimit, translateToCron } from "../api/translateToCron";
+import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
 import { ActionButton } from "./ActionButton";
 import { CopyButton } from "./CopyButton";
@@ -8,13 +9,13 @@ import { NextRuns } from "./NextRuns";
 export function EnglishToCron() {
 	const [english, setEnglish] = useState("");
 	const [cron, setCron] = useState("");
-	const [isPressed, setIsPressed] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [retrying, setRetrying] = useState(false);
 	const rateLimited = useKroniloStore((s) => s.rateLimited);
 	const rateLimitMsg = useKroniloStore((s) => s.rateLimitMsg);
 	const setRateLimited = useKroniloStore((s) => s.setRateLimited);
+	const actionAnim = usePressAnimation();
 
 	useEffect(() => {
 		async function checkLimit() {
@@ -99,12 +100,12 @@ export function EnglishToCron() {
 						}
 						disabled={loading || english.trim().length === 0 || rateLimited}
 						onClick={handleGenerate}
-						className={isPressed ? "scale-95" : ""}
-						onMouseDown={() => setIsPressed(true)}
-						onMouseUp={() => setIsPressed(false)}
-						onMouseLeave={() => setIsPressed(false)}
-						onTouchStart={() => setIsPressed(true)}
-						onTouchEnd={() => setIsPressed(false)}
+						className={actionAnim.isPressed ? "scale-95" : ""}
+						onMouseDown={actionAnim.handlePressStart}
+						onMouseUp={actionAnim.handlePressEnd}
+						onMouseLeave={actionAnim.handlePressEnd}
+						onTouchStart={actionAnim.handlePressStart}
+						onTouchEnd={actionAnim.handlePressEnd}
 					/>
 				</div>
 				{rateLimited && (

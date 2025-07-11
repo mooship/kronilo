@@ -4,6 +4,7 @@ import { useMemo, useRef, useState } from "react";
 import { FaInfoCircle } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
 import { useClickAway } from "react-use";
+import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
 import { CRON_SUGGESTIONS } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
@@ -16,7 +17,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
-	const [infoPressed, setInfoPressed] = useState(false);
+	const infoAnim = usePressAnimation();
 	const cron = useKroniloStore((s) => s.cron);
 	const setCron = useKroniloStore((s) => s.setCron);
 
@@ -72,18 +73,18 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 					type="button"
 					className={clsx(
 						"flex items-center focus:outline-none shrink-0 transition-transform duration-100",
-						infoPressed && "scale-95",
+						infoAnim.isPressed && "scale-95",
 					)}
 					data-tooltip-id="cron-placeholder-tip"
 					data-tooltip-content="*/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
 					aria-label="Cron format info"
 					tabIndex={0}
-					onMouseDown={() => setInfoPressed(true)}
-					onMouseUp={() => setInfoPressed(false)}
-					onMouseLeave={() => setInfoPressed(false)}
-					onBlur={() => setInfoPressed(false)}
-					onTouchStart={() => setInfoPressed(true)}
-					onTouchEnd={() => setInfoPressed(false)}
+					onMouseDown={infoAnim.handlePressStart}
+					onMouseUp={infoAnim.handlePressEnd}
+					onMouseLeave={infoAnim.handlePressEnd}
+					onBlur={infoAnim.handlePressEnd}
+					onTouchStart={infoAnim.handlePressStart}
+					onTouchEnd={infoAnim.handlePressEnd}
 				>
 					<FaInfoCircle className="text-2xl text-primary hover:text-accent focus:text-accent transition-colors" />
 				</button>

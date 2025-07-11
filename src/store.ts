@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { isValidCronFormat } from "./utils/cronValidation";
+import { getItem, removeItem, setItem } from "./utils/localStorageUtils";
 
 interface KroniloState {
 	donationModalOpen: boolean;
@@ -22,41 +23,29 @@ interface KroniloState {
 }
 
 const getStoredDismissedUntil = (): Date | null => {
-	try {
-		const stored = localStorage.getItem("kronilo-dismissed-until");
-		return stored ? new Date(stored) : null;
-	} catch {
-		return null;
-	}
+	const stored = getItem("kronilo-dismissed-until");
+	return stored ? new Date(stored) : null;
 };
 
 const setStoredDismissedUntil = (date: Date | null): void => {
-	try {
-		if (date) {
-			localStorage.setItem("kronilo-dismissed-until", date.toISOString());
-		} else {
-			localStorage.removeItem("kronilo-dismissed-until");
-		}
-	} catch {}
-};
-
-const getStoredCron = (): string => {
-	try {
-		const stored = localStorage.getItem("kronilo-cron");
-		return stored ?? "*/5 * * * *";
-	} catch {
-		return "*/5 * * * *";
+	if (date) {
+		setItem("kronilo-dismissed-until", date.toISOString());
+	} else {
+		removeItem("kronilo-dismissed-until");
 	}
 };
 
+const getStoredCron = (): string => {
+	const stored = getItem("kronilo-cron");
+	return stored ?? "*/5 * * * *";
+};
+
 const setStoredCron = (cron: string): void => {
-	try {
-		if (isValidCronFormat(cron)) {
-			localStorage.setItem("kronilo-cron", cron);
-		} else {
-			localStorage.removeItem("kronilo-cron");
-		}
-	} catch {}
+	if (isValidCronFormat(cron)) {
+		setItem("kronilo-cron", cron);
+	} else {
+		removeItem("kronilo-cron");
+	}
 };
 
 export const useKroniloStore = create<KroniloState>((set, get) => ({
