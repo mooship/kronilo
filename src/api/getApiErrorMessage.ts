@@ -1,5 +1,5 @@
 const URL_REGEX = /https?:\/\//;
-const STATUS_CODE_REGEX = /\d{3}/;
+const STATUS_CODE_REGEX = /\b(4\d{2}|5\d{2})\b/;
 
 export function getApiErrorMessage(err: unknown): string {
 	if (typeof err === "string") {
