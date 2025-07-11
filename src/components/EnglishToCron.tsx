@@ -15,14 +15,24 @@ export function EnglishToCron() {
 		setError(null);
 		setCron("");
 		setLoading(true);
-		try {
-			const result = await translateToCron(english);
-			setCron(result.cron);
-		} catch (err) {
-			setError(err instanceof Error ? err.message : "Unknown error");
-		} finally {
-			setLoading(false);
+		let attempt = 0;
+		let lastError: Error | null = null;
+		while (attempt < 2) {
+			try {
+				const result = await translateToCron(english);
+				setCron(result.cron);
+				setLoading(false);
+				return;
+			} catch (err) {
+				lastError = err instanceof Error ? err : new Error(String(err));
+				attempt++;
+				if (attempt < 2) {
+					await new Promise((res) => setTimeout(res, 500));
+				}
+			}
 		}
+		setError(lastError ? lastError.message : "Unknown error");
+		setLoading(false);
 	}
 
 	return (
