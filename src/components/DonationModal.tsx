@@ -119,7 +119,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn bg-gray-900 hover:bg-black text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-lg${
+							className={`btn bg-gray-900 hover:bg-black text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-xl${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
@@ -137,7 +137,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost text-gray-900 hover:text-black rounded-lg${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost text-gray-900 hover:text-black rounded-xl${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}

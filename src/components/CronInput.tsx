@@ -28,7 +28,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =
-			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-lg border-2 transition-colors duration-200 focus:outline-none";
+			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none";
 		const errorClasses = "border-yellow-400/40 bg-yellow-100";
 		const normalClasses =
 			"border-gray-200 hover:border-blue-600/50 focus:border-blue-600";
@@ -118,7 +118,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						<div
 							ref={suggestionsRef}
 							id="cron-suggestions-list"
-							className="absolute top-full left-0 right-0 mt-1 bg-gray-50 border border-gray-200 rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto"
+							className="absolute top-full left-0 right-0 mt-1 bg-gray-50 border border-gray-200 rounded-xl shadow-lg z-10 max-h-60 overflow-y-auto"
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button
@@ -147,7 +147,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 				<Tooltip
 					id="cron-placeholder-tip"
 					place="top"
-					className="max-w-xs text-sm !bg-[#282a36] !text-[#f8f8f2] !border-[#44475a] !rounded-lg !shadow-xl !px-4 !py-2"
+					className="max-w-xs text-sm !bg-[#282a36] !text-[#f8f8f2] !border-[#44475a] !rounded-xl !shadow-xl !px-4 !py-2"
 					border="#44475a"
 					style={{
 						background: "#282a36",
@@ -160,7 +160,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 			</div>
 			{error && (
 				<div id="cron-error" className="mt-4 w-full">
-					<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 w-full">
+					<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full">
 						<span>{error}</span>
 					</div>
 				</div>

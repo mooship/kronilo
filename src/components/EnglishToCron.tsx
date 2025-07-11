@@ -94,7 +94,7 @@ export function EnglishToCron() {
 					<input
 						id="english-input"
 						type="text"
-						className="input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-lg border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600"
+						className="input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600"
 						placeholder="e.g. run once a week on a thursday"
 						value={english}
 						onChange={(e) => setEnglish(e.target.value)}
@@ -121,7 +121,7 @@ export function EnglishToCron() {
 				</div>
 				{rateLimited && (
 					<div className="mt-4 w-full">
-						<div className="bg-red-100 border border-red-300 text-red-700 rounded-lg p-4 w-full text-center">
+						<div className="bg-red-100 border border-red-300 text-red-700 rounded-xl p-4 w-full text-center">
 							<span>
 								{rateLimitMsg ||
 									"You are currently rate limited. Please try again later."}
@@ -131,14 +131,14 @@ export function EnglishToCron() {
 				)}
 				{retrying && (
 					<div className="mt-4 w-full">
-						<div className="bg-blue-100 border border-blue-300 text-blue-700 rounded-lg p-4 w-full text-center animate-pulse">
+						<div className="bg-blue-100 border border-blue-300 text-blue-700 rounded-xl p-4 w-full text-center animate-pulse">
 							<span>Please wait, retrying...</span>
 						</div>
 					</div>
 				)}
 				{error && !retrying && !rateLimited && (
 					<div className="mt-4 w-full">
-						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 w-full text-center">
+						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full text-center">
 							<span>{error}</span>
 						</div>
 					</div>
@@ -158,7 +158,7 @@ export function EnglishToCron() {
 							className="btn-sm"
 						/>
 					</div>
-					<div className="bg-gray-50 border border-gray-200 rounded-lg p-4 min-h-[96px] flex items-center">
+					<div className="bg-gray-50 border border-gray-200 rounded-xl p-4 min-h-[96px] flex items-center">
 						<p className="text-xl text-black font-medium leading-relaxed w-full text-center">
 							{cron}
 						</p>
