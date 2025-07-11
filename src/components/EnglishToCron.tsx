@@ -40,10 +40,20 @@ export function EnglishToCron() {
 		while (attempt < 2) {
 			try {
 				const result = await translateToCron(english);
-				setCron(result.cron);
-				setLoading(false);
-				setRetrying(false);
-				return;
+				if (result.data?.cron) {
+					setCron(result.data.cron);
+					setLoading(false);
+					setRetrying(false);
+					return;
+				} else if (result.error) {
+					lastError = new Error(result.error);
+					throw lastError;
+				} else {
+					lastError = new Error(
+						"An unexpected error occurred. Please try again.",
+					);
+					throw lastError;
+				}
 			} catch (err) {
 				lastError = err instanceof Error ? err : new Error(String(err));
 				attempt++;
