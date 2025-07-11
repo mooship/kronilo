@@ -1,7 +1,23 @@
 import ky from "ky";
 import type { ApiResponse, ApiSuccess } from "./apiTypes";
 
-const API_URL = "https://kronilo.timothybrits.workers.dev/api/translate";
+const BASE_URL = "https://kronilo.timothybrits.workers.dev";
+const API_URL = `${BASE_URL}/api/translate`;
+const RATE_LIMIT_URL = `${BASE_URL}/openrouter/rate-limit`;
+
+export async function checkRateLimit(): Promise<{
+	rateLimited: boolean;
+	message?: string;
+}> {
+	try {
+		const response = await ky
+			.get(RATE_LIMIT_URL, { timeout: 5000 })
+			.json<{ rateLimited: boolean; message?: string }>();
+		return response;
+	} catch {
+		return { rateLimited: false };
+	}
+}
 
 export async function translateToCron(input: string): Promise<ApiSuccess> {
 	if (!input.trim()) {

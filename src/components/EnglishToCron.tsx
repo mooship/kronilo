@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { translateToCron } from "../api/translateToCron";
+import { useEffect, useState } from "react";
+import { checkRateLimit, translateToCron } from "../api/translateToCron";
+import { useKroniloStore } from "../store";
 import { ActionButton } from "./ActionButton";
 import { CopyButton } from "./CopyButton";
 import { NextRuns } from "./NextRuns";
@@ -11,6 +12,17 @@ export function EnglishToCron() {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [retrying, setRetrying] = useState(false);
+	const rateLimited = useKroniloStore((s) => s.rateLimited);
+	const rateLimitMsg = useKroniloStore((s) => s.rateLimitMsg);
+	const setRateLimited = useKroniloStore((s) => s.setRateLimited);
+
+	useEffect(() => {
+		async function checkLimit() {
+			const res = await checkRateLimit();
+			setRateLimited(res.rateLimited, res.message || null);
+		}
+		checkLimit();
+	}, [setRateLimited]);
 
 	async function handleGenerate() {
 		setError(null);
@@ -19,6 +31,12 @@ export function EnglishToCron() {
 		setRetrying(false);
 		let attempt = 0;
 		let lastError: Error | null = null;
+		const limitRes = await checkRateLimit();
+		setRateLimited(limitRes.rateLimited, limitRes.message || null);
+		if (limitRes.rateLimited) {
+			setLoading(false);
+			return;
+		}
 		while (attempt < 2) {
 			try {
 				const result = await translateToCron(english);
@@ -58,12 +76,18 @@ export function EnglishToCron() {
 						placeholder="e.g. run once a week on a thursday"
 						value={english}
 						onChange={(e) => setEnglish(e.target.value)}
-						disabled={loading}
+						disabled={loading || rateLimited}
 						maxLength={200}
 					/>
 					<ActionButton
-						label={loading ? "Translating..." : "Generate Cron"}
-						disabled={loading || english.trim().length === 0}
+						label={
+							rateLimited
+								? "Rate Limited"
+								: loading
+									? "Translating..."
+									: "Generate Cron"
+						}
+						disabled={loading || english.trim().length === 0 || rateLimited}
 						onClick={handleGenerate}
 						className={isPressed ? "scale-95" : ""}
 						onMouseDown={() => setIsPressed(true)}
@@ -73,6 +97,16 @@ export function EnglishToCron() {
 						onTouchEnd={() => setIsPressed(false)}
 					/>
 				</div>
+				{rateLimited && (
+					<div className="mt-4 w-full">
+						<div className="bg-red-100 border border-red-300 text-red-700 rounded-lg p-4 w-full text-center">
+							<span>
+								{rateLimitMsg ||
+									"You are currently rate limited. Please try again later."}
+							</span>
+						</div>
+					</div>
+				)}
 				{retrying && (
 					<div className="mt-4 w-full">
 						<div className="bg-blue-100 border border-blue-300 text-blue-700 rounded-lg p-4 w-full text-center animate-pulse">
@@ -80,7 +114,7 @@ export function EnglishToCron() {
 						</div>
 					</div>
 				)}
-				{error && !retrying && (
+				{error && !retrying && !rateLimited && (
 					<div className="mt-4 w-full">
 						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-lg p-4 w-full text-center">
 							<span>{error}</span>
@@ -89,7 +123,7 @@ export function EnglishToCron() {
 				)}
 			</div>
 
-			{cron && !retrying && (
+			{cron && !retrying && !rateLimited && (
 				<div className="mb-8">
 					<div className="flex items-center justify-between mb-4">
 						<h3 className="text-xl font-semibold text-base-content">
@@ -110,7 +144,7 @@ export function EnglishToCron() {
 				</div>
 			)}
 
-			<NextRuns cron={cron} disabled={!cron || retrying} />
+			<NextRuns cron={cron} disabled={!cron || retrying || rateLimited} />
 		</div>
 	);
 }

@@ -15,6 +15,10 @@ interface KroniloState {
 
 	cron: string;
 	setCron: (cron: string) => void;
+
+	rateLimited: boolean;
+	rateLimitMsg: string | null;
+	setRateLimited: (rateLimited: boolean, msg?: string | null) => void;
 }
 
 const getStoredDismissedUntil = (): Date | null => {
@@ -81,4 +85,9 @@ export const useKroniloStore = create<KroniloState>((set, get) => ({
 		setStoredCron(cron);
 		set({ cron });
 	},
+
+	rateLimited: false,
+	rateLimitMsg: null,
+	setRateLimited: (rateLimited, msg = null) =>
+		set({ rateLimited, rateLimitMsg: msg }),
 }));
