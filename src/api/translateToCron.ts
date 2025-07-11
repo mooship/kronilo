@@ -6,29 +6,35 @@ const BASE_URL = "https://kronilo.timothybrits.workers.dev";
 const API_URL = `${BASE_URL}/api/translate`;
 const RATE_LIMIT_URL = `${BASE_URL}/openrouter/rate-limit`;
 
-export async function checkRateLimit(): Promise<{
+export interface RateLimitResult {
 	rateLimited: boolean;
-	message?: string;
 	status: number;
-}> {
-	const result = await apiRequest<{ rateLimited: boolean; message?: string }>(
-		RATE_LIMIT_URL,
-		{ method: "get", timeout: 5000 },
-	);
+	details?: string | object;
+}
+
+export async function checkRateLimit(): Promise<RateLimitResult> {
+	const result = await apiRequest<{
+		rateLimited: boolean;
+		details?: string | object;
+	}>(RATE_LIMIT_URL, { method: "get", timeout: 5000 });
 	if (result.error) {
 		return {
-			rateLimited: result.status === 429,
-			message: result.error,
+			rateLimited: false,
 			status: result.status,
+			details: result.error,
 		};
 	}
 	if (result.data) {
-		return { ...result.data, status: result.status };
+		return {
+			rateLimited: result.data.rateLimited,
+			status: result.status,
+			details: result.data.details,
+		};
 	}
 	return {
 		rateLimited: false,
-		message: "Unknown error.",
 		status: result.status,
+		details: "Unknown error.",
 	};
 }
 

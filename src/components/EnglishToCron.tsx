@@ -20,7 +20,12 @@ export function EnglishToCron() {
 	useEffect(() => {
 		async function checkLimit() {
 			const res = await checkRateLimit();
-			setRateLimited(res.rateLimited, res.message || null);
+			setRateLimited(
+				res.rateLimited,
+				typeof res.details === "string"
+					? res.details
+					: JSON.stringify(res.details ?? ""),
+			);
 		}
 		checkLimit();
 	}, [setRateLimited]);
@@ -33,7 +38,12 @@ export function EnglishToCron() {
 		let attempt = 0;
 		let lastError: Error | null = null;
 		const limitRes = await checkRateLimit();
-		setRateLimited(limitRes.rateLimited, limitRes.message || null);
+		setRateLimited(
+			limitRes.rateLimited,
+			typeof limitRes.details === "string"
+				? limitRes.details
+				: JSON.stringify(limitRes.details ?? ""),
+		);
 		if (limitRes.rateLimited) {
 			setLoading(false);
 			return;
