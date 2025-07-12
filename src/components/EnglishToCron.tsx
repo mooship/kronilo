@@ -90,34 +90,41 @@ export function EnglishToCron() {
 					</span>
 					<ModeToggle />
 				</div>
-				<div className="relative flex items-center justify-center gap-3 w-full">
-					<input
+				<div className="relative flex flex-col gap-4 w-full">
+					<textarea
 						id="english-input"
-						type="text"
-						className="input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600"
+						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600 resize-none min-h-[5rem] max-h-32"
 						placeholder="e.g. run once a week on a thursday"
 						value={english}
 						onChange={(e) => setEnglish(e.target.value)}
 						disabled={loading || rateLimited}
 						maxLength={200}
+						rows={3}
+						onInput={(e) => {
+							const target = e.target as HTMLTextAreaElement;
+							target.style.height = "auto";
+							target.style.height = `${Math.min(target.scrollHeight, 256)}px`;
+						}}
 					/>
-					<ActionButton
-						label={
-							rateLimited
-								? "Rate Limited"
-								: loading
-									? "Translating..."
-									: "Generate Cron"
-						}
-						disabled={loading || english.trim().length === 0 || rateLimited}
-						onClick={handleGenerate}
-						className={actionAnim.isPressed ? "scale-95" : ""}
-						onMouseDown={actionAnim.handlePressStart}
-						onMouseUp={actionAnim.handlePressEnd}
-						onMouseLeave={actionAnim.handlePressEnd}
-						onTouchStart={actionAnim.handlePressStart}
-						onTouchEnd={actionAnim.handlePressEnd}
-					/>
+					<div className="flex justify-center">
+						<ActionButton
+							label={
+								rateLimited
+									? "Rate Limited"
+									: loading
+										? "Translating..."
+										: "Generate Cron"
+							}
+							disabled={loading || english.trim().length === 0 || rateLimited}
+							onClick={handleGenerate}
+							className={actionAnim.isPressed ? "scale-95" : ""}
+							onMouseDown={actionAnim.handlePressStart}
+							onMouseUp={actionAnim.handlePressEnd}
+							onMouseLeave={actionAnim.handlePressEnd}
+							onTouchStart={actionAnim.handlePressStart}
+							onTouchEnd={actionAnim.handlePressEnd}
+						/>
+					</div>
 				</div>
 				{rateLimited && (
 					<div className="mt-4 w-full">
