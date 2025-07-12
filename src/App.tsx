@@ -1,11 +1,30 @@
 import clsx from "clsx";
+import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
-import { CronInput } from "./components/CronInput";
-import { CronTranslation } from "./components/CronTranslation";
-import { DonationModal } from "./components/DonationModal";
-import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
-import { NextRuns } from "./components/NextRuns";
+
+const CronInput = lazy(() =>
+	import("./components/CronInput").then((m) => ({ default: m.CronInput })),
+);
+const CronTranslation = lazy(() =>
+	import("./components/CronTranslation").then((m) => ({
+		default: m.CronTranslation,
+	})),
+);
+const DonationModal = lazy(() =>
+	import("./components/DonationModal").then((m) => ({
+		default: m.DonationModal,
+	})),
+);
+const NaturalLanguageToCron = lazy(() =>
+	import("./components/NaturalLanguageToCron").then((m) => ({
+		default: m.NaturalLanguageToCron,
+	})),
+);
+const NextRuns = lazy(() =>
+	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
+);
+
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { AppRouter } from "./Router";
@@ -23,13 +42,23 @@ export function MainContent() {
 	const location = useLocation();
 
 	if (location.pathname === "/natural-language-to-cron") {
-		return <NaturalLanguageToCron />;
+		return (
+			<Suspense fallback={<div>Loading...</div>}>
+				<NaturalLanguageToCron />
+			</Suspense>
+		);
 	}
 	return (
 		<div className="p-0">
-			<CronInput error={error} />
-			<CronTranslation cron={cron} />
-			<NextRuns cron={cron} disabled={!!error} />
+			<Suspense fallback={<div>Loading...</div>}>
+				<CronInput error={error} />
+			</Suspense>
+			<Suspense fallback={<div>Loading...</div>}>
+				<CronTranslation cron={cron} />
+			</Suspense>
+			<Suspense fallback={<div>Loading...</div>}>
+				<NextRuns cron={cron} disabled={!!error} />
+			</Suspense>
 		</div>
 	);
 }
@@ -59,11 +88,13 @@ function App() {
 				"bg-white text-black",
 			)}
 		>
-			<DonationModal
-				open={donationModalOpen}
-				onClose={handleCloseModal}
-				onMaybeLater={handleMaybeLater}
-			/>
+			<Suspense fallback={null}>
+				<DonationModal
+					open={donationModalOpen}
+					onClose={handleCloseModal}
+					onMaybeLater={handleMaybeLater}
+				/>
+			</Suspense>
 			<header className="w-full pt-4 sm:pt-8 pb-2 sm:pb-3 relative">
 				<div className="w-full max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto text-center px-2 sm:px-0">
 					<h1
@@ -136,6 +167,20 @@ function App() {
 						>
 							GitHub
 						</a>
+						<br />
+						<span
+							className={clsx("text-xs sm:text-base", "text-black opacity-50")}
+						>
+							Licensed under{" "}
+							<a
+								href="https://www.gnu.org/licenses/agpl-3.0.html"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="underline"
+							>
+								AGPL v3
+							</a>
+						</span>
 					</p>
 				</div>
 			</footer>

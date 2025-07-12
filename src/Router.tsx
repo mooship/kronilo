@@ -1,7 +1,13 @@
 import type { FC } from "react";
+import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MainContent } from "./App";
-import { NotFoundCard } from "./components/NotFoundCard";
+
+const NotFoundCard = lazy(() =>
+	import("./components/NotFoundCard").then((m) => ({
+		default: m.NotFoundCard,
+	})),
+);
 
 /**
  * Application router component that handles routing between different pages.
@@ -16,7 +22,14 @@ export const AppRouter: FC = () => {
 			<Routes>
 				<Route path="/" element={<MainContent />} />
 				<Route path="/natural-language-to-cron" element={<MainContent />} />
-				<Route path="*" element={<NotFoundCard />} />
+				<Route
+					path="*"
+					element={
+						<Suspense fallback={<div>Loading...</div>}>
+							<NotFoundCard />
+						</Suspense>
+					}
+				/>
 			</Routes>
 		</Router>
 	);
