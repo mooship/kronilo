@@ -8,19 +8,19 @@ import { ModeToggle } from "./ModeToggle";
 import { NextRuns } from "./NextRuns";
 
 /**
- * Component for converting English language descriptions into cron expressions.
+ * Component for converting natural language descriptions into cron expressions.
  * Features rate limiting checks, retry logic, and real-time validation.
  * Integrates with the API service to translate natural language into cron syntax.
  *
  * @example
  * ```tsx
- * <EnglishToCron />
+ * <NaturalLanguageToCron />
  * // User can enter: "every day at 9am"
  * // Result: "0 9 * * *"
  * ```
  */
-export function EnglishToCron() {
-	const [english, setEnglish] = useState("");
+export function NaturalLanguageToCron() {
+	const [naturalLanguage, setNaturalLanguage] = useState("");
 	const [cron, setCron] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -74,7 +74,7 @@ export function EnglishToCron() {
 		}
 		while (attempt < 2) {
 			try {
-				const result = await translateToCron(english);
+				const result = await translateToCron(naturalLanguage);
 
 				if (result.status === 429 && result.rateLimitType) {
 					setRateLimited(true, result.error || "Rate limit exceeded");
@@ -127,17 +127,17 @@ export function EnglishToCron() {
 			<div className="mb-8 flex flex-col w-full">
 				<div className="flex items-center justify-between mb-6 w-full">
 					<span className="block text-xl font-semibold text-base-content">
-						English Schedule
+						Natural Language Schedule
 					</span>
 					<ModeToggle />
 				</div>
 				<div className="relative flex flex-col gap-4 w-full">
 					<textarea
-						id="english-input"
+						id="natural-language-input"
 						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600 resize-none min-h-[5rem] max-h-32"
-						placeholder="e.g. run once a week on a thursday"
-						value={english}
-						onChange={(e) => setEnglish(e.target.value)}
+						placeholder={`e.g. “run once a week on a Thursday” — Works best in: English, German, Spanish, French, Italian, Dutch, Swedish, Norwegian, Danish, Indonesian, and Turkish. Support for other languages may vary.`}
+						value={naturalLanguage}
+						onChange={(e) => setNaturalLanguage(e.target.value)}
 						disabled={loading || rateLimited}
 						maxLength={200}
 						rows={3}
@@ -156,7 +156,9 @@ export function EnglishToCron() {
 										? "Translating..."
 										: "Generate Cron"
 							}
-							disabled={loading || english.trim().length === 0 || rateLimited}
+							disabled={
+								loading || naturalLanguage.trim().length === 0 || rateLimited
+							}
 							onClick={handleGenerate}
 							className={actionAnim.isPressed ? "scale-95" : ""}
 							onMouseDown={actionAnim.handlePressStart}

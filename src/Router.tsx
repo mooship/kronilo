@@ -5,7 +5,7 @@ import { NotFoundCard } from "./components/NotFoundCard";
 
 /**
  * Application router component that handles routing between different pages.
- * Defines routes for the main cron functionality and English-to-cron conversion,
+ * Defines routes for the main cron functionality and natural-language-to-cron conversion,
  * with a fallback 404 page for unmatched routes.
  *
  * @returns The router configuration with all application routes
@@ -15,7 +15,7 @@ export const AppRouter: FC = () => {
 		<Router>
 			<Routes>
 				<Route path="/" element={<MainContent />} />
-				<Route path="/english-to-cron" element={<MainContent />} />
+				<Route path="/natural-language-to-cron" element={<MainContent />} />
 				<Route path="*" element={<NotFoundCard />} />
 			</Routes>
 		</Router>

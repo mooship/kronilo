@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 /**
  * Toggle button component for switching between different application modes.
- * Allows users to switch between "Cron → English" and "English → Cron" conversion modes.
+ * Allows users to switch between "Cron → Natural language" and "Natural language → Cron" conversion modes.
  * Updates the current route and provides visual feedback for the active mode.
  *
  * @example
@@ -16,25 +16,30 @@ import { useLocation, useNavigate } from "react-router-dom";
 export const ModeToggle: FC = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
-	const isEnglishToCron = location.pathname === "/english-to-cron";
+	const isNaturalLanguageToCron =
+		location.pathname === "/natural-language-to-cron";
 
 	return (
 		<button
 			type="button"
 			className={clsx(
 				"ml-4 px-4 py-2 rounded-xl border font-medium transition-colors duration-200 text-base",
-				isEnglishToCron
+				isNaturalLanguageToCron
 					? "bg-gray-200 text-gray-900 border border-gray-300 hover:bg-gray-300 focus:bg-gray-300"
 					: "bg-gray-100 text-gray-900 border border-gray-200 hover:bg-gray-200 focus:bg-gray-200",
 			)}
-			onClick={() => navigate(isEnglishToCron ? "/" : "/english-to-cron")}
+			onClick={() =>
+				navigate(isNaturalLanguageToCron ? "/" : "/natural-language-to-cron")
+			}
 			aria-label={
-				isEnglishToCron
-					? "Switch to Cron → English"
-					: "Switch to English → Cron"
+				isNaturalLanguageToCron
+					? "Switch to Cron → Natural Language"
+					: "Switch to Natural Language → Cron"
 			}
 		>
-			{isEnglishToCron ? "Cron → English" : "English → Cron"}
+			{isNaturalLanguageToCron
+				? "Cron → Natural Language"
+				: "Natural Language → Cron"}
 		</button>
 	);
 };

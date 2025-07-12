@@ -4,7 +4,7 @@ import { useMedia, useWindowSize } from "react-use";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
 import { DonationModal } from "./components/DonationModal";
-import { EnglishToCron } from "./components/EnglishToCron";
+import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
@@ -13,7 +13,7 @@ import { useKroniloStore } from "./store";
 
 /**
  * Main content component that renders different views based on the current route.
- * Displays either the English-to-Cron converter or the standard Cron-to-English interface.
+ * Displays either the Natural-Language-to-Cron converter or the standard Cron-to-Natural-Language interface.
  *
  * @returns The main content area with appropriate components based on current route
  */
@@ -22,8 +22,8 @@ export function MainContent() {
 	const { error } = useCronValidation(cron);
 	const location = useLocation();
 
-	if (location.pathname === "/english-to-cron") {
-		return <EnglishToCron />;
+	if (location.pathname === "/natural-language-to-cron") {
+		return <NaturalLanguageToCron />;
 	}
 	return (
 		<div className="p-0">
@@ -91,7 +91,7 @@ function App() {
 							"text-black opacity-70",
 						)}
 					>
-						Translate cron expressions to plain English instantly
+						Translate cron expressions to plain language instantly
 					</p>
 				</div>
 			</header>

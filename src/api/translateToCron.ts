@@ -10,7 +10,7 @@ import { getApiErrorMessage } from "./getApiErrorMessage";
 /** Base URL for the API, loaded from environment variables */
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-/** URL endpoint for translating English to cron expressions */
+/** URL endpoint for translating natural language to cron expressions */
 const API_URL = `${BASE_URL}/api/translate`;
 
 /** URL endpoint for checking API health and rate limits */
@@ -102,7 +102,7 @@ export async function translateToCron(input: string): Promise<{
 	if (!input.trim()) {
 		return {
 			error: getApiErrorMessage(
-				"Input cannot be empty. Please enter a schedule in English.",
+				"Input cannot be empty. Please enter a schedule in natural language.",
 			),
 			status: 400,
 		};

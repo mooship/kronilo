@@ -14,7 +14,7 @@ const SAFE_ERROR_PATTERNS = [
 	"Input too long (max 200 characters)",
 	"Missing input field",
 	"Could not translate input to a valid cron expression after retrying",
-	"Input cannot be empty. Please enter a schedule in English.",
+	"Input cannot be empty. Please enter a schedule in natural language.",
 	/^Daily limit reached \(\d+\/\d+\)\. Try again tomorrow\.$/,
 	/^Daily usage: \d+\/\d+$/,
 	"Network error. Please check your connection.",
