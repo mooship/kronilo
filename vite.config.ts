@@ -2,10 +2,6 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 
-/**
- * Vite configuration for the Kronilo application.
- * Configures React with SWC, Tailwind CSS, and optimizes the build process.
- */
 export default defineConfig({
 	plugins: [react(), tailwindcss()],
 	build: {
@@ -18,6 +14,9 @@ export default defineConfig({
 		assetsInlineLimit: 4096,
 		rollupOptions: {
 			output: {
+				entryFileNames: "[name]-[hash].js",
+				chunkFileNames: "[name]-[hash].js",
+				assetFileNames: "[name]-[hash].[ext]",
 				manualChunks(id) {
 					if (id.includes("react") || id.includes("react-dom")) {
 						return "react-core";
@@ -31,8 +30,13 @@ export default defineConfig({
 						return "react-ecosystem";
 					}
 
-					if (id.includes("cron-parser") || id.includes("cronstrue")) {
-						return "cron-utils";
+					// Separate cron packages to avoid conflicts
+					if (id.includes("cron-parser")) {
+						return "cron-parser";
+					}
+
+					if (id.includes("cronstrue")) {
+						return "cronstrue";
 					}
 
 					if (id.includes("zustand")) {
@@ -52,6 +56,8 @@ export default defineConfig({
 					}
 				},
 			},
+			// Prevent issues with external dependencies
+			external: [],
 		},
 	},
 });
