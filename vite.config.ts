@@ -30,7 +30,6 @@ export default defineConfig({
 						return "react-ecosystem";
 					}
 
-					// Separate cron packages to avoid conflicts
 					if (id.includes("cron-parser")) {
 						return "cron-parser";
 					}
@@ -56,7 +55,6 @@ export default defineConfig({
 					}
 				},
 			},
-			// Prevent issues with external dependencies
 			external: [],
 		},
 	},
