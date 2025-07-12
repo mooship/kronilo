@@ -25,7 +25,6 @@ export default defineConfig({
 
 					if (
 						id.includes("react-router") ||
-						id.includes("react-icons") ||
 						id.includes("react-tooltip") ||
 						id.includes("react-use")
 					) {
