@@ -2,6 +2,22 @@
 
 Kronilo is a minimal, modern web app for translating and understanding cron expressions. Built with React, TypeScript, and Vite, it provides a fast, intuitive interface for working with cron schedules. The project includes code quality checks using Biome and is styled with Tailwind CSS.
 
+Kronilo is not limited to English—we support a wide variety of natural languages. Our app has strong support for:
+
+- English
+- German
+- Spanish
+- French
+- Italian
+- Dutch
+- Swedish
+- Norwegian
+- Danish
+- Indonesian
+- Turkish
+
+This makes Kronilo accessible to users across many regions and languages.
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
 
 ---
