@@ -1,13 +1,24 @@
 import { useEffect } from "react";
 import { useKroniloStore } from "../store";
+import type { UseDonationModal } from "../types/hooks";
 
-export interface UseDonationModal {
-	donationModalOpen: boolean;
-	handleFooterDonateClick: (e: React.MouseEvent) => void;
-	handleCloseModal: () => void;
-	handleMaybeLater: () => void;
-}
-
+/**
+ * Custom hook for managing donation modal state and behavior.
+ * Automatically shows the donation modal after 5 uses and handles user interactions
+ * like closing the modal or postponing it for 14 days.
+ *
+ * @returns Object containing modal state and handler functions
+ *
+ * @example
+ * ```typescript
+ * const {
+ *   donationModalOpen,
+ *   handleFooterDonateClick,
+ *   handleCloseModal,
+ *   handleMaybeLater
+ * } = useDonationModal();
+ * ```
+ */
 export function useDonationModal(): UseDonationModal {
 	const donationModalOpen = useKroniloStore((s) => s.donationModalOpen);
 	const setDonationModalOpen = useKroniloStore((s) => s.setDonationModalOpen);

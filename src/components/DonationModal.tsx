@@ -2,13 +2,26 @@ import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { usePressAnimation } from "../hooks/usePressAnimation";
+import type { DonationModalProps } from "../types/components";
 
-interface DonationModalProps {
-	open: boolean;
-	onClose: () => void;
-	onMaybeLater: () => void;
-}
-
+/**
+ * Modal component for encouraging user donations.
+ * Features accessibility support with focus management, keyboard navigation,
+ * and proper ARIA attributes. Rendered using React Portal for proper z-index handling.
+ *
+ * @param open - Whether the modal should be visible
+ * @param onClose - Callback function when the modal is closed
+ * @param onMaybeLater - Callback function when user selects "Maybe Later" option
+ *
+ * @example
+ * ```tsx
+ * <DonationModal
+ *   open={showModal}
+ *   onClose={() => setShowModal(false)}
+ *   onMaybeLater={() => postponeDonationModal()}
+ * />
+ * ```
+ */
 export const DonationModal: FC<DonationModalProps> = ({
 	open,
 	onClose,

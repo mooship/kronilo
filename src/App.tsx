@@ -11,6 +11,12 @@ import { useDonationModal } from "./hooks/useDonationModal";
 import { AppRouter } from "./Router";
 import { useKroniloStore } from "./store";
 
+/**
+ * Main content component that renders different views based on the current route.
+ * Displays either the English-to-Cron converter or the standard Cron-to-English interface.
+ *
+ * @returns The main content area with appropriate components based on current route
+ */
 export function MainContent() {
 	const cron = useKroniloStore((s) => s.cron);
 	const { error } = useCronValidation(cron);
@@ -28,6 +34,12 @@ export function MainContent() {
 	);
 }
 
+/**
+ * Root application component that provides the main layout and structure.
+ * Handles responsive design, accessibility preferences, and manages the donation modal.
+ *
+ * @returns The complete application layout with header, main content, and footer
+ */
 function App() {
 	const { width } = useWindowSize();
 	const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)");

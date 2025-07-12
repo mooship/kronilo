@@ -2,6 +2,17 @@ import clsx from "clsx";
 import type { FC } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+/**
+ * Toggle button component for switching between different application modes.
+ * Allows users to switch between "Cron → English" and "English → Cron" conversion modes.
+ * Updates the current route and provides visual feedback for the active mode.
+ *
+ * @example
+ * ```tsx
+ * <ModeToggle />
+ * // Displays current mode and allows switching between conversion directions
+ * ```
+ */
 export const ModeToggle: FC = () => {
 	const navigate = useNavigate();
 	const location = useLocation();

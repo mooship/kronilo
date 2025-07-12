@@ -7,6 +7,18 @@ import { CopyButton } from "./CopyButton";
 import { ModeToggle } from "./ModeToggle";
 import { NextRuns } from "./NextRuns";
 
+/**
+ * Component for converting English language descriptions into cron expressions.
+ * Features rate limiting checks, retry logic, and real-time validation.
+ * Integrates with the API service to translate natural language into cron syntax.
+ *
+ * @example
+ * ```tsx
+ * <EnglishToCron />
+ * // User can enter: "every day at 9am"
+ * // Result: "0 9 * * *"
+ * ```
+ */
 export function EnglishToCron() {
 	const [english, setEnglish] = useState("");
 	const [cron, setCron] = useState("");
@@ -29,7 +41,18 @@ export function EnglishToCron() {
 			);
 		}
 		checkLimit();
-	}, [setRateLimited]);
+
+		let interval: number | null = null;
+		if (rateLimited) {
+			interval = window.setInterval(() => {
+				checkLimit();
+			}, 30000);
+		}
+
+		return () => {
+			if (interval) window.clearInterval(interval);
+		};
+	}, [setRateLimited, rateLimited]);
 
 	async function handleGenerate() {
 		setError(null);
@@ -52,12 +75,30 @@ export function EnglishToCron() {
 		while (attempt < 2) {
 			try {
 				const result = await translateToCron(english);
+
+				if (result.status === 429 && result.rateLimitType) {
+					setRateLimited(true, result.error || "Rate limit exceeded");
+					setLoading(false);
+					setRetrying(false);
+					return;
+				}
+
 				if (result.data?.cron) {
 					setCron(result.data.cron);
 					setLoading(false);
 					setRetrying(false);
 					return;
 				} else if (result.error) {
+					if (
+						result.status >= 400 &&
+						result.status < 500 &&
+						result.status !== 408
+					) {
+						setError(result.error);
+						setLoading(false);
+						setRetrying(false);
+						return;
+					}
 					lastError = new Error(result.error);
 					throw lastError;
 				} else {

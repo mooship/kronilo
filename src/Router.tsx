@@ -3,6 +3,13 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MainContent } from "./App";
 import { NotFoundCard } from "./components/NotFoundCard";
 
+/**
+ * Application router component that handles routing between different pages.
+ * Defines routes for the main cron functionality and English-to-cron conversion,
+ * with a fallback 404 page for unmatched routes.
+ *
+ * @returns The router configuration with all application routes
+ */
 export const AppRouter: FC = () => {
 	return (
 		<Router>

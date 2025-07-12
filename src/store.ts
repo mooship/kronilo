@@ -1,32 +1,21 @@
 import { create } from "zustand";
+import type { KroniloState } from "./types/store";
 import { isValidCronFormat } from "./utils/cronValidation";
 import { getItem, removeItem, setItem } from "./utils/localStorageUtils";
 
-interface KroniloState {
-	donationModalOpen: boolean;
-	setDonationModalOpen: (open: boolean) => void;
-
-	usageCount: number;
-	incrementUsage: () => void;
-	resetUsage: () => void;
-
-	dismissedUntil: Date | null;
-	setDismissedUntil: (date: Date | null) => void;
-	canShowDonationModal: () => boolean;
-
-	cron: string;
-	setCron: (cron: string) => void;
-
-	rateLimited: boolean;
-	rateLimitMsg: string | null;
-	setRateLimited: (rateLimited: boolean, msg?: string | null) => void;
-}
-
+/**
+ * Retrieves the stored dismissal date for the donation modal from localStorage.
+ * @returns The stored date or null if no date is stored
+ */
 const getStoredDismissedUntil = (): Date | null => {
 	const stored = getItem("kronilo-dismissed-until");
 	return stored ? new Date(stored) : null;
 };
 
+/**
+ * Stores the donation modal dismissal date in localStorage.
+ * @param date - The date until which the modal should be dismissed, or null to remove
+ */
 const setStoredDismissedUntil = (date: Date | null): void => {
 	if (date) {
 		setItem("kronilo-dismissed-until", date.toISOString());
@@ -35,11 +24,19 @@ const setStoredDismissedUntil = (date: Date | null): void => {
 	}
 };
 
+/**
+ * Retrieves the stored cron expression from localStorage.
+ * @returns The stored cron expression or a default value
+ */
 const getStoredCron = (): string => {
 	const stored = getItem("kronilo-cron");
 	return stored ?? "*/5 * * * *";
 };
 
+/**
+ * Stores a valid cron expression in localStorage or removes invalid ones.
+ * @param cron - The cron expression to store
+ */
 const setStoredCron = (cron: string): void => {
 	if (isValidCronFormat(cron)) {
 		setItem("kronilo-cron", cron);
@@ -48,6 +45,10 @@ const setStoredCron = (cron: string): void => {
 	}
 };
 
+/**
+ * Zustand store for managing application-wide state.
+ * Handles donation modal state, usage tracking, cron expressions, and rate limiting.
+ */
 export const useKroniloStore = create<KroniloState>((set, get) => ({
 	donationModalOpen: false,
 	setDonationModalOpen: (open) => set({ donationModalOpen: open }),

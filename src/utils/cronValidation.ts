@@ -1,5 +1,22 @@
+/**
+ * Regular expression for matching whitespace characters in cron expressions.
+ * Used to split cron strings into their component fields.
+ */
 export const WHITESPACE_REGEX = /\s+/;
 
+/**
+ * Validates if a string is a properly formatted cron expression.
+ * Checks for exactly 5 space-separated fields and validates each field's format and range.
+ *
+ * @param cron - The cron expression string to validate
+ * @returns True if the cron expression is valid, false otherwise
+ *
+ * @example
+ * ```typescript
+ * isValidCronFormat("0 9 * * 1-5"); // true
+ * isValidCronFormat("invalid");      // false
+ * ```
+ */
 export function isValidCronFormat(cron: string): boolean {
 	if (!cron || typeof cron !== "string") {
 		return false;
@@ -22,6 +39,15 @@ export function isValidCronFormat(cron: string): boolean {
 	);
 }
 
+/**
+ * Validates a single cron field against its allowed range and format.
+ * Supports wildcards (\*), ranges (1-5), lists (1,3,5), and step values (\*\/5).
+ *
+ * @param field - The cron field to validate
+ * @param min - Minimum allowed value for this field
+ * @param max - Maximum allowed value for this field
+ * @returns True if the field is valid for the given range
+ */
 function isValidCronField(field: string, min: number, max: number): boolean {
 	if (field === "*") {
 		return true;
@@ -76,6 +102,10 @@ function isValidCronField(field: string, min: number, max: number): boolean {
 	return num >= min && num <= max;
 }
 
+/**
+ * Predefined cron expression suggestions with human-readable descriptions.
+ * Used for providing autocomplete/suggestion functionality in the UI.
+ */
 export const CRON_SUGGESTIONS = [
 	{ expression: "*/5 * * * *", description: "Every 5 minutes" },
 	{ expression: "0 * * * *", description: "Every hour" },

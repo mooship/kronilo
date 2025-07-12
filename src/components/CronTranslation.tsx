@@ -3,12 +3,22 @@ import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import { useKroniloStore } from "../store";
+import type { CronTranslationProps } from "../types/components";
 import { CopyButton } from "./CopyButton";
 
-interface CronTranslationProps {
-	cron: string;
-}
-
+/**
+ * Component that translates cron expressions into human-readable descriptions.
+ * Uses the cronstrue library to convert cron syntax into natural language.
+ * Includes debounced translation, loading states, and error handling.
+ *
+ * @param cron - The cron expression to translate into human-readable text
+ *
+ * @example
+ * ```tsx
+ * <CronTranslation cron="0 9 * * 1-5" />
+ * // Displays: "At 09:00 AM, Monday through Friday"
+ * ```
+ */
 export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);

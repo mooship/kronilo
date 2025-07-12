@@ -2,14 +2,24 @@ import cronParser from "cron-parser";
 import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { useTimeoutFn } from "react-use";
+import type { NextRunsProps } from "../types/components";
 import { WHITESPACE_REGEX } from "../utils/cronValidation";
 import { CopyButton } from "./CopyButton";
 
-interface NextRunsProps {
-	cron: string;
-	disabled?: boolean;
-}
-
+/**
+ * Component that calculates and displays the next 5 execution times for a cron expression.
+ * Features timezone awareness, ambiguous schedule detection, and error handling.
+ * Uses debounced calculation to avoid excessive computation on rapid input changes.
+ *
+ * @param cron - The cron expression to calculate next runs for
+ * @param disabled - Whether the component should be disabled (prevents calculation)
+ *
+ * @example
+ * ```tsx
+ * <NextRuns cron="0 9 * * 1-5" disabled={false} />
+ * // Shows next 5 weekday 9am executions
+ * ```
+ */
 export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const [runs, setRuns] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
