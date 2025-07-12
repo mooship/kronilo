@@ -134,7 +134,7 @@ export function NaturalLanguageToCron() {
 				<div className="relative flex flex-col gap-4 w-full">
 					<textarea
 						id="natural-language-input"
-						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600 resize-none min-h-[5rem] max-h-32"
+						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600 resize-none min-h-[6rem] max-h-32"
 						placeholder={`e.g. “run once a week on a Thursday” — Works best in: English, German, Spanish, French, Italian, Dutch, Swedish, Norwegian, Danish, Indonesian, and Turkish. Support for other languages may vary.`}
 						value={naturalLanguage}
 						onChange={(e) => setNaturalLanguage(e.target.value)}
