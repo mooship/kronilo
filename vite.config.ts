@@ -9,7 +9,6 @@ export default defineConfig({
 		minify: "esbuild",
 		target: "esnext",
 		modulePreload: { polyfill: false },
-		manifest: true,
 		sourcemap: false,
 		assetsInlineLimit: 4096,
 		rollupOptions: {

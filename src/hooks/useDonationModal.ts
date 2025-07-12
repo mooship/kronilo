@@ -22,17 +22,44 @@ import type { UseDonationModal } from "../types/hooks";
 export function useDonationModal(): UseDonationModal {
 	const donationModalOpen = useKroniloStore((s) => s.donationModalOpen);
 	const setDonationModalOpen = useKroniloStore((s) => s.setDonationModalOpen);
-	const usageCount = useKroniloStore((s) => s.usageCount);
-	const resetUsage = useKroniloStore((s) => s.resetUsage);
+	const cronToNaturalUsageCount = useKroniloStore(
+		(s) => s.cronToNaturalUsageCount,
+	);
+	const naturalToCronUsageCount = useKroniloStore(
+		(s) => s.naturalToCronUsageCount,
+	);
+	const resetCronToNaturalUsage = useKroniloStore(
+		(s) => s.resetCronToNaturalUsage,
+	);
+	const resetNaturalToCronUsage = useKroniloStore(
+		(s) => s.resetNaturalToCronUsage,
+	);
 	const canShowDonationModal = useKroniloStore((s) => s.canShowDonationModal);
 	const setDismissedUntil = useKroniloStore((s) => s.setDismissedUntil);
 
 	useEffect(() => {
-		if (usageCount === 5 && canShowDonationModal()) {
+		if (cronToNaturalUsageCount === 5 && canShowDonationModal()) {
 			setDonationModalOpen(true);
-			resetUsage();
+			resetCronToNaturalUsage();
 		}
-	}, [usageCount, setDonationModalOpen, resetUsage, canShowDonationModal]);
+	}, [
+		cronToNaturalUsageCount,
+		setDonationModalOpen,
+		resetCronToNaturalUsage,
+		canShowDonationModal,
+	]);
+
+	useEffect(() => {
+		if (naturalToCronUsageCount === 2 && canShowDonationModal()) {
+			setDonationModalOpen(true);
+			resetNaturalToCronUsage();
+		}
+	}, [
+		naturalToCronUsageCount,
+		setDonationModalOpen,
+		resetNaturalToCronUsage,
+		canShowDonationModal,
+	]);
 
 	const handleFooterDonateClick = (e: React.MouseEvent) => {
 		e.preventDefault();
@@ -41,7 +68,8 @@ export function useDonationModal(): UseDonationModal {
 
 	const handleCloseModal = () => {
 		setDonationModalOpen(false);
-		resetUsage();
+		resetCronToNaturalUsage();
+		resetNaturalToCronUsage();
 	};
 
 	const handleMaybeLater = () => {
@@ -49,7 +77,8 @@ export function useDonationModal(): UseDonationModal {
 		dismissUntil.setDate(dismissUntil.getDate() + 14);
 		setDismissedUntil(dismissUntil);
 		setDonationModalOpen(false);
-		resetUsage();
+		resetCronToNaturalUsage();
+		resetNaturalToCronUsage();
 	};
 
 	return {

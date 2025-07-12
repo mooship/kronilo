@@ -12,6 +12,11 @@ import { NextRuns } from "./NextRuns";
  * Features rate limiting checks, retry logic, and real-time validation.
  * Integrates with the API service to translate natural language into cron syntax.
  *
+ * Donation Modal Logic:
+ * - Triggers after 2 successful natural language → cron translations (mode-specific counter).
+ * - Counter is incremented only after a successful translation.
+ * - Modal postponement is handled globally ("Maybe Later" sets a 14-day delay).
+ *
  * @example
  * ```tsx
  * <NaturalLanguageToCron />
@@ -28,6 +33,9 @@ export function NaturalLanguageToCron() {
 	const rateLimited = useKroniloStore((s) => s.rateLimited);
 	const rateLimitMsg = useKroniloStore((s) => s.rateLimitMsg);
 	const setRateLimited = useKroniloStore((s) => s.setRateLimited);
+	const incrementNaturalToCronUsage = useKroniloStore(
+		(s) => s.incrementNaturalToCronUsage,
+	);
 	const actionAnim = usePressAnimation();
 
 	useEffect(() => {
@@ -85,6 +93,7 @@ export function NaturalLanguageToCron() {
 
 				if (result.data?.cron) {
 					setCron(result.data.cron);
+					incrementNaturalToCronUsage();
 					setLoading(false);
 					setRetrying(false);
 					return;

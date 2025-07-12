@@ -53,9 +53,18 @@ export const useKroniloStore = create<KroniloState>((set, get) => ({
 	donationModalOpen: false,
 	setDonationModalOpen: (open) => set({ donationModalOpen: open }),
 
-	usageCount: 0,
-	incrementUsage: () => set((state) => ({ usageCount: state.usageCount + 1 })),
-	resetUsage: () => set({ usageCount: 0 }),
+	cronToNaturalUsageCount: 0,
+	naturalToCronUsageCount: 0,
+	incrementCronToNaturalUsage: () =>
+		set((state) => ({
+			cronToNaturalUsageCount: state.cronToNaturalUsageCount + 1,
+		})),
+	incrementNaturalToCronUsage: () =>
+		set((state) => ({
+			naturalToCronUsageCount: state.naturalToCronUsageCount + 1,
+		})),
+	resetCronToNaturalUsage: () => set({ cronToNaturalUsageCount: 0 }),
+	resetNaturalToCronUsage: () => set({ naturalToCronUsageCount: 0 }),
 
 	dismissedUntil: getStoredDismissedUntil(),
 	setDismissedUntil: (date) => {

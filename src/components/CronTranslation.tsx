@@ -23,7 +23,9 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [loading, setLoading] = useState(false);
-	const incrementUsage = useKroniloStore((s) => s.incrementUsage);
+	const incrementCronToNaturalUsage = useKroniloStore(
+		(s) => s.incrementCronToNaturalUsage,
+	);
 
 	const translateCron = () => {
 		try {
@@ -32,7 +34,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			});
 			setTranslation(result);
 			setError(undefined);
-			incrementUsage();
+			incrementCronToNaturalUsage();
 		} catch (e) {
 			setTranslation("");
 			setError(e instanceof Error ? e.message : "Invalid cron expression");
