@@ -12,13 +12,13 @@ export interface RateLimitResult {
  */
 export interface HealthResponse {
 	status: string;
-	rateLimit: {
-		perUser: {
+	rateLimit?: {
+		perUser?: {
 			max: number;
 			windowMs: number;
 			currentUsers: number;
 		};
-		daily: {
+		daily?: {
 			limit: number;
 			used: number;
 			remaining: number;

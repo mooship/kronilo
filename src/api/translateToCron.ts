@@ -46,10 +46,20 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 	}
 
 	if (result.data) {
-		const rateLimited = result.data.rateLimit.daily.remaining <= 0;
+		const dailyRateLimit = result.data.rateLimit?.daily;
+
+		if (!dailyRateLimit) {
+			return {
+				rateLimited: false,
+				status: result.status,
+				details: "Rate limit information unavailable",
+			};
+		}
+
+		const rateLimited = dailyRateLimit.remaining <= 0;
 		const details = rateLimited
-			? `Daily limit reached (${result.data.rateLimit.daily.used}/${result.data.rateLimit.daily.limit}). Try again tomorrow.`
-			: `Daily usage: ${result.data.rateLimit.daily.used}/${result.data.rateLimit.daily.limit}`;
+			? `Daily limit reached (${dailyRateLimit.used}/${dailyRateLimit.limit}). Try again tomorrow.`
+			: `Daily usage: ${dailyRateLimit.used}/${dailyRateLimit.limit}`;
 
 		return {
 			rateLimited,
