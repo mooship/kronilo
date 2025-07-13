@@ -140,6 +140,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 							ref={suggestionsRef}
 							id="cron-suggestions-list"
 							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 shadow-lg dark:border-gray-600 dark:bg-gray-700"
+							style={{ position: "absolute" }}
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button

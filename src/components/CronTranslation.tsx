@@ -68,18 +68,6 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		reset();
 	}, [cron, cancel, reset]);
 
-	if (!cron.trim()) {
-		return (
-			<div className="mb-8">
-				<div className="rounded-xl bg-gray-50 p-6 text-center dark:bg-neutral-700">
-					<span className="text-gray-500 text-lg dark:text-gray-300">
-						Enter a cron expression to see the translation
-					</span>
-				</div>
-			</div>
-		);
-	}
-
 	return (
 		<div className="mb-8">
 			<div className="mb-4 flex items-center justify-between">
@@ -89,28 +77,32 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				<CopyButton
 					value={translation}
 					label="Copy"
-					disabled={!translation}
+					disabled={!translation || !cron.trim()}
 					className="btn-sm"
 				/>
 			</div>
-			{error ? (
-				<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
-					<span>{error}</span>
-				</div>
-			) : (
-				<div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-neutral-600 dark:bg-neutral-700">
-					{loading ? (
-						<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50">
-							<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
-							Translating...
-						</div>
-					) : (
-						<p className="font-medium text-black text-xl leading-relaxed dark:text-neutral-50">
-							{translation}
-						</p>
-					)}
-				</div>
-			)}
+			<div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-neutral-600 dark:bg-neutral-700 min-h-[4rem]">
+				{!cron.trim() ? (
+					<div className="flex items-center justify-center h-12">
+						<span className="text-gray-500 text-lg dark:text-gray-300">
+							Enter a cron expression to see the translation
+						</span>
+					</div>
+				) : error ? (
+					<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
+						<span>{error}</span>
+					</div>
+				) : loading ? (
+					<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50 h-12">
+						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
+						Translating...
+					</div>
+				) : (
+					<p className="font-medium text-black text-xl leading-relaxed dark:text-neutral-50 min-h-[3rem] flex items-center">
+						{translation}
+					</p>
+				)}
+			</div>
 		</div>
 	);
 };

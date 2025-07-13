@@ -24,6 +24,11 @@ const NaturalLanguageToCron = lazy(() =>
 const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
+const LoadingSpinner = lazy(() =>
+	import("./components/LoadingSpinner").then((m) => ({
+		default: m.LoadingSpinner,
+	})),
+);
 
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
@@ -43,20 +48,20 @@ export function MainContent() {
 
 	if (location.pathname === "/natural-language-to-cron") {
 		return (
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<LoadingSpinner />}>
 				<NaturalLanguageToCron />
 			</Suspense>
 		);
 	}
 	return (
 		<div className="p-0">
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<LoadingSpinner />}>
 				<CronInput error={error} />
 			</Suspense>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<LoadingSpinner />}>
 				<CronTranslation cron={cron} />
 			</Suspense>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<LoadingSpinner />}>
 				<NextRuns cron={cron} disabled={!!error} />
 			</Suspense>
 		</div>
@@ -128,13 +133,13 @@ function App() {
 				</div>
 			</header>
 			<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-0 sm:pt-2 pb-1 sm:pb-6 lg:pb-8 min-h-0 mb-1 sm:mb-0">
-				<div className="w-full max-w-3xl mx-auto min-h-[400px]">
+				<div className="w-full max-w-3xl mx-auto">
 					<div
 						className={clsx(
 							"shadow-2xl border rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
 							"bg-white border-gray-200 dark:bg-neutral-800 dark:border-neutral-700",
 						)}
-						style={{ minHeight: "320px" }}
+						style={{ minHeight: "600px" }}
 					>
 						<AppRouter />
 					</div>

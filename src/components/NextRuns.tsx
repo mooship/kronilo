@@ -108,11 +108,23 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
 
 	if (!cron.trim() || disabled) {
-		return null;
+		return (
+			<div className="mb-6 min-h-[20rem]" aria-live="polite">
+				<div className="mb-4 flex items-center justify-between">
+					<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
+						Next 5 runs:
+					</h3>
+					<CopyButton value="" label="Copy" className="btn-sm" disabled />
+				</div>
+				<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400 min-h-[16rem] flex items-center justify-center">
+					Enter a valid cron expression to see upcoming runs.
+				</div>
+			</div>
+		);
 	}
 
 	return (
-		<div className="mb-6" aria-live="polite">
+		<div className="mb-6 min-h-[20rem]" aria-live="polite">
 			<div className="mb-4 flex items-center justify-between">
 				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
 					Next 5 runs:
@@ -147,35 +159,37 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 				</div>
 			)}
 
-			{error ? (
-				<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
-					<span>{error}</span>
-				</div>
-			) : loading ? (
-				<div className="flex items-center gap-2 rounded-xl bg-gray-50 p-6 text-black dark:bg-neutral-700 dark:text-neutral-50">
-					<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
-					Calculating next runs...
-				</div>
-			) : runs.length === 0 ? (
-				<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400">
-					No upcoming runs found.
-				</div>
-			) : (
-				<div className="rounded-xl bg-gray-50 p-6 dark:bg-neutral-700">
-					<ul className="space-y-3">
-						{runs.map((run, index) => (
-							<li key={run} className="flex items-center gap-3">
-								<span className="font-bold text-black text-lg dark:text-neutral-50">
-									{index + 1}.
-								</span>
-								<span className="font-mono text-base text-black dark:text-neutral-50">
-									{run}
-								</span>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
+			<div className="min-h-[16rem]">
+				{error ? (
+					<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
+						<span>{error}</span>
+					</div>
+				) : loading ? (
+					<div className="flex items-center gap-2 rounded-xl bg-gray-50 p-6 text-black dark:bg-neutral-700 dark:text-neutral-50">
+						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
+						Calculating next runs...
+					</div>
+				) : runs.length === 0 ? (
+					<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400">
+						No upcoming runs found.
+					</div>
+				) : (
+					<div className="rounded-xl bg-gray-50 p-6 dark:bg-neutral-700">
+						<ul className="space-y-3">
+							{runs.map((run, index) => (
+								<li key={run} className="flex items-center gap-3">
+									<span className="font-bold text-black text-lg dark:text-neutral-50">
+										{index + 1}.
+									</span>
+									<span className="font-mono text-base text-black dark:text-neutral-50">
+										{run}
+									</span>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };

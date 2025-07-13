@@ -46,3 +46,11 @@ export interface NextRunsProps {
 	cron: string;
 	disabled?: boolean;
 }
+
+/**
+ * Props for the LoadingSpinner component.
+ */
+export interface LoadingSpinnerProps {
+	message?: string;
+	minHeight?: string;
+}
