@@ -60,7 +60,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	if (!cron.trim()) {
 		return (
 			<div className="mb-8">
-				<div className="bg-gray-50 rounded-xl p-6 text-center dark:bg-neutral-700">
+				<div className="rounded-xl bg-gray-50 p-6 text-center dark:bg-neutral-700">
 					<span className="text-gray-500 text-lg dark:text-gray-300">
 						Enter a cron expression to see the translation
 					</span>
@@ -71,8 +71,8 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 
 	return (
 		<div className="mb-8">
-			<div className="flex items-center justify-between mb-4">
-				<h3 className="text-xl font-semibold text-black dark:text-neutral-50">
+			<div className="mb-4 flex items-center justify-between">
+				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
 					Translation:
 				</h3>
 				<CopyButton
@@ -83,18 +83,18 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				/>
 			</div>
 			{error ? (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 dark:bg-yellow-900 dark:border-yellow-700 dark:text-yellow-300">
+				<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
 					<span>{error}</span>
 				</div>
 			) : (
-				<div className="bg-gray-50 border border-gray-200 rounded-xl p-6 dark:bg-neutral-700 dark:border-neutral-600">
+				<div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-neutral-600 dark:bg-neutral-700">
 					{loading ? (
-						<div className="flex items-center gap-2 text-xl text-black font-medium leading-relaxed dark:text-neutral-50">
-							<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full dark:border-neutral-50 dark:border-t-transparent"></span>
+						<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50">
+							<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
 							Translating...
 						</div>
 					) : (
-						<p className="text-xl text-black font-medium leading-relaxed dark:text-neutral-50">
+						<p className="font-medium text-black text-xl leading-relaxed dark:text-neutral-50">
 							{translation}
 						</p>
 					)}

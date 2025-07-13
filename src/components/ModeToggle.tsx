@@ -21,7 +21,7 @@ export const ModeToggle: FC = () => {
 	return (
 		<button
 			type="button"
-			className="ml-4 px-4 py-2 rounded-xl border font-medium transition-colors duration-200 text-base bg-gray-100 text-gray-900 border-gray-200 hover:bg-gray-200 focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-50 dark:border-neutral-700 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+			className="ml-4 rounded-xl border border-gray-200 bg-gray-100 px-4 py-2 font-medium text-base text-gray-900 transition-colors duration-200 hover:bg-gray-200 focus:bg-gray-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50 dark:focus:bg-neutral-700 dark:hover:bg-neutral-700"
 			onClick={() =>
 				navigate(isNaturalLanguageToCron ? "/" : "/natural-language-to-cron")
 			}

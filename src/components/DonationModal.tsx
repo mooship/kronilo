@@ -100,10 +100,10 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="bg-gray-50 text-gray-900 max-w-lg w-full mx-4 rounded-xl p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto dark:bg-neutral-800 dark:text-neutral-50 dark:border-neutral-600">
+			<div className="relative mx-4 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-50">
 				<button
 					type="button"
-					className={`absolute right-3 top-3 text-gray-900 hover:text-black text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10 dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${
+					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-900 text-xl transition-colors hover:bg-gray-100 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
 					aria-label="Close donation modal"
@@ -127,12 +127,12 @@ export const DonationModal: FC<DonationModalProps> = ({
 						little bit helps keep Kronilo alive and ad-free.
 					</p>
 
-					<div className="flex justify-center mb-6">
+					<div className="mb-6 flex justify-center">
 						<a
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn bg-neutral-900 hover:bg-neutral-800 text-neutral-50 btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-xl dark:bg-gray-100 dark:text-black dark:hover:bg-gray-200${
+							className={`btn btn-lg flex items-center gap-2 rounded-xl bg-neutral-900 px-6 py-3 font-semibold text-neutral-50 hover:bg-neutral-800 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-200${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
@@ -150,7 +150,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost text-gray-900 hover:text-black rounded-xl dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost rounded-xl text-gray-900 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}

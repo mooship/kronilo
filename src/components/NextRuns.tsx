@@ -98,18 +98,18 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 
 	return (
 		<div className="mb-6" aria-live="polite">
-			<div className="flex items-center justify-between mb-4">
-				<h3 className="text-xl font-semibold text-black dark:text-neutral-50">
+			<div className="mb-4 flex items-center justify-between">
+				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
 					Next 5 runs:
 				</h3>
 				<CopyButton value={runsCopyValue} label="Copy" className="btn-sm" />
 			</div>
 
 			{hasAmbiguousSchedule && (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 mb-4 dark:bg-yellow-900 dark:border-yellow-700 dark:text-yellow-300">
+				<div className="mb-4 rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
 					<div className="flex items-start gap-2">
 						<svg
-							className="w-5 h-5 mt-0.5 flex-shrink-0"
+							className="mt-0.5 h-5 w-5 flex-shrink-0"
 							fill="currentColor"
 							viewBox="0 0 20 20"
 							aria-hidden="true"
@@ -121,7 +121,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 							/>
 						</svg>
 						<div>
-							<p className="font-medium mb-1">Ambiguous Schedule Detected</p>
+							<p className="mb-1 font-medium">Ambiguous Schedule Detected</p>
 							<p className="text-sm">
 								This cron expression specifies both a day of the month and a day
 								of the week; the job will run when either condition is met (OR
@@ -133,24 +133,24 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			)}
 
 			{error ? (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 dark:bg-yellow-900 dark:border-yellow-700 dark:text-yellow-300">
+				<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
 					<span>{error}</span>
 				</div>
 			) : loading ? (
-				<div className="flex items-center gap-2 bg-gray-50 rounded-xl p-6 text-black dark:bg-neutral-700 dark:text-neutral-50">
-					<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full dark:border-neutral-50 dark:border-t-transparent"></span>
+				<div className="flex items-center gap-2 rounded-xl bg-gray-50 p-6 text-black dark:bg-neutral-700 dark:text-neutral-50">
+					<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
 					Calculating next runs...
 				</div>
 			) : runs.length === 0 ? (
-				<div className="bg-gray-50 rounded-xl p-6 text-gray-500 text-center dark:bg-neutral-700 dark:text-gray-400">
+				<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400">
 					No upcoming runs found.
 				</div>
 			) : (
-				<div className="bg-gray-50 rounded-xl p-6 dark:bg-neutral-700">
+				<div className="rounded-xl bg-gray-50 p-6 dark:bg-neutral-700">
 					<ul className="space-y-3">
 						{runs.map((run, index) => (
 							<li key={run} className="flex items-center gap-3">
-								<span className="text-black font-bold text-lg dark:text-neutral-50">
+								<span className="font-bold text-black text-lg dark:text-neutral-50">
 									{index + 1}.
 								</span>
 								<span className="font-mono text-base text-black dark:text-neutral-50">
