@@ -33,7 +33,6 @@ export async function apiRequest<T>(
 		let status = 0;
 		let errorData: unknown = err;
 
-		// Handle ky HTTP errors with response objects
 		if (
 			typeof err === "object" &&
 			err !== null &&
@@ -47,7 +46,6 @@ export async function apiRequest<T>(
 				const jsonError = await response.json();
 				errorData = jsonError;
 			} catch {
-				// Provide user-friendly messages for common HTTP status codes
 				if (status === 408) {
 					errorData = "Request timeout. Please try again.";
 				} else if (status === 503) {
@@ -62,7 +60,6 @@ export async function apiRequest<T>(
 			"name" in err &&
 			(err as { name: string }).name === "TimeoutError"
 		) {
-			// Handle timeout errors specifically
 			errorData = "Request timeout. Please try again.";
 			status = 408;
 		} else if (
@@ -72,7 +69,6 @@ export async function apiRequest<T>(
 			typeof (err as { message: string }).message === "string" &&
 			(err as { message: string }).message.toLowerCase().includes("network")
 		) {
-			// Handle network connectivity errors
 			errorData = "Network error. Please check your connection.";
 			status = 0;
 		}

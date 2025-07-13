@@ -106,7 +106,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			</div>
 
 			{hasAmbiguousSchedule && (
-				<div className="mb-4 rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
+				<div className="mb-4 rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-800 dark:border-yellow-400 dark:bg-yellow-300/20 dark:text-yellow-200">
 					<div className="flex items-start gap-2">
 						<svg
 							className="mt-0.5 h-5 w-5 flex-shrink-0"

@@ -163,7 +163,7 @@ function App() {
 						in South Africa ·{" "}
 						<button
 							type="button"
-							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-white dark:hover:text-gray-300"
+							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-white dark:hover:text-gray-300 min-w-10 min-h-10 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
 							onClick={handleFooterDonateClick}
 						>
 							Support Kronilo <span aria-hidden="true">☕</span>
@@ -189,7 +189,7 @@ function App() {
 								href="https://www.gnu.org/licenses/agpl-3.0.html"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300"
+								className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300 min-w-10 min-h-10 px-2 py-1 inline-flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
 							>
 								AGPL v3
 							</a>
