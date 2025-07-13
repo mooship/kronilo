@@ -24,11 +24,6 @@ const NaturalLanguageToCron = lazy(() =>
 const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
-const LoadingSpinner = lazy(() =>
-	import("./components/LoadingSpinner").then((m) => ({
-		default: m.LoadingSpinner,
-	})),
-);
 
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
@@ -47,23 +42,13 @@ export function MainContent() {
 	const location = useLocation();
 
 	if (location.pathname === "/natural-language-to-cron") {
-		return (
-			<Suspense fallback={<LoadingSpinner />}>
-				<NaturalLanguageToCron />
-			</Suspense>
-		);
+		return <NaturalLanguageToCron />;
 	}
 	return (
 		<div className="p-0">
-			<Suspense fallback={<LoadingSpinner />}>
-				<CronInput error={error} />
-			</Suspense>
-			<Suspense fallback={<LoadingSpinner />}>
-				<CronTranslation cron={cron} />
-			</Suspense>
-			<Suspense fallback={<LoadingSpinner />}>
-				<NextRuns cron={cron} disabled={!!error} />
-			</Suspense>
+			<CronInput error={error} />
+			<CronTranslation cron={cron} />
+			<NextRuns cron={cron} disabled={!!error} />
 		</div>
 	);
 }

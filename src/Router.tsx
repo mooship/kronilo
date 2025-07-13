@@ -8,6 +8,11 @@ const NotFoundCard = lazy(() =>
 		default: m.NotFoundCard,
 	})),
 );
+const LoadingSpinner = lazy(() =>
+	import("./components/LoadingSpinner").then((m) => ({
+		default: m.LoadingSpinner,
+	})),
+);
 
 /**
  * Application router component that handles routing between different pages.
@@ -19,18 +24,20 @@ const NotFoundCard = lazy(() =>
 export const AppRouter: FC = () => {
 	return (
 		<Router>
-			<Routes>
-				<Route path="/" element={<MainContent />} />
-				<Route path="/natural-language-to-cron" element={<MainContent />} />
-				<Route
-					path="*"
-					element={
-						<Suspense fallback={<div>Loading...</div>}>
-							<NotFoundCard />
-						</Suspense>
-					}
-				/>
-			</Routes>
+			<Suspense fallback={<LoadingSpinner />}>
+				<Routes>
+					<Route path="/" element={<MainContent />} />
+					<Route path="/natural-language-to-cron" element={<MainContent />} />
+					<Route
+						path="*"
+						element={
+							<Suspense fallback={<LoadingSpinner />}>
+								<NotFoundCard />
+							</Suspense>
+						}
+					/>
+				</Routes>
+			</Suspense>
 		</Router>
 	);
 };
