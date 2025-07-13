@@ -60,8 +60,8 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	if (!cron.trim()) {
 		return (
 			<div className="mb-8">
-				<div className="bg-gray-50 rounded-xl p-6 text-center">
-					<span className="text-gray-500 text-lg">
+				<div className="bg-gray-50 rounded-xl p-6 text-center dark:bg-neutral-700">
+					<span className="text-gray-500 text-lg dark:text-gray-300">
 						Enter a cron expression to see the translation
 					</span>
 				</div>
@@ -72,7 +72,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	return (
 		<div className="mb-8">
 			<div className="flex items-center justify-between mb-4">
-				<h3 className="text-xl font-semibold text-base-content">
+				<h3 className="text-xl font-semibold text-black dark:text-neutral-50">
 					Translation:
 				</h3>
 				<CopyButton
@@ -83,18 +83,18 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				/>
 			</div>
 			{error ? (
-				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4">
+				<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 dark:bg-yellow-900 dark:border-yellow-700 dark:text-yellow-300">
 					<span>{error}</span>
 				</div>
 			) : (
-				<div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
+				<div className="bg-gray-50 border border-gray-200 rounded-xl p-6 dark:bg-neutral-700 dark:border-neutral-600">
 					{loading ? (
-						<div className="flex items-center gap-2 text-xl text-black font-medium leading-relaxed">
-							<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full"></span>
+						<div className="flex items-center gap-2 text-xl text-black font-medium leading-relaxed dark:text-neutral-50">
+							<span className="animate-spin inline-block w-5 h-5 border-2 border-black border-t-transparent rounded-full dark:border-neutral-50 dark:border-t-transparent"></span>
 							Translating...
 						</div>
 					) : (
-						<p className="text-xl text-black font-medium leading-relaxed">
+						<p className="text-xl text-black font-medium leading-relaxed dark:text-neutral-50">
 							{translation}
 						</p>
 					)}

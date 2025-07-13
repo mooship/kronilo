@@ -85,7 +85,7 @@ function App() {
 			className={clsx(
 				"min-h-screen flex flex-col",
 				!prefersReducedMotion && "transition-colors duration-200",
-				"bg-white text-black",
+				"bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50",
 			)}
 		>
 			<Suspense fallback={null}>
@@ -101,7 +101,7 @@ function App() {
 						className={clsx(
 							"font-bold mb-2 sm:mb-4 break-words leading-tight",
 							isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl",
-							"text-black",
+							"text-black dark:text-neutral-50",
 						)}
 					>
 						Kronilo
@@ -110,7 +110,7 @@ function App() {
 						className={clsx(
 							"mb-2 sm:mb-3 break-words leading-snug",
 							isSmallScreen ? "text-base" : "text-base xs:text-lg sm:text-2xl",
-							"text-black opacity-90",
+							"text-black opacity-90 dark:text-neutral-50 dark:opacity-90",
 						)}
 					>
 						Dead Simple Cron Translator
@@ -119,7 +119,7 @@ function App() {
 						className={clsx(
 							"break-words",
 							isSmallScreen ? "text-sm" : "text-sm xs:text-base sm:text-lg",
-							"text-black opacity-70",
+							"text-black opacity-70 dark:text-neutral-50 dark:opacity-70",
 						)}
 					>
 						Translate cron expressions to plain language instantly
@@ -131,7 +131,7 @@ function App() {
 					<div
 						className={clsx(
 							"shadow-2xl border rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
-							"bg-gray-50 border-gray-200",
+							"bg-white border-gray-200 dark:bg-neutral-800 dark:border-neutral-700",
 						)}
 					>
 						<AppRouter />
@@ -141,19 +141,27 @@ function App() {
 			<footer
 				className={clsx(
 					"w-full py-4 sm:py-6 border-t",
-					"bg-white border-gray-200 rounded-b-lg",
+					"bg-gray-50 border-gray-200 rounded-b-lg dark:bg-neutral-900 dark:border-neutral-700",
 				)}
 			>
 				<div className="text-center px-2 sm:px-0">
-					<p className={clsx("text-xs sm:text-base", "text-black opacity-60")}>
+					<p
+						className={clsx(
+							"text-xs sm:text-base",
+							"text-black opacity-60 dark:text-neutral-50 dark:opacity-60",
+						)}
+					>
 						Built with{" "}
-						<span className="text-black" aria-hidden="true">
-							♥
+						<span
+							className="text-black dark:text-neutral-50"
+							aria-hidden="true"
+						>
+							<span className="text-red-500 dark:text-red-400">♥</span>
 						</span>{" "}
 						in South Africa ·{" "}
 						<button
 							type="button"
-							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer"
+							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-neutral-50 dark:hover:text-gray-300"
 							onClick={handleFooterDonateClick}
 						>
 							Support Kronilo <span aria-hidden="true">☕</span>
@@ -163,20 +171,23 @@ function App() {
 							href="https://github.com/mooship/kronilo"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold"
+							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-neutral-50 dark:hover:text-gray-300"
 						>
 							GitHub
 						</a>
 						<br />
 						<span
-							className={clsx("text-xs sm:text-base", "text-black opacity-50")}
+							className={clsx(
+								"text-xs sm:text-base",
+								"text-black opacity-50 dark:text-neutral-50 dark:opacity-50",
+							)}
 						>
 							Licensed under{" "}
 							<a
 								href="https://www.gnu.org/licenses/agpl-3.0.html"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underline"
+								className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-neutral-50 dark:hover:text-gray-300"
 							>
 								AGPL v3
 							</a>

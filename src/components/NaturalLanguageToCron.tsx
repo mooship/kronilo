@@ -135,7 +135,7 @@ export function NaturalLanguageToCron() {
 		<div className="flex flex-col gap-8">
 			<div className="mb-8 flex flex-col w-full">
 				<div className="flex items-center justify-between mb-6 w-full">
-					<span className="block text-xl font-semibold text-base-content">
+					<span className="block text-xl font-semibold text-black dark:text-gray-100">
 						Natural Language Schedule
 					</span>
 					<ModeToggle />
@@ -143,7 +143,7 @@ export function NaturalLanguageToCron() {
 				<div className="relative flex flex-col gap-4 w-full">
 					<textarea
 						id="natural-language-input"
-						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-blue-600/50 focus:border-blue-600 resize-none min-h-[6rem] max-h-32"
+						className="textarea textarea-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 w-full rounded-xl border-2 transition-colors duration-200 focus:outline-none border-gray-200 hover:border-gray-400 focus:border-gray-600 resize-none min-h-[6rem] max-h-32 dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400"
 						placeholder={`e.g. “run once a week on a Thursday” — Works best in: English, German, Spanish, French, Italian, Dutch, Swedish, Norwegian, Danish, Indonesian, and Turkish. Support for other languages may vary.`}
 						value={naturalLanguage}
 						onChange={(e) => setNaturalLanguage(e.target.value)}
@@ -180,7 +180,7 @@ export function NaturalLanguageToCron() {
 				</div>
 				{rateLimited && (
 					<div className="mt-4 w-full">
-						<div className="bg-red-100 border border-red-300 text-red-700 rounded-xl p-4 w-full text-center">
+						<div className="bg-red-100 border border-red-300 text-red-700 rounded-xl p-4 w-full text-center dark:bg-red-900 dark:border-red-700 dark:text-red-300">
 							<span>
 								{rateLimitMsg ||
 									"You are currently rate limited. Please try again later."}
@@ -190,14 +190,14 @@ export function NaturalLanguageToCron() {
 				)}
 				{retrying && (
 					<div className="mt-4 w-full">
-						<div className="bg-blue-100 border border-blue-300 text-blue-700 rounded-xl p-4 w-full text-center animate-pulse">
+						<div className="bg-neutral-100 border border-neutral-300 text-neutral-700 rounded-xl p-4 w-full text-center animate-pulse dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-300">
 							<span>Please wait, retrying...</span>
 						</div>
 					</div>
 				)}
 				{error && !retrying && !rateLimited && (
 					<div className="mt-4 w-full">
-						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full text-center">
+						<div className="bg-yellow-100 border border-yellow-300 text-yellow-700 rounded-xl p-4 w-full text-center dark:bg-yellow-900 dark:border-yellow-700 dark:text-yellow-300">
 							<span>{error}</span>
 						</div>
 					</div>
@@ -207,7 +207,7 @@ export function NaturalLanguageToCron() {
 			{cron && !retrying && !rateLimited && (
 				<div className="mb-8">
 					<div className="flex items-center justify-between mb-4">
-						<h3 className="text-xl font-semibold text-base-content">
+						<h3 className="text-xl font-semibold text-black dark:text-gray-100">
 							Generated Cron:
 						</h3>
 						<CopyButton
@@ -217,8 +217,8 @@ export function NaturalLanguageToCron() {
 							className="btn-sm"
 						/>
 					</div>
-					<div className="bg-gray-50 border border-gray-200 rounded-xl p-4 min-h-[96px] flex items-center">
-						<p className="text-xl text-black font-medium leading-relaxed w-full text-center">
+					<div className="bg-gray-50 border border-gray-200 rounded-xl p-4 min-h-[96px] flex items-center dark:bg-gray-800 dark:border-gray-700">
+						<p className="text-xl text-black font-medium leading-relaxed w-full text-center dark:text-gray-100">
 							{cron}
 						</p>
 					</div>

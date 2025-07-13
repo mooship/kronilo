@@ -93,17 +93,17 @@ export const DonationModal: FC<DonationModalProps> = ({
 	return createPortal(
 		<div
 			ref={modalRef}
-			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
+			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 dark:bg-black/70"
 			role="dialog"
 			aria-modal="true"
 			aria-label="Donation Modal"
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="bg-gray-50 text-gray-900 max-w-lg w-full mx-4 rounded-xl p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto">
+			<div className="bg-gray-50 text-gray-900 max-w-lg w-full mx-4 rounded-xl p-8 shadow-2xl border border-gray-200 relative max-h-[90vh] overflow-y-auto dark:bg-neutral-800 dark:text-neutral-50 dark:border-neutral-600">
 				<button
 					type="button"
-					className={`absolute right-3 top-3 text-gray-900 hover:text-black text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10${
+					className={`absolute right-3 top-3 text-gray-900 hover:text-black text-xl w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors z-10 dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
 					aria-label="Close donation modal"
@@ -118,7 +118,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
-					<p className="mb-6 text-gray-900 leading-relaxed">
+					<p className="mb-6 text-gray-900 leading-relaxed dark:text-neutral-50">
 						Kronilo is a free, open-source tool that respects your privacy—no
 						ads, no trackers, no account.
 						<br />
@@ -132,7 +132,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn bg-gray-900 hover:bg-black text-white btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-xl${
+							className={`btn bg-neutral-900 hover:bg-neutral-800 text-neutral-50 btn-lg px-6 py-3 font-semibold flex items-center gap-2 rounded-xl dark:bg-gray-100 dark:text-black dark:hover:bg-gray-200${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
 							aria-label="Support Kronilo on Ko-fi"
@@ -150,7 +150,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost text-gray-900 hover:text-black rounded-xl${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
+							className={`btn btn-ghost text-gray-900 hover:text-black rounded-xl dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
 							aria-label="Maybe later"
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}

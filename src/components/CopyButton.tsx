@@ -62,6 +62,7 @@ export const CopyButton: FC<CopyButtonProps> = ({
 				type="button"
 				className={clsx(
 					"btn btn-primary rounded-xl font-medium transition-all duration-200 disabled:opacity-50 border-2 border-primary/60 shadow-xl hover:shadow-2xl hover:border-accent focus:border-accent focus:shadow-2xl active:scale-95",
+					"bg-neutral-900 text-neutral-50 border-neutral-900/60 hover:border-neutral-50 focus:border-neutral-50 dark:bg-gray-100 dark:text-black dark:border-gray-100/60 dark:hover:border-black dark:focus:border-black",
 					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3",
 					isPressed && "scale-95",
 				)}
@@ -86,7 +87,7 @@ export const CopyButton: FC<CopyButtonProps> = ({
 			{copyState.error && (
 				<div className="absolute left-0 mt-1">
 					<div
-						className="alert alert-error alert-sm rounded-xl"
+						className="alert alert-error alert-sm rounded-xl bg-red-100 border-red-300 text-red-700 dark:bg-red-900 dark:border-red-700 dark:text-red-300"
 						id={errorId}
 						role="alert"
 					>
