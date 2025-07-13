@@ -103,6 +103,7 @@ function App() {
 							isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl",
 							"text-black dark:text-neutral-50",
 						)}
+						style={{ minHeight: isSmallScreen ? "2.5rem" : "3.5rem" }}
 					>
 						Kronilo
 					</h1>
@@ -133,6 +134,7 @@ function App() {
 							"shadow-2xl border rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
 							"bg-white border-gray-200 dark:bg-neutral-800 dark:border-neutral-700",
 						)}
+						style={{ minHeight: "320px" }}
 					>
 						<AppRouter />
 					</div>
@@ -148,12 +150,12 @@ function App() {
 					<p
 						className={clsx(
 							"text-xs sm:text-base",
-							"text-black opacity-60 dark:text-neutral-50 dark:opacity-60",
+							"text-gray-800 dark:text-neutral-100",
 						)}
 					>
 						Built with{" "}
 						<span
-							className="text-black dark:text-neutral-50"
+							className="text-gray-800 dark:text-neutral-100"
 							aria-hidden="true"
 						>
 							<span className="text-red-500 dark:text-red-400">♥</span>
@@ -161,7 +163,7 @@ function App() {
 						in South Africa ·{" "}
 						<button
 							type="button"
-							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-neutral-50 dark:hover:text-gray-300"
+							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-white dark:hover:text-gray-300"
 							onClick={handleFooterDonateClick}
 						>
 							Support Kronilo <span aria-hidden="true">☕</span>
@@ -171,7 +173,7 @@ function App() {
 							href="https://github.com/mooship/kronilo"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-neutral-50 dark:hover:text-gray-300"
+							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300"
 						>
 							GitHub
 						</a>
@@ -179,7 +181,7 @@ function App() {
 						<span
 							className={clsx(
 								"text-xs sm:text-base",
-								"text-black opacity-50 dark:text-neutral-50 dark:opacity-50",
+								"text-gray-700 dark:text-neutral-300",
 							)}
 						>
 							Licensed under{" "}
@@ -187,7 +189,7 @@ function App() {
 								href="https://www.gnu.org/licenses/agpl-3.0.html"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="underline text-black hover:text-gray-900 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-neutral-50 dark:hover:text-gray-300"
+								className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300"
 							>
 								AGPL v3
 							</a>
