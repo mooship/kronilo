@@ -13,12 +13,12 @@ export default defineConfig(({ mode }) => ({
 		rollupOptions: {
 			output: {
 				manualChunks(id) {
-					if (
-						id.includes("react-router") ||
-						id.includes("react-use") ||
-						id.includes("react-tooltip")
-					) {
+					if (id.includes("react-use") || id.includes("react-tooltip")) {
 						return "react-utils";
+					}
+
+					if (id.includes("react-router")) {
+						return "react-router";
 					}
 
 					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
