@@ -2,6 +2,10 @@ import clsx from "clsx";
 import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
+import { useCronValidation } from "./hooks/useCronValidation";
+import { useDonationModal } from "./hooks/useDonationModal";
+import { AppRouter } from "./Router";
+import { useKroniloStore } from "./store";
 
 const CronInput = lazy(() =>
 	import("./components/CronInput").then((m) => ({ default: m.CronInput })),
@@ -24,11 +28,7 @@ const NaturalLanguageToCron = lazy(() =>
 const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
-
-import { useCronValidation } from "./hooks/useCronValidation";
-import { useDonationModal } from "./hooks/useDonationModal";
-import { AppRouter } from "./Router";
-import { useKroniloStore } from "./store";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 
 /**
  * Main content component that renders different views based on the current route.
@@ -41,15 +41,20 @@ export function MainContent() {
 	const { error } = useCronValidation(cron);
 	const location = useLocation();
 
-	if (location.pathname === "/natural-language-to-cron") {
-		return <NaturalLanguageToCron />;
-	}
 	return (
-		<div className="p-0">
-			<CronInput error={error} />
-			<CronTranslation cron={cron} />
-			<NextRuns cron={cron} disabled={!!error} />
-		</div>
+		<Suspense
+			fallback={<LoadingSpinner message="Loading mode..." minHeight="200px" />}
+		>
+			{location.pathname === "/natural-language-to-cron" ? (
+				<NaturalLanguageToCron />
+			) : (
+				<div className="p-0">
+					<CronInput error={error} />
+					<CronTranslation cron={cron} />
+					<NextRuns cron={cron} disabled={!!error} />
+				</div>
+			)}
+		</Suspense>
 	);
 }
 
