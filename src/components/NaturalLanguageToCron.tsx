@@ -217,7 +217,7 @@ export function NaturalLanguageToCron() {
 							className="btn-sm"
 						/>
 					</div>
-					<div className="flex min-h-[96px] items-center rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800">
+					<div className="flex min-h-[96px] items-center rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-neutral-700 dark:bg-neutral-700">
 						<p className="w-full text-center font-medium text-black text-xl leading-relaxed dark:text-gray-100">
 							{cron}
 						</p>
