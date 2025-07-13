@@ -1,6 +1,5 @@
-import cronstrue from "cronstrue";
 import type { FC } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import { useKroniloStore } from "../store";
 import type { CronTranslationProps } from "../types/components";
@@ -27,8 +26,18 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		(s) => s.incrementCronToNaturalUsage,
 	);
 
-	const translateCron = () => {
+	type CronstrueType = typeof import("cronstrue");
+	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
+	const translateCron = async () => {
 		try {
+			if (!cronstrueRef.current) {
+				const mod = await import("cronstrue");
+				cronstrueRef.current = mod.default;
+			}
+			const cronstrue = cronstrueRef.current;
+			if (!cronstrue) {
+				throw new Error("cronstrue not loaded");
+			}
 			const result = cronstrue.toString(cron, {
 				throwExceptionOnParseError: true,
 			});
@@ -42,7 +51,9 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		setLoading(false);
 	};
 
-	const [, cancel, reset] = useTimeoutFn(translateCron, 500);
+	const [, cancel, reset] = useTimeoutFn(() => {
+		translateCron();
+	}, 500);
 
 	useEffect(() => {
 		if (!cron.trim()) {

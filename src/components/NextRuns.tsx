@@ -1,6 +1,5 @@
-import cronParser from "cron-parser";
 import type { FC } from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTimeoutFn } from "react-use";
 import type { NextRunsProps } from "../types/components";
 import { WHITESPACE_REGEX } from "../utils/cronValidation";
@@ -26,7 +25,13 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const [loading, setLoading] = useState(false);
 	const [hasAmbiguousSchedule, setHasAmbiguousSchedule] = useState(false);
 
-	const calculateNextRuns = () => {
+	type CronParserDefault = typeof import("cron-parser") extends {
+		default: infer T;
+	}
+		? T
+		: never;
+	const cronParserRef = useRef<CronParserDefault | null>(null);
+	const calculateNextRuns = async () => {
 		try {
 			const cronParts = cron.trim().split(WHITESPACE_REGEX);
 			if (cronParts.length >= 5) {
@@ -46,8 +51,16 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 				setHasAmbiguousSchedule(false);
 			}
 
+			if (!cronParserRef.current) {
+				const mod = await import("cron-parser");
+				cronParserRef.current = mod.default;
+			}
 			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-			const interval = cronParser.parse(cron, { tz });
+			const parser = cronParserRef.current;
+			if (!parser) {
+				throw new Error("cron-parser not loaded");
+			}
+			const interval = parser.parse(cron, { tz });
 			const nextDates: string[] = [];
 			for (let i = 0; i < 5; i++) {
 				const date = interval.next().toDate();
@@ -74,7 +87,9 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		setLoading(false);
 	};
 
-	const [, cancel, reset] = useTimeoutFn(calculateNextRuns, 500);
+	const [, cancel, reset] = useTimeoutFn(() => {
+		calculateNextRuns();
+	}, 500);
 
 	useEffect(() => {
 		if (!cron.trim() || disabled) {

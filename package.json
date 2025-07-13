@@ -6,6 +6,7 @@
 	"author": "Timothy Brits",
 	"license": "AGPL-3.0-or-later",
 	"type": "module",
+	"sideEffects": false,
 	"scripts": {
 		"build": "tsc -b && vite build",
 		"dev": "vite",
