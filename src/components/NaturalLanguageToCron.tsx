@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { checkRateLimit, translateToCron } from "../api/translateToCron";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
@@ -25,6 +26,7 @@ import { NextRuns } from "./NextRuns";
  * ```
  */
 export function NaturalLanguageToCron() {
+	const { t } = useTranslation();
 	const [naturalLanguage, setNaturalLanguage] = useState("");
 	const [cron, setCron] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -111,9 +113,7 @@ export function NaturalLanguageToCron() {
 					lastError = new Error(result.error);
 					throw lastError;
 				} else {
-					lastError = new Error(
-						"An unexpected error occurred. Please try again.",
-					);
+					lastError = new Error(t("naturalLanguage.unexpectedError"));
 					throw lastError;
 				}
 			} catch (err) {
@@ -136,7 +136,7 @@ export function NaturalLanguageToCron() {
 			<div className="mb-8 flex w-full flex-col">
 				<div className="mb-6 flex w-full items-center justify-between">
 					<span className="block font-semibold text-black text-xl dark:text-gray-100">
-						Natural Language Schedule
+						{t("naturalLanguage.title")}
 					</span>
 					<ModeToggle />
 				</div>
@@ -144,7 +144,7 @@ export function NaturalLanguageToCron() {
 					<textarea
 						id="natural-language-input"
 						className="textarea textarea-bordered max-h-32 min-h-[6rem] w-full resize-none rounded-xl border-2 border-gray-200 bg-gray-50 px-4 py-3 font-mono text-gray-900 text-lg placeholder-gray-500 transition-colors duration-200 hover:border-gray-400 focus:border-gray-600 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400 dark:focus:border-neutral-400 dark:hover:border-neutral-500"
-						placeholder={`e.g. “run once a week on a Thursday” — Works best in: English, French, German, and Spanish. Support for other languages may vary.`}
+						placeholder={t("naturalLanguage.inputPlaceholder")}
 						value={naturalLanguage}
 						onChange={(e) => setNaturalLanguage(e.target.value)}
 						disabled={loading || rateLimited}
@@ -160,10 +160,10 @@ export function NaturalLanguageToCron() {
 						<ActionButton
 							label={
 								rateLimited
-									? "Rate Limited"
+									? t("naturalLanguage.rateLimited")
 									: loading
-										? "Translating..."
-										: "Generate Cron"
+										? t("naturalLanguage.translating")
+										: t("naturalLanguage.generateCron")
 							}
 							disabled={
 								loading || naturalLanguage.trim().length === 0 || rateLimited
@@ -181,17 +181,14 @@ export function NaturalLanguageToCron() {
 				{rateLimited && (
 					<div className="mt-4 w-full">
 						<div className="w-full rounded-xl border border-red-300 bg-red-100 p-4 text-center text-red-700 dark:border-red-700 dark:bg-red-900 dark:text-red-300">
-							<span>
-								{rateLimitMsg ||
-									"You are currently rate limited. Please try again later."}
-							</span>
+							<span>{rateLimitMsg || t("naturalLanguage.rateLimitedMsg")}</span>
 						</div>
 					</div>
 				)}
 				{retrying && (
 					<div className="mt-4 w-full">
 						<div className="w-full animate-pulse rounded-xl border border-neutral-300 bg-neutral-100 p-4 text-center text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300">
-							<span>Please wait, retrying...</span>
+							<span>{t("naturalLanguage.retrying")}</span>
 						</div>
 					</div>
 				)}
@@ -208,11 +205,11 @@ export function NaturalLanguageToCron() {
 				<div className="mb-8">
 					<div className="mb-4 flex items-center justify-between">
 						<h3 className="font-semibold text-black text-xl dark:text-gray-100">
-							Generated Cron:
+							{t("naturalLanguage.generatedCron")}
 						</h3>
 						<CopyButton
 							value={cron}
-							label="Copy"
+							label={t("naturalLanguage.copy")}
 							disabled={!cron}
 							className="btn-sm"
 						/>

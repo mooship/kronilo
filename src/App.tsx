@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { lazy, Suspense } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
 import { useCronValidation } from "./hooks/useCronValidation";
@@ -28,6 +29,7 @@ const NaturalLanguageToCron = lazy(() =>
 const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
+
 import { LoadingSpinner } from "./components/LoadingSpinner";
 
 /**
@@ -37,13 +39,16 @@ import { LoadingSpinner } from "./components/LoadingSpinner";
  * @returns The main content area with appropriate components based on current route
  */
 export function MainContent() {
+	const { t } = useTranslation();
 	const cron = useKroniloStore((s) => s.cron);
 	const { error } = useCronValidation(cron);
 	const location = useLocation();
 
 	return (
 		<Suspense
-			fallback={<LoadingSpinner message="Loading mode..." minHeight="200px" />}
+			fallback={
+				<LoadingSpinner message={t("loading.mode")} minHeight="200px" />
+			}
 		>
 			{location.pathname === "/natural-language-to-cron" ? (
 				<NaturalLanguageToCron />
@@ -65,6 +70,7 @@ export function MainContent() {
  * @returns The complete application layout with header, main content, and footer
  */
 function App() {
+	const { t } = useTranslation();
 	const { width } = useWindowSize();
 	const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)");
 	const isSmallScreen = width < 640;
@@ -100,7 +106,7 @@ function App() {
 						)}
 						style={{ minHeight: isSmallScreen ? "2.5rem" : "3.5rem" }}
 					>
-						Kronilo
+						{t("app.title")}
 					</h1>
 					<h2
 						className={clsx(
@@ -109,7 +115,7 @@ function App() {
 							"text-black opacity-90 dark:text-neutral-50 dark:opacity-90",
 						)}
 					>
-						Dead Simple Cron Translator
+						{t("app.subtitle")}
 					</h2>
 					<p
 						className={clsx(
@@ -118,7 +124,7 @@ function App() {
 							"text-black opacity-70 dark:text-neutral-50 dark:opacity-70",
 						)}
 					>
-						Translate cron expressions to plain language instantly
+						{t("app.description")}
 					</p>
 				</div>
 			</header>
@@ -148,20 +154,20 @@ function App() {
 							"text-gray-800 dark:text-neutral-100",
 						)}
 					>
-						Built with{" "}
+						{t("footer.builtWith")}{" "}
 						<span
 							className="text-gray-800 dark:text-neutral-100"
 							aria-hidden="true"
 						>
 							<span className="text-red-500 dark:text-red-400">♥</span>
 						</span>{" "}
-						in South Africa ·{" "}
+						{t("footer.inSouthAfrica")} ·{" "}
 						<button
 							type="button"
 							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer dark:text-white dark:hover:text-gray-300 min-w-10 min-h-10 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
 							onClick={handleFooterDonateClick}
 						>
-							Support Kronilo <span aria-hidden="true">☕</span>
+							{t("footer.support")} <span aria-hidden="true">☕</span>
 						</button>{" "}
 						·{" "}
 						<a
@@ -170,7 +176,7 @@ function App() {
 							rel="noopener noreferrer"
 							className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300"
 						>
-							GitHub
+							{t("footer.github")}
 						</a>
 						<br />
 						<span
@@ -179,14 +185,14 @@ function App() {
 								"text-gray-700 dark:text-neutral-300",
 							)}
 						>
-							Licensed under{" "}
+							{t("footer.licensedUnder")}{" "}
 							<a
 								href="https://www.gnu.org/licenses/agpl-3.0.html"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="underline text-black hover:text-gray-700 hover:no-underline transition-colors text-xs sm:text-base font-semibold dark:text-white dark:hover:text-gray-300 min-w-10 min-h-10 px-2 py-1 inline-flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-400"
 							>
-								AGPL v3
+								{t("footer.agplLicense")}
 							</a>
 						</span>
 					</p>

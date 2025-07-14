@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { FC } from "react";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useCopyToClipboard, useTimeoutFn } from "react-use";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import type { CopyButtonProps } from "../types/components";
@@ -27,13 +28,15 @@ import type { CopyButtonProps } from "../types/components";
 export const CopyButton: FC<CopyButtonProps> = ({
 	value,
 	className = "",
-	label = "Copy",
+	label,
 	disabled = false,
 }) => {
+	const { t } = useTranslation();
 	const [copyState, copyToClipboard] = useCopyToClipboard();
 	const [copied, setCopied] = useState(false);
 	const { isPressed, handlePressStart, handlePressEnd } = usePressAnimation();
 
+	const buttonLabel = label || t("actions.copy");
 	const isSmall = className.includes("btn-sm");
 
 	const errorId = useMemo(() => {
@@ -66,7 +69,7 @@ export const CopyButton: FC<CopyButtonProps> = ({
 					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3",
 					isPressed && "scale-95",
 				)}
-				aria-label={label}
+				aria-label={buttonLabel}
 				onClick={handleCopy}
 				disabled={disabled || !value}
 				aria-describedby={copyState.error ? errorId : undefined}
@@ -78,10 +81,10 @@ export const CopyButton: FC<CopyButtonProps> = ({
 			>
 				{copied ? (
 					<span aria-live="polite" className="flex items-center gap-2">
-						<span>✓</span> Copied!
+						<span>✓</span> {t("actions.copied")}
 					</span>
 				) : (
-					<span className="flex items-center gap-2">{label}</span>
+					<span className="flex items-center gap-2">{buttonLabel}</span>
 				)}
 			</button>
 			{copyState.error && (

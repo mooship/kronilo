@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { useTranslation } from "react-i18next";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import type { DonationModalProps } from "../types/components";
 
@@ -27,6 +28,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 	onClose,
 	onMaybeLater,
 }) => {
+	const { t } = useTranslation();
 	const modalRef = useRef<HTMLDivElement>(null);
 	const firstFocusable = useRef<HTMLButtonElement | null>(null);
 	const lastFocusable = useRef<HTMLButtonElement | null>(null);
@@ -96,7 +98,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 dark:bg-black/70"
 			role="dialog"
 			aria-modal="true"
-			aria-label="Donation Modal"
+			aria-label={t("donation.title")}
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
@@ -106,7 +108,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-900 text-xl transition-colors hover:bg-gray-100 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
-					aria-label="Close donation modal"
+					aria-label={t("donation.close")}
 					onClick={onClose}
 					onMouseDown={closeBtnAnim.handlePressStart}
 					onMouseUp={closeBtnAnim.handlePressEnd}
@@ -118,13 +120,14 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
+					<h2 className="mb-2 font-bold text-2xl text-gray-900 dark:text-neutral-50">
+						{t("donation.title")}
+					</h2>
+					<p className="mb-4 text-gray-900 leading-relaxed dark:text-neutral-50">
+						{t("donation.message")}
+					</p>
 					<p className="mb-6 text-gray-900 leading-relaxed dark:text-neutral-50">
-						Kronilo is a free, open-source tool that respects your privacy—no
-						ads, no trackers, no account.
-						<br />
-						<br />
-						If it saved you time, please consider buying me a coffee. Every
-						little bit helps keep Kronilo alive and ad-free.
+						{t("donation.messageExtended")}
 					</p>
 
 					<div className="mb-6 flex justify-center">
@@ -135,14 +138,14 @@ export const DonationModal: FC<DonationModalProps> = ({
 							className={`btn btn-lg flex items-center gap-2 rounded-xl bg-neutral-900 px-6 py-3 font-semibold text-neutral-50 hover:bg-neutral-800 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-200${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
-							aria-label="Support Kronilo on Ko-fi"
+							aria-label={t("donation.buyMeCoffee")}
 							onMouseDown={coffeeBtnAnim.handlePressStart}
 							onMouseUp={coffeeBtnAnim.handlePressEnd}
 							onMouseLeave={coffeeBtnAnim.handlePressEnd}
 							onTouchStart={coffeeBtnAnim.handlePressStart}
 							onTouchEnd={coffeeBtnAnim.handlePressEnd}
 						>
-							☕ Buy me a coffee
+							{t("donation.buyMeCoffee")}
 						</a>
 					</div>
 
@@ -151,7 +154,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							type="button"
 							onClick={onMaybeLater}
 							className={`btn btn-ghost rounded-xl text-gray-900 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
-							aria-label="Maybe later"
+							aria-label={t("donation.maybeLater")}
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}
 							onMouseLeave={maybeBtnAnim.handlePressEnd}
@@ -159,7 +162,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							onTouchEnd={maybeBtnAnim.handlePressEnd}
 							ref={lastFocusable}
 						>
-							Maybe Later
+							{t("donation.maybeLater")}
 						</button>
 					</div>
 				</div>

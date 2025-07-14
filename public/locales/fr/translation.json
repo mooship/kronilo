@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Traducteur de Cron ultra simple",
+		"description": "Traduisez instantanément les expressions cron en langage courant"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Langage naturel",
+			"naturalToCron": "Langage naturel → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Passer à Cron → Langage naturel",
+			"toNaturalToCron": "Passer à Langage naturel → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Expression Cron",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Saisissez une expression cron",
+		"infoTooltip": "*/5 * * * *  →  toutes les 5 minutes (minute heure jour du mois mois jour de la semaine)",
+		"infoAriaLabel": "Info format Cron"
+	},
+	"naturalLanguageInput": {
+		"label": "Langage naturel",
+		"placeholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand et espagnol. Le support pour d'autres langues peut varier.",
+		"ariaLabel": "Saisissez la description de l'horaire en langage naturel"
+	},
+	"translation": {
+		"title": "Traduction :",
+		"placeholder": "Saisissez une expression cron pour voir la traduction",
+		"loading": "Traduction en cours...",
+		"error": "Erreur lors de la traduction de l'expression"
+	},
+	"nextRuns": {
+		"title": "Prochaines 5 exécutions :",
+		"placeholder": "Saisissez une expression cron valide pour voir les prochaines exécutions",
+		"loading": "Calcul en cours...",
+		"noRuns": "Aucune exécution à venir trouvée.",
+		"ambiguousSchedule": "Cette expression cron spécifie à la fois le jour du mois et le jour de la semaine. Différentes implémentations de cron peuvent l'interpréter différemment. Utilisez de préférence un seul des deux pour plus de clarté."
+	},
+	"naturalLanguage": {
+		"title": "Horaire en langage naturel",
+		"inputPlaceholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand et espagnol. Le support pour d'autres langues peut varier.",
+		"retrying": "Nouvelle tentative, veuillez patienter...",
+		"unexpectedError": "Une erreur inattendue est survenue. Veuillez réessayer.",
+		"generatedCron": "Expression cron générée :",
+		"rateLimitedMsg": "Vous êtes actuellement limité. Veuillez réessayer plus tard.",
+		"rateLimitError": "Vous êtes actuellement limité. Veuillez réessayer plus tard.",
+		"translating": "Traduction en cours...",
+		"generateCron": "Générer Cron",
+		"copy": "Copier"
+	},
+	"actions": {
+		"copy": "Copier",
+		"copied": "Copié !",
+		"generateCron": "Générer Cron",
+		"translating": "Traduction en cours...",
+		"rateLimited": "Limité"
+	},
+	"loading": {
+		"default": "Chargement...",
+		"mode": "Chargement du mode...",
+		"calculating": "Calcul en cours..."
+	},
+	"errors": {
+		"invalidCron": "Expression cron invalide",
+		"copyFailed": "Échec de la copie dans le presse-papiers",
+		"networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+		"rateLimitExceeded": "Limite atteinte. Veuillez réessayer plus tard.",
+		"somethingWrong": "Désolé, une erreur est survenue. Veuillez réessayer.",
+		"inputTooLong": "Entrée trop longue (max 200 caractères)",
+		"inputEmpty": "L'entrée ne peut pas être vide. Veuillez saisir un horaire en langage naturel.",
+		"translationFailed": "Impossible de traduire l'entrée en une expression cron valide après plusieurs tentatives."
+	},
+	"donation": {
+		"title": "Soutenir Kronilo",
+		"message": "Kronilo est un outil gratuit et open source qui respecte votre vie privée — pas de publicités, pas de traqueurs, pas de compte.",
+		"messageExtended": "Si cela vous a fait gagner du temps, pensez à m'offrir un café. Chaque petit geste aide à garder Kronilo vivant et sans publicité.",
+		"buyMeCoffee": "☕ Offrez-moi un café",
+		"maybeLater": "Peut-être plus tard",
+		"close": "Fermer la fenêtre de don"
+	},
+	"footer": {
+		"builtWith": "Développé avec",
+		"inSouthAfrica": "en Afrique du Sud",
+		"support": "Soutenir Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Sous licence",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Page non trouvée",
+		"goHome": "Accueil"
+	},
+	"accessibility": {
+		"donationModal": "Fenêtre de don",
+		"close": "Fermer",
+		"supportOnKofi": "Soutenir Kronilo sur Ko-fi",
+		"maybeLater": "Peut-être plus tard"
+	}
+}

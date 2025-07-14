@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import type { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 
@@ -16,16 +17,17 @@ import { usePressAnimation } from "../hooks/usePressAnimation";
  * ```
  */
 export const NotFoundCard: FC = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const { isPressed, handlePressStart, handlePressEnd } = usePressAnimation();
 
 	return (
 		<div className="flex w-full flex-col items-center justify-center px-4 py-24">
 			<h1 className="mb-2 font-bold text-5xl text-black dark:text-neutral-50">
-				404
+				{t("notFound.title")}
 			</h1>
 			<p className="mb-8 text-black text-lg opacity-80 dark:text-neutral-50 dark:opacity-80">
-				Page Not Found
+				{t("notFound.message")}
 			</p>
 			<button
 				type="button"
@@ -40,7 +42,7 @@ export const NotFoundCard: FC = () => {
 					isPressed && "scale-95 bg-neutral-800 dark:bg-gray-200",
 				)}
 			>
-				Go Home
+				{t("notFound.goHome")}
 			</button>
 		</div>
 	);

@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useTimeoutFn } from "react-use";
 import type { NextRunsProps } from "../types/components";
 import { WHITESPACE_REGEX } from "../utils/cronValidation";
@@ -20,6 +21,7 @@ import { CopyButton } from "./CopyButton";
  * ```
  */
 export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
+	const { t, i18n } = useTranslation();
 	const [runs, setRuns] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
@@ -65,7 +67,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			for (let i = 0; i < 5; i++) {
 				const date = interval.next().toDate();
 				nextDates.push(
-					date.toLocaleString(undefined, {
+					date.toLocaleString(i18n.language.split("-")[0], {
 						weekday: "long",
 						year: "numeric",
 						month: "long",
@@ -112,12 +114,17 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			<div className="mb-6 min-h-[20rem]" aria-live="polite">
 				<div className="mb-4 flex items-center justify-between">
 					<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
-						Next 5 runs:
+						{t("nextRuns.title")}
 					</h3>
-					<CopyButton value="" label="Copy" className="btn-sm" disabled />
+					<CopyButton
+						value=""
+						label={t("actions.copy")}
+						className="btn-sm"
+						disabled
+					/>
 				</div>
 				<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400 min-h-[16rem] flex items-center justify-center">
-					Enter a valid cron expression to see upcoming runs.
+					{t("nextRuns.placeholder")}
 				</div>
 			</div>
 		);
@@ -127,9 +134,13 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		<div className="mb-6 min-h-[20rem]" aria-live="polite">
 			<div className="mb-4 flex items-center justify-between">
 				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
-					Next 5 runs:
+					{t("nextRuns.title")}
 				</h3>
-				<CopyButton value={runsCopyValue} label="Copy" className="btn-sm" />
+				<CopyButton
+					value={runsCopyValue}
+					label={t("actions.copy")}
+					className="btn-sm"
+				/>
 			</div>
 
 			{hasAmbiguousSchedule && (
@@ -149,11 +160,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 						</svg>
 						<div>
 							<p className="mb-1 font-medium">Ambiguous Schedule Detected</p>
-							<p className="text-sm">
-								This cron expression specifies both a day of the month and a day
-								of the week; the job will run when either condition is met (OR
-								logic), not only when both match.
-							</p>
+							<p className="text-sm">{t("nextRuns.ambiguousSchedule")}</p>
 						</div>
 					</div>
 				</div>
@@ -167,11 +174,11 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 				) : loading ? (
 					<div className="flex items-center gap-2 rounded-xl bg-gray-50 p-6 text-black dark:bg-neutral-700 dark:text-neutral-50">
 						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
-						Calculating next runs...
+						{t("nextRuns.loading")}
 					</div>
 				) : runs.length === 0 ? (
 					<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400">
-						No upcoming runs found.
+						{t("nextRuns.noRuns")}
 					</div>
 				) : (
 					<div className="rounded-xl bg-gray-50 p-6 dark:bg-neutral-700">

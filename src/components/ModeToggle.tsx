@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
 /**
@@ -13,6 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
  * ```
  */
 export const ModeToggle: FC = () => {
+	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const isNaturalLanguageToCron =
@@ -27,13 +29,13 @@ export const ModeToggle: FC = () => {
 			}
 			aria-label={
 				isNaturalLanguageToCron
-					? "Switch to Cron → Natural Language"
-					: "Switch to Natural Language → Cron"
+					? t("navigation.switchMode.toCronToNatural")
+					: t("navigation.switchMode.toNaturalToCron")
 			}
 		>
 			{isNaturalLanguageToCron
-				? "Cron → Natural Language"
-				: "Natural Language → Cron"}
+				? t("navigation.modes.cronToNatural")
+				: t("navigation.modes.naturalToCron")}
 		</button>
 	);
 };

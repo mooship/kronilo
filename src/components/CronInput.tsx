@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import type { FC } from "react";
 import { useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { useClickAway } from "react-use";
 import { usePressAnimation } from "../hooks/usePressAnimation";
@@ -23,6 +24,7 @@ import { ModeToggle } from "./ModeToggle";
  * ```
  */
 export const CronInput: FC<CronInputProps> = ({ error }) => {
+	const { t } = useTranslation();
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
@@ -77,7 +79,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 					htmlFor="cron-input"
 					className="block font-semibold text-black text-xl dark:text-neutral-50"
 				>
-					Cron Expression
+					{t("cronInput.label")}
 				</label>
 				<ModeToggle />
 			</div>
@@ -89,8 +91,8 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						infoAnim.isPressed && "scale-95",
 					)}
 					data-tooltip-id="cron-placeholder-tip"
-					data-tooltip-content="*/5 * * * *  →  every 5 minutes (minute hour day month weekday)"
-					aria-label="Cron format info"
+					data-tooltip-content={t("cronInput.infoTooltip")}
+					aria-label={t("cronInput.infoAriaLabel")}
 					tabIndex={0}
 					onMouseDown={infoAnim.handlePressStart}
 					onMouseUp={infoAnim.handlePressEnd}
@@ -120,9 +122,9 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						name="cron-input"
 						type="text"
 						className={clsx(inputClassName, "w-full")}
-						placeholder="*/5 * * * *"
+						placeholder={t("cronInput.placeholder")}
 						maxLength={100}
-						aria-label="Enter cron expression"
+						aria-label={t("cronInput.ariaLabel")}
 						value={cron}
 						onChange={(e) => setCron(e.target.value)}
 						onKeyDown={handleKeyDown}
@@ -162,7 +164,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 				</div>
 				<CopyButton
 					value={cron}
-					label="Copy"
+					label={t("actions.copy")}
 					disabled={!cron || !!error}
 					className="shrink-0"
 				/>

@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Supereinfacher Cron-Übersetzer",
+		"description": "Übersetze Cron-Ausdrücke sofort in Klartext"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Natürliche Sprache",
+			"naturalToCron": "Natürliche Sprache → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Wechsel zu Cron → Natürliche Sprache",
+			"toNaturalToCron": "Wechsel zu Natürliche Sprache → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Cron-Ausdruck",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Cron-Ausdruck eingeben",
+		"infoTooltip": "*/5 * * * *  →  alle 5 Minuten (Minute Stunde Tag des Monats Monat Wochentag)",
+		"infoAriaLabel": "Cron-Format-Info"
+	},
+	"naturalLanguageInput": {
+		"label": "Natürliche Sprache",
+		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch und Spanisch. Unterstützung für andere Sprachen kann variieren.",
+		"ariaLabel": "Beschreibung des Zeitplans in natürlicher Sprache eingeben"
+	},
+	"translation": {
+		"title": "Übersetzung:",
+		"placeholder": "Geben Sie einen Cron-Ausdruck ein, um die Übersetzung zu sehen.",
+		"loading": "Übersetze...",
+		"error": "Fehler beim Übersetzen des Ausdrucks."
+	},
+	"nextRuns": {
+		"title": "Nächste 5 Ausführungen:",
+		"placeholder": "Geben Sie einen gültigen Cron-Ausdruck ein, um die nächsten Ausführungszeiten zu sehen.",
+		"loading": "Berechne...",
+		"noRuns": "Keine bevorstehenden Ausführungen gefunden.",
+		"ambiguousSchedule": "Dieser Cron-Ausdruck enthält sowohl den Tag des Monats als auch den Wochentag. Verschiedene Cron-Implementierungen können das unterschiedlich interpretieren. Verwenden Sie zur Klarheit am besten nur eines von beiden."
+	},
+	"naturalLanguage": {
+		"title": "Zeitplan in natürlicher Sprache",
+		"inputPlaceholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch und Spanisch. Unterstützung für andere Sprachen kann variieren.",
+		"retrying": "Bitte warten, versuche es erneut...",
+		"unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+		"generatedCron": "Generierter Cron-Ausdruck:",
+		"rateLimitedMsg": "Sie sind derzeit limitiert. Bitte versuchen Sie es später erneut.",
+		"rateLimitError": "Sie sind derzeit limitiert. Bitte versuchen Sie es später erneut.",
+		"translating": "Übersetze...",
+		"generateCron": "Cron generieren",
+		"copy": "Kopieren"
+	},
+	"actions": {
+		"copy": "Kopieren",
+		"copied": "Kopiert!",
+		"generateCron": "Cron generieren",
+		"translating": "Übersetze...",
+		"rateLimited": "Limitiert"
+	},
+	"loading": {
+		"default": "Lade...",
+		"mode": "Modus wird geladen...",
+		"calculating": "Berechne..."
+	},
+	"errors": {
+		"invalidCron": "Ungültiger Cron-Ausdruck.",
+		"copyFailed": "Kopieren in die Zwischenablage fehlgeschlagen.",
+		"networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+		"rateLimitExceeded": "Limit erreicht. Bitte versuchen Sie es später erneut.",
+		"somethingWrong": "Entschuldigung, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+		"inputTooLong": "Eingabe zu lang (max. 200 Zeichen).",
+		"inputEmpty": "Eingabe darf nicht leer sein. Bitte geben Sie einen Zeitplan in natürlicher Sprache ein.",
+		"translationFailed": "Konnte die Eingabe nach mehreren Versuchen nicht in einen gültigen Cron-Ausdruck übersetzen."
+	},
+	"donation": {
+		"title": "Kronilo unterstützen",
+		"message": "Kronilo ist ein kostenloses Open-Source-Tool, das Ihre Privatsphäre respektiert – keine Werbung, keine Tracker, kein Konto.",
+		"messageExtended": "Wenn es Ihnen Zeit gespart hat, erwägen Sie bitte, mir einen Kaffee zu spendieren. Jeder kleine Beitrag hilft, Kronilo am Leben und werbefrei zu halten.",
+		"buyMeCoffee": "☕ Spendieren Sie mir einen Kaffee",
+		"maybeLater": "Vielleicht später",
+		"close": "Spendenfenster schließen"
+	},
+	"footer": {
+		"builtWith": "Erstellt mit",
+		"inSouthAfrica": "in Südafrika",
+		"support": "Kronilo unterstützen",
+		"github": "GitHub",
+		"licensedUnder": "Lizenziert unter",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Seite nicht gefunden.",
+		"goHome": "Startseite"
+	},
+	"accessibility": {
+		"donationModal": "Spendenfenster",
+		"close": "Schließen",
+		"supportOnKofi": "Kronilo auf Ko-fi unterstützen",
+		"maybeLater": "Vielleicht später"
+	}
+}

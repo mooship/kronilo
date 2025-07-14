@@ -1,5 +1,6 @@
 import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useTimeoutFn } from "react-use";
 import { useKroniloStore } from "../store";
 import type { CronTranslationProps } from "../types/components";
@@ -19,6 +20,7 @@ import { CopyButton } from "./CopyButton";
  * ```
  */
 export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
+	const { t, i18n } = useTranslation();
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [loading, setLoading] = useState(false);
@@ -28,6 +30,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 
 	type CronstrueType = typeof import("cronstrue");
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
+	const loadedLocales = useRef<{ [key: string]: boolean }>({});
 	const translateCron = async () => {
 		try {
 			if (!cronstrueRef.current) {
@@ -38,8 +41,17 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			if (!cronstrue) {
 				throw new Error("cronstrue not loaded");
 			}
+			// Dynamically import locale if not loaded
+			const lang = i18n.language.split("-")[0];
+			if (!loadedLocales.current[lang]) {
+				if (lang === "fr") await import("cronstrue/locales/fr");
+				else if (lang === "es") await import("cronstrue/locales/es");
+				else if (lang === "de") await import("cronstrue/locales/de");
+				loadedLocales.current[lang] = true;
+			}
 			const result = cronstrue.toString(cron, {
 				throwExceptionOnParseError: true,
+				locale: ["en", "fr", "es", "de"].includes(lang) ? lang : "en",
 			});
 			setTranslation(result);
 			setError(undefined);
@@ -72,11 +84,11 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		<div className="mb-8">
 			<div className="mb-4 flex items-center justify-between">
 				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
-					Translation:
+					{t("translation.title")}
 				</h3>
 				<CopyButton
 					value={translation}
-					label="Copy"
+					label={t("actions.copy")}
 					disabled={!translation || !cron.trim()}
 					className="btn-sm"
 				/>
@@ -85,7 +97,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				{!cron.trim() ? (
 					<div className="flex items-center justify-center h-12">
 						<span className="text-gray-500 text-lg dark:text-gray-300">
-							Enter a cron expression to see the translation
+							{t("translation.placeholder")}
 						</span>
 					</div>
 				) : error ? (
@@ -95,7 +107,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				) : loading ? (
 					<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50 h-12">
 						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
-						Translating...
+						{t("translation.loading")}
 					</div>
 				) : (
 					<p className="font-medium text-black text-xl leading-relaxed dark:text-neutral-50 min-h-[3rem] flex items-center">

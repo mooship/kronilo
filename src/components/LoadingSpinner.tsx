@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { useTranslation } from "react-i18next";
 import type { LoadingSpinnerProps } from "../types/components";
 
 /**
@@ -24,9 +25,12 @@ import type { LoadingSpinnerProps } from "../types/components";
  * ```
  */
 export const LoadingSpinner: FC<LoadingSpinnerProps> = ({
-	message = "Loading...",
+	message,
 	minHeight = "400px",
 }) => {
+	const { t } = useTranslation();
+	const displayMessage = message || t("loading.default");
+
 	return (
 		<div className="flex items-center justify-center" style={{ minHeight }}>
 			<div className="flex flex-col items-center gap-4">
@@ -38,7 +42,7 @@ export const LoadingSpinner: FC<LoadingSpinnerProps> = ({
 					></div>
 				</div>
 				<p className="text-gray-600 dark:text-neutral-400 font-medium">
-					{message}
+					{displayMessage}
 				</p>
 			</div>
 		</div>
