@@ -3,32 +3,19 @@ import { lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
-import { LoadingSpinner } from "./components/LoadingSpinner";
+import { CronInput } from "./components/CronInput";
+import { CronTranslation } from "./components/CronTranslation";
+import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
+import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { AppRouter } from "./Router";
 import { useKroniloStore } from "./store";
 
-const CronInput = lazy(() =>
-	import("./components/CronInput").then((m) => ({ default: m.CronInput })),
-);
-const CronTranslation = lazy(() =>
-	import("./components/CronTranslation").then((m) => ({
-		default: m.CronTranslation,
-	})),
-);
 const DonationModal = lazy(() =>
 	import("./components/DonationModal").then((m) => ({
 		default: m.DonationModal,
 	})),
-);
-const NaturalLanguageToCron = lazy(() =>
-	import("./components/NaturalLanguageToCron").then((m) => ({
-		default: m.NaturalLanguageToCron,
-	})),
-);
-const NextRuns = lazy(() =>
-	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
 
 /**
@@ -38,27 +25,18 @@ const NextRuns = lazy(() =>
  * @returns The main content area with appropriate components based on current route
  */
 export function MainContent() {
-	const { t } = useTranslation();
 	const cron = useKroniloStore((s) => s.cron);
 	const { error } = useCronValidation(cron);
 	const location = useLocation();
 
-	return (
-		<Suspense
-			fallback={
-				<LoadingSpinner message={t("loading.mode")} minHeight="200px" />
-			}
-		>
-			{location.pathname === "/natural-language-to-cron" ? (
-				<NaturalLanguageToCron />
-			) : (
-				<div className="p-0">
-					<CronInput error={error} />
-					<CronTranslation cron={cron} />
-					<NextRuns cron={cron} disabled={!!error} />
-				</div>
-			)}
-		</Suspense>
+	return location.pathname === "/natural-language-to-cron" ? (
+		<NaturalLanguageToCron />
+	) : (
+		<div className="p-0">
+			<CronInput error={error} />
+			<CronTranslation cron={cron} />
+			<NextRuns cron={cron} disabled={!!error} />
+		</div>
 	);
 }
 
