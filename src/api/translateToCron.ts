@@ -93,7 +93,11 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
  * }
  * ```
  */
-export async function translateToCron(input: string): Promise<{
+
+export async function translateToCron(
+	input: string,
+	language: string,
+): Promise<{
 	data?: ApiSuccess;
 	error?: string;
 	status: number;
@@ -108,9 +112,11 @@ export async function translateToCron(input: string): Promise<{
 		};
 	}
 
+	const safeLanguage =
+		typeof language === "string" && language.trim() ? language : "en";
 	const result = await apiRequest<ApiResponse>(API_URL, {
 		method: "post",
-		json: { input },
+		json: { input, language: safeLanguage.split("-")[0] },
 		timeout: 10000,
 	});
 
