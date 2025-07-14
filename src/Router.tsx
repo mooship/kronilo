@@ -2,15 +2,11 @@ import type { FC } from "react";
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MainContent } from "./App";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 
 const NotFoundCard = lazy(() =>
 	import("./components/NotFoundCard").then((m) => ({
 		default: m.NotFoundCard,
-	})),
-);
-const LoadingSpinner = lazy(() =>
-	import("./components/LoadingSpinner").then((m) => ({
-		default: m.LoadingSpinner,
 	})),
 );
 

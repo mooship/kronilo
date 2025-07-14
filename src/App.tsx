@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { useMedia, useWindowSize } from "react-use";
+import { LoadingSpinner } from "./components/LoadingSpinner";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { AppRouter } from "./Router";
@@ -28,12 +29,6 @@ const NaturalLanguageToCron = lazy(() =>
 );
 const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
-);
-
-const LoadingSpinner = lazy(() =>
-	import("./components/LoadingSpinner").then((m) => ({
-		default: m.LoadingSpinner,
-	})),
 );
 
 /**
