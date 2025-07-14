@@ -1,28 +1,44 @@
 # Kronilo [![Node.js CI](https://github.com/mooship/kronilo/actions/workflows/node.js.yml/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/node.js.yml) [![CodeQL](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql)
 
-Kronilo is a minimal, modern web app for translating and understanding cron expressions. Built with React, TypeScript, and Vite, it provides a fast, intuitive interface for working with cron schedules. The project includes code quality checks using Biome and is styled with Tailwind CSS.
+**Kronilo** is the fastest, most user-friendly way to translate, understand, and work with cron expressions. Built with React, TypeScript, and Vite, Kronilo is designed for developers, sysadmins, and anyone who needs to make sense of cron schedules—instantly.
 
-Kronilo is not limited to English—we support a wide variety of natural languages. Our app has strong support for:
+---
 
-- English
-- French
-- German
-- Spanish
+## 🌍 Internationalization
 
-This makes Kronilo accessible to users across many regions and languages.
+Kronilo is fully localized and supports:
+
+- 🇬🇧 English
+- 🇫🇷 French
+- 🇩🇪 German
+- 🇪🇸 Spanish
+
+Switch languages on the fly—Kronilo automatically detects your browser language, or you can set it manually for testing.
+
+---
+
+## ✨ Features
+
+- **Natural Language ↔ Cron Translation:** Instantly convert between cron expressions and human-readable schedules, both directions.
+- **Multi-language Cron Parsing:** See translations and next run times in your preferred language, including weekday/month names.
+- **Upcoming Run Times:** View the next 5 execution dates for any cron schedule, formatted for your timezone and language.
+- **Smart Error Handling:** Get clear, actionable feedback for invalid or ambiguous cron expressions.
+- **Copy & Share:** One-click copy for cron expressions and translations—perfect for documentation or team chat.
+- **Modern, Responsive UI:** Beautiful, accessible design with dark mode, keyboard navigation, and mobile support.
+- **Privacy First:** No ads, no tracking, no accounts. Your data never leaves your browser except for translation API calls.
+- **Open Source:** Licensed AGPL v3—contributions welcome!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
 
 ---
 
-## Features
+## 🖥️ Backend
 
-- Translate cron expressions into human-readable text
-- See upcoming run times for a given cron schedule
-- Copy cron expressions easily
-- Clean, responsive UI
+Kronilo's natural language translation API is powered by [kronilo-worker](https://github.com/mooship/kronilo-worker), an open-source backend designed for privacy and speed. You can self-host or contribute to the backend as well.
 
-## Getting Started
+---
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -41,7 +57,7 @@ npm install
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173` by default.
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Build for production
 
@@ -55,9 +71,11 @@ npm run build
 npm run preview
 ```
 
-## Code Quality
+---
 
-This project uses [Biome](https://biomejs.dev/) for code formatting and linting. To check code quality:
+## 🛠️ Code Quality
+
+Kronilo uses [Biome](https://biomejs.dev/) for formatting and linting. To check code quality:
 
 ```sh
 npm run biome
@@ -69,8 +87,10 @@ Or run Biome directly:
 biome ci .
 ```
 
-## License
+---
 
-This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See the [LICENSE](LICENSE) file for details.
+## 📄 License
+
+Kronilo is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See the [LICENSE](LICENSE) file for details.
 
 ---
