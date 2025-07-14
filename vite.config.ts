@@ -13,6 +13,10 @@ export default defineConfig(({ mode }) => ({
 		rollupOptions: {
 			output: {
 				manualChunks(id) {
+					if (id.includes("i18next") || id.includes("react-i18next")) {
+						return "i18n";
+					}
+
 					if (id.includes("react-use") || id.includes("react-tooltip")) {
 						return "react-utils";
 					}
