@@ -5,16 +5,9 @@ Kronilo is a minimal, modern web app for translating and understanding cron expr
 Kronilo is not limited to English—we support a wide variety of natural languages. Our app has strong support for:
 
 - English
+- French
 - German
 - Spanish
-- French
-- Italian
-- Dutch
-- Swedish
-- Norwegian
-- Danish
-- Indonesian
-- Turkish
 
 This makes Kronilo accessible to users across many regions and languages.
 
