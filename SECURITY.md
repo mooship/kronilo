@@ -15,10 +15,6 @@ If you discover a security vulnerability in Kronilo:
 
 We ask that you give us a reasonable amount of time to resolve the issue before disclosing it publicly.
 
-## Security Updates
-
-We will announce any important security fixes in the repository's release notes.
-
 ---
 
 Thank you for helping keep Kronilo safe and secure!
