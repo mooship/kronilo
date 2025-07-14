@@ -7,7 +7,7 @@ Thank you for helping keep Kronilo secure!
 If you discover a security vulnerability in Kronilo:
 
 1. **Do not open a public issue.**
-2. Email the maintainer at [timothybrits@example.com] with details of the vulnerability.
+2. Email the maintainer at [timothybrits@icloud.com] with details of the vulnerability.
 3. Provide as much information as possible to help us reproduce and address the issue quickly.
 4. You will receive a response within a few business days.
 
