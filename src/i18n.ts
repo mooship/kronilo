@@ -10,7 +10,7 @@ i18n
 	.init({
 		fallbackLng: "en",
 		supportedLngs: ["en", "fr", "de", "es"],
-		debug: true,
+		debug: false,
 		interpolation: {
 			escapeValue: false,
 		},
@@ -18,9 +18,13 @@ i18n
 			loadPath: "/locales/{{lng}}/{{ns}}.json",
 		},
 		detection: {
-			order: ["localStorage", "navigator"],
-			caches: ["localStorage"],
+			order: ["navigator"],
+			caches: [],
 		},
+		react: {
+			useSuspense: true,
+		},
+		initImmediate: false,
 	});
 
 export default i18n;
