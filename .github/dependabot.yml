@@ -1,14 +1,30 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'daily'
-      time: '17:00'
-      timezone: 'Africa/Johannesburg'
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+      interval: "daily"
+      time: "17:00"
+      timezone: "Africa/Johannesburg"
+    target-branch: "main"
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'daily'
-      time: '17:00'
-      timezone: 'Africa/Johannesburg'
+      interval: "daily"
+      time: "17:00"
+      timezone: "Africa/Johannesburg"
+    target-branch: "dev"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "17:00"
+      timezone: "Africa/Johannesburg"
+    target-branch: "main"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "17:00"
+      timezone: "Africa/Johannesburg"
+    target-branch: "dev"
