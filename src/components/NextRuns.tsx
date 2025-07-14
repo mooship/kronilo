@@ -22,6 +22,7 @@ import { CopyButton } from "./CopyButton";
  */
 export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
+	const lang = (i18n.language || "en").split("-")[0];
 	const [runs, setRuns] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(false);
@@ -67,7 +68,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			for (let i = 0; i < 5; i++) {
 				const date = interval.next().toDate();
 				nextDates.push(
-					date.toLocaleString(i18n.language.split("-")[0], {
+					date.toLocaleString(lang, {
 						weekday: "long",
 						year: "numeric",
 						month: "long",

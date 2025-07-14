@@ -21,6 +21,7 @@ import { CopyButton } from "./CopyButton";
  */
 export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const { t, i18n } = useTranslation();
+	const lang = (i18n.language || "en").split("-")[0];
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [loading, setLoading] = useState(false);
@@ -41,8 +42,6 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			if (!cronstrue) {
 				throw new Error("cronstrue not loaded");
 			}
-			// Dynamically import locale if not loaded
-			const lang = i18n.language.split("-")[0];
 			if (!loadedLocales.current[lang]) {
 				if (lang === "fr") await import("cronstrue/locales/fr");
 				else if (lang === "es") await import("cronstrue/locales/es");
