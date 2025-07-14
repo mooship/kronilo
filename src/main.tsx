@@ -21,6 +21,13 @@ if (rootElement) {
 					</Suspense>
 				</StrictMode>,
 			);
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", () => {
+					import("virtual:pwa-register").then(({ registerSW }) => {
+						registerSW({ immediate: true });
+					});
+				});
+			}
 		})
 		.catch(() => {
 			createRoot(rootElement).render(
