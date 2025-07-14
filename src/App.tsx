@@ -30,7 +30,11 @@ const NextRuns = lazy(() =>
 	import("./components/NextRuns").then((m) => ({ default: m.NextRuns })),
 );
 
-import { LoadingSpinner } from "./components/LoadingSpinner";
+const LoadingSpinner = lazy(() =>
+	import("./components/LoadingSpinner").then((m) => ({
+		default: m.LoadingSpinner,
+	})),
+);
 
 /**
  * Main content component that renders different views based on the current route.

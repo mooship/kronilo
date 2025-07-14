@@ -26,7 +26,7 @@ import { NextRuns } from "./NextRuns";
  * ```
  */
 export function NaturalLanguageToCron() {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const [naturalLanguage, setNaturalLanguage] = useState("");
 	const [cron, setCron] = useState("");
 	const [loading, setLoading] = useState(false);
@@ -84,7 +84,7 @@ export function NaturalLanguageToCron() {
 		}
 		while (attempt < 2) {
 			try {
-				const result = await translateToCron(naturalLanguage);
+				const result = await translateToCron(naturalLanguage, i18n.language);
 
 				if (result.status === 429 && result.rateLimitType) {
 					setRateLimited(true, result.error || "Rate limit exceeded");

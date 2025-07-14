@@ -77,15 +77,18 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 
 /**
  * Translates a natural language schedule description into a cron expression.
- * This function sends the input to the API service and handles various error conditions
+ * This function sends the input and language to the API service and handles various error conditions
  * including rate limiting and validation errors.
  *
  * @param input - Natural language description of the schedule (e.g., "every day at 9am")
+ * @param language - Language code (e.g., "en", "fr", "de", "es"). Pass from i18n.language in your app.
  * @returns Promise resolving to either a successful cron translation or error information
  *
  * @example
  * ```typescript
- * const result = await translateToCron("every day at 9am");
+ * import { useTranslation } from "react-i18next";
+ * const { i18n } = useTranslation();
+ * const result = await translateToCron("every day at 9am", i18n.language);
  * if (result.error) {
  *   console.error(result.error);
  * } else {
