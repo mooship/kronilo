@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Dead Simple Cron Translator",
-		"description": "Translate cron expressions to plain language instantly"
+		"description": "Convert between cron expressions and natural language instantly"
 	},
 	"navigation": {
 		"modes": {

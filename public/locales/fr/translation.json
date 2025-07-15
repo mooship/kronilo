@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Traducteur de Cron ultra simple",
-		"description": "Traduisez instantanément les expressions cron en langage courant"
+		"description": "Convertissez instantanément entre expressions cron et langage naturel"
 	},
 	"navigation": {
 		"modes": {
