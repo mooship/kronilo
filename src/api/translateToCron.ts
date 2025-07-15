@@ -1,3 +1,4 @@
+import { franc } from "franc";
 import type {
 	ApiResponse,
 	ApiSuccess,
@@ -89,14 +90,13 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
  * including rate limiting and validation errors.
  *
  * @param input - Natural language description of the schedule (e.g., "every day at 9am")
- * @param language - Language code (e.g., "en", "fr", "de", "es"). Pass from i18n.language in your app.
  * @returns Promise resolving to either a successful cron translation or error information
  *
  * @example
  * ```typescript
  * import { useTranslation } from "react-i18next";
  * const { i18n } = useTranslation();
- * const result = await translateToCron("every day at 9am", i18n.language);
+ * const result = await translateToCron("every day at 9am");
  * if (result.error) {
  *   console.error(result.error);
  * } else {
@@ -105,10 +105,7 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
  * ```
  */
 
-export async function translateToCron(
-	input: string,
-	language: string,
-): Promise<{
+export async function translateToCron(input: string): Promise<{
 	data?: ApiSuccess;
 	error?: string;
 	status: number;
@@ -123,11 +120,17 @@ export async function translateToCron(
 		};
 	}
 
-	const safeLanguage =
-		typeof language === "string" && language.trim() ? language : "en";
+	let detectedLanguage = "en";
+	try {
+		const code = franc(input);
+		detectedLanguage = code && code !== "und" ? code : "en";
+	} catch {
+		detectedLanguage = "en";
+	}
+
 	const result = await apiRequest<ApiResponse>(API_URL, {
 		method: "post",
-		json: { input, language: safeLanguage.split("-")[0] },
+		json: { input, language: detectedLanguage },
 		timeout: 10000,
 	});
 

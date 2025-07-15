@@ -66,6 +66,10 @@ export default defineConfig(({ mode }) => ({
 						return "cronstrue";
 					}
 
+					if (id.includes("franc")) {
+						return "franc";
+					}
+
 					if (id.includes("zustand") || id.includes("ky")) {
 						return "state-http";
 					}
