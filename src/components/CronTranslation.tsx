@@ -82,7 +82,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	return (
 		<div className="mb-8">
 			<div className="mb-4 flex items-center justify-between">
-				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
+				<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
 					{t("translation.title")}
 				</h3>
 				<CopyButton

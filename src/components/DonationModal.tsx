@@ -102,7 +102,10 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
-			<div className="relative mx-4 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-50">
+			<div
+				className="relative mx-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-neutral-600 dark:bg-neutral-800 dark:text-neutral-50 animate-fade-in"
+				style={{ animation: "fadeInScale 0.5s cubic-bezier(0.4,0,0.2,1)" }}
+			>
 				<button
 					type="button"
 					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-gray-900 text-xl transition-colors hover:bg-gray-100 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${
