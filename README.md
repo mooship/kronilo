@@ -12,6 +12,10 @@ Kronilo is fully localized and supports:
 - 🇫🇷 French
 - 🇩🇪 German
 - 🇪🇸 Spanish
+- 🇮🇹 Italian
+- 🇳🇱 Dutch
+- 🇵🇹 Portuguese (European)
+- 🇧🇷 Portuguese (Brazilian)
 
 Switch languages on the fly—Kronilo automatically detects your browser language, or you can set it manually for testing.
 

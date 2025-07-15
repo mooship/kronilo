@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Doodsimpele Cron Vertaler",
+		"description": "Converteer direct tussen cron-expressies en natuurlijke taal"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Natuurlijke Taal",
+			"naturalToCron": "Natuurlijke Taal → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Schakel naar Cron → Natuurlijke Taal",
+			"toNaturalToCron": "Schakel naar Natuurlijke Taal → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Cron-expressie",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Voer een cron-expressie in",
+		"infoTooltip": "*/5 * * * *  →  elke 5 minuten (minuut uur dag maand weekdag)",
+		"infoAriaLabel": "Informatie over cron-formaat"
+	},
+	"naturalLanguageInput": {
+		"label": "Natuurlijke Taal",
+		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in: Engels, Frans, Duits, Spaans, Italiaans, Nederlands, Portugees (Braziliaans & Europees). Ondersteuning voor andere talen kan variëren.",
+		"ariaLabel": "Voer een planningsbeschrijving in natuurlijke taal in"
+	},
+	"translation": {
+		"title": "Vertaling:",
+		"placeholder": "Voer een cron-expressie in om de vertaling te zien",
+		"loading": "Bezig met vertalen...",
+		"error": "Fout bij het vertalen van de expressie"
+	},
+	"nextRuns": {
+		"title": "Volgende 5 Uitvoeringen:",
+		"placeholder": "Voer een geldige cron-expressie in om de volgende uitvoertijden te zien",
+		"loading": "Bezig met berekenen...",
+		"noRuns": "Geen geplande uitvoeringen gevonden.",
+		"ambiguousSchedule": "Deze cron-expressie specificeert zowel dag van de maand als dag van de week. Verschillende cron-implementaties kunnen dit anders interpreteren. Gebruik bij voorkeur slechts één van de twee voor duidelijkheid."
+	},
+	"naturalLanguage": {
+		"title": "Schema in Natuurlijke Taal",
+		"inputPlaceholder": "bijv. \"voer eenmaal per week uit op donderdag\" — Werkt het beste in: Engels, Frans, Duits en Spaans. Ondersteuning voor andere talen kan variëren.",
+		"retrying": "Even geduld, probeer opnieuw...",
+		"unexpectedError": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
+		"generatedCron": "Gegenereerde Cron:",
+		"rateLimitedMsg": "Je bent momenteel gelimiteerd. Probeer het later opnieuw.",
+		"rateLimitError": "Je bent momenteel gelimiteerd. Probeer het later opnieuw.",
+		"translating": "Bezig met vertalen...",
+		"generateCron": "Genereer Cron",
+		"copy": "Kopiëren"
+	},
+	"actions": {
+		"copy": "Kopiëren",
+		"copied": "Gekopieerd!",
+		"generateCron": "Genereer Cron",
+		"translating": "Bezig met vertalen...",
+		"rateLimited": "Limiet Bereikt"
+	},
+	"loading": {
+		"default": "Laden...",
+		"mode": "Bezig met modus laden...",
+		"calculating": "Bezig met berekenen..."
+	},
+	"errors": {
+		"invalidCron": "Ongeldige cron-expressie",
+		"copyFailed": "Kopiëren naar klembord mislukt",
+		"networkError": "Netwerkfout. Controleer je verbinding.",
+		"rateLimitExceeded": "Verzoeklimiet overschreden. Probeer het later opnieuw.",
+		"somethingWrong": "Er is iets misgegaan. Probeer het opnieuw.",
+		"inputTooLong": "Invoer te lang (maximaal 200 tekens)",
+		"inputEmpty": "Invoer mag niet leeg zijn. Voer een planning in natuurlijke taal in.",
+		"translationFailed": "Kon invoer niet vertalen naar een geldige cron-expressie, zelfs na opnieuw proberen"
+	},
+	"donation": {
+		"title": "Steun Kronilo",
+		"message": "Kronilo is een gratis open-source tool die je privacy respecteert—geen advertenties, geen trackers, geen account nodig.",
+		"messageExtended": "Als het je tijd heeft bespaard, overweeg dan om me een koffie te geven. Elke bijdrage helpt om Kronilo draaiende en advertentievrij te houden.",
+		"buyMeCoffee": "☕ Geef me een koffie",
+		"maybeLater": "Misschien Later",
+		"close": "Sluit donatiemodal"
+	},
+	"footer": {
+		"builtWith": "Gemaakt met",
+		"inSouthAfrica": "in Zuid-Afrika",
+		"support": "Steun Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Gelicenseerd onder",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Pagina Niet Gevonden",
+		"goHome": "Ga naar Startpagina"
+	},
+	"accessibility": {
+		"donationModal": "Donatiemodal",
+		"close": "Sluiten",
+		"supportOnKofi": "Steun Kronilo op Ko-fi",
+		"maybeLater": "Misschien later"
+	}
+}

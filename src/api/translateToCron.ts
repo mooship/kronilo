@@ -46,6 +46,14 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 	}
 
 	if (result.data) {
+		if (result.data.status === "error") {
+			return {
+				rateLimited: false,
+				status: result.status,
+				details: result.data.error || "Service error",
+			};
+		}
+
 		const dailyRateLimit = result.data.rateLimit?.daily;
 
 		if (!dailyRateLimit) {

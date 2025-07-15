@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Lenguaje natural",
-		"placeholder": "ej: \"ejecutar una vez a la semana el jueves\" — Funciona mejor en inglés, francés, alemán y español. El soporte para otros idiomas puede variar.",
+		"placeholder": "ej: \"ejecutar una vez a la semana el jueves\" — Funciona mejor en inglés, francés, alemán, español, italiano, neerlandés, portugués (brasileño y europeo). El soporte para otros idiomas puede variar.",
 		"ariaLabel": "Introduce la descripción del horario en lenguaje natural"
 	},
 	"translation": {

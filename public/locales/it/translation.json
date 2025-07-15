@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Traduttore Cron Semplicissimo",
+		"description": "Converti istantaneamente tra espressioni cron e linguaggio naturale"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Linguaggio Naturale",
+			"naturalToCron": "Linguaggio Naturale → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Passa a Cron → Linguaggio Naturale",
+			"toNaturalToCron": "Passa a Linguaggio Naturale → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Espressione Cron",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Inserisci un'espressione cron",
+		"infoTooltip": "*/5 * * * *  →  ogni 5 minuti (minuto ora giorno mese giorno-settimana)",
+		"infoAriaLabel": "Informazioni sul formato cron"
+	},
+	"naturalLanguageInput": {
+		"label": "Linguaggio Naturale",
+		"placeholder": "es. \"esegui una volta a settimana il giovedì\" — Funziona meglio in: inglese, francese, tedesco, spagnolo, italiano, olandese, portoghese (brasiliano ed europeo). Il supporto per altre lingue può variare.",
+		"ariaLabel": "Inserisci una descrizione della pianificazione in linguaggio naturale"
+	},
+	"translation": {
+		"title": "Traduzione:",
+		"placeholder": "Inserisci un'espressione cron per vedere la traduzione",
+		"loading": "Traduzione in corso...",
+		"error": "Errore nella traduzione dell'espressione"
+	},
+	"nextRuns": {
+		"title": "Prossime 5 Esecuzioni:",
+		"placeholder": "Inserisci un'espressione cron valida per vedere i prossimi orari di esecuzione",
+		"loading": "Calcolo in corso...",
+		"noRuns": "Nessuna esecuzione prevista.",
+		"ambiguousSchedule": "Questa espressione cron specifica sia il giorno del mese che il giorno della settimana. Diverse implementazioni di cron potrebbero interpretarla in modo diverso. Considera di usare solo uno dei due per maggiore chiarezza."
+	},
+	"naturalLanguage": {
+		"title": "Pianificazione in Linguaggio Naturale",
+		"inputPlaceholder": "es. \"esegui una volta a settimana il giovedì\" — Funziona meglio in: Inglese, Francese, Tedesco e Spagnolo. Il supporto per altre lingue può variare.",
+		"retrying": "Attendere, nuovo tentativo in corso...",
+		"unexpectedError": "Si è verificato un errore imprevisto. Riprova.",
+		"generatedCron": "Cron Generato:",
+		"rateLimitedMsg": "Stai superando il limite di richieste. Riprova più tardi.",
+		"rateLimitError": "Stai superando il limite di richieste. Riprova più tardi.",
+		"translating": "Traduzione in corso...",
+		"generateCron": "Genera Cron",
+		"copy": "Copia"
+	},
+	"actions": {
+		"copy": "Copia",
+		"copied": "Copiato!",
+		"generateCron": "Genera Cron",
+		"translating": "Traduzione in corso...",
+		"rateLimited": "Limite Raggiunto"
+	},
+	"loading": {
+		"default": "Caricamento...",
+		"mode": "Caricamento modalità...",
+		"calculating": "Calcolo in corso..."
+	},
+	"errors": {
+		"invalidCron": "Espressione cron non valida",
+		"copyFailed": "Copia negli appunti non riuscita",
+		"networkError": "Errore di rete. Verifica la tua connessione.",
+		"rateLimitExceeded": "Limite di richieste superato. Riprova più tardi.",
+		"somethingWrong": "Qualcosa è andato storto. Riprova.",
+		"inputTooLong": "Input troppo lungo (massimo 200 caratteri)",
+		"inputEmpty": "Il campo non può essere vuoto. Inserisci una pianificazione in linguaggio naturale.",
+		"translationFailed": "Impossibile tradurre l'input in un'espressione cron valida dopo vari tentativi"
+	},
+	"donation": {
+		"title": "Supporta Kronilo",
+		"message": "Kronilo è uno strumento gratuito e open-source che rispetta la tua privacy — niente pubblicità, niente tracciatori, nessun account.",
+		"messageExtended": "Se ti ha fatto risparmiare tempo, considera di offrirmi un caffè. Ogni piccolo contributo aiuta a mantenere Kronilo vivo e senza pubblicità.",
+		"buyMeCoffee": "☕ Offrimi un caffè",
+		"maybeLater": "Magari dopo",
+		"close": "Chiudi il modulo di donazione"
+	},
+	"footer": {
+		"builtWith": "Creato con",
+		"inSouthAfrica": "in Sudafrica",
+		"support": "Supporta Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Licenza",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Pagina non trovata",
+		"goHome": "Torna alla home"
+	},
+	"accessibility": {
+		"donationModal": "Modulo di Donazione",
+		"close": "Chiudi",
+		"supportOnKofi": "Supporta Kronilo su Ko-fi",
+		"maybeLater": "Magari dopo"
+	}
+}
