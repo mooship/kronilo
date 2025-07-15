@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Vite dev build output
+dev-dist/
+
 # generated types
 .astro/
 
