@@ -18,6 +18,6 @@
 
 9. **Error Handling**: Follow best practices for error handling and validation in all code suggestions.
 
-10. **Internationalization**: For UI or user-facing text, use the existing i18n framework and avoid hardcoding strings.
+10. **Confirmation for Large Edits**: Copilot must confirm changes with the user before performing large edits.
 
 Follow these instructions strictly for all actions in this repository.
