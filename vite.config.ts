@@ -70,8 +70,12 @@ export default defineConfig(({ mode }) => ({
 						return "franc";
 					}
 
-					if (id.includes("zustand") || id.includes("ky")) {
-						return "state-http";
+					if (id.includes("zustand")) {
+						return "state";
+					}
+
+					if (id.includes("react-query")) {
+						return "react-query";
 					}
 
 					if (id.includes("node_modules")) {
