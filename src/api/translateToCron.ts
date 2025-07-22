@@ -1,4 +1,3 @@
-import { franc } from "franc";
 import type {
 	ApiResponse,
 	ApiSuccess,
@@ -21,16 +20,6 @@ const HEALTH_URL = `${BASE_URL}/health`;
  * Checks the current rate limit status for the API.
  * This function queries the health endpoint to determine if the user has exceeded
  * their daily usage limits and provides detailed information about current usage.
- *
- * @returns Promise resolving to rate limit information including current usage and remaining quota
- *
- * @example
- * ```typescript
- * const rateInfo = await checkRateLimit();
- * if (rateInfo.rateLimited) {
- *   console.log(rateInfo.details); // "Daily limit reached (100/100). Try again tomorrow."
- * }
- * ```
  */
 export async function checkRateLimit(): Promise<RateLimitResult> {
 	const result = await apiRequest<HealthResponse>(HEALTH_URL, {
@@ -86,25 +75,8 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 
 /**
  * Translates a natural language schedule description into a cron expression.
- * This function sends the input and language to the API service and handles various error conditions
- * including rate limiting and validation errors.
- *
- * @param input - Natural language description of the schedule (e.g., "every day at 9am")
- * @returns Promise resolving to either a successful cron translation or error information
- *
- * @example
- * ```typescript
- * import { useTranslation } from "react-i18next";
- * const { i18n } = useTranslation();
- * const result = await translateToCron("every day at 9am");
- * if (result.error) {
- *   console.error(result.error);
- * } else {
- *   console.log(result.data?.cron); // "0 9 * * *"
- * }
- * ```
+ * Sends the input to the API service without language code (detection done server-side).
  */
-
 export async function translateToCron(input: string): Promise<{
 	data?: ApiSuccess;
 	error?: string;
@@ -120,17 +92,9 @@ export async function translateToCron(input: string): Promise<{
 		};
 	}
 
-	let detectedLanguage = "en";
-	try {
-		const code = franc(input);
-		detectedLanguage = code && code !== "und" ? code : "en";
-	} catch {
-		detectedLanguage = "en";
-	}
-
 	const result = await apiRequest<ApiResponse>(API_URL, {
 		method: "post",
-		json: { input, language: detectedLanguage },
+		json: { input },
 		timeout: 10000,
 	});
 

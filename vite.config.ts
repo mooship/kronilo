@@ -45,44 +45,40 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("i18next") || id.includes("react-i18next")) {
 						return "i18n";
 					}
-
 					if (id.includes("react-use") || id.includes("react-tooltip")) {
 						return "react-utils";
 					}
-
 					if (id.includes("react-router")) {
 						return "react-router";
 					}
-
 					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
 						return "react-core";
 					}
-
 					if (id.includes("cron-parser")) {
 						return "cron-parser";
 					}
-
 					if (id.includes("cronstrue")) {
 						return "cronstrue";
 					}
-
-					if (id.includes("franc")) {
-						return "franc";
+					if (id.includes("zustand") || id.includes("ky")) {
+						return "http-state";
 					}
-
-					if (id.includes("zustand")) {
-						return "state";
-					}
-
 					if (id.includes("react-query")) {
 						return "react-query";
 					}
-
 					if (id.includes("node_modules")) {
 						return "vendor";
 					}
 				},
 			},
+		},
+		cacheDir: "node_modules/.vite_cache",
+		incremental: true,
+		clearScreen: false,
+	},
+	server: {
+		fs: {
+			strict: false,
 		},
 	},
 }));
