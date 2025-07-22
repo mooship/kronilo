@@ -1,6 +1,3 @@
-/**
- * Displays a loading screen while the app is loading.
- */
 export function AppLoader() {
 	return (
 		<div className="min-h-screen flex flex-col bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50">

@@ -1,14 +1,12 @@
+import { QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { AppLoader } from "./components/AppLoader";
 import { initI18n } from "./i18n";
+import { queryClient } from "./lib/queryClient";
 
-/**
- * Application entry point that renders the React application.
- * Initializes the root React component with StrictMode for development safety checks.
- */
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
@@ -16,9 +14,11 @@ if (rootElement) {
 		.then(() => {
 			createRoot(rootElement).render(
 				<StrictMode>
-					<Suspense fallback={<AppLoader />}>
-						<App />
-					</Suspense>
+					<QueryClientProvider client={queryClient}>
+						<Suspense fallback={<AppLoader />}>
+							<App />
+						</Suspense>
+					</QueryClientProvider>
 				</StrictMode>,
 			);
 			if ("serviceWorker" in navigator) {
@@ -32,9 +32,11 @@ if (rootElement) {
 		.catch(() => {
 			createRoot(rootElement).render(
 				<StrictMode>
-					<Suspense fallback={<AppLoader />}>
-						<App />
-					</Suspense>
+					<QueryClientProvider client={queryClient}>
+						<Suspense fallback={<AppLoader />}>
+							<App />
+						</Suspense>
+					</QueryClientProvider>
 				</StrictMode>,
 			);
 		});

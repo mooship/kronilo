@@ -3,17 +3,6 @@ import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
-/**
- * Toggle button component for switching between different application modes.
- * Allows users to switch between "Cron → Natural language" and "Natural language → Cron" conversion modes.
- * Updates the current route and provides visual feedback for the active mode.
- *
- * @example
- * ```tsx
- * <ModeToggle />
- * // Displays current mode and allows switching between conversion directions
- * ```
- */
 export const ModeToggle: FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();

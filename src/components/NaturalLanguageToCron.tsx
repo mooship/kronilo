@@ -1,135 +1,44 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { checkRateLimit, translateToCron } from "../api/translateToCron";
 import { usePressAnimation } from "../hooks/usePressAnimation";
+import { useRateLimit, useTranslateToCron } from "../hooks/useTranslateQuery";
 import { useKroniloStore } from "../store";
 import { ActionButton } from "./ActionButton";
 import { CopyButton } from "./CopyButton";
 import { ModeToggle } from "./ModeToggle";
 import { NextRuns } from "./NextRuns";
 
-/**
- * Component for converting natural language descriptions into cron expressions.
- * Features rate limiting checks, retry logic, and real-time validation.
- * Integrates with the API service to translate natural language into cron syntax.
- *
- * Donation Modal Logic:
- * - Triggers after 2 successful natural language → cron translations (mode-specific counter).
- * - Counter is incremented only after a successful translation.
- * - Modal postponement is handled globally ("Maybe Later" sets a 14-day delay).
- *
- * @example
- * ```tsx
- * <NaturalLanguageToCron />
- * // User can enter: "every day at 9am"
- * // Result: "0 9 * * *"
- * ```
- */
 export function NaturalLanguageToCron() {
 	const { t } = useTranslation();
 	const [naturalLanguage, setNaturalLanguage] = useState("");
 	const [cron, setCron] = useState("");
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-	const [retrying, setRetrying] = useState(false);
-	const rateLimited = useKroniloStore((s) => s.rateLimited);
-	const rateLimitMsg = useKroniloStore((s) => s.rateLimitMsg);
-	const setRateLimited = useKroniloStore((s) => s.setRateLimited);
+	const { data: rateLimitData } = useRateLimit();
+	const translateMutation = useTranslateToCron();
 	const incrementNaturalToCronUsage = useKroniloStore(
 		(s) => s.incrementNaturalToCronUsage,
 	);
 	const actionAnim = usePressAnimation();
 
-	useEffect(() => {
-		async function checkLimit() {
-			const res = await checkRateLimit();
-			setRateLimited(
-				res.rateLimited,
-				typeof res.details === "string"
-					? res.details
-					: JSON.stringify(res.details ?? ""),
-			);
-		}
-		checkLimit();
-
-		let interval: number | null = null;
-		if (rateLimited) {
-			interval = window.setInterval(() => {
-				checkLimit();
-			}, 30000);
-		}
-
-		return () => {
-			if (interval) window.clearInterval(interval);
-		};
-	}, [setRateLimited, rateLimited]);
+	const rateLimited = rateLimitData?.rateLimited ?? false;
+	const rateLimitMsg =
+		typeof rateLimitData?.details === "string"
+			? rateLimitData.details
+			: JSON.stringify(rateLimitData?.details ?? "");
+	const loading = translateMutation.isPending;
+	const retrying =
+		translateMutation.isError && translateMutation.failureCount < 2;
+	const error = translateMutation.error?.message;
 
 	async function handleGenerate() {
-		setError(null);
-		setCron("");
-		setLoading(true);
-		setRetrying(false);
-		let attempt = 0;
-		let lastError: Error | null = null;
-		const limitRes = await checkRateLimit();
-		setRateLimited(
-			limitRes.rateLimited,
-			typeof limitRes.details === "string"
-				? limitRes.details
-				: JSON.stringify(limitRes.details ?? ""),
-		);
-		if (limitRes.rateLimited) {
-			setLoading(false);
+		if (!naturalLanguage.trim()) {
 			return;
 		}
 
-		while (attempt < 2) {
-			try {
-				const result = await translateToCron(naturalLanguage);
-
-				if (result.status === 429 && result.rateLimitType) {
-					setRateLimited(true, result.error || "Rate limit exceeded");
-					setLoading(false);
-					setRetrying(false);
-					return;
-				}
-
-				if (result.data?.cron) {
-					setCron(result.data.cron);
-					incrementNaturalToCronUsage();
-					setLoading(false);
-					setRetrying(false);
-					return;
-				} else if (result.error) {
-					if (
-						result.status >= 400 &&
-						result.status < 500 &&
-						result.status !== 408
-					) {
-						setError(result.error);
-						setLoading(false);
-						setRetrying(false);
-						return;
-					}
-					lastError = new Error(result.error);
-					throw lastError;
-				} else {
-					lastError = new Error(t("naturalLanguage.unexpectedError"));
-					throw lastError;
-				}
-			} catch (err) {
-				lastError = err instanceof Error ? err : new Error(String(err));
-				attempt++;
-				if (attempt < 2) {
-					setRetrying(true);
-					await new Promise((res) => setTimeout(res, 500));
-					setRetrying(false);
-				}
-			}
-		}
-		setError(lastError ? lastError.message : "Unknown error");
-		setLoading(false);
-		setRetrying(false);
+		try {
+			const result = await translateMutation.mutateAsync(naturalLanguage);
+			setCron(result.cron);
+			incrementNaturalToCronUsage();
+		} catch {}
 	}
 
 	return (

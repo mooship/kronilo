@@ -3,21 +3,6 @@ import { useDebounce } from "react-use";
 import type { UseCronValidation } from "../types/hooks";
 import { isValidCronFormat } from "../utils/cronValidation";
 
-/**
- * Custom hook for validating cron expressions with debounced input.
- * Provides real-time validation feedback with a delay to avoid excessive validation calls.
- *
- * @param cron - The cron expression to validate
- * @returns Object containing validation error and error clearing function
- *
- * @example
- * ```typescript
- * const { error, clearError } = useCronValidation(cronExpression);
- * if (error) {
- *   console.error(error);
- * }
- * ```
- */
 export function useCronValidation(cron: string): UseCronValidation {
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [debouncedCron, setDebouncedCron] = useState(cron);

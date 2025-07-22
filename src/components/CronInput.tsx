@@ -7,22 +7,10 @@ import { useClickAway } from "react-use";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../store";
 import type { CronInputProps } from "../types/components";
-import { CRON_SUGGESTIONS } from "../utils/cronValidation";
+import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
 import { CopyButton } from "./CopyButton";
 import { ModeToggle } from "./ModeToggle";
 
-/**
- * Input component for entering and editing cron expressions.
- * Features include validation feedback, suggestion dropdown, keyboard shortcuts,
- * and integration with the application's mode toggle.
- *
- * @param error - Optional error message to display when the cron expression is invalid
- *
- * @example
- * ```tsx
- * <CronInput error={validationError} />
- * ```
- */
 export const CronInput: FC<CronInputProps> = ({ error }) => {
 	const { t } = useTranslation();
 	const inputRef = useRef<HTMLInputElement>(null);

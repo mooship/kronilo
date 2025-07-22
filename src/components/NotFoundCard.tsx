@@ -4,18 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 
-/**
- * Component displayed when users navigate to a non-existent route.
- * Provides a user-friendly 404 error page with navigation back to the home page.
- * Features press animation effects and accessibility support.
- *
- * @returns JSX element containing the 404 error page
- *
- * @example
- * ```tsx
- * <Route path="*" element={<NotFoundCard />} />
- * ```
- */
 export const NotFoundCard: FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();

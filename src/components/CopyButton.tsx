@@ -6,25 +6,6 @@ import { useCopyToClipboard, useTimeoutFn } from "react-use";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import type { CopyButtonProps } from "../types/components";
 
-/**
- * A copy-to-clipboard button component with visual feedback and error handling.
- * Shows success state after copying and displays error messages if copying fails.
- * Includes press animation effects and accessibility features.
- *
- * @param value - The text value to copy to clipboard
- * @param className - Additional CSS classes to apply
- * @param label - Accessibility label for the button (default: "Copy")
- * @param disabled - Whether the button should be disabled
- *
- * @example
- * ```tsx
- * <CopyButton
- *   value="0 9 * * *"
- *   label="Copy cron expression"
- *   className="btn-sm"
- * />
- * ```
- */
 export const CopyButton: FC<CopyButtonProps> = ({
 	value,
 	className = "",

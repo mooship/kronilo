@@ -2,32 +2,10 @@ import clsx from "clsx";
 import type { ButtonHTMLAttributes, FC } from "react";
 import type { ActionButtonProps } from "../types/components";
 
-/**
- * Extended ActionButton props that combines custom ActionButtonProps with native button attributes.
- * This allows the component to accept all standard HTML button properties alongside custom ones.
- */
 interface ExtendedActionButtonProps
 	extends ActionButtonProps,
 		ButtonHTMLAttributes<HTMLButtonElement> {}
 
-/**
- * A reusable action button component with consistent styling and animation effects.
- * Provides a primary button appearance with hover, focus, and active states.
- *
- * @param label - The text to display inside the button
- * @param className - Additional CSS classes to apply to the button
- * @param props - All other standard HTML button attributes (onClick, disabled, etc.)
- *
- * @example
- * ```tsx
- * <ActionButton
- *   label="Submit"
- *   onClick={handleSubmit}
- *   disabled={isLoading}
- *   className="w-full"
- * />
- * ```
- */
 export const ActionButton: FC<ExtendedActionButtonProps> = ({
 	label,
 	className = "",

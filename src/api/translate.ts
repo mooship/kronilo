@@ -4,27 +4,16 @@ import type {
 	HealthResponse,
 	RateLimitResult,
 } from "../types/api";
-import { apiRequest } from "./apiRequest";
-import { getApiErrorMessage } from "./getApiErrorMessage";
+import { getApiErrorMessage } from "./errorUtils";
+import { apiRequest } from "./httpClient";
 
-/** Base URL for the API, loaded from environment variables */
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
-/** URL endpoint for translating natural language to cron expressions */
 const API_URL = `${BASE_URL}/api/translate`;
-
-/** URL endpoint for checking API health and rate limits */
 const HEALTH_URL = `${BASE_URL}/health`;
 
-/**
- * Checks the current rate limit status for the API.
- * This function queries the health endpoint to determine if the user has exceeded
- * their daily usage limits and provides detailed information about current usage.
- */
 export async function checkRateLimit(): Promise<RateLimitResult> {
 	const result = await apiRequest<HealthResponse>(HEALTH_URL, {
-		method: "get",
-		timeout: 5000,
+		method: "GET",
 	});
 
 	if (result.error) {
@@ -73,10 +62,6 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 	};
 }
 
-/**
- * Translates a natural language schedule description into a cron expression.
- * Sends the input to the API service without language code (detection done server-side).
- */
 export async function translateToCron(input: string): Promise<{
 	data?: ApiSuccess;
 	error?: string;
@@ -93,9 +78,11 @@ export async function translateToCron(input: string): Promise<{
 	}
 
 	const result = await apiRequest<ApiResponse>(API_URL, {
-		method: "post",
-		json: { input },
-		timeout: 10000,
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({ input }),
 	});
 
 	if (result.error) {

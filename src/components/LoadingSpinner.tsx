@@ -2,28 +2,6 @@ import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoadingSpinnerProps } from "../types/components";
 
-/**
- * A polished loading spinner component that matches the app's design system.
- * Features a dual-ring animation with proper dark/light theme support.
- *
- * @param props - The component props
- * @param props.message - Custom loading message (defaults to "Loading...")
- * @param props.minHeight - Custom minimum height for the container (defaults to "400px")
- *
- * @example
- * ```tsx
- * import { LoadingSpinner } from './components/LoadingSpinner';
- *
- * // Basic usage
- * <LoadingSpinner />
- *
- * // With custom message
- * <LoadingSpinner message="Translating cron expression..." />
- *
- * // With custom height
- * <LoadingSpinner minHeight="200px" />
- * ```
- */
 export const LoadingSpinner: FC<LoadingSpinnerProps> = ({
 	message,
 	minHeight = "400px",
