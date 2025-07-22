@@ -11,14 +11,14 @@ export interface RateLimitResult {
  * Response structure from the health endpoint containing rate limit information.
  */
 export interface HealthResponse {
-	status: string;
+	status: "ok" | "error";
+	error?: string;
 	rateLimit?: {
-		perUser?: {
+		perUser: {
 			max: number;
 			windowMs: number;
-			currentUsers: number;
 		};
-		daily?: {
+		daily: {
 			limit: number;
 			used: number;
 			remaining: number;
@@ -44,6 +44,7 @@ export interface ApiSuccess {
 	cron: string;
 	model: string;
 	input: string;
+	language: string;
 }
 
 /**
@@ -62,9 +63,10 @@ export interface RateLimitError extends ApiError {
 	rateLimitType: "perUser" | "daily";
 	details: {
 		daily: {
-			count: number;
-			date: string;
+			limit: number;
+			used: number;
 			remaining: number;
+			date: string;
 		};
 		perUser: {
 			maxPerHour: number;
@@ -83,4 +85,5 @@ export type ApiResponse = ApiSuccess | ApiError;
  */
 export interface TranslateRequest {
 	input: string;
+	language?: string;
 }

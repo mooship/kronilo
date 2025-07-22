@@ -11,7 +11,7 @@ const i18nInstance = i18n
 export const initI18n = () => {
 	return i18nInstance.init({
 		fallbackLng: "en",
-		supportedLngs: ["en", "fr", "de", "es"],
+		supportedLngs: ["en", "fr", "de", "es", "it", "nl", "pt-BR", "pt-PT"],
 		debug: false,
 		interpolation: {
 			escapeValue: false,

@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Dead Simple Cron Translator",
-		"description": "Translate cron expressions to plain language instantly"
+		"description": "Convert between cron expressions and natural language instantly"
 	},
 	"navigation": {
 		"modes": {
@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Natural Language",
-		"placeholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, and Spanish. Support for other languages may vary.",
+		"placeholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, Spanish, Italian, Dutch, Portuguese (Brazilian & European). Support for other languages may vary.",
 		"ariaLabel": "Enter schedule description in natural language"
 	},
 	"translation": {

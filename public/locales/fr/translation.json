@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Traducteur de Cron ultra simple",
-		"description": "Traduisez instantanément les expressions cron en langage courant"
+		"description": "Convertissez instantanément entre expressions cron et langage naturel"
 	},
 	"navigation": {
 		"modes": {
@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Langage naturel",
-		"placeholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand et espagnol. Le support pour d'autres langues peut varier.",
+		"placeholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand, espagnol, italien, néerlandais, portugais (brésilien et européen). Le support pour d'autres langues peut varier.",
 		"ariaLabel": "Saisissez la description de l'horaire en langage naturel"
 	},
 	"translation": {

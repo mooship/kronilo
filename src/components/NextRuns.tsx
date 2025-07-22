@@ -114,7 +114,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		return (
 			<div className="mb-6 min-h-[20rem]" aria-live="polite">
 				<div className="mb-4 flex items-center justify-between">
-					<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
+					<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
 						{t("nextRuns.title")}
 					</h3>
 					<CopyButton

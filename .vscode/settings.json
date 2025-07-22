@@ -16,10 +16,7 @@
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
-	"[postcss]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[markdown]": {
+	"[instructions]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	}
 }
