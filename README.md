@@ -17,7 +17,7 @@ Kronilo is fully localized and supports:
 - 🇵🇹 Portuguese (European)
 - 🇧🇷 Portuguese (Brazilian)
 
-Switch languages on the fly—Kronilo automatically detects your browser language, or you can set it manually for testing.
+Switch languages on the fly—Kronilo automatically detects your browser language.
 
 ---
 
