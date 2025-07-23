@@ -39,7 +39,23 @@ function isValidCronField(field: string, min: number, max: number): boolean {
 	}
 
 	if (field.includes("-")) {
-		const [start, end] = field.split("-");
+		if (field.startsWith("-")) {
+			const num = Number(field);
+			if (Number.isNaN(num)) {
+				return false;
+			}
+			if (max === 7 && num === 7) {
+				return true;
+			}
+			return num >= min && num <= max;
+		}
+
+		const parts = field.split("-");
+		if (parts.length !== 2) {
+			return false;
+		}
+
+		const [start, end] = parts;
 		const startNum = Number(start);
 		const endNum = Number(end);
 
@@ -59,7 +75,11 @@ function isValidCronField(field: string, min: number, max: number): boolean {
 	if (field.includes(",")) {
 		const values = field.split(",");
 		return values.every((value) => {
-			const num = Number(value.trim());
+			const trimmedValue = value.trim();
+			if (trimmedValue === "") {
+				return false;
+			}
+			const num = Number(trimmedValue);
 			return !Number.isNaN(num) && num >= min && num <= max;
 		});
 	}
