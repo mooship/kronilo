@@ -53,6 +53,9 @@ export const LanguageSwitcher: React.FC = () => {
 
 	function handleSelect(lang: string) {
 		i18n.changeLanguage(lang);
+		try {
+			window.localStorage.setItem("i18nextLng", lang);
+		} catch {}
 		setOpen(false);
 	}
 

@@ -20,8 +20,8 @@ export const initI18n = () => {
 			loadPath: "/locales/{{lng}}/{{ns}}.json",
 		},
 		detection: {
-			order: ["navigator"],
-			caches: [],
+			order: ["localStorage", "navigator"],
+			caches: ["localStorage"],
 		},
 		react: {
 			useSuspense: true,

@@ -16,9 +16,8 @@
 		"format": "biome format . --write",
 		"lint": "biome lint . --write",
 		"preview": "vite preview",
-		"test": "vitest",
-		"test:ui": "vitest --ui",
-		"test:run": "vitest run"
+		"test": "vitest run",
+		"test:ui": "vitest --ui --run"
 	},
 	"dependencies": {
 		"@fontsource/poppins": "^5.2.6",
