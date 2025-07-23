@@ -1,8 +1,7 @@
 import type { FC } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useTimeoutFn } from "react-use";
-import { useKroniloStore } from "../store";
+import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronTranslationProps } from "../types/components";
 import { CopyButton } from "./CopyButton";
 
@@ -19,7 +18,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	type CronstrueType = typeof import("cronstrue");
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
 	const loadedLocales = useRef<{ [key: string]: boolean }>({});
-	const translateCron = async () => {
+	const translateCron = useCallback(async () => {
 		try {
 			if (!cronstrueRef.current) {
 				const mod = await import("cronstrue");
@@ -47,24 +46,21 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			setError(e instanceof Error ? e.message : "Invalid cron expression");
 		}
 		setLoading(false);
-	};
-
-	const [, cancel, reset] = useTimeoutFn(() => {
-		translateCron();
-	}, 500);
+	}, [cron, lang, incrementCronToNaturalUsage]);
 
 	useEffect(() => {
 		if (!cron.trim()) {
 			setTranslation("");
 			setError(undefined);
 			setLoading(false);
-			cancel();
 			return;
 		}
-
 		setLoading(true);
-		reset();
-	}, [cron, cancel, reset]);
+		const timeout = setTimeout(() => {
+			translateCron();
+		}, 500);
+		return () => clearTimeout(timeout);
+	}, [cron, translateCron]);
 
 	return (
 		<div className="mb-8">

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import { useMedia, useWindowSize } from "react-use";
+import { useMediaQuery, useWindowSize } from "usehooks-ts";
 import { AppRouter } from "./AppRouter";
 import { AppFooter } from "./components/AppFooter";
 import { AppHeader } from "./components/AppHeader";
@@ -11,7 +11,7 @@ import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
-import { useKroniloStore } from "./store";
+import { useKroniloStore } from "./stores/useKroniloStore";
 
 const DonationModal = lazy(() =>
 	import("./components/DonationModal").then((m) => ({
@@ -37,7 +37,9 @@ export function MainContent() {
 
 function App() {
 	const { width } = useWindowSize();
-	const prefersReducedMotion = useMedia("(prefers-reduced-motion: reduce)");
+	const prefersReducedMotion = useMediaQuery(
+		"(prefers-reduced-motion: reduce)",
+	);
 	const isSmallScreen = width < 640;
 	const {
 		donationModalOpen,

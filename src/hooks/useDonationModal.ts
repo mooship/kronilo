@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useKroniloStore } from "../store";
+import { useKroniloStore } from "../stores/useKroniloStore";
 import type { UseDonationModal } from "../types/hooks";
 
 export function useDonationModal(): UseDonationModal {

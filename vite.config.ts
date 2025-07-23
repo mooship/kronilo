@@ -45,7 +45,7 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("i18next") || id.includes("react-i18next")) {
 						return "i18n";
 					}
-					if (id.includes("react-use") || id.includes("react-tooltip")) {
+					if (id.includes("usehooks-ts") || id.includes("react-tooltip")) {
 						return "react-utils";
 					}
 					if (id.includes("react-router")) {

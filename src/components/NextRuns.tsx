@@ -1,7 +1,6 @@
 import type { FC } from "react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useTimeoutFn } from "react-use";
 import type { NextRunsProps } from "../types/components";
 import { calculateNextRuns } from "../utils/cronScheduleCalculator";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
@@ -16,18 +15,14 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const [loading, setLoading] = useState(false);
 	const [hasAmbiguousSchedule, setHasAmbiguousSchedule] = useState(false);
 
-	const performCalculation = async () => {
+	const performCalculation = useCallback(async () => {
 		setLoading(true);
 		const result = await calculateNextRuns(cron, lang);
 		setRuns(result.runs);
 		setError(result.error);
 		setHasAmbiguousSchedule(result.hasAmbiguousSchedule);
 		setLoading(false);
-	};
-
-	const [, cancel, reset] = useTimeoutFn(() => {
-		performCalculation();
-	}, 500);
+	}, [cron, lang]);
 
 	useEffect(() => {
 		if (!cron.trim() || disabled) {
@@ -35,13 +30,14 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			setError(null);
 			setLoading(false);
 			setHasAmbiguousSchedule(false);
-			cancel();
 			return;
 		}
-
 		setLoading(true);
-		reset();
-	}, [cron, disabled, cancel, reset]);
+		const timeout = setTimeout(() => {
+			performCalculation();
+		}, 500);
+		return () => clearTimeout(timeout);
+	}, [cron, disabled, performCalculation]);
 
 	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
 

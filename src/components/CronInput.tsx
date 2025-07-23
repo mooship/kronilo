@@ -1,11 +1,10 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
-import { useClickAway } from "react-use";
 import { usePressAnimation } from "../hooks/usePressAnimation";
-import { useKroniloStore } from "../store";
+import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronInputProps } from "../types/components";
 import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
 import { CopyButton } from "./CopyButton";
@@ -20,9 +19,22 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 	const cron = useKroniloStore((s) => s.cron);
 	const setCron = useKroniloStore((s) => s.setCron);
 
-	useClickAway(suggestionsRef, () => {
-		setShowSuggestions(false);
-	});
+	useEffect(() => {
+		function handleClick(event: MouseEvent) {
+			if (
+				suggestionsRef.current &&
+				!suggestionsRef.current.contains(event.target as Node)
+			) {
+				setShowSuggestions(false);
+			}
+		}
+		if (showSuggestions) {
+			document.addEventListener("mousedown", handleClick);
+		}
+		return () => {
+			document.removeEventListener("mousedown", handleClick);
+		};
+	}, [showSuggestions]);
 
 	const inputClassName = useMemo(() => {
 		const baseClasses =

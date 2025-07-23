@@ -30,7 +30,6 @@ export async function calculateNextRuns(
 	try {
 		const hasAmbiguousSchedule = detectAmbiguousSchedule(cron);
 
-		// Dynamic import of cron-parser
 		const mod = await import("cron-parser");
 		const parser = mod.default;
 

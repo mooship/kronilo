@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useRateLimit, useTranslateToCron } from "../hooks/useTranslateQuery";
-import { useKroniloStore } from "../store";
+import { useKroniloStore } from "../stores/useKroniloStore";
 import { ActionButton } from "./ActionButton";
 import { CopyButton } from "./CopyButton";
 import { ModeToggle } from "./ModeToggle";
