@@ -7,6 +7,7 @@ import { AppHeader } from "./components/AppHeader";
 import { AppLayout, AppMain } from "./components/AppLayout";
 import { CronInput } from "./components/CronInput";
 import { CronTranslation } from "./components/CronTranslation";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
 import { NextRuns } from "./components/NextRuns";
 import { useCronValidation } from "./hooks/useCronValidation";
@@ -57,7 +58,12 @@ function App() {
 					onMaybeLater={handleMaybeLater}
 				/>
 			</Suspense>
-			<AppHeader isSmallScreen={isSmallScreen} />
+			<div className="flex flex-col items-center w-full">
+				<div className="w-full flex justify-end px-4 pt-2">
+					<LanguageSwitcher />
+				</div>
+				<AppHeader isSmallScreen={isSmallScreen} />
+			</div>
 			<AppMain>
 				<AppRouter />
 			</AppMain>
