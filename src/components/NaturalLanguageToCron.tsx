@@ -70,7 +70,7 @@ export function NaturalLanguageToCron() {
 						<ActionButton
 							label={
 								rateLimited
-									? t("naturalLanguage.rateLimited")
+									? t("actions.rateLimited")
 									: loading
 										? t("naturalLanguage.translating")
 										: t("naturalLanguage.generateCron")

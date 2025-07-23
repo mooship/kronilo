@@ -7,37 +7,35 @@ import { AppLoader } from "./components/AppLoader";
 import { initI18n } from "./i18n";
 import { queryClient } from "./lib/queryClient";
 
+const registerServiceWorker = () => {
+	if ("serviceWorker" in navigator) {
+		window.addEventListener("load", () => {
+			import("virtual:pwa-register").then(({ registerSW }) => {
+				registerSW({ immediate: true });
+			});
+		});
+	}
+};
+
+const renderApp = () => {
+	return (
+		<StrictMode>
+			<QueryClientProvider client={queryClient}>
+				<Suspense fallback={<AppLoader />}>
+					<App />
+				</Suspense>
+			</QueryClientProvider>
+		</StrictMode>
+	);
+};
+
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
-	initI18n()
-		.then(() => {
-			createRoot(rootElement).render(
-				<StrictMode>
-					<QueryClientProvider client={queryClient}>
-						<Suspense fallback={<AppLoader />}>
-							<App />
-						</Suspense>
-					</QueryClientProvider>
-				</StrictMode>,
-			);
-			if ("serviceWorker" in navigator) {
-				window.addEventListener("load", () => {
-					import("virtual:pwa-register").then(({ registerSW }) => {
-						registerSW({ immediate: true });
-					});
-				});
-			}
-		})
-		.catch(() => {
-			createRoot(rootElement).render(
-				<StrictMode>
-					<QueryClientProvider client={queryClient}>
-						<Suspense fallback={<AppLoader />}>
-							<App />
-						</Suspense>
-					</QueryClientProvider>
-				</StrictMode>,
-			);
-		});
+	const root = createRoot(rootElement);
+
+	initI18n().finally(() => {
+		root.render(renderApp());
+		registerServiceWorker();
+	});
 }
