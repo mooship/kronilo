@@ -1,4 +1,5 @@
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
@@ -24,6 +25,9 @@ const renderApp = () => {
 				<Suspense fallback={<AppLoader />}>
 					<App />
 				</Suspense>
+				{import.meta.env?.MODE === "development" && (
+					<ReactQueryDevtools initialIsOpen={false} />
+				)}
 			</QueryClientProvider>
 		</StrictMode>
 	);

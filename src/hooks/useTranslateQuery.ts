@@ -76,5 +76,8 @@ export function useTranslateToCron() {
 
 			throw lastError || new Error("Translation failed after retries");
 		},
+		onSuccess: async () => {
+			await queryClient.invalidateQueries({ queryKey: ["rateLimit"] });
+		},
 	});
 }

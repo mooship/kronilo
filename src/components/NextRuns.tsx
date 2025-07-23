@@ -1,7 +1,9 @@
+import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { NextRunsProps } from "../types/components";
+import type { CronCalculationResult } from "../types/utils";
 import { calculateNextRuns } from "../utils/cronScheduleCalculator";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
 import { CopyButton } from "./CopyButton";
@@ -10,38 +12,26 @@ import { NextRunsList } from "./NextRunsList";
 export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];
-	const [runs, setRuns] = useState<string[]>([]);
-	const [error, setError] = useState<string | null>(null);
-	const [loading, setLoading] = useState(false);
-	const [hasAmbiguousSchedule, setHasAmbiguousSchedule] = useState(false);
 
-	const performCalculation = useCallback(async () => {
-		setLoading(true);
-		const result = await calculateNextRuns(cron, lang);
-		setRuns(result.runs);
-		setError(result.error);
-		setHasAmbiguousSchedule(result.hasAmbiguousSchedule);
-		setLoading(false);
-	}, [cron, lang]);
+	const isEnabled = !!cron.trim() && !disabled;
+	const { data, error, isLoading } = useQuery<CronCalculationResult, Error>({
+		queryKey: ["nextRuns", cron, lang],
+		queryFn: async () => {
+			return await calculateNextRuns(cron, lang);
+		},
+		enabled: isEnabled,
+		staleTime: 0,
+		refetchOnWindowFocus: false,
+		retry: 1,
+	});
 
-	useEffect(() => {
-		if (!cron.trim() || disabled) {
-			setRuns([]);
-			setError(null);
-			setLoading(false);
-			setHasAmbiguousSchedule(false);
-			return;
-		}
-		setLoading(true);
-		const timeout = setTimeout(() => {
-			performCalculation();
-		}, 500);
-		return () => clearTimeout(timeout);
-	}, [cron, disabled, performCalculation]);
+	const runs = isEnabled && data ? data.runs : [];
+	const hasAmbiguousSchedule =
+		isEnabled && data ? data.hasAmbiguousSchedule : false;
 
 	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
 
-	if (!cron.trim() || disabled) {
+	if (!isEnabled) {
 		return (
 			<div className="mb-6 min-h-[20rem]" aria-live="polite">
 				<div className="mb-4 flex items-center justify-between">
@@ -78,7 +68,11 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			<AmbiguousScheduleWarning show={hasAmbiguousSchedule} />
 
 			<div className="min-h-[16rem]">
-				<NextRunsList runs={runs} error={error} loading={loading} />
+				<NextRunsList
+					runs={runs}
+					error={error ? error.message : data?.error || null}
+					loading={isLoading}
+				/>
 			</div>
 		</div>
 	);
