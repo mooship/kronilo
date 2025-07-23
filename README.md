@@ -17,7 +17,7 @@ Kronilo is fully localized and supports:
 - 🇵🇹 Portuguese (European)
 - 🇧🇷 Portuguese (Brazilian)
 
-Switch languages on the fly—Kronilo automatically detects your browser language.
+Kronilo automatically detects your browser language and allows you to switch languages on the fly.
 
 ---
 
@@ -74,6 +74,28 @@ npm run build
 ```sh
 npm run preview
 ```
+
+---
+
+## 🧪 Testing
+
+Kronilo includes comprehensive tests to ensure reliability and correctness:
+
+```sh
+# Run tests once
+npm test
+
+# Run tests in watch mode
+npm run test:ui
+
+# Run tests with coverage
+npm run test:run
+```
+
+The test suite covers:
+- **Cron validation:** Ensures accurate parsing and validation of cron expressions
+- **Schedule calculation:** Tests next run time calculations and ambiguous schedule detection
+- **Edge cases:** Comprehensive testing of malformed inputs, boundary conditions, and error handling
 
 ---
 
