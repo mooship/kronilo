@@ -1,6 +1,12 @@
 import type { ApiRequestResult } from "../types/api";
-import { fetchWrapper } from "./apiClient";
 import { getApiErrorMessage } from "./errorUtils";
+
+async function fetchWrapper(
+	url: string,
+	options?: RequestInit,
+): Promise<Response> {
+	return fetch(url, options);
+}
 
 export async function apiRequest<T>(
 	url: string,
