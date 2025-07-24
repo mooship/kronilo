@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCopyToClipboard, useTimeout } from "usehooks-ts";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import type { CopyButtonProps } from "../types/components";
 
-export const CopyButton: FC<CopyButtonProps> = ({
+const CopyButton: FC<CopyButtonProps> = ({
 	value,
 	className = "",
 	label,
@@ -67,7 +67,8 @@ export const CopyButton: FC<CopyButtonProps> = ({
 					<span className="flex items-center gap-2">{buttonLabel}</span>
 				)}
 			</button>
-			{/* usehooks-ts useCopyToClipboard does not provide error state, so error UI is omitted */}
 		</div>
 	);
 };
+
+export const MemoizedCopyButton = memo(CopyButton);

@@ -1,13 +1,26 @@
 import type { FC } from "react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronTranslationProps } from "../types/components";
-import { CopyButton } from "./CopyButton";
+import { MemoizedCopyButton } from "./CopyButton";
 
-export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
+const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];
+	const CRONSTRUE_LOCALES = [
+		"en",
+		"fr",
+		"de",
+		"es",
+		"it",
+		"nl",
+		"pt_BR",
+		"pl",
+		"ru",
+		"tr",
+		"uk",
+	];
 	const [translation, setTranslation] = useState<string>("");
 	const [error, setError] = useState<string | undefined>(undefined);
 	const [loading, setLoading] = useState(false);
@@ -28,15 +41,33 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			if (!cronstrue) {
 				throw new Error("cronstrue not loaded");
 			}
-			if (!loadedLocales.current[lang]) {
-				if (lang === "fr") await import("cronstrue/locales/fr");
-				else if (lang === "es") await import("cronstrue/locales/es");
-				else if (lang === "de") await import("cronstrue/locales/de");
-				loadedLocales.current[lang] = true;
+			const localeMap: Record<string, string> = {
+				en: "en",
+				fr: "fr",
+				de: "de",
+				es: "es",
+				it: "it",
+				nl: "nl",
+				"pt-BR": "pt_BR",
+				"pt-PT": "pt_BR",
+				pl: "pl",
+				ru: "ru",
+				tr: "tr",
+				uk: "uk",
+			};
+			const cronstrueLocale =
+				localeMap[i18n.language] || localeMap[lang] || "en";
+			if (!loadedLocales.current[cronstrueLocale] && cronstrueLocale !== "en") {
+				try {
+					await import(`cronstrue/locales/${cronstrueLocale}`);
+				} catch {}
+				loadedLocales.current[cronstrueLocale] = true;
 			}
 			const result = cronstrue.toString(cron, {
 				throwExceptionOnParseError: true,
-				locale: ["en", "fr", "es", "de"].includes(lang) ? lang : "en",
+				locale: CRONSTRUE_LOCALES.includes(cronstrueLocale)
+					? cronstrueLocale
+					: "en",
 			});
 			setTranslation(result);
 			setError(undefined);
@@ -46,7 +77,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			setError(e instanceof Error ? e.message : "Invalid cron expression");
 		}
 		setLoading(false);
-	}, [cron, lang, incrementCronToNaturalUsage]);
+	}, [cron, lang, i18n.language, incrementCronToNaturalUsage]);
 
 	useEffect(() => {
 		if (!cron.trim()) {
@@ -68,7 +99,7 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
 					{t("translation.title")}
 				</h3>
-				<CopyButton
+				<MemoizedCopyButton
 					value={translation}
 					label={t("actions.copy")}
 					disabled={!translation || !cron.trim()}
@@ -100,3 +131,5 @@ export const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		</div>
 	);
 };
+
+export const MemoizedCronTranslation = memo(CronTranslation);

@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
@@ -21,7 +21,7 @@ const LANGUAGES = [
 	{ code: "uk", label: "Українська" },
 ];
 
-export const LanguageSwitcher: React.FC = () => {
+const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation();
 	const current = i18n.language;
 	const [open, setOpen] = useState(false);
@@ -75,7 +75,7 @@ export const LanguageSwitcher: React.FC = () => {
 				ref={buttonRef}
 				type="button"
 				className={clsx(
-					"flex items-center justify-between w-44 sm:w-44 w-28 rounded-full border-2 border-neutral-300 dark:border-neutral-700 px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-lg cursor-pointer select-none",
+					"flex items-center justify-between w-48 sm:w-48 w-32 rounded-full border-2 border-neutral-300 dark:border-neutral-700 px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-lg cursor-pointer select-none",
 					{ "ring-2 ring-blue-400": open },
 				)}
 				aria-haspopup="listbox"
@@ -109,7 +109,7 @@ export const LanguageSwitcher: React.FC = () => {
 			{open && (
 				<div
 					className={clsx(
-						"absolute z-50 mt-2 w-44 sm:w-44 w-28 rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-neutral-200 dark:border-neutral-700 overflow-hidden animate-fade-in",
+						"absolute z-50 mt-2 w-48 sm:w-48 w-32 rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-neutral-200 dark:border-neutral-700 overflow-hidden animate-fade-in",
 					)}
 				>
 					{LANGUAGES.map((lang) => (
@@ -134,3 +134,5 @@ export const LanguageSwitcher: React.FC = () => {
 		</div>
 	);
 };
+
+export const MemoizedLanguageSwitcher = memo(LanguageSwitcher);

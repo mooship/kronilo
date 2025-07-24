@@ -62,13 +62,3 @@ export interface NextRunsListProps {
 	error: string | null;
 	loading: boolean;
 }
-
-export interface NextRunsListProps {
-	runs: string[];
-	error: string | null;
-	loading: boolean;
-}
-
-export interface AmbiguousScheduleWarningProps {
-	show: boolean;
-}

@@ -1,9 +1,10 @@
 import clsx from "clsx";
 import type { FC } from "react";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const ModeToggle: FC = () => {
+const ModeToggle: FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -32,3 +33,5 @@ export const ModeToggle: FC = () => {
 		</button>
 	);
 };
+
+export const MemoizedModeToggle = memo(ModeToggle);

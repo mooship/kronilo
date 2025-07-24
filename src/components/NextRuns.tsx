@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import type { NextRunsProps } from "../types/components";
 import type { CronCalculationResult } from "../types/utils";
 import { calculateNextRuns } from "../utils/cronScheduleCalculator";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
-import { CopyButton } from "./CopyButton";
-import { NextRunsList } from "./NextRunsList";
+import { MemoizedCopyButton } from "./CopyButton";
+import { MemoizedNextRunsList } from "./NextRunsList";
 
-export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
+const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];
 
@@ -38,7 +38,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 					<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
 						{t("nextRuns.title")}
 					</h3>
-					<CopyButton
+					<MemoizedCopyButton
 						value=""
 						label={t("actions.copy")}
 						className="btn-sm"
@@ -58,7 +58,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
 					{t("nextRuns.title")}
 				</h3>
-				<CopyButton
+				<MemoizedCopyButton
 					value={runsCopyValue}
 					label={t("actions.copy")}
 					className="btn-sm"
@@ -68,7 +68,7 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			<AmbiguousScheduleWarning show={hasAmbiguousSchedule} />
 
 			<div className="min-h-[16rem]">
-				<NextRunsList
+				<MemoizedNextRunsList
 					runs={runs}
 					error={error ? error.message : data?.error || null}
 					loading={isLoading}
@@ -77,3 +77,5 @@ export const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		</div>
 	);
 };
+
+export const MemoizedNextRuns = memo(NextRuns);

@@ -1,12 +1,13 @@
 import clsx from "clsx";
 import type { ButtonHTMLAttributes, FC } from "react";
+import { memo } from "react";
 import type { ActionButtonProps } from "../types/components";
 
 interface ExtendedActionButtonProps
 	extends ActionButtonProps,
 		ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const ActionButton: FC<ExtendedActionButtonProps> = ({
+const ActionButton: FC<ExtendedActionButtonProps> = ({
 	label,
 	className = "",
 	...props
@@ -27,3 +28,5 @@ export const ActionButton: FC<ExtendedActionButtonProps> = ({
 		</button>
 	);
 };
+
+export const MemoizedActionButton = memo(ActionButton);

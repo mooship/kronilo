@@ -1,12 +1,9 @@
 import type { FC } from "react";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { NextRunsListProps } from "../types";
 
-export const NextRunsList: FC<NextRunsListProps> = ({
-	runs,
-	error,
-	loading,
-}) => {
+const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 	const { t } = useTranslation();
 
 	if (error) {
@@ -51,3 +48,5 @@ export const NextRunsList: FC<NextRunsListProps> = ({
 		</div>
 	);
 };
+
+export const MemoizedNextRunsList = memo(NextRunsList);

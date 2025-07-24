@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useRateLimit, useTranslateToCron } from "../hooks/useTranslateQuery";
 import { useKroniloStore } from "../stores/useKroniloStore";
-import { ActionButton } from "./ActionButton";
-import { CopyButton } from "./CopyButton";
-import { ModeToggle } from "./ModeToggle";
-import { NextRuns } from "./NextRuns";
+import { MemoizedActionButton } from "./ActionButton";
+import { MemoizedCopyButton } from "./CopyButton";
+import { MemoizedModeToggle } from "./ModeToggle";
+import { MemoizedNextRuns } from "./NextRuns";
 
 export function NaturalLanguageToCron() {
 	const { t } = useTranslation();
@@ -48,7 +48,7 @@ export function NaturalLanguageToCron() {
 					<span className="block font-semibold text-black text-xl dark:text-gray-100">
 						{t("naturalLanguage.title")}
 					</span>
-					<ModeToggle />
+					<MemoizedModeToggle />
 				</div>
 				<div className="relative flex w-full flex-col gap-4">
 					<textarea
@@ -67,7 +67,7 @@ export function NaturalLanguageToCron() {
 						}}
 					/>
 					<div className="flex justify-center">
-						<ActionButton
+						<MemoizedActionButton
 							label={
 								rateLimited
 									? t("actions.rateLimited")
@@ -117,7 +117,7 @@ export function NaturalLanguageToCron() {
 						<h3 className="font-semibold text-black text-xl dark:text-gray-100">
 							{t("naturalLanguage.generatedCron")}
 						</h3>
-						<CopyButton
+						<MemoizedCopyButton
 							value={cron}
 							label={t("naturalLanguage.copy")}
 							disabled={!cron}
@@ -132,7 +132,10 @@ export function NaturalLanguageToCron() {
 				</div>
 			)}
 
-			<NextRuns cron={cron} disabled={!cron || retrying || rateLimited} />
+			<MemoizedNextRuns
+				cron={cron}
+				disabled={!cron || retrying || rateLimited}
+			/>
 		</div>
 	);
 }

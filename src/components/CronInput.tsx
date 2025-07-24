@@ -1,16 +1,16 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronInputProps } from "../types/components";
 import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
-import { CopyButton } from "./CopyButton";
-import { ModeToggle } from "./ModeToggle";
+import { MemoizedCopyButton } from "./CopyButton";
+import { MemoizedModeToggle } from "./ModeToggle";
 
-export const CronInput: FC<CronInputProps> = ({ error }) => {
+const CronInput: FC<CronInputProps> = ({ error }) => {
 	const { t } = useTranslation();
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -81,7 +81,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 				>
 					{t("cronInput.label")}
 				</label>
-				<ModeToggle />
+				<MemoizedModeToggle />
 			</div>
 			<div className="relative flex w-full items-center justify-center gap-3">
 				<button
@@ -162,7 +162,7 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 						</div>
 					)}
 				</div>
-				<CopyButton
+				<MemoizedCopyButton
 					value={cron}
 					label={t("actions.copy")}
 					disabled={!cron || !!error}
@@ -192,3 +192,5 @@ export const CronInput: FC<CronInputProps> = ({ error }) => {
 		</div>
 	);
 };
+
+export const MemoizedCronInput = memo(CronInput);
