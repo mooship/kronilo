@@ -1,8 +1,8 @@
 import type { FC } from "react";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useKroniloStore } from "../stores/useKroniloStore";
-import type { CronTranslationProps } from "../types/components";
+import type { CronstrueType, CronTranslationProps } from "../types/components";
 import { MemoizedCopyButton } from "./CopyButton";
 
 const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
@@ -28,9 +28,26 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		(s) => s.incrementCronToNaturalUsage,
 	);
 
-	type CronstrueType = typeof import("cronstrue");
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
 	const loadedLocales = useRef<{ [key: string]: boolean }>({});
+	const localeMap = useMemo<Record<string, string>>(
+		() => ({
+			en: "en",
+			fr: "fr",
+			de: "de",
+			es: "es",
+			it: "it",
+			nl: "nl",
+			"pt-BR": "pt_BR",
+			"pt-PT": "pt_BR",
+			pl: "pl",
+			ru: "ru",
+			tr: "tr",
+			uk: "uk",
+		}),
+		[],
+	);
+
 	const translateCron = useCallback(async () => {
 		try {
 			if (!cronstrueRef.current) {
@@ -41,20 +58,6 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			if (!cronstrue) {
 				throw new Error("cronstrue not loaded");
 			}
-			const localeMap: Record<string, string> = {
-				en: "en",
-				fr: "fr",
-				de: "de",
-				es: "es",
-				it: "it",
-				nl: "nl",
-				"pt-BR": "pt_BR",
-				"pt-PT": "pt_BR",
-				pl: "pl",
-				ru: "ru",
-				tr: "tr",
-				uk: "uk",
-			};
 			const cronstrueLocale =
 				localeMap[i18n.language] || localeMap[lang] || "en";
 			if (!loadedLocales.current[cronstrueLocale] && cronstrueLocale !== "en") {
@@ -77,7 +80,7 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			setError(e instanceof Error ? e.message : "Invalid cron expression");
 		}
 		setLoading(false);
-	}, [cron, lang, i18n.language, incrementCronToNaturalUsage]);
+	}, [cron, lang, i18n.language, incrementCronToNaturalUsage, localeMap]);
 
 	useEffect(() => {
 		if (!cron.trim()) {

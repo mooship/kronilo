@@ -62,3 +62,5 @@ export interface NextRunsListProps {
 	error: string | null;
 	loading: boolean;
 }
+
+export type CronstrueType = typeof import("cronstrue");
