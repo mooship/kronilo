@@ -19,6 +19,8 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 	const cron = useKroniloStore((s) => s.cron);
 	const setCron = useKroniloStore((s) => s.setCron);
 
+	const memoizedSuggestions = useMemo(() => CRON_SUGGESTIONS, []);
+
 	useEffect(() => {
 		function handleClick(event: MouseEvent) {
 			if (
@@ -144,7 +146,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 shadow-lg dark:border-gray-600 dark:bg-gray-700"
 							style={{ position: "absolute" }}
 						>
-							{CRON_SUGGESTIONS.map((suggestion) => (
+							{memoizedSuggestions.map((suggestion) => (
 								<button
 									key={suggestion.expression}
 									type="button"

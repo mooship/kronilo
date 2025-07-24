@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useRateLimit, useTranslateToCron } from "../hooks/useTranslateQuery";
@@ -20,10 +20,13 @@ export function NaturalLanguageToCron() {
 	const actionAnim = usePressAnimation();
 
 	const rateLimited = rateLimitData?.rateLimited ?? false;
-	const rateLimitMsg =
-		typeof rateLimitData?.details === "string"
-			? rateLimitData.details
-			: JSON.stringify(rateLimitData?.details ?? "");
+	const rateLimitMsg = useMemo(
+		() =>
+			typeof rateLimitData?.details === "string"
+				? rateLimitData.details
+				: JSON.stringify(rateLimitData?.details ?? ""),
+		[rateLimitData],
+	);
 	const loading = translateMutation.isPending;
 	const retrying =
 		translateMutation.isError && translateMutation.failureCount < 2;
