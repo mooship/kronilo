@@ -4,8 +4,8 @@ import type {
 	HealthResponse,
 	RateLimitResult,
 } from "../types/api";
-import { getApiErrorMessage } from "./errorUtils";
-import { apiRequest } from "./httpClient";
+import { getApiErrorMessage } from "../utils/errorMessages";
+import { apiRequest } from "./apiClient";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_URL = `${BASE_URL}/api/translate`;
