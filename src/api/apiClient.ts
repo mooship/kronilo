@@ -1,4 +1,4 @@
-import { fetchWrapper } from "../lib/fetchWrapper";
+import ky from "ky";
 import type { ApiRequestResult } from "../types/api";
 import { getApiErrorMessage } from "../utils/errorMessages";
 
@@ -7,8 +7,8 @@ export async function apiRequest<T>(
 	options?: RequestInit,
 ): Promise<ApiRequestResult<T>> {
 	try {
-		const response = await fetchWrapper(url, options);
-		const data = await response.json();
+		const response = await ky(url, options);
+		const data = await response.json<T>();
 		return { data, status: response.status };
 	} catch (err: unknown) {
 		let status = 0;

@@ -66,8 +66,8 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("cronstrue")) {
 						return "cronstrue";
 					}
-					if (id.includes("zustand")) {
-						return "state";
+					if (id.includes("zustand") || id.includes("ky")) {
+						return "http-state";
 					}
 					if (id.includes("react-query")) {
 						return "react-query";
