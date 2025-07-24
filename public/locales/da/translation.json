@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Simpel Cron-oversætter",
+		"description": "Konverter mellem cron-udtryk og naturligt sprog med det samme"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Naturligt sprog",
+			"naturalToCron": "Naturligt sprog → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Skift til Cron → Naturligt sprog",
+			"toNaturalToCron": "Skift til Naturligt sprog → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Cron-udtryk",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Indtast cron-udtryk",
+		"infoTooltip": "*/5 * * * *  →  hver 5. minut (minut time dag måned ugedag)",
+		"infoAriaLabel": "Cron-format info"
+	},
+	"naturalLanguageInput": {
+		"label": "Naturligt sprog",
+		"placeholder": "f.eks. \"kør én gang om ugen på en torsdag\" — Fungerer bedst på engelsk, fransk, tysk, spansk og italiensk. Andre sprog understøttes i varierende grad.",
+		"ariaLabel": "Indtast skema i naturligt sprog"
+	},
+	"translation": {
+		"title": "Oversættelse:",
+		"placeholder": "Indtast et cron-udtryk for at se oversættelsen",
+		"loading": "Oversætter...",
+		"error": "Fejl ved oversættelse af udtryk"
+	},
+	"nextRuns": {
+		"title": "Næste 5 kørsler:",
+		"placeholder": "Indtast et gyldigt cron-udtryk for at se næste kørsler",
+		"loading": "Beregner...",
+		"noRuns": "Ingen kommende kørsler fundet.",
+		"ambiguousSchedule": "Dette cron-udtryk angiver både dag i måneden og ugedag. Forskellige cron-implementeringer kan tolke dette forskelligt. For klarhed, overvej kun at bruge én af delene."
+	},
+	"naturalLanguage": {
+		"title": "Naturligt sprog skema",
+		"inputPlaceholder": "f.eks. \"kør én gang om ugen på en torsdag\" — Fungerer bedst på engelsk, fransk, tysk og spansk. Andre sprog understøttes i varierende grad.",
+		"retrying": "Vent venligst, prøver igen...",
+		"unexpectedError": "Der opstod en uventet fejl. Prøv igen.",
+		"generatedCron": "Genereret cron:",
+		"rateLimitedMsg": "Du er i øjeblikket begrænset. Prøv igen senere.",
+		"rateLimitError": "Du er i øjeblikket begrænset. Prøv igen senere.",
+		"translating": "Oversætter...",
+		"generateCron": "Generer cron",
+		"copy": "Kopiér"
+	},
+	"actions": {
+		"copy": "Kopiér",
+		"copied": "Kopieret!",
+		"generateCron": "Generer cron",
+		"translating": "Oversætter...",
+		"rateLimited": "Begrænset"
+	},
+	"loading": {
+		"default": "Indlæser...",
+		"mode": "Indlæser tilstand...",
+		"calculating": "Beregner..."
+	},
+	"errors": {
+		"invalidCron": "Ugyldigt cron-udtryk",
+		"copyFailed": "Kunne ikke kopiere til udklipsholder",
+		"networkError": "Netværksfejl. Tjek din forbindelse.",
+		"rateLimitExceeded": "Grænse overskredet. Prøv igen senere.",
+		"somethingWrong": "Beklager, noget gik galt. Prøv igen.",
+		"inputTooLong": "Input for langt (maks. 200 tegn)",
+		"inputEmpty": "Input må ikke være tomt. Indtast et skema i naturligt sprog.",
+		"translationFailed": "Kunne ikke oversætte til et gyldigt cron-udtryk efter forsøg"
+	},
+	"donation": {
+		"title": "Støt Kronilo",
+		"message": "Kronilo er et gratis, open source-værktøj, der respekterer dit privatliv — ingen reklamer, ingen trackere, ingen konto.",
+		"messageExtended": "Hvis det har sparet dig tid, så overvej at købe mig en kaffe. Enhver hjælp holder Kronilo i live og fri for reklamer.",
+		"buyMeCoffee": "☕ Køb mig en kaffe",
+		"maybeLater": "Måske senere",
+		"close": "Luk donationsvindue"
+	},
+	"footer": {
+		"builtWith": "Bygget med",
+		"inSouthAfrica": "i Sydafrika",
+		"support": "Støt Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Licenseret under",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Siden blev ikke fundet",
+		"goHome": "Til forsiden"
+	},
+	"accessibility": {
+		"donationModal": "Donationsvindue",
+		"close": "Luk",
+		"supportOnKofi": "Støt Kronilo på Ko-fi",
+		"maybeLater": "Måske senere"
+	}
+}

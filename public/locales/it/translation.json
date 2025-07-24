@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Linguaggio Naturale",
-		"placeholder": "es. \"esegui una volta a settimana il giovedì\" — Funziona meglio in: inglese, francese, tedesco, spagnolo, italiano, olandese, portoghese (brasiliano ed europeo). Il supporto per altre lingue può variare.",
+		"placeholder": "es. \"esegui una volta a settimana il giovedì\" — Funziona meglio in: inglese, francese, tedesco, spagnolo o italiano. Il supporto per altre lingue può variare.",
 		"ariaLabel": "Inserisci una descrizione della pianificazione in linguaggio naturale"
 	},
 	"translation": {

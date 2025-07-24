@@ -4,20 +4,31 @@
 
 ---
 
+
 ## 🌍 Internationalization
 
 Kronilo is fully localized and supports:
 
-- 🇬🇧 English
-- 🇫🇷 French
-- 🇩🇪 German
-- 🇪🇸 Spanish
-- 🇮🇹 Italian
-- 🇳🇱 Dutch
-- 🇵🇹 Portuguese (European)
-- 🇧🇷 Portuguese (Brazilian)
+- English
+- French
+- German
+- Spanish
+- Italian
+- Dutch
+- Portuguese (European)
+- Portuguese (Brazilian)
+- Danish
+- Finnish
+- Norwegian Bokmål
+- Polish
+- Swedish
+- Ukrainian
+- Romanian
+- Esperanto
 
 Kronilo automatically detects your browser language and allows you to switch languages on the fly.
+
+We welcome new translations and improvements! If you'd like to contribute a new language or help improve existing translations, please open a pull request or issue. See the `public/locales` folder for translation files and instructions in the README.
 
 ---
 

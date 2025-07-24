@@ -69,7 +69,7 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("zustand") || id.includes("ky")) {
 						return "http-state";
 					}
-					if (id.includes("react-query")) {
+					if (id.includes("@tanstack/react-query")) {
 						return "react-query";
 					}
 					if (id.includes("node_modules")) {

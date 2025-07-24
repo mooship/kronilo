@@ -1,0 +1,46 @@
+{
+	"appTitle": "Kronilo",
+	"appDescription": "Cron-aikataulujen kääntäjä luonnolliselle kielelle.",
+	"naturalLanguageInput": {
+		"label": "Luonnollinen kieli",
+		"placeholder": "Kirjoita aikataulu englanniksi, ranskaksi, saksaksi, espanjaksi tai italiaksi – ja se muunnetaan cron-muotoon."
+	},
+	"cronInput": {
+		"label": "Cron-lauseke"
+	},
+	"cronTranslation": {
+		"label": "Käännös",
+		"invalid": "Cron-lauseke on virheellinen."
+	},
+	"nextRuns": {
+		"label": "Seuraavat ajot"
+	},
+	"copyButton": {
+		"copied": "Kopioitu!",
+		"copy": "Kopioi"
+	},
+	"ambiguousScheduleWarning": {
+		"title": "Epäselvä aikataulu",
+		"description": "Tämä cron-lauseke voidaan tulkita eri tavoin eri ympäristöissä."
+	},
+	"donationModal": {
+		"title": "Tue kehitystä",
+		"description": "Jos tämä työkalu on ollut sinulle hyödyllinen, harkitse kehityksen tukemista lahjoituksella.",
+		"button": "Lahjoita"
+	},
+	"languageSwitcher": {
+		"label": "Kieli"
+	},
+	"modeToggle": {
+		"light": "Vaalea tila",
+		"dark": "Tumma tila"
+	},
+	"notFoundCard": {
+		"title": "Sivua ei löytynyt",
+		"description": "Pyyntöäsi vastaavaa sivua ei löytynyt."
+	},
+	"errorMessages": {
+		"network": "Verkkovirhe. Yritä uudelleen.",
+		"unknown": "Tuntematon virhe tapahtui."
+	}
+}

@@ -1,0 +1,104 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Prosty tłumacz Cron",
+		"description": "Natychmiast konwertuj między wyrażeniami cron a językiem naturalnym"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Język naturalny",
+			"naturalToCron": "Język naturalny → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Przełącz na Cron → Język naturalny",
+			"toNaturalToCron": "Przełącz na Język naturalny → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Wyrażenie Cron",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Wprowadź wyrażenie cron",
+		"infoTooltip": "*/5 * * * *  →  co 5 minut (minuta godzina dzień miesiąc dzień tygodnia)",
+		"infoAriaLabel": "Informacje o formacie Cron"
+	},
+	"naturalLanguageInput": {
+		"label": "Język naturalny",
+		"placeholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w: angielskim, francuskim, niemieckim, hiszpańskim lub włoskim. Wsparcie dla innych języków może się różnić.",
+		"ariaLabel": "Wprowadź opis harmonogramu w języku naturalnym",
+		"languageSupport": "Najlepiej działa w: angielskim, francuskim, niemieckim, hiszpańskim, włoskim, niderlandzkim, portugalskim (brazylijskim i europejskim). Wsparcie dla innych języków może się różnić."
+	},
+	"translation": {
+		"title": "Tłumaczenie:",
+		"placeholder": "Wprowadź wyrażenie cron, aby zobaczyć tłumaczenie",
+		"loading": "Tłumaczenie...",
+		"error": "Błąd tłumaczenia wyrażenia"
+	},
+	"nextRuns": {
+		"title": "Następne 5 uruchomień:",
+		"placeholder": "Wprowadź poprawne wyrażenie cron, aby zobaczyć kolejne czasy wykonania",
+		"loading": "Obliczanie...",
+		"noRuns": "Nie znaleziono nadchodzących uruchomień.",
+		"ambiguousSchedule": "To wyrażenie cron określa zarówno dzień miesiąca, jak i dzień tygodnia. Różne implementacje cron mogą to interpretować inaczej. Rozważ użycie tylko jednego z nich dla jasności."
+	},
+	"naturalLanguage": {
+		"title": "Harmonogram w języku naturalnym",
+		"inputPlaceholder": "np. \"uruchom raz w tygodniu w czwartek\"",
+		"retrying": "Ponawianie próby...",
+		"unexpectedError": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
+		"generatedCron": "Wygenerowany Cron:",
+		"rateLimitedMsg": "Ograniczony dostęp. Spróbuj ponownie później.",
+		"rateLimitError": "Ograniczony dostęp. Spróbuj ponownie później.",
+		"translating": "Tłumaczenie...",
+		"generateCron": "Wygeneruj Cron",
+		"copy": "Kopiuj"
+	},
+	"actions": {
+		"copy": "Kopiuj",
+		"copied": "Skopiowano!",
+		"generateCron": "Wygeneruj Cron",
+		"translating": "Tłumaczenie...",
+		"rateLimited": "Ograniczony dostęp"
+	},
+	"loading": {
+		"default": "Ładowanie...",
+		"mode": "Ładowanie trybu...",
+		"calculating": "Obliczanie..."
+	},
+	"errors": {
+		"invalidCron": "Nieprawidłowe wyrażenie cron",
+		"copyFailed": "Nie udało się skopiować do schowka",
+		"networkError": "Błąd połączenia. Sprawdź sieć i spróbuj ponownie.",
+		"rateLimitExceeded": "Przekroczono limit żądań. Spróbuj ponownie później.",
+		"somethingWrong": "Coś poszło nie tak. Spróbuj ponownie.",
+		"inputTooLong": "Tekst jest za długi (maksymalnie 200 znaków)",
+		"inputEmpty": "Pole nie może być puste. Wprowadź opis harmonogramu.",
+		"translationFailed": "Nie udało się wygenerować poprawnego wyrażenia cron"
+	},
+	"donation": {
+		"title": "Wesprzyj Kronilo",
+		"message": "Kronilo to darmowe, otwarte narzędzie szanujące Twoją prywatność—bez reklam, bez śledzenia, bez konta.",
+		"messageExtended": "Jeśli zaoszczędziło Ci czas, rozważ postawienie mi kawy. Każde wsparcie pozwala utrzymać Kronilo bez reklam.",
+		"buyMeCoffee": "☕ Postaw mi kawę",
+		"maybeLater": "Może później",
+		"close": "Zamknij"
+	},
+	"footer": {
+		"builtWith": "Stworzone z",
+		"inSouthAfrica": "w Południowej Afryce",
+		"support": "Wesprzyj Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Licencja",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Nie znaleziono strony",
+		"goHome": "Powrót do strony głównej"
+	},
+	"accessibility": {
+		"donationModal": "Okno wsparcia",
+		"close": "Zamknij",
+		"supportOnKofi": "Wesprzyj Kronilo na Ko-fi",
+		"maybeLater": "Może później"
+	}
+}

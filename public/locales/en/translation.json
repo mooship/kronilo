@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Natural Language",
-		"placeholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, Spanish, Italian, Dutch, Portuguese (Brazilian & European). Support for other languages may vary.",
+		"placeholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, Spanish, or Italian. Support for other languages may vary.",
 		"ariaLabel": "Enter schedule description in natural language"
 	},
 	"translation": {

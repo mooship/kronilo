@@ -1,0 +1,46 @@
+{
+	"appTitle": "Kronilo",
+	"appDescription": "Convertor între expresii cron și limbaj natural.",
+	"naturalLanguageInput": {
+		"label": "Limbaj natural",
+		"placeholder": "Scrieți un program în engleză, franceză, germană, spaniolă sau italiană pentru a fi convertit în cron."
+	},
+	"cronInput": {
+		"label": "Expresie cron"
+	},
+	"cronTranslation": {
+		"label": "Traducere",
+		"invalid": "Expresie cron nevalidă."
+	},
+	"nextRuns": {
+		"label": "Următoarele execuții"
+	},
+	"copyButton": {
+		"copied": "Copiat!",
+		"copy": "Copiază"
+	},
+	"ambiguousScheduleWarning": {
+		"title": "Program ambiguu",
+		"description": "Această expresie cron poate fi interpretată diferit în medii diferite."
+	},
+	"donationModal": {
+		"title": "Susțineți dezvoltarea",
+		"description": "Dacă acest instrument v-a fost util, luați în considerare o donație pentru a susține dezvoltarea.",
+		"button": "Donează"
+	},
+	"languageSwitcher": {
+		"label": "Limbă"
+	},
+	"modeToggle": {
+		"light": "Mod luminos",
+		"dark": "Mod întunecat"
+	},
+	"notFoundCard": {
+		"title": "Pagina nu a fost găsită",
+		"description": "Pagina solicitată nu există."
+	},
+	"errorMessages": {
+		"network": "Eroare de rețea. Încercați din nou.",
+		"unknown": "A apărut o eroare necunoscută."
+	}
+}

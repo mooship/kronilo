@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Natuurlijke Taal",
-		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in: Engels, Frans, Duits, Spaans, Italiaans, Nederlands, Portugees (Braziliaans & Europees). Ondersteuning voor andere talen kan variëren.",
+		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in: Engels, Frans, Duits, Spaans of Italiaans. Ondersteuning voor andere talen kan variëren.",
 		"ariaLabel": "Voer een planningsbeschrijving in natuurlijke taal in"
 	},
 	"translation": {

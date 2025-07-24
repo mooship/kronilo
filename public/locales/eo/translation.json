@@ -1,0 +1,46 @@
+{
+	"appTitle": "Kronilo",
+	"appDescription": "Konvertilo inter cron-horaroj kaj natura lingvo.",
+	"naturalLanguageInput": {
+		"label": "Natura lingvo",
+		"placeholder": "Skribu horaron en la angla, franca, germana, hispana aŭ itala por konverti ĝin al cron-esprimo."
+	},
+	"cronInput": {
+		"label": "Cron-esprimo"
+	},
+	"cronTranslation": {
+		"label": "Traduko",
+		"invalid": "Malvalida cron-esprimo."
+	},
+	"nextRuns": {
+		"label": "Sekvaj lanĉoj"
+	},
+	"copyButton": {
+		"copied": "Kopiita!",
+		"copy": "Kopii"
+	},
+	"ambiguousScheduleWarning": {
+		"title": "Ambigua horaro",
+		"description": "Ĉi tiu cron-esprimo povas esti interpretita malsame en diversaj medioj."
+	},
+	"donationModal": {
+		"title": "Subtenu evoluon",
+		"description": "Se ĉi tiu ilo utilas al vi, bonvolu konsideri donacon por subteni ĝian evoluon.",
+		"button": "Donaci"
+	},
+	"languageSwitcher": {
+		"label": "Lingvo"
+	},
+	"modeToggle": {
+		"light": "Luma reĝimo",
+		"dark": "Malhela reĝimo"
+	},
+	"notFoundCard": {
+		"title": "Paĝo ne trovita",
+		"description": "Ni ne povis trovi la paĝon, kiun vi serĉis."
+	},
+	"errorMessages": {
+		"network": "Reta eraro. Bonvolu provi denove.",
+		"unknown": "Nekonata eraro okazis."
+	}
+}

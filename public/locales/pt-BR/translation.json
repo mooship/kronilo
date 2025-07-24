@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Linguagem Natural",
-		"placeholder": "ex: \"executar uma vez por semana na quinta-feira\" — Funciona melhor em: inglês, francês, alemão, espanhol, italiano, holandês, português (brasileiro e europeu). O suporte para outros idiomas pode variar.",
+		"placeholder": "ex: \"executar uma vez por semana na quinta-feira\" — Funciona melhor em: inglês, francês, alemão, espanhol ou italiano. O suporte para outros idiomas pode variar.",
 		"ariaLabel": "Digite a descrição do agendamento em linguagem natural"
 	},
 	"translation": {

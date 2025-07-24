@@ -23,7 +23,7 @@
 	},
 	"naturalLanguageInput": {
 		"label": "Natürliche Sprache",
-		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch, Spanisch, Italienisch, Niederländisch, Portugiesisch (Brasilianisch & Europäisch). Unterstützung für andere Sprachen kann variieren.",
+		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch, Spanisch oder Italienisch. Unterstützung für andere Sprachen kann variieren.",
 		"ariaLabel": "Beschreibung des Zeitplans in natürlicher Sprache eingeben"
 	},
 	"translation": {
