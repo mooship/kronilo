@@ -1,11 +1,11 @@
-import type { FC } from "react";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoadingSpinnerProps } from "../types/components";
 
-export const LoadingSpinner: FC<LoadingSpinnerProps> = ({
+const LoadingSpinner = ({
 	message,
 	minHeight = "400px",
-}) => {
+}: LoadingSpinnerProps) => {
 	const { t } = useTranslation();
 	const displayMessage = message || t("loading.default");
 
@@ -26,3 +26,5 @@ export const LoadingSpinner: FC<LoadingSpinnerProps> = ({
 		</div>
 	);
 };
+
+export const MemoizedLoadingSpinner = memo(LoadingSpinner);

@@ -4,7 +4,7 @@ import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { AppLoader } from "./components/AppLoader";
+import { MemoizedAppLoader } from "./components/AppLoader";
 import { initI18n } from "./i18n";
 import { queryClient } from "./lib/queryClient";
 
@@ -22,7 +22,7 @@ const renderApp = () => {
 	return (
 		<StrictMode>
 			<QueryClientProvider client={queryClient}>
-				<Suspense fallback={<AppLoader />}>
+				<Suspense fallback={<MemoizedAppLoader />}>
 					<App />
 				</Suspense>
 				{import.meta.env?.MODE === "development" && (

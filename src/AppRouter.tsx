@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MainContent } from "./App";
-import { LoadingSpinner } from "./components/LoadingSpinner";
+import { MemoizedLoadingSpinner } from "./components/LoadingSpinner";
 
 const NotFoundCard = lazy(() =>
 	import("./components/NotFoundCard").then((m) => ({
@@ -13,14 +13,14 @@ const NotFoundCard = lazy(() =>
 export const AppRouter: FC = () => {
 	return (
 		<Router>
-			<Suspense fallback={<LoadingSpinner />}>
+			<Suspense fallback={<MemoizedLoadingSpinner />}>
 				<Routes>
 					<Route path="/" element={<MainContent />} />
 					<Route path="/natural-language-to-cron" element={<MainContent />} />
 					<Route
 						path="*"
 						element={
-							<Suspense fallback={<LoadingSpinner />}>
+							<Suspense fallback={<MemoizedLoadingSpinner />}>
 								<NotFoundCard />
 							</Suspense>
 						}

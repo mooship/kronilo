@@ -1,4 +1,6 @@
-export function AppLoader() {
+import { memo } from "react";
+
+const AppLoader = () => {
 	return (
 		<div className="min-h-screen flex flex-col bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50">
 			<div className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6">
@@ -26,4 +28,6 @@ export function AppLoader() {
 			</div>
 		</div>
 	);
-}
+};
+
+export const MemoizedAppLoader = memo(AppLoader);
