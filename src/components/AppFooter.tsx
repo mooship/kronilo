@@ -1,22 +1,26 @@
 import clsx from "clsx";
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { useWindowSize } from "usehooks-ts";
 import type { AppFooterProps } from "../types/components";
 
 export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 	const { t } = useTranslation();
+	const { width } = useWindowSize();
+	const isSmallScreen = width < 640;
 
 	return (
 		<footer
 			className={clsx(
-				"w-full py-4 sm:py-6 border-t",
+				"w-full border-t",
+				isSmallScreen ? "py-3" : "py-4 sm:py-6",
 				"bg-gray-50 border-gray-200 rounded-b-lg dark:bg-neutral-900 dark:border-neutral-700",
 			)}
 		>
 			<div className="text-center px-2 sm:px-0">
 				<p
 					className={clsx(
-						"text-xs sm:text-base",
+						isSmallScreen ? "text-xs" : "text-xs sm:text-base",
 						"text-gray-800 dark:text-neutral-100",
 					)}
 				>
@@ -47,7 +51,7 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 					<br />
 					<span
 						className={clsx(
-							"text-xs sm:text-base",
+							isSmallScreen ? "text-xs" : "text-xs sm:text-base",
 							"text-gray-700 dark:text-neutral-300",
 						)}
 					>

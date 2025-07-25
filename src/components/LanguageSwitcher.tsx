@@ -1,25 +1,7 @@
 import clsx from "clsx";
 import { memo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-
-const LANGUAGES = [
-	{ code: "da", label: "Dansk" },
-	{ code: "de", label: "Deutsch" },
-	{ code: "en", label: "English" },
-	{ code: "eo", label: "Esperanto" },
-	{ code: "es", label: "Español" },
-	{ code: "fi", label: "Suomi" },
-	{ code: "fr", label: "Français" },
-	{ code: "it", label: "Italiano" },
-	{ code: "nb", label: "Norsk Bokmål" },
-	{ code: "nl", label: "Nederlands" },
-	{ code: "pl", label: "Polski" },
-	{ code: "pt-BR", label: "Português (BR)" },
-	{ code: "pt-PT", label: "Português (PT)" },
-	{ code: "ro", label: "Română" },
-	{ code: "sv", label: "Svenska" },
-	{ code: "uk", label: "Українська" },
-];
+import { LOCALES } from "../locales";
 
 const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation();
@@ -67,6 +49,7 @@ const LanguageSwitcher: React.FC = () => {
 		setOpen(false);
 	}
 
+	const LANGUAGES = LOCALES.map((l) => ({ code: l.code, label: l.name }));
 	const selected = LANGUAGES.find((l) => l.code === current) || LANGUAGES[0];
 
 	return (

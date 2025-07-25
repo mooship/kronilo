@@ -44,10 +44,13 @@ const CopyButton: FC<CopyButtonProps> = ({
 			<button
 				type="button"
 				className={clsx(
-					"btn btn-primary rounded-xl border-2 border-primary/60 font-medium shadow-xl transition-all duration-200 hover:border-accent hover:shadow-2xl focus:border-accent focus:shadow-2xl active:scale-95 disabled:opacity-50",
-					"border-neutral-900/60 bg-neutral-900 text-neutral-50 hover:border-neutral-50 focus:border-neutral-50 dark:border-gray-100/60 dark:bg-gray-100 dark:text-black dark:focus:border-black dark:hover:border-black",
+					"btn rounded-xl border-2 font-medium shadow-xl transition-all duration-200 active:scale-95 disabled:opacity-50",
+					"border-violet-600 bg-transparent text-violet-700 hover:border-violet-500 hover:bg-violet-100 focus:border-violet-500 focus:bg-violet-100",
+					"dark:border-violet-400 dark:bg-transparent dark:text-violet-300 dark:hover:bg-violet-900 dark:focus:bg-violet-900",
 					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3",
-					"focus:shadow-lg focus:shadow-primary/30",
+					"focus:outline-none focus:ring-2 focus:ring-violet-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-violet-500 dark:focus:ring-offset-neutral-900",
+					"transition-colors duration-200",
+					"focus:shadow-lg focus:shadow-violet-400/30",
 					isPressed && "scale-95",
 				)}
 				aria-label={buttonLabel}

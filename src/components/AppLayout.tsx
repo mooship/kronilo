@@ -1,17 +1,23 @@
 import clsx from "clsx";
 import type { FC } from "react";
+import { useWindowSize } from "usehooks-ts";
 import type { AppLayoutProps, AppMainProps } from "../types/components";
 
 export const AppLayout: FC<AppLayoutProps> = ({
 	prefersReducedMotion,
 	children,
 }) => {
+	const { width } = useWindowSize();
+	// Example: change background for very small screens
+	const isVerySmall = width < 400;
 	return (
 		<div
 			className={clsx(
 				"min-h-screen flex flex-col",
 				!prefersReducedMotion && "transition-colors duration-200",
-				"bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50",
+				isVerySmall
+					? "bg-yellow-50 text-black"
+					: "bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50",
 			)}
 		>
 			{children}

@@ -2,6 +2,7 @@ import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import HttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
+import { SUPPORTED_LANGUAGE_CODES } from "./locales";
 
 const i18nInstance = i18n
 	.use(HttpBackend)
@@ -11,24 +12,7 @@ const i18nInstance = i18n
 export const initI18n = () => {
 	return i18nInstance.init({
 		fallbackLng: "en",
-		supportedLngs: [
-			"en",
-			"fr",
-			"de",
-			"es",
-			"it",
-			"nl",
-			"pt-BR",
-			"pt-PT",
-			"pl",
-			"sv",
-			"da",
-			"nb",
-			"fi",
-			"uk",
-			"ro",
-			"eo",
-		],
+		supportedLngs: SUPPORTED_LANGUAGE_CODES,
 		debug: false,
 		interpolation: {
 			escapeValue: false,

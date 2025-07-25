@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import type { AmbiguousScheduleWarningProps } from "../types";
@@ -12,7 +13,13 @@ export const AmbiguousScheduleWarning: FC<AmbiguousScheduleWarningProps> = ({
 	}
 
 	return (
-		<div className="mb-4 rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-800 dark:border-yellow-400 dark:bg-yellow-300/20 dark:text-yellow-200">
+		<div
+			className={clsx(
+				"mb-4 rounded-xl border p-4",
+				"border-yellow-300 bg-yellow-100 text-yellow-800",
+				"dark:border-yellow-400 dark:bg-yellow-300/20 dark:text-yellow-200",
+			)}
+		>
 			<div className="flex items-start gap-2">
 				<svg
 					className="mt-0.5 h-5 w-5 flex-shrink-0"

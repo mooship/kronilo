@@ -4,32 +4,57 @@
 
 ---
 
-
 ## 🌍 Internationalization
 
 Kronilo is fully localized and supports:
 
-- English
-- French
-- German
-- Spanish
-- Italian
-- Dutch
-- Portuguese (European)
-- Portuguese (Brazilian)
-- Danish
-- Finnish
-- Norwegian Bokmål
-- Polish
-- Swedish
-- Ukrainian
-- Romanian
-- Esperanto
+- English (`en`)
+- French (`fr`)
+- German (`de`)
+- Spanish (`es`)
+- Italian (`it`)
+- Dutch (`nl`)
+- Portuguese (Brazilian) (`pt-BR`)
+- Portuguese (European) (`pt-PT`)
+- Polish (`pl`)
+- Swedish (`sv`)
+- Danish (`da`)
+- Norwegian Bokmål (`nb`)
+- Finnish (`fi`)
+- Ukrainian (`uk`)
+- Romanian (`ro`)
+- Esperanto (`eo`)
 
 Kronilo automatically detects your browser language and allows you to switch languages on the fly.
 
 We welcome new translations and improvements! If you'd like to contribute a new language or help improve existing translations, please open a pull request or issue. See the `public/locales` folder for translation files and instructions in the README.
 
+---
+
+## 🈳 Adding a New Translation
+
+To add support for a new language, follow these steps:
+
+1. **Add your translation file:**
+   - Create a new folder for your language code in `public/locales/` (e.g., `public/locales/ja/` for Japanese).
+   - Add a `translation.json` file with your translations.
+
+2. **Centralize your language settings:**
+   - Edit [`src/locales.ts`](src/locales.ts) and add your language code, display name, and (optionally) cronstrue locale mapping. This file is used by i18n, the language switcher, and cron translation logic.
+
+3. **Update cronstrue locales (if supported):**
+   - If your language is supported by [cronstrue](https://github.com/bradymholt/cronstrue), add a declaration to [`src/cronstrue-locales.d.ts`](src/cronstrue-locales.d.ts).
+
+4. **Test your translation:**
+   - Run the app locally and switch to your new language using the language switcher.
+   - Check that cron translations and UI strings appear correctly.
+
+5. **Open a pull request:**
+   - Submit your changes for review. Include your translation file and all code updates.
+
+**Note:** If your language is not supported by cronstrue, the cron expression translation will fall back to English, but UI strings will still be localized.
+
+For questions or help, open an issue or ask in the repository discussions!
 ---
 
 ## ✨ Features

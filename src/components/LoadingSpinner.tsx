@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoadingSpinnerProps } from "../types/components";
@@ -13,13 +14,28 @@ const LoadingSpinner = ({
 		<div className="flex items-center justify-center" style={{ minHeight }}>
 			<div className="flex flex-col items-center gap-4">
 				<div className="relative">
-					<div className="w-12 h-12 border-4 border-gray-200 border-t-gray-600 rounded-full animate-spin dark:border-neutral-700 dark:border-t-neutral-300"></div>
 					<div
-						className="absolute inset-0 w-12 h-12 border-4 border-transparent border-r-gray-400 rounded-full animate-spin dark:border-r-neutral-500"
+						className={clsx(
+							"w-12 h-12 border-4 rounded-full animate-spin",
+							"border-gray-200 border-t-gray-600",
+							"dark:border-neutral-700 dark:border-t-neutral-300",
+						)}
+					></div>
+					<div
+						className={clsx(
+							"absolute inset-0 w-12 h-12 border-4 border-transparent border-r-gray-400 rounded-full animate-spin",
+							"dark:border-r-neutral-500",
+						)}
 						style={{ animationDelay: "0.15s", animationDirection: "reverse" }}
 					></div>
 				</div>
-				<p className="text-gray-600 dark:text-neutral-400 font-medium">
+				<p
+					className={clsx(
+						"font-medium",
+						"text-gray-600",
+						"dark:text-neutral-400",
+					)}
+				>
 					{displayMessage}
 				</p>
 			</div>

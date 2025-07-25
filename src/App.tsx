@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
-import { useMediaQuery, useWindowSize } from "usehooks-ts";
+import { useMediaQuery } from "usehooks-ts";
 import { AppRouter } from "./AppRouter";
 import { AppFooter } from "./components/AppFooter";
 import { AppHeader } from "./components/AppHeader";
@@ -37,11 +37,9 @@ export function MainContent() {
 }
 
 function App() {
-	const { width } = useWindowSize();
 	const prefersReducedMotion = useMediaQuery(
 		"(prefers-reduced-motion: reduce)",
 	);
-	const isSmallScreen = width < 640;
 	const {
 		donationModalOpen,
 		handleFooterDonateClick,
@@ -62,7 +60,7 @@ function App() {
 				<div className="w-full flex justify-end px-4 pt-2">
 					<MemoizedLanguageSwitcher />
 				</div>
-				<AppHeader isSmallScreen={isSmallScreen} />
+				<AppHeader />
 			</div>
 			<AppMain>
 				<AppRouter />

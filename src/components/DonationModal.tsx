@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import type { FC } from "react";
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -138,7 +139,13 @@ export const DonationModal: FC<DonationModalProps> = ({
 						<button
 							type="button"
 							onClick={onMaybeLater}
-							className={`btn btn-ghost rounded-xl text-gray-900 hover:text-black dark:text-neutral-50 dark:hover:text-gray-300 dark:hover:bg-neutral-700${maybeBtnAnim.isPressed ? " scale-95" : ""}`}
+							className={clsx(
+								"btn btn-ghost rounded-xl text-gray-900 transition-colors duration-200",
+								"hover:text-black focus:text-black",
+								"dark:text-neutral-50 dark:hover:text-gray-300 dark:focus:text-gray-300",
+								maybeBtnAnim.isPressed && "scale-95",
+							)}
+							style={{ background: "none" }}
 							aria-label={t("donation.maybeLater")}
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}

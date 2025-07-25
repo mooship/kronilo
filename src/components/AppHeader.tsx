@@ -1,10 +1,12 @@
 import clsx from "clsx";
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
-import type { AppHeaderProps } from "../types/components";
+import { useWindowSize } from "usehooks-ts";
 
-export const AppHeader: FC<AppHeaderProps> = ({ isSmallScreen }) => {
+export const AppHeader: FC = () => {
 	const { t } = useTranslation();
+	const { width } = useWindowSize();
+	const isSmallScreen = width < 640;
 
 	return (
 		<header className="w-full pt-4 sm:pt-8 pb-2 sm:pb-3 relative">
