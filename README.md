@@ -6,6 +6,7 @@
 
 ## 🌍 Internationalization
 
+
 Kronilo is fully localized and supports:
 
 - English (`en`)
@@ -23,6 +24,7 @@ Kronilo is fully localized and supports:
 - Finnish (`fi`)
 - Ukrainian (`uk`)
 - Romanian (`ro`)
+- Turkish (`tr`)
 - Esperanto (`eo`)
 
 Kronilo automatically detects your browser language and allows you to switch languages on the fly.

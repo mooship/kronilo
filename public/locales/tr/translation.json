@@ -1,0 +1,103 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Çok Kolay Cron Dönüştürücü",
+		"description": "Cron ifadeleri ile doğal dil arasında anında dönüşüm yapın"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Doğal Dil",
+			"naturalToCron": "Doğal Dil → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Cron → Doğal Dil moduna geç",
+			"toNaturalToCron": "Doğal Dil → Cron moduna geç"
+		}
+	},
+	"cronInput": {
+		"label": "Cron İfadesi",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Cron ifadesi girin",
+		"infoTooltip": "*/5 * * * *  →  her 5 dakikada bir (dakika saat gün ay haftanın günü)",
+		"infoAriaLabel": "Cron formatı bilgisi"
+	},
+	"naturalLanguageInput": {
+		"label": "Doğal Dil",
+		"placeholder": "örn. \"her Perşembe çalıştır\" — En iyi sonuç: İngilizce, Fransızca, Almanca, İspanyolca veya İtalyanca. Diğer dillerde destek sınırlı olabilir.",
+		"ariaLabel": "Doğal dilde zamanlama açıklaması girin"
+	},
+	"translation": {
+		"title": "Çeviri:",
+		"placeholder": "Çeviriyi görmek için bir cron ifadesi girin",
+		"loading": "Çevriliyor...",
+		"error": "İfade çevrilirken hata oluştu"
+	},
+	"nextRuns": {
+		"title": "Sonraki 5 Çalıştırma:",
+		"placeholder": "Sonraki çalıştırma zamanlarını görmek için geçerli bir cron ifadesi girin",
+		"loading": "Hesaplanıyor...",
+		"noRuns": "Yaklaşan çalıştırma bulunamadı.",
+		"ambiguousSchedule": "Bu cron ifadesinde hem ayın günü hem de haftanın günü belirtilmiş. Farklı cron uygulamaları bunu farklı şekilde yorumlayabilir. Netlik için yalnızca birini kullanmayı düşünün."
+	},
+	"naturalLanguage": {
+		"title": "Doğal Dil Zamanlaması",
+		"inputPlaceholder": "örn. \"her Perşembe çalıştır\" — En iyi sonuç: İngilizce, Fransızca, Almanca ve İspanyolca. Diğer dillerde destek sınırlı olabilir.",
+		"retrying": "Lütfen bekleyin, yeniden deneniyor...",
+		"unexpectedError": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+		"generatedCron": "Oluşturulan Cron:",
+		"rateLimitedMsg": "Şu anda kullanım sınırınız aşıldı. Lütfen daha sonra tekrar deneyin.",
+		"rateLimitError": "Şu anda kullanım sınırınız aşıldı. Lütfen daha sonra tekrar deneyin.",
+		"translating": "Çevriliyor...",
+		"generateCron": "Cron Oluştur",
+		"copy": "Kopyala"
+	},
+	"actions": {
+		"copy": "Kopyala",
+		"copied": "Kopyalandı!",
+		"generateCron": "Cron Oluştur",
+		"translating": "Çevriliyor...",
+		"rateLimited": "Kullanım Sınırı Aşıldı"
+	},
+	"loading": {
+		"default": "Yükleniyor...",
+		"mode": "Mod yükleniyor...",
+		"calculating": "Hesaplanıyor..."
+	},
+	"errors": {
+		"invalidCron": "Geçersiz cron ifadesi",
+		"copyFailed": "Panoya kopyalanamadı",
+		"networkError": "Ağ hatası. Lütfen bağlantınızı kontrol edin.",
+		"rateLimitExceeded": "Kullanım sınırı aşıldı. Lütfen daha sonra tekrar deneyin.",
+		"somethingWrong": "Üzgünüz, bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
+		"inputTooLong": "Girdi çok uzun (maksimum 200 karakter)",
+		"inputEmpty": "Girdi boş olamaz. Lütfen doğal dilde bir zamanlama girin.",
+		"translationFailed": "Yeniden denendikten sonra girdi geçerli bir cron ifadesine çevrilemedi"
+	},
+	"donation": {
+		"title": "Kronilo'yu Destekle",
+		"message": "Kronilo ücretsiz, açık kaynaklı bir araçtır ve gizliliğinize saygı duyar—reklam yok, takip yok, hesap yok.",
+		"messageExtended": "Size zaman kazandırdıysa, bir kahve ısmarlamayı düşünün. Her katkı Kronilo'nun canlı ve reklamsız kalmasına yardımcı olur.",
+		"buyMeCoffee": "☕ Bir kahve ısmarla",
+		"maybeLater": "Belki Sonra",
+		"close": "Bağış penceresini kapat"
+	},
+	"footer": {
+		"builtWith": "ile yapıldı",
+		"inSouthAfrica": "Güney Afrika'da",
+		"support": "Kronilo'yu Destekle",
+		"github": "GitHub",
+		"licensedUnder": "Lisanslıdır",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Sayfa Bulunamadı",
+		"goHome": "Ana Sayfaya Dön"
+	},
+	"accessibility": {
+		"donationModal": "Bağış Penceresi",
+		"close": "Kapat",
+		"supportOnKofi": "Kronilo'yu Ko-fi'de Destekle",
+		"maybeLater": "Belki sonra"
+	}
+}
