@@ -15,7 +15,7 @@ export const AppHeader: FC = () => {
 					className={clsx(
 						"font-bold mb-2 sm:mb-4 break-words leading-tight",
 						isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl",
-						"text-black dark:text-neutral-50",
+						"text-emerald-700 dark:text-emerald-400",
 					)}
 					style={{ minHeight: isSmallScreen ? "2.5rem" : "3.5rem" }}
 				>
@@ -25,7 +25,7 @@ export const AppHeader: FC = () => {
 					className={clsx(
 						"mb-2 sm:mb-3 break-words leading-snug",
 						isSmallScreen ? "text-base" : "text-base xs:text-lg sm:text-2xl",
-						"text-black opacity-90 dark:text-neutral-50 dark:opacity-90",
+						"text-violet-700 dark:text-violet-300",
 					)}
 				>
 					{t("app.subtitle")}
@@ -34,7 +34,7 @@ export const AppHeader: FC = () => {
 					className={clsx(
 						"break-words",
 						isSmallScreen ? "text-sm" : "text-sm xs:text-base sm:text-lg",
-						"text-black opacity-70 dark:text-neutral-50 dark:opacity-70",
+						"text-gray-700 dark:text-neutral-200",
 					)}
 				>
 					{t("app.description")}

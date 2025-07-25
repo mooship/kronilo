@@ -58,8 +58,9 @@ const LanguageSwitcher: React.FC = () => {
 				ref={buttonRef}
 				type="button"
 				className={clsx(
-					"flex items-center justify-between w-48 sm:w-48 w-32 rounded-full border-2 border-neutral-300 dark:border-neutral-700 px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-200 hover:border-blue-400 hover:shadow-lg cursor-pointer select-none",
-					{ "ring-2 ring-blue-400": open },
+					"flex items-center justify-between w-40 sm:w-56 md:w-64 rounded-full border-2 px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
+					"border-violet-400 dark:border-violet-500 focus:ring-2 focus:ring-violet-400 dark:focus:ring-violet-500 hover:border-violet-500 hover:shadow-lg",
+					{ "ring-2 ring-violet-400 dark:ring-violet-500": open },
 				)}
 				aria-haspopup="listbox"
 				aria-expanded={open}
@@ -68,7 +69,9 @@ const LanguageSwitcher: React.FC = () => {
 				onClick={() => setOpen((o) => !o)}
 				onKeyDown={handleKeyDown}
 			>
-				<span>{selected.label}</span>
+				<span className="font-semibold text-emerald-700 dark:text-emerald-400">
+					{selected.label}
+				</span>
 				<svg
 					width="20"
 					height="20"
@@ -92,7 +95,7 @@ const LanguageSwitcher: React.FC = () => {
 			{open && (
 				<div
 					className={clsx(
-						"absolute z-50 mt-2 w-48 sm:w-48 w-32 rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-neutral-200 dark:border-neutral-700 overflow-hidden animate-fade-in",
+						"absolute z-50 mt-2 w-40 sm:w-56 md:w-64 rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-violet-200 dark:border-violet-700 overflow-hidden animate-fade-in",
 					)}
 				>
 					{LANGUAGES.map((lang) => (
@@ -100,9 +103,9 @@ const LanguageSwitcher: React.FC = () => {
 							key={lang.code}
 							type="button"
 							className={clsx(
-								"w-full text-left px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm transition-colors duration-150 hover:bg-blue-100 dark:hover:bg-neutral-700 focus:bg-blue-100 dark:focus:bg-neutral-700",
+								"w-full text-left px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm transition-colors duration-150 hover:bg-violet-100 dark:hover:bg-violet-900 focus:bg-violet-100 dark:focus:bg-violet-900",
 								{
-									"bg-neutral-100 dark:bg-neutral-900 font-semibold":
+									"bg-emerald-100 dark:bg-emerald-900 font-semibold text-emerald-700 dark:text-emerald-300":
 										current === lang.code,
 								},
 							)}

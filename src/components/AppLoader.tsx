@@ -9,18 +9,18 @@ const AppLoader = () => {
 		<div
 			className={clsx(
 				"min-h-screen flex flex-col",
-				"bg-gray-50 text-black",
-				"dark:bg-neutral-900 dark:text-neutral-50",
+				"bg-gradient-to-br from-violet-50 via-gray-50 to-emerald-50 text-black",
+				"dark:bg-gradient-to-br dark:from-neutral-900 dark:via-violet-900 dark:to-emerald-900 dark:text-neutral-50",
 			)}
 		>
 			<div className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6">
 				<div className="w-full max-w-2xl mx-auto animate-fade-in">
 					<div
 						className={clsx(
-							"shadow-2xl border flex flex-col items-center justify-center",
+							"shadow-2xl border-2 flex flex-col items-center justify-center",
 							"rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
-							"bg-white border-gray-200",
-							"dark:bg-neutral-800 dark:border-neutral-700",
+							"bg-white border-violet-400",
+							"dark:bg-neutral-800 dark:border-violet-700",
 						)}
 						style={{
 							minHeight: "600px",
@@ -32,8 +32,8 @@ const AppLoader = () => {
 								className={clsx(
 									loaderSize,
 									"border-4 rounded-full animate-spin",
-									"border-gray-200 border-t-black",
-									"dark:border-neutral-600 dark:border-t-white",
+									"border-violet-200 border-t-violet-700",
+									"dark:border-violet-700 dark:border-t-emerald-400",
 								)}
 							></div>
 						</div>

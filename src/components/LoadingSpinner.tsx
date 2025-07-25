@@ -17,24 +17,20 @@ const LoadingSpinner = ({
 					<div
 						className={clsx(
 							"w-12 h-12 border-4 rounded-full animate-spin",
-							"border-gray-200 border-t-gray-600",
-							"dark:border-neutral-700 dark:border-t-neutral-300",
+							"border-violet-200 border-t-violet-700",
+							"dark:border-violet-700 dark:border-t-emerald-400",
 						)}
 					></div>
 					<div
 						className={clsx(
-							"absolute inset-0 w-12 h-12 border-4 border-transparent border-r-gray-400 rounded-full animate-spin",
-							"dark:border-r-neutral-500",
+							"absolute inset-0 w-12 h-12 border-4 border-transparent border-r-emerald-400 rounded-full animate-spin",
+							"dark:border-r-emerald-400",
 						)}
 						style={{ animationDelay: "0.15s", animationDirection: "reverse" }}
 					></div>
 				</div>
 				<p
-					className={clsx(
-						"font-medium",
-						"text-gray-600",
-						"dark:text-neutral-400",
-					)}
+					className={clsx("font-medium text-violet-700 dark:text-emerald-400")}
 				>
 					{displayMessage}
 				</p>
