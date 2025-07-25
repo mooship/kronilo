@@ -42,10 +42,11 @@ To add support for a new language, follow these steps:
    - Add a `translation.json` file with your translations.
 
 2. **Centralize your language settings:**
-   - Edit [`src/locales.ts`](src/locales.ts) and add your language code, display name, and (optionally) cronstrue locale mapping. This file is used by i18n, the language switcher, and cron translation logic.
+   - Edit [`src/locales.ts`](src/locales.ts) and add your language code, display name, and (optionally) cronstrue locale mapping. **Please keep this list sorted alphabetically by display name.** This file is used by i18n, the language switcher, and cron translation logic.
 
 3. **Update cronstrue locales (if supported):**
    - If your language is supported by [cronstrue](https://github.com/bradymholt/cronstrue), add a declaration to [`src/cronstrue-locales.d.ts`](src/cronstrue-locales.d.ts).
+   - Add a static import for your cronstrue locale (e.g., `import "cronstrue/locales/xx";`) to [`src/components/CronTranslation.tsx`](src/components/CronTranslation.tsx). This ensures translations work correctly for your language.
 
 4. **Test your translation:**
    - Run the app locally and switch to your new language using the language switcher.

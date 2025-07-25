@@ -2,6 +2,21 @@ import type { FC } from "react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getLocaleConfig, LOCALES } from "../locales";
+import "cronstrue/locales/fr";
+import "cronstrue/locales/es";
+import "cronstrue/locales/de";
+import "cronstrue/locales/it";
+import "cronstrue/locales/nl";
+import "cronstrue/locales/pt_BR";
+import "cronstrue/locales/pt_PT";
+import "cronstrue/locales/pl";
+import "cronstrue/locales/sv";
+import "cronstrue/locales/da";
+import "cronstrue/locales/nb";
+import "cronstrue/locales/fi";
+import "cronstrue/locales/uk";
+import "cronstrue/locales/ro";
+import "cronstrue/locales/tr";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronstrueType, CronTranslationProps } from "../types/components";
 import { MemoizedCopyButton } from "./CopyButton";
@@ -17,8 +32,6 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	);
 
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
-	const loadedLocales = useRef<{ [key: string]: boolean }>({});
-
 	const CRONSTRUE_LOCALES: string[] = LOCALES.filter(
 		(l) => typeof l.cronstrueLocale === "string",
 	).map((l) => String(l.cronstrueLocale));
@@ -35,12 +48,6 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 			}
 			const config = getLocaleConfig(i18n.language) || getLocaleConfig(lang);
 			const cronstrueLocale = config?.cronstrueLocale || "en";
-			if (!loadedLocales.current[cronstrueLocale] && cronstrueLocale !== "en") {
-				try {
-					await import(`cronstrue/locales/${cronstrueLocale}`);
-				} catch {}
-				loadedLocales.current[cronstrueLocale] = true;
-			}
 			const result = cronstrue.toString(cron, {
 				throwExceptionOnParseError: true,
 				locale: CRONSTRUE_LOCALES.includes(cronstrueLocale)
