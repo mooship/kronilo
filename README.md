@@ -65,7 +65,7 @@ For questions or help, open an issue or ask in the repository discussions!
 - **Natural Language ↔ Cron Translation:** Instantly convert between cron expressions and human-readable schedules, both directions.
 - **Multi-language Cron Parsing:** See translations and next run times in your preferred language, including weekday/month names.
 - **Upcoming Run Times:** View the next 5 execution dates for any cron schedule, formatted for your timezone and language.
-- **Smart Error Handling:** Get clear, actionable feedback for invalid or ambiguous cron expressions.
+- **Smart Error Handling:** Get clear, actionable feedback for invalid or ambiguous cron expressions. Unknown or unsafe errors are always replaced with a safe fallback message.
 - **Copy & Share:** One-click copy for cron expressions and translations—perfect for documentation or team chat.
 - **Modern, Responsive UI:** Beautiful, accessible design with dark mode, keyboard navigation, and mobile support.
 - **Privacy First:** No ads, no tracking, no accounts. Your data never leaves your browser except for translation API calls.
@@ -131,9 +131,16 @@ npm run test:ui
 npm run test:run
 ```
 
+
 The test suite covers:
 - **Cron validation:** Ensures accurate parsing and validation of cron expressions
 - **Schedule calculation:** Tests next run time calculations and ambiguous schedule detection
+- **Suggestions:** Verifies that built-in cron suggestions are present and correct
+- **Error messages:** Ensures robust handling and safe fallback for unknown or unsafe errors
+- **Storage:** Tests browser localStorage utility functions for reliability
+- **API client:** Covers success, timeout, network, and unknown error handling for all API requests
+- **Translation API:** Tests input validation, error handling, rate limit logic, and edge cases for cron translation
+- **Rate limit checks:** Verifies correct handling of rate limit information, service errors, and unknown error cases
 - **Edge cases:** Comprehensive testing of malformed inputs, boundary conditions, and error handling
 
 ---

@@ -33,7 +33,9 @@ function isGenericSafeMessage(message: string): boolean {
 		!message.includes("Stack trace") &&
 		!lower.includes("internal server") &&
 		!lower.includes("database") &&
-		!lower.includes("connection")
+		!lower.includes("connection") &&
+		!lower.includes("unknown error") &&
+		!lower.includes("unsafe error")
 	);
 }
 
