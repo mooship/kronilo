@@ -1,46 +1,108 @@
 {
-	"appTitle": "Kronilo",
-	"appDescription": "Convertor între expresii cron și limbaj natural.",
-	"naturalLanguageInput": {
-		"label": "Limbaj natural",
-		"placeholder": "Scrieți un program în engleză, franceză, germană, spaniolă sau italiană pentru a fi convertit în cron."
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Traducător Cron Simplu",
+		"description": "Convertește instantaneu între expresii cron și limbaj natural"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Limbaj natural",
+			"naturalToCron": "Limbaj natural → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Comută la Cron → Limbaj natural",
+			"toNaturalToCron": "Comută la Limbaj natural → Cron"
+		}
 	},
 	"cronInput": {
-		"label": "Expresie cron"
+		"label": "Expresie Cron",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Introduceți o expresie cron",
+		"infoTooltip": "*/5 * * * * → la fiecare 5 minute (minut oră zi lună zi-săptămână)",
+		"infoAriaLabel": "Informații despre formatul cron"
 	},
-	"cronTranslation": {
-		"label": "Traducere",
-		"invalid": "Expresie cron nevalidă."
+	"naturalLanguageInput": {
+		"label": "Limbaj natural",
+		"placeholder": "ex: „rulează o dată pe săptămână joi” — Funcționează cel mai bine în: engleză, franceză, germană, spaniolă sau italiană. Suportul pentru alte limbi poate varia.",
+		"ariaLabel": "Introduceți o descriere a programului în limbaj natural",
+		"languageSupport": "Funcționează cel mai bine în: engleză, franceză, germană, spaniolă, italiană, olandeză, portugheză (brasiliană și europeană). Suportul pentru alte limbi poate varia."
+	},
+	"translation": {
+		"title": "Traducere:",
+		"placeholder": "Introduceți o expresie cron pentru a vedea traducerea",
+		"loading": "Se traduce...",
+		"error": "Eroare la traducerea expresiei"
 	},
 	"nextRuns": {
-		"label": "Următoarele execuții"
+		"title": "Următoarele 5 execuții:",
+		"placeholder": "Introduceți o expresie cron validă pentru a vedea următoarele ore de execuție",
+		"loading": "Se calculează...",
+		"noRuns": "Nu au fost găsite execuții viitoare.",
+		"ambiguousSchedule": "Această expresie cron specifică atât ziua din lună, cât și ziua săptămânii. Diferite implementări cron pot interpreta acest lucru diferit. Folosiți doar unul dintre ele pentru claritate."
 	},
-	"copyButton": {
-		"copied": "Copiat!",
+	"naturalLanguage": {
+		"title": "Program în limbaj natural",
+		"inputPlaceholder": "ex: „rulează o dată pe săptămână joi”",
+		"retrying": "Se încearcă din nou...",
+		"unexpectedError": "A apărut o eroare neașteptată. Încercați din nou.",
+		"generatedCron": "Cron generat:",
+		"rateLimitedMsg": "Acces limitat. Încercați mai târziu.",
+		"rateLimitError": "Acces limitat. Încercați mai târziu.",
+		"translating": "Se traduce...",
+		"generateCron": "Generează Cron",
 		"copy": "Copiază"
+	},
+	"actions": {
+		"copy": "Copiază",
+		"copied": "Copiat!",
+		"generateCron": "Generează Cron",
+		"translating": "Se traduce...",
+		"rateLimited": "Limită atinsă"
+	},
+	"loading": {
+		"default": "Se încarcă...",
+		"mode": "Se încarcă modul...",
+		"calculating": "Se calculează..."
+	},
+	"errors": {
+		"invalidCron": "Expresie cron nevalidă",
+		"copyFailed": "Copierea în clipboard a eșuat",
+		"networkError": "Eroare de rețea. Verificați conexiunea și încercați din nou.",
+		"rateLimitExceeded": "Limita de cereri a fost depășită. Încercați din nou mai târziu.",
+		"somethingWrong": "Ceva a mers prost. Încercați din nou.",
+		"inputTooLong": "Text prea lung (maxim 200 caractere)",
+		"inputEmpty": "Câmpul nu poate fi gol. Introduceți o descriere a programului.",
+		"translationFailed": "Nu s-a putut genera o expresie cron validă"
+	},
+	"donation": {
+		"title": "Susțineți Kronilo",
+		"message": "Kronilo este un instrument gratuit și open-source care respectă confidențialitatea dvs.—fără reclame, fără urmărire, fără cont necesar.",
+		"messageExtended": "Dacă v-a economisit timp, luați în considerare oferirea unei cafele. Orice sprijin ajută să păstrăm Kronilo fără reclame.",
+		"buyMeCoffee": "☕ Oferă-mi o cafea",
+		"maybeLater": "Poate mai târziu",
+		"close": "Închide"
+	},
+	"footer": {
+		"builtWith": "Creat cu",
+		"inSouthAfrica": "în Africa de Sud",
+		"support": "Susține Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Licențiat sub",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Pagina nu a fost găsită",
+		"goHome": "Înapoi la pagina principală"
+	},
+	"accessibility": {
+		"donationModal": "Fereastră donații",
+		"close": "Închide",
+		"supportOnKofi": "Susține Kronilo pe Ko-fi",
+		"maybeLater": "Poate mai târziu"
 	},
 	"ambiguousScheduleWarning": {
 		"title": "Program ambiguu",
 		"description": "Această expresie cron poate fi interpretată diferit în medii diferite."
-	},
-	"donationModal": {
-		"title": "Susțineți dezvoltarea",
-		"description": "Dacă acest instrument v-a fost util, luați în considerare o donație pentru a susține dezvoltarea.",
-		"button": "Donează"
-	},
-	"languageSwitcher": {
-		"label": "Limbă"
-	},
-	"modeToggle": {
-		"light": "Mod luminos",
-		"dark": "Mod întunecat"
-	},
-	"notFoundCard": {
-		"title": "Pagina nu a fost găsită",
-		"description": "Pagina solicitată nu există."
-	},
-	"errorMessages": {
-		"network": "Eroare de rețea. Încercați din nou.",
-		"unknown": "A apărut o eroare necunoscută."
 	}
 }

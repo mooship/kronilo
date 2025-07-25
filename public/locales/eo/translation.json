@@ -1,46 +1,103 @@
 {
-	"appTitle": "Kronilo",
-	"appDescription": "Konvertilo inter cron-horaroj kaj natura lingvo.",
-	"naturalLanguageInput": {
-		"label": "Natura lingvo",
-		"placeholder": "Skribu horaron en la angla, franca, germana, hispana aŭ itala por konverti ĝin al cron-esprimo."
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Terure Simpla Cron-Tradukilo",
+		"description": "Tuj konvertu inter cron-esprimoj kaj natura lingvo"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Natura Lingvo",
+			"naturalToCron": "Natura Lingvo → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Ŝanĝi al Cron → Natura Lingvo",
+			"toNaturalToCron": "Ŝanĝi al Natura Lingvo → Cron"
+		}
 	},
 	"cronInput": {
-		"label": "Cron-esprimo"
+		"label": "Cron-esprimo",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Enigu cron-esprimon",
+		"infoTooltip": "*/5 * * * *  →  ĉiujn 5 minutojn (minuto horo tago monato semajntagoj)",
+		"infoAriaLabel": "Informo pri cron-formato"
 	},
-	"cronTranslation": {
-		"label": "Traduko",
-		"invalid": "Malvalida cron-esprimo."
+	"naturalLanguageInput": {
+		"label": "Natura Lingvo",
+		"placeholder": "ekz. \"unufoje semajne je ĵaŭdo\" — Plej bone funkcias en: angla, franca, germana, hispana aŭ itala. Subteno por aliaj lingvoj povas varii.",
+		"ariaLabel": "Enigu priskribon de horaro en natura lingvo"
+	},
+	"translation": {
+		"title": "Traduko:",
+		"placeholder": "Enigu cron-esprimon por vidi la tradukon",
+		"loading": "Tradukante...",
+		"error": "Eraro dum tradukado de la esprimo"
 	},
 	"nextRuns": {
-		"label": "Sekvaj lanĉoj"
+		"title": "Sekvaj 5 Lanĉoj:",
+		"placeholder": "Enigu validan cron-esprimon por vidi sekvajn lanĉtempojn",
+		"loading": "Kalkulante...",
+		"noRuns": "Neniuj estontaj lanĉoj trovitaj.",
+		"ambiguousSchedule": "Ĉi tiu cron-esprimo enhavas kaj tagon de monato kaj semajnotagon. Diversaj cron-sistemoj povas interpreti tion malsame. Por klareco, konsideru uzi nur unu el la du."
 	},
-	"copyButton": {
-		"copied": "Kopiita!",
+	"naturalLanguage": {
+		"title": "Natura Lingva Horaro",
+		"inputPlaceholder": "ekz. \"unufoje semajne je ĵaŭdo\" — Plej bone funkcias en: angla, franca, germana kaj hispana. Subteno por aliaj lingvoj povas varii.",
+		"retrying": "Bonvolu atendi, reprovas...",
+		"unexpectedError": "Okazis neatendita eraro. Bonvolu reprovi.",
+		"generatedCron": "Generita Cron:",
+		"rateLimitedMsg": "Vi estas nuntempe limigita. Bonvolu reprovi poste.",
+		"rateLimitError": "Vi estas nuntempe limigita. Bonvolu reprovi poste.",
+		"translating": "Tradukante...",
+		"generateCron": "Generi Cron",
 		"copy": "Kopii"
 	},
-	"ambiguousScheduleWarning": {
-		"title": "Ambigua horaro",
-		"description": "Ĉi tiu cron-esprimo povas esti interpretita malsame en diversaj medioj."
+	"actions": {
+		"copy": "Kopii",
+		"copied": "Kopiita!",
+		"generateCron": "Generi Cron",
+		"translating": "Tradukante...",
+		"rateLimited": "Limo atingita"
 	},
-	"donationModal": {
-		"title": "Subtenu evoluon",
-		"description": "Se ĉi tiu ilo utilas al vi, bonvolu konsideri donacon por subteni ĝian evoluon.",
-		"button": "Donaci"
+	"loading": {
+		"default": "Ŝargante...",
+		"mode": "Ŝargante reĝimon...",
+		"calculating": "Kalkulante..."
 	},
-	"languageSwitcher": {
-		"label": "Lingvo"
+	"errors": {
+		"invalidCron": "Nevalida cron-esprimo",
+		"copyFailed": "Malsukcesis kopii al tondujo",
+		"networkError": "Reta eraro. Bonvolu kontroli vian konekton.",
+		"rateLimitExceeded": "Limo atingita. Bonvolu reprovi poste.",
+		"somethingWrong": "Pardonu, io misfunkciis. Bonvolu reprovi.",
+		"inputTooLong": "Enigo tro longa (maks. 200 signoj)",
+		"inputEmpty": "Enigo ne povas esti malplena. Bonvolu enigi horaron en natura lingvo.",
+		"translationFailed": "Ne eblis traduki la enigon al valida cron-esprimo post reprovoj"
 	},
-	"modeToggle": {
-		"light": "Luma reĝimo",
-		"dark": "Malhela reĝimo"
+	"donation": {
+		"title": "Subtenu Kronilon",
+		"message": "Kronilo estas senpaga, malfermitkoda ilo kiu respektas vian privatecon—neniuj reklamoj, spuriloj aŭ kontoj.",
+		"messageExtended": "Se ĝi ŝparis al vi tempon, bonvolu konsideri aĉeti al mi kafon. Ĉiu eta kontribuo helpas teni Kronilon viva kaj sen reklamoj.",
+		"buyMeCoffee": "☕ Aĉeti kafon",
+		"maybeLater": "Eble poste",
+		"close": "Fermi donacan fenestron"
 	},
-	"notFoundCard": {
-		"title": "Paĝo ne trovita",
-		"description": "Ni ne povis trovi la paĝon, kiun vi serĉis."
+	"footer": {
+		"builtWith": "Kreita per",
+		"inSouthAfrica": "en Sudafriko",
+		"support": "Subtenu Kronilon",
+		"github": "GitHub",
+		"licensedUnder": "Licencita laŭ",
+		"agplLicense": "AGPL v3"
 	},
-	"errorMessages": {
-		"network": "Reta eraro. Bonvolu provi denove.",
-		"unknown": "Nekonata eraro okazis."
+	"notFound": {
+		"title": "404",
+		"message": "Paĝo ne trovita",
+		"goHome": "Reen hejmen"
+	},
+	"accessibility": {
+		"donationModal": "Donaca Fenestro",
+		"close": "Fermi",
+		"supportOnKofi": "Subtenu Kronilon per Ko-fi",
+		"maybeLater": "Eble poste"
 	}
 }

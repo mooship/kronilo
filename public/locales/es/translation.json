@@ -19,7 +19,7 @@
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Introduce una expresión cron",
 		"infoTooltip": "*/5 * * * *  →  cada 5 minutos (minuto hora día del mes mes día de la semana)",
-		"infoAriaLabel": "Información de formato Cron"
+		"infoAriaLabel": "Información sobre el formato Cron"
 	},
 	"naturalLanguageInput": {
 		"label": "Lenguaje natural",
@@ -37,14 +37,14 @@
 		"placeholder": "Introduce una expresión cron válida para ver las próximas ejecuciones",
 		"loading": "Calculando...",
 		"noRuns": "No se encontraron próximas ejecuciones.",
-		"ambiguousSchedule": "Esta expresión cron especifica tanto el día del mes como el día de la semana. Diferentes implementaciones de cron pueden interpretarla de manera distinta. Se recomienda usar solo uno para mayor claridad."
+		"ambiguousSchedule": "Esta expresión cron especifica tanto el día del mes como el día de la semana. Diferentes implementaciones de cron pueden interpretarla de manera distinta. Para mayor claridad, se recomienda usar solo uno de los dos."
 	},
 	"naturalLanguage": {
 		"title": "Horario en lenguaje natural",
 		"inputPlaceholder": "ej: \"ejecutar una vez a la semana el jueves\" — Funciona mejor en inglés, francés, alemán y español. El soporte para otros idiomas puede variar.",
 		"retrying": "Reintentando, por favor espera...",
 		"unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
-		"generatedCron": "Expresión cron generada:",
+		"generatedCron": "Expresión Cron generada:",
 		"rateLimitedMsg": "Actualmente estás limitado. Por favor, inténtalo más tarde.",
 		"rateLimitError": "Actualmente estás limitado. Por favor, inténtalo más tarde.",
 		"translating": "Traduciendo...",
@@ -64,7 +64,7 @@
 		"calculating": "Calculando..."
 	},
 	"errors": {
-		"invalidCron": "Expresión cron inválida.",
+		"invalidCron": "Expresión Cron inválida.",
 		"copyFailed": "Error al copiar al portapapeles.",
 		"networkError": "Error de red. Por favor, revisa tu conexión.",
 		"rateLimitExceeded": "Se ha superado el límite. Por favor, inténtalo más tarde.",

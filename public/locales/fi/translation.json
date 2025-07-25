@@ -1,46 +1,103 @@
 {
-	"appTitle": "Kronilo",
-	"appDescription": "Cron-aikataulujen kääntäjä luonnolliselle kielelle.",
-	"naturalLanguageInput": {
-		"label": "Luonnollinen kieli",
-		"placeholder": "Kirjoita aikataulu englanniksi, ranskaksi, saksaksi, espanjaksi tai italiaksi – ja se muunnetaan cron-muotoon."
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Erittäin yksinkertainen cron-kääntäjä",
+		"description": "Muuta cron-lausekkeita ja luonnollista kieltä hetkessä"
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Luonnollinen kieli",
+			"naturalToCron": "Luonnollinen kieli → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Vaihda tilaan Cron → Luonnollinen kieli",
+			"toNaturalToCron": "Vaihda tilaan Luonnollinen kieli → Cron"
+		}
 	},
 	"cronInput": {
-		"label": "Cron-lauseke"
+		"label": "Cron-lauseke",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Syötä cron-lauseke",
+		"infoTooltip": "*/5 * * * *  →  joka 5. minuutti (minuutti tunti päivä kuukausi viikonpäivä)",
+		"infoAriaLabel": "Cron-muodon tiedot"
 	},
-	"cronTranslation": {
-		"label": "Käännös",
-		"invalid": "Cron-lauseke on virheellinen."
+	"naturalLanguageInput": {
+		"label": "Luonnollinen kieli",
+		"placeholder": "esim. \"suorita kerran viikossa torstaina\" — Parhaiten toimii englanniksi, ranskaksi, saksaksi, espanjaksi tai italiaksi. Muut kielet voivat toimia vaihtelevasti.",
+		"ariaLabel": "Syötä aikataulun kuvaus luonnollisella kielellä"
+	},
+	"translation": {
+		"title": "Käännös:",
+		"placeholder": "Syötä cron-lauseke nähdäksesi käännöksen",
+		"loading": "Käännetään...",
+		"error": "Virhe käännöksessä"
 	},
 	"nextRuns": {
-		"label": "Seuraavat ajot"
+		"title": "Seuraavat 5 ajoa:",
+		"placeholder": "Syötä kelvollinen cron-lauseke nähdäksesi seuraavat ajoajat",
+		"loading": "Lasketaan...",
+		"noRuns": "Ei tulevia ajoja löytynyt.",
+		"ambiguousSchedule": "Tämä cron-lauseke sisältää sekä kuukauden päivän että viikonpäivän. Eri cron-toteutukset voivat tulkita tämän eri tavoin. Käytä selkeyden vuoksi vain toista."
 	},
-	"copyButton": {
-		"copied": "Kopioitu!",
+	"naturalLanguage": {
+		"title": "Luonnollisen kielen aikataulu",
+		"inputPlaceholder": "esim. \"suorita kerran viikossa torstaina\" — Parhaiten toimii englanniksi, ranskaksi, saksaksi ja espanjaksi. Muut kielet voivat toimia vaihtelevasti.",
+		"retrying": "Odota hetki, yritetään uudelleen...",
+		"unexpectedError": "Tapahtui odottamaton virhe. Yritä uudelleen.",
+		"generatedCron": "Luotu cron-lauseke:",
+		"rateLimitedMsg": "Olet tällä hetkellä rajoitettu. Yritä myöhemmin uudelleen.",
+		"rateLimitError": "Olet tällä hetkellä rajoitettu. Yritä myöhemmin uudelleen.",
+		"translating": "Käännetään...",
+		"generateCron": "Luo Cron",
 		"copy": "Kopioi"
 	},
-	"ambiguousScheduleWarning": {
-		"title": "Epäselvä aikataulu",
-		"description": "Tämä cron-lauseke voidaan tulkita eri tavoin eri ympäristöissä."
+	"actions": {
+		"copy": "Kopioi",
+		"copied": "Kopioitu!",
+		"generateCron": "Luo Cron",
+		"translating": "Käännetään...",
+		"rateLimited": "Rajoitettu"
 	},
-	"donationModal": {
-		"title": "Tue kehitystä",
-		"description": "Jos tämä työkalu on ollut sinulle hyödyllinen, harkitse kehityksen tukemista lahjoituksella.",
-		"button": "Lahjoita"
+	"loading": {
+		"default": "Ladataan...",
+		"mode": "Ladataan tilaa...",
+		"calculating": "Lasketaan..."
 	},
-	"languageSwitcher": {
-		"label": "Kieli"
+	"errors": {
+		"invalidCron": "Virheellinen cron-lauseke",
+		"copyFailed": "Kopiointi leikepöydälle epäonnistui",
+		"networkError": "Verkkovirhe. Tarkista yhteytesi.",
+		"rateLimitExceeded": "Rajoitus ylittynyt. Yritä myöhemmin uudelleen.",
+		"somethingWrong": "Pahoittelut, jotain meni pieleen. Yritä uudelleen.",
+		"inputTooLong": "Syöte liian pitkä (max 200 merkkiä)",
+		"inputEmpty": "Syöte ei voi olla tyhjä. Syötä aikataulu luonnollisella kielellä.",
+		"translationFailed": "Syötteen kääntäminen kelvolliseksi cron-lausekkeeksi epäonnistui yrityksistä huolimatta."
 	},
-	"modeToggle": {
-		"light": "Vaalea tila",
-		"dark": "Tumma tila"
+	"donation": {
+		"title": "Tue Kroniloa",
+		"message": "Kronilo on ilmainen avoimen lähdekoodin työkalu, joka kunnioittaa yksityisyyttäsi — ilman mainoksia, seurantalaitteita tai tilejä.",
+		"messageExtended": "Jos tämä on säästänyt aikaasi, harkitse kahvin ostamista minulle. Jokainen pieni apu pitää Kronilon elossa ja mainosvapaana.",
+		"buyMeCoffee": "☕ Osta kahvi",
+		"maybeLater": "Ehkä myöhemmin",
+		"close": "Sulje lahjoitusikkuna"
 	},
-	"notFoundCard": {
-		"title": "Sivua ei löytynyt",
-		"description": "Pyyntöäsi vastaavaa sivua ei löytynyt."
+	"footer": {
+		"builtWith": "Tehty käyttäen",
+		"inSouthAfrica": "Etelä-Afrikassa",
+		"support": "Tue Kroniloa",
+		"github": "GitHub",
+		"licensedUnder": "Lisensoitu",
+		"agplLicense": "AGPL v3"
 	},
-	"errorMessages": {
-		"network": "Verkkovirhe. Yritä uudelleen.",
-		"unknown": "Tuntematon virhe tapahtui."
+	"notFound": {
+		"title": "404",
+		"message": "Sivua ei löytynyt",
+		"goHome": "Palaa kotiin"
+	},
+	"accessibility": {
+		"donationModal": "Lahjoitusikkuna",
+		"close": "Sulje",
+		"supportOnKofi": "Tue Kroniloa Ko-fi-palvelussa",
+		"maybeLater": "Ehkä myöhemmin"
 	}
 }

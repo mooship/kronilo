@@ -41,7 +41,6 @@
 	},
 	"naturalLanguage": {
 		"title": "Zeitplan in natürlicher Sprache",
-		"inputPlaceholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch und Spanisch. Unterstützung für andere Sprachen kann variieren.",
 		"retrying": "Bitte warten, versuche es erneut...",
 		"unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
 		"generatedCron": "Generierter Cron-Ausdruck:",

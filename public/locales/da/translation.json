@@ -41,7 +41,6 @@
 	},
 	"naturalLanguage": {
 		"title": "Naturligt sprog skema",
-		"inputPlaceholder": "f.eks. \"kør én gang om ugen på en torsdag\" — Fungerer bedst på engelsk, fransk, tysk og spansk. Andre sprog understøttes i varierende grad.",
 		"retrying": "Vent venligst, prøver igen...",
 		"unexpectedError": "Der opstod en uventet fejl. Prøv igen.",
 		"generatedCron": "Genereret cron:",
