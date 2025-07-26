@@ -187,7 +187,15 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 			{error && (
 				<div id="cron-error" className="mt-4 w-full">
 					<div className="w-full rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
-						<span>{error}</span>
+						{Array.isArray(error) ? (
+							<ul className="list-disc pl-5">
+								{error.map((err) => (
+									<li key={err}>{err}</li>
+								))}
+							</ul>
+						) : (
+							<span>{error}</span>
+						)}
 					</div>
 				</div>
 			)}

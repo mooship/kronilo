@@ -1,5 +1,5 @@
 export interface UseCronValidation {
-	error: string | undefined;
+	error: string | string[] | undefined;
 	clearError: () => void;
 }
 

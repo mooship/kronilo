@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => ({
 	],
 	test: {
 		environment: "jsdom",
-		setupFiles: ["./src/test/setup.js"],
+		setupFiles: ["./src/test/setup.ts"],
 		globals: true,
 		css: true,
 	},
@@ -48,29 +48,32 @@ export default defineConfig(({ mode }) => ({
 		rollupOptions: {
 			output: {
 				manualChunks(id) {
-					if (id.includes("i18next") || id.includes("react-i18next")) {
-						return "i18n";
-					}
-					if (id.includes("usehooks-ts") || id.includes("react-tooltip")) {
-						return "react-utils";
-					}
-					if (id.includes("react-router")) {
-						return "react-router";
-					}
-					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
-						return "react-core";
-					}
 					if (id.includes("cron-parser")) {
 						return "cron-parser";
 					}
 					if (id.includes("cronstrue")) {
 						return "cronstrue";
 					}
+					if (id.includes("i18next") || id.includes("react-i18next")) {
+						return "i18n";
+					}
 					if (id.includes("zustand") || id.includes("ky")) {
 						return "http-state";
 					}
+					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
+						return "react-core";
+					}
+					if (id.includes("react-router")) {
+						return "react-router";
+					}
 					if (id.includes("@tanstack/react-query")) {
 						return "react-query";
+					}
+					if (id.includes("usehooks-ts") || id.includes("react-tooltip")) {
+						return "react-utils";
+					}
+					if (id.includes("zod")) {
+						return "zod";
 					}
 					if (id.includes("node_modules")) {
 						return "vendor";

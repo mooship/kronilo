@@ -13,7 +13,7 @@ export interface CopyButtonProps {
 }
 
 export interface CronInputProps {
-	error?: string;
+	error?: string | string[];
 }
 
 export interface CronTranslationProps {
