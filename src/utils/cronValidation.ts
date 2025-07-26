@@ -1,6 +1,5 @@
 import { cronSchema, getCronValidationErrors } from "../schemas/cron";
 
-// For compatibility with code/tests that import WHITESPACE_REGEX from here
 export const WHITESPACE_REGEX = /\s+/;
 
 export function isValidCronFormat(cron: string): boolean {

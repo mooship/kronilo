@@ -23,6 +23,18 @@ export function detectAmbiguousSchedule(cron: string): boolean {
 	);
 }
 
+const NEXT_RUNS_COUNT = 5;
+const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
+	weekday: "long",
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+	hour: "2-digit",
+	minute: "2-digit",
+	second: "2-digit",
+	timeZoneName: "long",
+};
+
 export async function calculateNextRuns(
 	cron: string,
 	lang: string,
@@ -41,20 +53,9 @@ export async function calculateNextRuns(
 		const interval = parser.parse(cron, { tz });
 		const nextDates: string[] = [];
 
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < NEXT_RUNS_COUNT; i++) {
 			const date = interval.next().toDate();
-			nextDates.push(
-				date.toLocaleString(lang, {
-					weekday: "long",
-					year: "numeric",
-					month: "long",
-					day: "numeric",
-					hour: "2-digit",
-					minute: "2-digit",
-					second: "2-digit",
-					timeZoneName: "long",
-				}),
-			);
+			nextDates.push(date.toLocaleString(lang, DATE_FORMAT_OPTIONS));
 		}
 
 		return {
