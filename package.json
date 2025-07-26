@@ -1,6 +1,6 @@
 {
 	"name": "kronilo",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"private": true,
 	"packageManager": "npm@11.4.2",
 	"engines": {
@@ -17,7 +17,8 @@
 		"lint": "biome lint . --write",
 		"preview": "vite preview",
 		"test": "vitest run",
-		"test:ui": "vitest --ui --run"
+		"test:ui": "vitest --ui --run",
+		"test:changed": "vitest --changed"
 	},
 	"dependencies": {
 		"@fontsource/poppins": "^5.2.6",

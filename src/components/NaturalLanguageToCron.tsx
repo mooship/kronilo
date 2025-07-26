@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useRateLimit, useTranslateToCron } from "../hooks/useTranslateQuery";
+import { naturalLanguageSchema } from "../schemas/naturalLanguage";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import { MemoizedActionButton } from "./ActionButton";
 import { MemoizedCopyButton } from "./CopyButton";
@@ -12,6 +13,7 @@ export function NaturalLanguageToCron() {
 	const { t } = useTranslation();
 	const [naturalLanguage, setNaturalLanguage] = useState("");
 	const [cron, setCron] = useState("");
+	const [inputError, setInputError] = useState<string | null>(null);
 	const { data: rateLimitData } = useRateLimit();
 	const translateMutation = useTranslateToCron();
 	const incrementNaturalToCronUsage = useKroniloStore(
@@ -33,10 +35,15 @@ export function NaturalLanguageToCron() {
 	const error = translateMutation.error?.message;
 
 	async function handleGenerate() {
-		if (!naturalLanguage.trim()) {
+		const validation = naturalLanguageSchema.safeParse(naturalLanguage);
+		if (!validation.success) {
+			setInputError(
+				validation.error.issues[0]?.message ||
+					t("naturalLanguage.inputInvalid"),
+			);
 			return;
 		}
-
+		setInputError(null);
 		try {
 			const result = await translateMutation.mutateAsync(naturalLanguage);
 			setCron(result.cron);
@@ -59,7 +66,10 @@ export function NaturalLanguageToCron() {
 						className="textarea textarea-bordered max-h-32 min-h-[6rem] w-full resize-none rounded-xl border-2 border-gray-200 bg-gray-50 px-4 py-3 font-mono text-gray-900 text-lg placeholder-gray-500 transition-colors duration-200 hover:border-gray-400 focus:border-gray-600 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400 dark:focus:border-neutral-400 dark:hover:border-neutral-500"
 						placeholder={t("naturalLanguage.inputPlaceholder")}
 						value={naturalLanguage}
-						onChange={(e) => setNaturalLanguage(e.target.value)}
+						onChange={(e) => {
+							setNaturalLanguage(e.target.value);
+							if (inputError) setInputError(null);
+						}}
 						disabled={loading || rateLimited}
 						maxLength={200}
 						rows={3}
@@ -69,6 +79,11 @@ export function NaturalLanguageToCron() {
 							target.style.height = `${Math.min(target.scrollHeight, 256)}px`;
 						}}
 					/>
+					{inputError && (
+						<div className="mt-2 text-sm text-red-600 dark:text-red-400 text-center">
+							{inputError}
+						</div>
+					)}
 					<div className="flex justify-center">
 						<MemoizedActionButton
 							label={

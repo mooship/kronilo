@@ -38,6 +38,7 @@ export default defineConfig(({ mode }) => ({
 		setupFiles: ["./src/test/setup.ts"],
 		globals: true,
 		css: true,
+		threads: true,
 	},
 	build: {
 		cssCodeSplit: true,

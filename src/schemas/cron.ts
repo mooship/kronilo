@@ -1,3 +1,9 @@
+export const cronCalculationResultSchema = z.object({
+	runs: z.array(z.string()),
+	error: z.string().nullable(),
+	hasAmbiguousSchedule: z.boolean(),
+});
+
 import type { ZodString } from "zod";
 import { z } from "zod";
 

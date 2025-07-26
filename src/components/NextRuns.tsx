@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { cronCalculationResultSchema } from "../schemas/cron";
 import type { NextRunsProps } from "../types/components";
 import type { CronCalculationResult } from "../types/utils";
 import { calculateNextRuns } from "../utils/cronScheduleCalculator";
@@ -17,7 +18,12 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { data, error, isLoading } = useQuery<CronCalculationResult, Error>({
 		queryKey: ["nextRuns", cron, lang],
 		queryFn: async () => {
-			return await calculateNextRuns(cron, lang);
+			const result = await calculateNextRuns(cron, lang);
+			const validation = cronCalculationResultSchema.safeParse(result);
+			if (!validation.success) {
+				throw new Error("Invalid data shape from calculateNextRuns");
+			}
+			return validation.data;
 		},
 		enabled: isEnabled,
 		staleTime: 0,
