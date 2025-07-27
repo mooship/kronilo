@@ -73,6 +73,22 @@
 		"inputEmpty": "A entrada não pode estar vazia. Por favor, introduza um agendamento em linguagem natural.",
 		"translationFailed": "Não foi possível traduzir a entrada para uma expressão cron válida após várias tentativas."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Nenhuma expressão cron fornecida. Por favor, introduza um cronograma cron como '0 12 * * 1'.",
+			"invalidFieldCount": "Uma expressão cron deve ter 5 campos (minuto hora dia mês dia da semana), mas foram fornecidos {{count}}. Exemplo: '0 12 * * 1'",
+			"invalidField": "{{fieldName}} inválido: \"{{field}}\". O valor não é válido para este campo (permitido: {{fieldRange}})",
+			"missingValue": "Valor em falta. Por favor, forneça um valor para este campo.",
+			"invalidCharacters": "Contém caracteres inválidos. Apenas números, ',', '-', '*' e '/' são permitidos.",
+			"invalidStep": "O valor do passo após '/' deve ser um inteiro positivo.",
+			"invalidRangeFormat": "O intervalo deve estar no formato 'início-fim', por exemplo, 1-5.",
+			"rangeStartGreater": "O início do intervalo ({{start}}) não deve ser maior que o fim ({{end}}).",
+			"dayOfWeekRange": "O dia da semana deve estar entre 0-7 (0 ou 7 = domingo).",
+			"invalidDayOfWeekValues": "Valor(es) inválido(s): {{invalids}}. Intervalo permitido para dia da semana: 0-7 (0 ou 7 = domingo).",
+			"invalidValues": "Valor(es) inválido(s): {{invalids}}. Intervalo permitido: {{fieldRange}}.",
+			"valueOutOfRange": "O valor {{num}} está fora do intervalo para {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Apoie o Kronilo",
 		"message": "O Kronilo é uma ferramenta gratuita e de código aberto que respeita a sua privacidade — sem anúncios, sem rastreadores, sem conta necessária.",

@@ -73,6 +73,22 @@
 		"inputEmpty": "Invoer mag niet leeg zijn. Voer een planning in natuurlijke taal in.",
 		"translationFailed": "Kon invoer niet vertalen naar een geldige cron-expressie, zelfs na meerdere pogingen."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Geen cron-expressie opgegeven. Voer een cron-schema in zoals '0 12 * * 1'.",
+			"invalidFieldCount": "Een cron-expressie moet 5 velden hebben (minuut uur dag maand weekdag), maar kreeg {{count}}. Voorbeeld: '0 12 * * 1'",
+			"invalidField": "Ongeldige {{fieldName}}: \"{{field}}\". Waarde is niet geldig voor dit veld (toegestaan: {{fieldRange}})",
+			"missingValue": "Ontbrekende waarde. Geef een waarde op voor dit veld.",
+			"invalidCharacters": "Bevat ongeldige tekens. Alleen cijfers, ',', '-', '*' en '/' zijn toegestaan.",
+			"invalidStep": "Stapwaarde na '/' moet een positief geheel getal zijn.",
+			"invalidRangeFormat": "Bereik moet in de vorm 'start-eind' zijn, bijv. 1-5.",
+			"rangeStartGreater": "Begin van bereik ({{start}}) mag niet groter zijn dan eind ({{end}}).",
+			"dayOfWeekRange": "Dag van de week moet tussen 0-7 liggen (0 of 7 = zondag).",
+			"invalidDayOfWeekValues": "Ongeldige waarde(n): {{invalids}}. Toegestaan bereik voor dag van de week: 0-7 (0 of 7 = zondag).",
+			"invalidValues": "Ongeldige waarde(n): {{invalids}}. Toegestaan bereik: {{fieldRange}}.",
+			"valueOutOfRange": "Waarde {{num}} valt buiten het bereik voor {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Steun Kronilo",
 		"message": "Kronilo is een gratis open-source tool die je privacy respecteert — geen advertenties, geen trackers, geen account nodig.",

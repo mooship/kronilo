@@ -73,6 +73,22 @@
 		"inputEmpty": "Pole nie może być puste. Wprowadź opis harmonogramu w języku naturalnym.",
 		"translationFailed": "Nie udało się wygenerować poprawnego wyrażenia cron po kilku próbach."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Nie podano wyrażenia cron. Proszę wprowadzić harmonogram cron, np. '0 12 * * 1'.",
+			"invalidFieldCount": "Wyrażenie cron musi mieć 5 pól (minuta godzina dzień miesiąc dzień tygodnia), ale otrzymano {{count}}. Przykład: '0 12 * * 1'",
+			"invalidField": "Nieprawidłowe {{fieldName}}: \"{{field}}\". Wartość nie jest prawidłowa dla tego pola (dozwolone: {{fieldRange}})",
+			"missingValue": "Brakująca wartość. Proszę podać wartość dla tego pola.",
+			"invalidCharacters": "Zawiera niedozwolone znaki. Dozwolone są tylko cyfry, ',', '-', '*' i '/'.",
+			"invalidStep": "Wartość kroku po '/' musi być liczbą całkowitą dodatnią.",
+			"invalidRangeFormat": "Zakres musi być w formie 'początek-koniec', np. 1-5.",
+			"rangeStartGreater": "Początek zakresu ({{start}}) nie powinien być większy niż koniec ({{end}}).",
+			"dayOfWeekRange": "Dzień tygodnia musi być w zakresie 0-7 (0 lub 7 = niedziela).",
+			"invalidDayOfWeekValues": "Nieprawidłowa(e) wartość(i): {{invalids}}. Dozwolony zakres dla dnia tygodnia: 0-7 (0 lub 7 = niedziela).",
+			"invalidValues": "Nieprawidłowa(e) wartość(i): {{invalids}}. Dozwolony zakres: {{fieldRange}}.",
+			"valueOutOfRange": "Wartość {{num}} jest poza zakresem dla {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Wesprzyj Kronilo",
 		"message": "Kronilo to darmowe, otwarte narzędzie szanujące Twoją prywatność — bez reklam, bez śledzenia, bez konieczności zakładania konta.",

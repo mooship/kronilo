@@ -73,6 +73,22 @@
 		"inputEmpty": "Inndata kan ikke være tom. Skriv inn en tidsplan.",
 		"translationFailed": "Kunne ikke generere et gyldig cron-uttrykk etter flere forsøk."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Ingen cron-uttrykk oppgitt. Vennligst skriv inn en cron-tidsplan som '0 12 * * 1'.",
+			"invalidFieldCount": "Et cron-uttrykk må ha 5 felter (minutt time dag måned ukedag), men fikk {{count}}. Eksempel: '0 12 * * 1'",
+			"invalidField": "Ugyldig {{fieldName}}: \"{{field}}\". Verdien er ikke gyldig for dette feltet (tillatte verdier: {{fieldRange}})",
+			"missingValue": "Mangler verdi. Vennligst oppgi en verdi for dette feltet.",
+			"invalidCharacters": "Inneholder ugyldige tegn. Kun tall, ',', '-', '*' og '/' er tillatt.",
+			"invalidStep": "Stegverdi etter '/' må være et positivt heltall.",
+			"invalidRangeFormat": "Område må være på formen 'start-slutt', f.eks. 1-5.",
+			"rangeStartGreater": "Områdestart ({{start}}) bør ikke være større enn slutt ({{end}}).",
+			"dayOfWeekRange": "Ukedag må være mellom 0-7 (0 eller 7 = søndag).",
+			"invalidDayOfWeekValues": "Ugyldig(e) verdi(er): {{invalids}}. Tillatt område for ukedag: 0-7 (0 eller 7 = søndag).",
+			"invalidValues": "Ugyldig(e) verdi(er): {{invalids}}. Tillatt område: {{fieldRange}}.",
+			"valueOutOfRange": "Verdi {{num}} er utenfor området for {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Støtt Kronilo",
 		"message": "Kronilo er et gratis, åpent verktøy som respekterer personvernet ditt — ingen annonser, ingen sporing, ingen konto.",

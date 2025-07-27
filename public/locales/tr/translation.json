@@ -73,6 +73,22 @@
 		"inputEmpty": "Girdi boş olamaz. Lütfen doğal dilde bir zamanlama girin.",
 		"translationFailed": "Girdi, birkaç denemeden sonra geçerli bir cron ifadesine çevrilemedi."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Cron ifadesi sağlanmadı. Lütfen '0 12 * * 1' gibi bir cron zamanlaması girin.",
+			"invalidFieldCount": "Bir cron ifadesinin 5 alanı olmalıdır (dakika saat gün ay haftanın günü), ancak {{count}} alındı. Örnek: '0 12 * * 1'",
+			"invalidField": "Geçersiz {{fieldName}}: \"{{field}}\". Bu alan için değer geçerli değil (izin verilen: {{fieldRange}})",
+			"missingValue": "Eksik değer. Lütfen bu alan için bir değer sağlayın.",
+			"invalidCharacters": "Geçersiz karakterler içeriyor. Yalnızca rakamlar, ',', '-', '*' ve '/' karakterlerine izin verilir.",
+			"invalidStep": "'/' işaretinden sonraki adım değeri pozitif bir tamsayı olmalıdır.",
+			"invalidRangeFormat": "Aralık 'başlangıç-bitiş' formatında olmalıdır, örneğin 1-5.",
+			"rangeStartGreater": "Aralık başlangıcı ({{start}}) bitişten ({{end}}) büyük olmamalıdır.",
+			"dayOfWeekRange": "Haftanın günü 0-7 arasında olmalıdır (0 veya 7 = Pazar).",
+			"invalidDayOfWeekValues": "Geçersiz değer(ler): {{invalids}}. Haftanın günü için izin verilen aralık: 0-7 (0 veya 7 = Pazar).",
+			"invalidValues": "Geçersiz değer(ler): {{invalids}}. İzin verilen aralık: {{fieldRange}}.",
+			"valueOutOfRange": "{{num}} değeri, {{fieldName}} için aralık dışında ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Kronilo'yu Destekle",
 		"message": "Kronilo, gizliliğinize saygı duyan ücretsiz, açık kaynaklı bir araçtır — reklam yok, takip yok, hesap yok.",

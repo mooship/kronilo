@@ -73,6 +73,22 @@
 		"inputEmpty": "Syöte ei voi olla tyhjä. Syötä aikataulu luonnollisella kielellä.",
 		"translationFailed": "Syötteen kääntäminen kelvolliseksi cron-lausekkeeksi epäonnistui useista yrityksistä huolimatta."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Cron-ilmausta ei ole annettu. Syötä cron-aikataulu esimerkiksi muodossa '0 12 * * 1'.",
+			"invalidFieldCount": "Cron-ilmaisun täytyy sisältää 5 kenttää (minuutti tunti päivä kuukausi viikonpäivä), mutta annettu määrä on {{count}}. Esimerkki: '0 12 * * 1'",
+			"invalidField": "Virheellinen {{fieldName}}: \"{{field}}\". Arvo ei ole kelvollinen tälle kentälle (sallitut arvot: {{fieldRange}})",
+			"missingValue": "Puuttuva arvo. Anna arvo tälle kentälle.",
+			"invalidCharacters": "Sisältää virheellisiä merkkejä. Vain numerot, ',', '-', '*' ja '/' ovat sallittuja.",
+			"invalidStep": "Väliarvo '/' -merkin jälkeen täytyy olla positiivinen kokonaisluku.",
+			"invalidRangeFormat": "Alueen täytyy olla muodossa 'alku-loppu', esim. 1-5.",
+			"rangeStartGreater": "Alueen alku ({{start}}) ei saa olla suurempi kuin loppu ({{end}}).",
+			"dayOfWeekRange": "Viikonpäivän täytyy olla välillä 0-7 (0 tai 7 = sunnuntai).",
+			"invalidDayOfWeekValues": "Virheellinen(t) arvo(t): {{invalids}}. Sallittu alue viikonpäivälle: 0-7 (0 tai 7 = sunnuntai).",
+			"invalidValues": "Virheellinen(t) arvo(t): {{invalids}}. Sallittu alue: {{fieldRange}}.",
+			"valueOutOfRange": "Arvo {{num}} on alueen ulkopuolella {{fieldName}}:lle ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Tue Kroniloa",
 		"message": "Kronilo on ilmainen avoimen lähdekoodin työkalu, joka kunnioittaa yksityisyyttäsi — ilman mainoksia, seurantalaitteita tai tilejä.",

@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { memo, useCallback, useMemo, useRef, useState } from "react";
+import { memo, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useClickOutside } from "../hooks/useClickOutside";
+import { useOnClickOutside } from "usehooks-ts";
 import { LOCALES } from "../locales";
 
 const LanguageSwitcher: React.FC = () => {
@@ -11,15 +11,12 @@ const LanguageSwitcher: React.FC = () => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
 
-	useClickOutside(
-		menuRef as React.RefObject<HTMLElement>,
-		useCallback((event) => {
-			if (buttonRef.current?.contains(event.target as Node)) {
-				return;
-			}
-			setOpen(false);
-		}, []),
-	);
+	useOnClickOutside(menuRef as React.RefObject<HTMLElement>, (event) => {
+		if (buttonRef.current?.contains(event.target as Node)) {
+			return;
+		}
+		setOpen(false);
+	});
 
 	function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
 		if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {

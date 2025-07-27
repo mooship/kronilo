@@ -73,6 +73,22 @@
 		"inputEmpty": "Inmatning kan inte vara tom. Ange ett schema i naturligt språk.",
 		"translationFailed": "Kunde inte generera giltigt cron-uttryck efter flera försök."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Ingen cron-uttryck angiven. Vänligen ange ett cron-schema som '0 12 * * 1'.",
+			"invalidFieldCount": "Ett cron-uttryck måste ha 5 fält (minut timme dag månad veckodag), men fick {{count}}. Exempel: '0 12 * * 1'",
+			"invalidField": "Ogiltigt {{fieldName}}: \"{{field}}\". Värdet är inte giltigt för detta fält (tillåtna: {{fieldRange}})",
+			"missingValue": "Saknat värde. Vänligen ange ett värde för detta fält.",
+			"invalidCharacters": "Innehåller ogiltiga tecken. Endast siffror, ',', '-', '*' och '/' är tillåtna.",
+			"invalidStep": "Stegvärde efter '/' måste vara ett positivt heltal.",
+			"invalidRangeFormat": "Intervall måste vara i formen 'start-slut', t.ex. 1-5.",
+			"rangeStartGreater": "Intervallstart ({{start}}) bör inte vara större än slut ({{end}}).",
+			"dayOfWeekRange": "Veckodag måste vara mellan 0-7 (0 eller 7 = söndag).",
+			"invalidDayOfWeekValues": "Ogiltigt värde(n): {{invalids}}. Tillåtet intervall för veckodag: 0-7 (0 eller 7 = söndag).",
+			"invalidValues": "Ogiltigt värde(n): {{invalids}}. Tillåtet intervall: {{fieldRange}}.",
+			"valueOutOfRange": "Värde {{num}} är utanför intervallet för {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Stöd Kronilo",
 		"message": "Kronilo är ett gratis, öppet verktyg som respekterar din integritet — inga annonser, ingen spårning, inget konto.",

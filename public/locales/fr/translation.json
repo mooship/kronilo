@@ -73,6 +73,22 @@
 		"inputEmpty": "L'entrée ne peut pas être vide. Veuillez saisir un horaire en langage naturel.",
 		"translationFailed": "Impossible de traduire l'entrée en une expression cron valide après plusieurs tentatives."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Aucune expression cron fournie. Veuillez entrer un calendrier cron comme '0 12 * * 1'.",
+			"invalidFieldCount": "Une expression cron doit avoir 5 champs (minute heure jour mois jour de la semaine), mais {{count}} ont été fournis. Exemple: '0 12 * * 1'",
+			"invalidField": "{{fieldName}} invalide: \"{{field}}\". La valeur n'est pas valide pour ce champ (valeurs autorisées: {{fieldRange}})",
+			"missingValue": "Valeur manquante. Veuillez fournir une valeur pour ce champ.",
+			"invalidCharacters": "Contient des caractères invalides. Seuls les nombres, ',', '-', '*' et '/' sont autorisés.",
+			"invalidStep": "La valeur de pas après '/' doit être un entier positif.",
+			"invalidRangeFormat": "La plage doit être sous la forme 'début-fin', par exemple 1-5.",
+			"rangeStartGreater": "Le début de la plage ({{start}}) ne doit pas être supérieur à la fin ({{end}}).",
+			"dayOfWeekRange": "Le jour de la semaine doit être compris entre 0 et 7 (0 ou 7 = dimanche).",
+			"invalidDayOfWeekValues": "Valeur(s) invalide(s): {{invalids}}. Plage autorisée pour le jour de la semaine: 0-7 (0 ou 7 = dimanche).",
+			"invalidValues": "Valeur(s) invalide(s): {{invalids}}. Plage autorisée: {{fieldRange}}.",
+			"valueOutOfRange": "La valeur {{num}} est en dehors de la plage pour {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Soutenir Kronilo",
 		"message": "Kronilo est un outil gratuit et open source qui respecte votre vie privée — pas de publicités, pas de traqueurs, pas de compte.",

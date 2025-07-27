@@ -73,6 +73,22 @@
 		"inputEmpty": "Câmpul nu poate fi gol. Vă rugăm să introduceți o descriere a programului.",
 		"translationFailed": "Nu s-a putut genera o expresie cron validă după mai multe încercări."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Nicio expresie cron furnizată. Vă rugăm să introduceți un program cron precum '0 12 * * 1'.",
+			"invalidFieldCount": "O expresie cron trebuie să aibă 5 câmpuri (minut oră zi lună zi a săptămânii), dar au fost primite {{count}}. Exemplu: '0 12 * * 1'",
+			"invalidField": "{{fieldName}} invalid: \"{{field}}\". Valoarea nu este validă pentru acest câmp (permise: {{fieldRange}})",
+			"missingValue": "Valoare lipsă. Vă rugăm să furnizați o valoare pentru acest câmp.",
+			"invalidCharacters": "Conține caractere invalide. Sunt permise doar numere, ',', '-', '*' și '/'.",
+			"invalidStep": "Valoarea pasului după '/' trebuie să fie un număr întreg pozitiv.",
+			"invalidRangeFormat": "Intervalul trebuie să fie în formatul 'început-sfârșit', de exemplu, 1-5.",
+			"rangeStartGreater": "Începutul intervalului ({{start}}) nu trebuie să fie mai mare decât sfârșitul ({{end}}).",
+			"dayOfWeekRange": "Ziua săptămânii trebuie să fie între 0-7 (0 sau 7 = duminică).",
+			"invalidDayOfWeekValues": "Valoare/valori invalide: {{invalids}}. Interval permis pentru ziua săptămânii: 0-7 (0 sau 7 = duminică).",
+			"invalidValues": "Valoare/valori invalide: {{invalids}}. Interval permis: {{fieldRange}}.",
+			"valueOutOfRange": "Valoarea {{num}} este în afara intervalului pentru {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Susțineți Kronilo",
 		"message": "Kronilo este un instrument gratuit și open-source care respectă confidențialitatea dvs. — fără reclame, fără urmărire, fără cont necesar.",
