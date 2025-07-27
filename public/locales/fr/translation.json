@@ -1,8 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Traducteur de Cron ultra simple",
-		"description": "Convertissez instantanément entre expressions cron et langage naturel"
+		"subtitle": "Traduction Cron ultra simple",
+		"description": "Convertissez instantanément des expressions cron en langage naturel et vice versa."
 	},
 	"navigation": {
 		"modes": {
@@ -10,20 +10,20 @@
 			"naturalToCron": "Langage naturel → Cron"
 		},
 		"switchMode": {
-			"toCronToNatural": "Passer à Cron → Langage naturel",
-			"toNaturalToCron": "Passer à Langage naturel → Cron"
+			"toCronToNatural": "Basculer vers Cron → Langage naturel",
+			"toNaturalToCron": "Basculer vers Langage naturel → Cron"
 		}
 	},
 	"cronInput": {
 		"label": "Expression Cron",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Saisissez une expression cron",
-		"infoTooltip": "*/5 * * * *  →  toutes les 5 minutes (minute heure jour du mois mois jour de la semaine)",
-		"infoAriaLabel": "Info format Cron"
+		"infoTooltip": "*/5 * * * * → toutes les 5 minutes (minute, heure, jour du mois, mois, jour de la semaine)",
+		"infoAriaLabel": "Information sur le format Cron"
 	},
 	"naturalLanguageInput": {
 		"label": "Langage naturel",
-		"placeholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand, espagnol ou italien. Le support pour d'autres langues peut varier.",
+		"placeholder": "ex: « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand, espagnol ou italien. Le support pour d'autres langues peut varier.",
 		"ariaLabel": "Saisissez la description de l'horaire en langage naturel"
 	},
 	"translation": {
@@ -37,16 +37,16 @@
 		"placeholder": "Saisissez une expression cron valide pour voir les prochaines exécutions",
 		"loading": "Calcul en cours...",
 		"noRuns": "Aucune exécution à venir trouvée.",
-		"ambiguousSchedule": "Cette expression cron spécifie à la fois le jour du mois et le jour de la semaine. Différentes implémentations de cron peuvent l'interpréter différemment. Utilisez de préférence un seul des deux pour plus de clarté."
+		"ambiguousSchedule": "Cette expression cron spécifie à la fois le jour du mois et le jour de la semaine. Différentes implémentations de cron peuvent l'interpréter différemment. Préférez utiliser un seul des deux pour plus de clarté."
 	},
 	"naturalLanguage": {
 		"title": "Horaire en langage naturel",
-		"inputPlaceholder": "ex : « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand et espagnol. Le support pour d'autres langues peut varier.",
+		"inputPlaceholder": "ex: « exécuter une fois par semaine le jeudi » — Fonctionne mieux en anglais, français, allemand et espagnol. Le support pour d'autres langues peut varier.",
 		"retrying": "Nouvelle tentative, veuillez patienter...",
 		"unexpectedError": "Une erreur inattendue est survenue. Veuillez réessayer.",
 		"generatedCron": "Expression cron générée :",
-		"rateLimitedMsg": "Vous êtes actuellement limité. Veuillez réessayer plus tard.",
-		"rateLimitError": "Vous êtes actuellement limité. Veuillez réessayer plus tard.",
+		"rateLimitedMsg": "Vous avez atteint la limite de requêtes. Veuillez réessayer plus tard.",
+		"rateLimitError": "Vous avez atteint la limite de requêtes. Veuillez réessayer plus tard.",
 		"translating": "Traduction en cours...",
 		"generateCron": "Générer Cron",
 		"copy": "Copier"
@@ -56,7 +56,7 @@
 		"copied": "Copié !",
 		"generateCron": "Générer Cron",
 		"translating": "Traduction en cours...",
-		"rateLimited": "Limité"
+		"rateLimited": "Limite atteinte"
 	},
 	"loading": {
 		"default": "Chargement...",
@@ -67,7 +67,7 @@
 		"invalidCron": "Expression cron invalide",
 		"copyFailed": "Échec de la copie dans le presse-papiers",
 		"networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
-		"rateLimitExceeded": "Limite atteinte. Veuillez réessayer plus tard.",
+		"rateLimitExceeded": "Limite de requêtes atteinte. Veuillez réessayer plus tard.",
 		"somethingWrong": "Désolé, une erreur est survenue. Veuillez réessayer.",
 		"inputTooLong": "Entrée trop longue (max 200 caractères)",
 		"inputEmpty": "L'entrée ne peut pas être vide. Veuillez saisir un horaire en langage naturel.",
@@ -77,7 +77,7 @@
 		"title": "Soutenir Kronilo",
 		"message": "Kronilo est un outil gratuit et open source qui respecte votre vie privée — pas de publicités, pas de traqueurs, pas de compte.",
 		"messageExtended": "Si cela vous a fait gagner du temps, pensez à m'offrir un café. Chaque petit geste aide à garder Kronilo vivant et sans publicité.",
-		"buyMeCoffee": "☕ Offrez-moi un café",
+		"buyMeCoffee": "☕ M'offrir un café",
 		"maybeLater": "Peut-être plus tard",
 		"close": "Fermer la fenêtre de don"
 	},
@@ -92,7 +92,7 @@
 	"notFound": {
 		"title": "404",
 		"message": "Page non trouvée",
-		"goHome": "Accueil"
+		"goHome": "Retour à l'accueil"
 	},
 	"accessibility": {
 		"donationModal": "Fenêtre de don",
