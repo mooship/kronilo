@@ -18,7 +18,9 @@ export function useCronValidation(cron: string): UseCronValidation {
 			setErrors(["Input too long (max 200 characters)"]);
 		} else if (debouncedCron) {
 			const cronErrors = getCronErrors(debouncedCron);
-			setErrors(cronErrors.length > 0 ? cronErrors : undefined);
+			setErrors(
+				cronErrors.length > 0 ? cronErrors.map((e) => e.key) : undefined,
+			);
 		} else {
 			setErrors(undefined);
 		}

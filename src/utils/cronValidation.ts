@@ -27,8 +27,9 @@ export function isValidCronFormat(cron: string): boolean {
  * Get validation errors for a cron expression.
  *
  * @param cron The cron expression to check
- * @returns {string[]} Array of error messages (empty if valid)
+ * @returns {I18nCronError[]} Array of error objects (empty if valid)
  */
-export function getCronErrors(cron: string): string[] {
+import type { I18nCronError } from "../types/i18n";
+export function getCronErrors(cron: string): I18nCronError[] {
 	return getCronValidationErrors(cron);
 }
