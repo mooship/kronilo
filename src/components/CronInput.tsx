@@ -8,6 +8,7 @@ import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronInputProps } from "../types/components";
 import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
 import { MemoizedCopyButton } from "./CopyButton";
+import { CronInputWarning } from "./CronInputWarning";
 import { MemoizedModeToggle } from "./ModeToggle";
 
 const CronInput: FC<CronInputProps> = ({ error }) => {
@@ -39,15 +40,11 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 	}, [showSuggestions]);
 
 	const inputClassName = useMemo(() => {
-		const baseClasses =
-			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400";
-		const errorClasses =
-			"border-yellow-400/40 bg-yellow-100 dark:border-yellow-600/40 dark:bg-yellow-900";
-		const normalClasses =
-			"border-gray-200 hover:border-gray-400 focus:border-gray-600 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400";
-
-		return clsx(baseClasses, error ? errorClasses : normalClasses);
-	}, [error]);
+		return clsx(
+			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400",
+			"border-gray-200 hover:border-gray-400 focus:border-gray-600 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400",
+		);
+	}, []);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.ctrlKey && e.key === "a") {
@@ -186,7 +183,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 			</div>
 			{error && (
 				<div id="cron-error" className="mt-4 w-full">
-					<div className="w-full rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
+					<CronInputWarning>
 						{Array.isArray(error) ? (
 							<ul className="list-disc pl-5">
 								{error.map((err) => (
@@ -196,7 +193,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						) : (
 							<span>{error}</span>
 						)}
-					</div>
+					</CronInputWarning>
 				</div>
 			)}
 		</div>

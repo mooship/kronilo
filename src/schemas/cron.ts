@@ -1,3 +1,5 @@
+// Only numbers, ',', '-', '*', and '/' are allowed in cron fields
+const CRON_FIELD_INVALID_CHAR_REGEX = /[^\d\-,*/]/;
 export const cronCalculationResultSchema = z.object({
 	runs: z.array(z.string()),
 	error: z.string().nullable(),
@@ -124,7 +126,7 @@ export function getCronValidationErrors(cron: string): string[] {
 			let msg = result.error.issues[0]?.message || "Invalid value.";
 			if (field === "") {
 				msg = `Missing value. Please provide a value for the ${CRON_FIELD_NAMES[i]} field (${CRON_FIELD_RANGES[i]}).`;
-			} else if (/[^\d\-,*/]/.test(field)) {
+			} else if (CRON_FIELD_INVALID_CHAR_REGEX.test(field)) {
 				msg = `Contains invalid characters. Only numbers, ',', '-', '*', and '/' are allowed.`;
 			} else if (field.includes("/")) {
 				const step = field.split("/")[1];
@@ -139,6 +141,8 @@ export function getCronValidationErrors(cron: string): string[] {
 					const [start, end] = parts;
 					if (Number(start) > Number(end)) {
 						msg = `Range start (${start}) should not be greater than end (${end}).`;
+					} else if (i === 4) {
+						msg = `Day of week must be between 0-7 (0 or 7 = Sunday).`;
 					}
 				}
 			} else if (field.includes(",")) {
@@ -154,16 +158,28 @@ export function getCronValidationErrors(cron: string): string[] {
 					);
 				});
 				if (invalids.length > 0) {
-					msg = `Invalid value(s): ${invalids.join(", ")}. Allowed range: ${CRON_FIELD_RANGES[i]}.`;
+					if (i === 4) {
+						msg = `Invalid value(s): ${invalids.join(", ")}. Allowed range for day of week: 0-7 (0 or 7 = Sunday).`;
+					} else {
+						msg = `Invalid value(s): ${invalids.join(", ")}. Allowed range: ${CRON_FIELD_RANGES[i]}.`;
+					}
 				}
 			} else if (!Number.isNaN(Number(field))) {
 				const num = Number(field);
 				const [min, max] = CRON_FIELD_RANGES[i].split("-").map(Number);
 				if (num < min || num > max || (i === 2 && num === 0)) {
-					msg = `Value ${num} is out of range for ${CRON_FIELD_NAMES[i]} (${CRON_FIELD_RANGES[i]}).`;
+					if (i === 4) {
+						msg = `Day of week must be between 0-7 (0 or 7 = Sunday).`;
+					} else {
+						msg = `Value ${num} is out of range for ${CRON_FIELD_NAMES[i]} (${CRON_FIELD_RANGES[i]}).`;
+					}
 				}
 			}
-			errors.push(`Invalid ${CRON_FIELD_NAMES[i]}: "${field}". ${msg}`);
+			if (i === 4 && msg === "Invalid cron field value") {
+				msg = "Day of week must be between 0-7 (0 or 7 = Sunday).";
+			}
+			const cleanMsg = msg.endsWith(".") ? msg.slice(0, -1) : msg;
+			errors.push(`Invalid ${CRON_FIELD_NAMES[i]}: "${field}". ${cleanMsg}`);
 		}
 	});
 	return errors;

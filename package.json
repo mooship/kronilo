@@ -1,6 +1,6 @@
 {
 	"name": "kronilo",
-	"version": "1.5.1",
+	"version": "1.0.0",
 	"private": true,
 	"packageManager": "npm@11.4.2",
 	"engines": {

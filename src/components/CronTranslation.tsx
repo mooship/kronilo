@@ -111,17 +111,17 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 							{t("translation.placeholder")}
 						</span>
 					</div>
-				) : error ? (
-					<div className="rounded-xl border border-yellow-300 bg-yellow-100 p-4 text-yellow-700 dark:border-yellow-700 dark:bg-yellow-900 dark:text-yellow-300">
-						<span>{error}</span>
-					</div>
 				) : loading ? (
 					<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50 h-12">
 						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
 						{t("translation.loading")}
 					</div>
+				) : error ? (
+					<p className="font-medium text-black text-xl leading-relaxed min-h-[3rem] flex items-center dark:text-neutral-50">
+						{error}
+					</p>
 				) : (
-					<p className="font-medium text-black text-xl leading-relaxed dark:text-neutral-50 min-h-[3rem] flex items-center">
+					<p className="font-medium text-black text-xl leading-relaxed min-h-[3rem] flex items-center dark:text-neutral-50">
 						{translation}
 					</p>
 				)}
