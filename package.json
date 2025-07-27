@@ -1,6 +1,6 @@
 {
 	"name": "kronilo",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"private": true,
 	"packageManager": "npm@11.4.2",
 	"engines": {
@@ -53,6 +53,7 @@
 		"@vitejs/plugin-react-swc": "^3.11.0",
 		"@vitest/ui": "^3.2.4",
 		"autoprefixer": "^10.4.21",
+		"fontaine": "^0.6.0",
 		"globals": "^16.3.0",
 		"husky": "^9.1.7",
 		"jsdom": "^26.1.0",

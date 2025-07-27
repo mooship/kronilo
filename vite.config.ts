@@ -1,12 +1,29 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
+import { FontaineTransform } from "fontaine";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
+
+const options = {
+	fallbacks: [
+		"Poppins",
+		"Poppins Variable",
+		"Inter",
+		"system-ui",
+		"Segoe UI",
+		"Roboto",
+		"Helvetica Neue",
+		"Arial",
+		"sans-serif",
+	],
+	resolvePath: (id: string) => `file:/public/dir${id}`,
+};
 
 export default defineConfig(({ mode }) => ({
 	plugins: [
 		react(),
 		tailwindcss(),
+		FontaineTransform.vite(options),
 		VitePWA({
 			registerType: "autoUpdate",
 			manifest: {
@@ -48,7 +65,7 @@ export default defineConfig(({ mode }) => ({
 		assetsInlineLimit: 4096,
 		rollupOptions: {
 			output: {
-				manualChunks(id) {
+				manualChunks(id: string) {
 					if (id.includes("cron-parser")) {
 						return "cron-parser";
 					}
