@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Traductor de Cron súper simple",
-		"description": "Convierte entre expresiones cron y lenguaje natural al instante"
+		"description": "Convierte al instante entre expresiones cron y lenguaje natural."
 	},
 	"navigation": {
 		"modes": {
@@ -18,7 +18,7 @@
 		"label": "Expresión Cron",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Introduce una expresión cron",
-		"infoTooltip": "*/5 * * * *  →  cada 5 minutos (minuto hora día del mes mes día de la semana)",
+		"infoTooltip": "*/5 * * * * → cada 5 minutos (minuto, hora, día del mes, mes, día de la semana)",
 		"infoAriaLabel": "Información sobre el formato Cron"
 	},
 	"naturalLanguageInput": {
@@ -64,20 +64,20 @@
 		"calculating": "Calculando..."
 	},
 	"errors": {
-		"invalidCron": "Expresión Cron inválida.",
-		"copyFailed": "Error al copiar al portapapeles.",
-		"networkError": "Error de red. Por favor, revisa tu conexión.",
-		"rateLimitExceeded": "Se ha superado el límite. Por favor, inténtalo más tarde.",
-		"somethingWrong": "Lo sentimos, algo salió mal. Por favor, inténtalo de nuevo.",
-		"inputTooLong": "Entrada demasiado larga (máx. 200 caracteres).",
-		"inputEmpty": "La entrada no puede estar vacía. Por favor, introduce un horario en lenguaje natural.",
-		"translationFailed": "No se pudo traducir la entrada a una expresión cron válida tras varios intentos."
+		"invalidCron": "Expresión Cron inválida",
+		"copyFailed": "Error al copiar al portapapeles",
+		"networkError": "Error de red. Por favor, revisa tu conexión",
+		"rateLimitExceeded": "Límite excedido. Por favor, inténtalo más tarde",
+		"somethingWrong": "Lo sentimos, algo salió mal. Por favor, inténtalo de nuevo",
+		"inputTooLong": "Entrada demasiado larga (máx. 200 caracteres)",
+		"inputEmpty": "La entrada no puede estar vacía. Por favor, introduce un horario en lenguaje natural",
+		"translationFailed": "No se pudo traducir la entrada a una expresión cron válida tras varios intentos"
 	},
 	"donation": {
 		"title": "Apoya Kronilo",
 		"message": "Kronilo es una herramienta gratuita y de código abierto que respeta tu privacidad — sin anuncios, sin rastreadores, sin cuenta.",
 		"messageExtended": "Si te ha ahorrado tiempo, considera invitarme a un café. Cada pequeño aporte ayuda a mantener Kronilo vivo y libre de anuncios.",
-		"buyMeCoffee": "☕ Invítame un café",
+		"buyMeCoffee": "☕ Invítame a un café",
 		"maybeLater": "Quizás más tarde",
 		"close": "Cerrar ventana de donación"
 	},
@@ -92,7 +92,7 @@
 	"notFound": {
 		"title": "404",
 		"message": "Página no encontrada",
-		"goHome": "Inicio"
+		"goHome": "Ir a inicio"
 	},
 	"accessibility": {
 		"donationModal": "Ventana de donación",

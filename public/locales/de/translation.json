@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Supereinfacher Cron-Übersetzer",
-		"description": "Wandle zwischen Cron-Ausdrücken und natürlicher Sprache sofort um"
+		"description": "Wandle sofort zwischen Cron-Ausdrücken und natürlicher Sprache um."
 	},
 	"navigation": {
 		"modes": {
@@ -10,43 +10,44 @@
 			"naturalToCron": "Natürliche Sprache → Cron"
 		},
 		"switchMode": {
-			"toCronToNatural": "Wechsel zu Cron → Natürliche Sprache",
-			"toNaturalToCron": "Wechsel zu Natürliche Sprache → Cron"
+			"toCronToNatural": "Wechsle zu Cron → Natürliche Sprache",
+			"toNaturalToCron": "Wechsle zu Natürliche Sprache → Cron"
 		}
 	},
 	"cronInput": {
 		"label": "Cron-Ausdruck",
 		"placeholder": "*/5 * * * *",
-		"ariaLabel": "Cron-Ausdruck eingeben",
-		"infoTooltip": "*/5 * * * *  →  alle 5 Minuten (Minute Stunde Tag des Monats Monat Wochentag)",
-		"infoAriaLabel": "Cron-Format-Info"
+		"ariaLabel": "Geben Sie einen Cron-Ausdruck ein",
+		"infoTooltip": "*/5 * * * * → alle 5 Minuten (Minute, Stunde, Tag des Monats, Monat, Wochentag)",
+		"infoAriaLabel": "Informationen zum Cron-Format"
 	},
 	"naturalLanguageInput": {
 		"label": "Natürliche Sprache",
-		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten in Englisch, Französisch, Deutsch, Spanisch oder Italienisch. Unterstützung für andere Sprachen kann variieren.",
-		"ariaLabel": "Beschreibung des Zeitplans in natürlicher Sprache eingeben"
+		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten auf Englisch, Französisch, Deutsch, Spanisch oder Italienisch. Unterstützung für andere Sprachen kann variieren.",
+		"ariaLabel": "Geben Sie die Beschreibung des Zeitplans in natürlicher Sprache ein"
 	},
 	"translation": {
 		"title": "Übersetzung:",
-		"placeholder": "Geben Sie einen Cron-Ausdruck ein, um die Übersetzung zu sehen.",
-		"loading": "Übersetze...",
-		"error": "Fehler beim Übersetzen des Ausdrucks."
+		"placeholder": "Geben Sie einen Cron-Ausdruck ein, um die Übersetzung zu sehen",
+		"loading": "Wird übersetzt...",
+		"error": "Fehler beim Übersetzen des Ausdrucks"
 	},
 	"nextRuns": {
 		"title": "Nächste 5 Ausführungen:",
-		"placeholder": "Geben Sie einen gültigen Cron-Ausdruck ein, um die nächsten Ausführungszeiten zu sehen.",
-		"loading": "Berechne...",
+		"placeholder": "Geben Sie einen gültigen Cron-Ausdruck ein, um die nächsten Ausführungen zu sehen",
+		"loading": "Wird berechnet...",
 		"noRuns": "Keine bevorstehenden Ausführungen gefunden.",
-		"ambiguousSchedule": "Dieser Cron-Ausdruck enthält sowohl den Tag des Monats als auch den Wochentag. Verschiedene Cron-Implementierungen können das unterschiedlich interpretieren. Verwenden Sie zur Klarheit am besten nur eines von beiden."
+		"ambiguousSchedule": "Dieser Cron-Ausdruck spezifiziert sowohl den Tag des Monats als auch den Wochentag. Unterschiedliche Cron-Implementierungen können dies unterschiedlich interpretieren. Verwenden Sie zur Klarheit vorzugsweise nur eines von beiden."
 	},
 	"naturalLanguage": {
 		"title": "Zeitplan in natürlicher Sprache",
-		"retrying": "Bitte warten, versuche es erneut...",
+		"inputPlaceholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten auf Englisch, Französisch, Deutsch und Spanisch. Unterstützung für andere Sprachen kann variieren.",
+		"retrying": "Neuer Versuch, bitte warten...",
 		"unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
 		"generatedCron": "Generierter Cron-Ausdruck:",
-		"rateLimitedMsg": "Sie sind derzeit limitiert. Bitte versuchen Sie es später erneut.",
-		"rateLimitError": "Sie sind derzeit limitiert. Bitte versuchen Sie es später erneut.",
-		"translating": "Übersetze...",
+		"rateLimitedMsg": "Sie haben Ihr Limit erreicht. Bitte versuchen Sie es später erneut.",
+		"rateLimitError": "Sie haben Ihr Limit erreicht. Bitte versuchen Sie es später erneut.",
+		"translating": "Wird übersetzt...",
 		"generateCron": "Cron generieren",
 		"copy": "Kopieren"
 	},
@@ -54,27 +55,27 @@
 		"copy": "Kopieren",
 		"copied": "Kopiert!",
 		"generateCron": "Cron generieren",
-		"translating": "Übersetze...",
-		"rateLimited": "Limitiert"
+		"translating": "Wird übersetzt...",
+		"rateLimited": "Limit erreicht"
 	},
 	"loading": {
-		"default": "Lade...",
+		"default": "Wird geladen...",
 		"mode": "Modus wird geladen...",
-		"calculating": "Berechne..."
+		"calculating": "Wird berechnet..."
 	},
 	"errors": {
-		"invalidCron": "Ungültiger Cron-Ausdruck.",
-		"copyFailed": "Kopieren in die Zwischenablage fehlgeschlagen.",
+		"invalidCron": "Ungültiger Cron-Ausdruck",
+		"copyFailed": "Kopieren in die Zwischenablage fehlgeschlagen",
 		"networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
 		"rateLimitExceeded": "Limit erreicht. Bitte versuchen Sie es später erneut.",
 		"somethingWrong": "Entschuldigung, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
-		"inputTooLong": "Eingabe zu lang (max. 200 Zeichen).",
+		"inputTooLong": "Eingabe zu lang (max. 200 Zeichen)",
 		"inputEmpty": "Eingabe darf nicht leer sein. Bitte geben Sie einen Zeitplan in natürlicher Sprache ein.",
-		"translationFailed": "Konnte die Eingabe nach mehreren Versuchen nicht in einen gültigen Cron-Ausdruck übersetzen."
+		"translationFailed": "Die Eingabe konnte nach mehreren Versuchen nicht in einen gültigen Cron-Ausdruck übersetzt werden."
 	},
 	"donation": {
 		"title": "Kronilo unterstützen",
-		"message": "Kronilo ist ein kostenloses Open-Source-Tool, das Ihre Privatsphäre respektiert – keine Werbung, keine Tracker, kein Konto.",
+		"message": "Kronilo ist ein kostenloses Open-Source-Tool, das Ihre Privatsphäre respektiert — keine Werbung, keine Tracker, kein Konto.",
 		"messageExtended": "Wenn es Ihnen Zeit gespart hat, erwägen Sie bitte, mir einen Kaffee zu spendieren. Jeder kleine Beitrag hilft, Kronilo am Leben und werbefrei zu halten.",
 		"buyMeCoffee": "☕ Spendieren Sie mir einen Kaffee",
 		"maybeLater": "Vielleicht später",
@@ -90,8 +91,8 @@
 	},
 	"notFound": {
 		"title": "404",
-		"message": "Seite nicht gefunden.",
-		"goHome": "Startseite"
+		"message": "Seite nicht gefunden",
+		"goHome": "Zur Startseite"
 	},
 	"accessibility": {
 		"donationModal": "Spendenfenster",
