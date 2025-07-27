@@ -55,12 +55,17 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("cronstrue")) {
 						return "cronstrue";
 					}
+					if (id.includes("@tanstack/react-query-devtools")) {
+						return "react-query-devtools";
+					}
+					if (id.includes("clsx")) {
+						return "clsx";
+					}
 					if (
 						id.includes("i18next-http-backend") ||
 						id.includes("i18next-browser-languagedetector")
-					) {
+					)
 						return "i18n-plugins";
-					}
 					if (id.includes("i18next") || id.includes("react-i18next")) {
 						return "i18n";
 					}
@@ -69,12 +74,6 @@ export default defineConfig(({ mode }) => ({
 					}
 					if (id.includes("ofetch")) {
 						return "fetch";
-					}
-					if (id.includes("@tanstack/react-query-devtools")) {
-						return "react-query-devtools";
-					}
-					if (id.includes("clsx")) {
-						return "clsx";
 					}
 					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
 						return "react-core";
