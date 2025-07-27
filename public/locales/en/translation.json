@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Dead Simple Cron Translator",
-		"description": "Convert between cron expressions and natural language instantly"
+		"description": "Instantly convert between cron expressions and natural language."
 	},
 	"navigation": {
 		"modes": {
@@ -17,13 +17,13 @@
 	"cronInput": {
 		"label": "Cron Expression",
 		"placeholder": "*/5 * * * *",
-		"ariaLabel": "Enter cron expression",
-		"infoTooltip": "*/5 * * * *  →  every 5 minutes (minute hour day month weekday)",
-		"infoAriaLabel": "Cron format info"
+		"ariaLabel": "Enter a cron expression",
+		"infoTooltip": "*/5 * * * * → every 5 minutes (minute, hour, day of month, month, day of week)",
+		"infoAriaLabel": "Cron format information"
 	},
 	"naturalLanguageInput": {
 		"label": "Natural Language",
-		"placeholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, Spanish, or Italian. Support for other languages may vary.",
+		"placeholder": "e.g., \"run once a week on Thursday\" — Works best in English, French, German, Spanish, or Italian. Support for other languages may vary.",
 		"ariaLabel": "Enter schedule description in natural language"
 	},
 	"translation": {
@@ -34,19 +34,19 @@
 	},
 	"nextRuns": {
 		"title": "Next 5 Runs:",
-		"placeholder": "Enter a valid cron expression to see next execution times",
+		"placeholder": "Enter a valid cron expression to see the next execution times",
 		"loading": "Calculating...",
 		"noRuns": "No upcoming runs found.",
-		"ambiguousSchedule": "This cron expression has both day-of-month and day-of-week specified. Different cron implementations may interpret this differently. Consider using only one or the other for clarity."
+		"ambiguousSchedule": "This cron expression specifies both a day of the month and a day of the week. Different cron implementations may interpret this differently. For clarity, consider using only one or the other."
 	},
 	"naturalLanguage": {
 		"title": "Natural Language Schedule",
-		"inputPlaceholder": "e.g. \"run once a week on a Thursday\" — Works best in: English, French, German, and Spanish. Support for other languages may vary.",
+		"inputPlaceholder": "e.g., \"run once a week on Thursday\" — Works best in English, French, German, and Spanish. Support for other languages may vary.",
 		"retrying": "Please wait, retrying...",
 		"unexpectedError": "An unexpected error occurred. Please try again.",
-		"generatedCron": "Generated Cron:",
-		"rateLimitedMsg": "You are currently rate limited. Please try again later.",
-		"rateLimitError": "You are currently rate limited. Please try again later.",
+		"generatedCron": "Generated Cron Expression:",
+		"rateLimitedMsg": "You have reached the rate limit. Please try again later.",
+		"rateLimitError": "You have reached the rate limit. Please try again later.",
 		"translating": "Translating...",
 		"generateCron": "Generate Cron",
 		"copy": "Copy"
@@ -68,18 +68,18 @@
 		"copyFailed": "Failed to copy to clipboard",
 		"networkError": "Network error. Please check your connection.",
 		"rateLimitExceeded": "Rate limit exceeded. Please try again later.",
-		"somethingWrong": "Sorry, something went wrong. Please try again.",
+		"somethingWrong": "Something went wrong. Please try again.",
 		"inputTooLong": "Input too long (max 200 characters)",
 		"inputEmpty": "Input cannot be empty. Please enter a schedule in natural language.",
-		"translationFailed": "Could not translate input to a valid cron expression after retrying"
+		"translationFailed": "Could not translate input to a valid cron expression after several attempts."
 	},
 	"donation": {
 		"title": "Support Kronilo",
-		"message": "Kronilo is a free, open-source tool that respects your privacy—no ads, no trackers, no account.",
+		"message": "Kronilo is a free, open-source tool that respects your privacy—no ads, no trackers, no account required.",
 		"messageExtended": "If it saved you time, please consider buying me a coffee. Every little bit helps keep Kronilo alive and ad-free.",
 		"buyMeCoffee": "☕ Buy me a coffee",
 		"maybeLater": "Maybe Later",
-		"close": "Close donation modal"
+		"close": "Close donation window"
 	},
 	"footer": {
 		"builtWith": "Built with",
@@ -92,10 +92,10 @@
 	"notFound": {
 		"title": "404",
 		"message": "Page Not Found",
-		"goHome": "Go Home"
+		"goHome": "Go to Home"
 	},
 	"accessibility": {
-		"donationModal": "Donation Modal",
+		"donationModal": "Donation Window",
 		"close": "Close",
 		"supportOnKofi": "Support Kronilo on Ko-fi",
 		"maybeLater": "Maybe later"
