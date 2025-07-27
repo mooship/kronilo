@@ -39,6 +39,13 @@ function isGenericSafeMessage(message: string): boolean {
 	);
 }
 
+/**
+ * Get a user-friendly API error message from an error object or string.
+ * Only returns safe, non-sensitive messages for display to users.
+ *
+ * @param err The error object or string
+ * @returns {string} A safe error message for the UI
+ */
 export function getApiErrorMessage(err: unknown): string {
 	function safe(msg: string): string | undefined {
 		if (isSafeErrorMessage(msg) || isGenericSafeMessage(msg)) return msg;

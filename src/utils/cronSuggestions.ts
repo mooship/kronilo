@@ -1,3 +1,7 @@
+/**
+ * Common cron expression suggestions for quick selection in the UI.
+ * Each suggestion includes an expression and a human-readable description.
+ */
 export const CRON_SUGGESTIONS = [
 	{ expression: "*/5 * * * *", description: "Every 5 minutes" },
 	{ expression: "0 * * * *", description: "Every hour" },

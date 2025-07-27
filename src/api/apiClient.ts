@@ -1,18 +1,51 @@
-import ky from "ky";
+import type { FetchOptions } from "ofetch";
+import { ofetch } from "ofetch";
 import type { ApiRequestResult } from "../types/api";
 import { getApiErrorMessage } from "../utils/errorMessages";
 
+/**
+ * Internal fetcher for apiRequest. Used for test injection.
+ */
+let _fetcher: typeof ofetch = ofetch;
+
+/**
+ * For testing: override the fetch implementation used by apiRequest.
+ * @param fetchImpl The fetch implementation to use (should match ofetch signature)
+ */
+export function __setApiFetcher(fetchImpl: typeof ofetch) {
+	_fetcher = fetchImpl;
+}
+
+/**
+ * Make an API request using ofetch and return a typed result.
+ * Handles timeout and network errors with user-friendly messages.
+ *
+ * @template T The expected response data type
+ * @param url The endpoint URL
+ * @param options Optional fetch options (ofetch FetchOptions)
+ * @returns ApiRequestResult<T> containing data or error and status
+ */
 export async function apiRequest<T>(
 	url: string,
-	options?: RequestInit,
+	options?: FetchOptions,
 ): Promise<ApiRequestResult<T>> {
 	try {
-		const response = await ky(url, options);
-		const data = await response.json<T>();
-		return { data, status: response.status };
-	} catch (err: unknown) {
+		const data = await _fetcher<T>(url, {
+			...options,
+			responseType: "json",
+		});
+		return { data, status: 200 };
+	} catch (err) {
 		let status = 0;
 		let errorData: unknown = err;
+		if (
+			err &&
+			typeof err === "object" &&
+			"status" in err &&
+			typeof (err as { status?: unknown }).status === "number"
+		) {
+			status = (err as { status: number }).status;
+		}
 		if (
 			typeof err === "object" &&
 			err !== null &&

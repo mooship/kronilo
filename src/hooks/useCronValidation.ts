@@ -3,6 +3,12 @@ import { useDebounceValue } from "usehooks-ts";
 import type { UseCronValidation } from "../types/hooks";
 import { getCronErrors } from "../utils/cronValidation";
 
+/**
+ * React hook for validating cron expressions with debouncing and error state.
+ *
+ * @param cron The cron expression to validate
+ * @returns {UseCronValidation} Error state and clearError callback
+ */
 export function useCronValidation(cron: string): UseCronValidation {
 	const [debouncedCron] = useDebounceValue(cron, 500);
 	const [errors, setErrors] = useState<string[] | undefined>(undefined);
@@ -18,6 +24,9 @@ export function useCronValidation(cron: string): UseCronValidation {
 		}
 	}, [debouncedCron]);
 
+	/**
+	 * Clear the current error state if input is valid length.
+	 */
 	const clearError = useCallback(() => {
 		if (errors && cron.length <= 200) {
 			setErrors(undefined);
