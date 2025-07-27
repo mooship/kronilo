@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Tradutor Cron Simples",
-		"description": "Converta instantaneamente entre expressões cron e linguagem natural"
+		"description": "Converta instantaneamente entre expressões cron e linguagem natural."
 	},
 	"navigation": {
 		"modes": {
@@ -18,12 +18,12 @@
 		"label": "Expressão Cron",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Introduza uma expressão cron",
-		"infoTooltip": "*/5 * * * *  →  a cada 5 minutos (minuto hora dia mês dia-da-semana)",
+		"infoTooltip": "*/5 * * * * → a cada 5 minutos (minuto, hora, dia do mês, mês, dia da semana)",
 		"infoAriaLabel": "Informações sobre o formato cron"
 	},
 	"naturalLanguageInput": {
 		"label": "Linguagem Natural",
-		"placeholder": "ex: \"executar uma vez por semana à quinta-feira\" — Funciona melhor em: inglês, francês, alemão, espanhol ou italiano. O suporte para outros idiomas pode variar.",
+		"placeholder": "ex: \"executar uma vez por semana à quinta-feira\" — Funciona melhor em inglês, francês, alemão, espanhol ou italiano. O suporte para outros idiomas pode variar.",
 		"ariaLabel": "Introduza a descrição do agendamento em linguagem natural"
 	},
 	"translation": {
@@ -37,16 +37,16 @@
 		"placeholder": "Introduza uma expressão cron válida para ver os próximos horários de execução",
 		"loading": "A calcular...",
 		"noRuns": "Nenhuma execução futura encontrada.",
-		"ambiguousSchedule": "Esta expressão cron especifica tanto o dia do mês como o dia da semana. Implementações diferentes de cron podem interpretá-la de forma distinta. Considere usar apenas um dos dois para maior clareza."
+		"ambiguousSchedule": "Esta expressão cron especifica tanto o dia do mês como o dia da semana. Diferentes implementações de cron podem interpretá-la de forma distinta. Para maior clareza, use apenas um dos dois."
 	},
 	"naturalLanguage": {
 		"title": "Agendamento em Linguagem Natural",
-		"inputPlaceholder": "ex: \"executar uma vez por semana à quinta-feira\" — Funciona melhor em: Inglês, Francês, Alemão e Espanhol. O suporte para outras línguas pode variar.",
-		"retrying": "Por favor aguarde, a tentar novamente...",
+		"inputPlaceholder": "ex: \"executar uma vez por semana à quinta-feira\" — Funciona melhor em inglês, francês, alemão e espanhol. O suporte para outras línguas pode variar.",
+		"retrying": "A tentar novamente, por favor aguarde...",
 		"unexpectedError": "Ocorreu um erro inesperado. Por favor, tente novamente.",
-		"generatedCron": "Cron Gerado:",
-		"rateLimitedMsg": "Excedeu o limite de pedidos. Tente novamente mais tarde.",
-		"rateLimitError": "Excedeu o limite de pedidos. Tente novamente mais tarde.",
+		"generatedCron": "Expressão Cron Gerada:",
+		"rateLimitedMsg": "Excedeu o limite de pedidos. Por favor, tente novamente mais tarde.",
+		"rateLimitError": "Excedeu o limite de pedidos. Por favor, tente novamente mais tarde.",
 		"translating": "A traduzir...",
 		"generateCron": "Gerar Cron",
 		"copy": "Copiar"
@@ -66,18 +66,18 @@
 	"errors": {
 		"invalidCron": "Expressão cron inválida",
 		"copyFailed": "Falha ao copiar para a área de transferência",
-		"networkError": "Erro de rede. Verifique a sua ligação.",
-		"rateLimitExceeded": "Limite de utilização excedido. Tente novamente mais tarde.",
-		"somethingWrong": "Ocorreu um erro. Por favor, tente novamente.",
+		"networkError": "Erro de rede. Por favor, verifique a sua ligação.",
+		"rateLimitExceeded": "Limite de utilização excedido. Por favor, tente novamente mais tarde.",
+		"somethingWrong": "Algo correu mal. Por favor, tente novamente.",
 		"inputTooLong": "Entrada demasiado longa (máx. 200 caracteres)",
 		"inputEmpty": "A entrada não pode estar vazia. Por favor, introduza um agendamento em linguagem natural.",
-		"translationFailed": "Não foi possível traduzir a entrada para uma expressão cron válida após várias tentativas"
+		"translationFailed": "Não foi possível traduzir a entrada para uma expressão cron válida após várias tentativas."
 	},
 	"donation": {
 		"title": "Apoie o Kronilo",
-		"message": "O Kronilo é uma ferramenta gratuita e de código aberto que respeita a sua privacidade—sem anúncios, sem rastreadores, sem conta necessária.",
+		"message": "O Kronilo é uma ferramenta gratuita e de código aberto que respeita a sua privacidade — sem anúncios, sem rastreadores, sem conta necessária.",
 		"messageExtended": "Se esta ferramenta lhe poupou tempo, considere oferecer-me um café. Toda ajuda contribui para manter o Kronilo ativo e livre de publicidade.",
-		"buyMeCoffee": "☕ Oferecer-me um café",
+		"buyMeCoffee": "☕ Ofereça-me um café",
 		"maybeLater": "Talvez mais tarde",
 		"close": "Fechar janela de doação"
 	},
@@ -91,13 +91,13 @@
 	},
 	"notFound": {
 		"title": "404",
-		"message": "Página Não Encontrada",
-		"goHome": "Voltar à Página Inicial"
+		"message": "Página não encontrada",
+		"goHome": "Voltar à página inicial"
 	},
 	"accessibility": {
 		"donationModal": "Janela de Doação",
 		"close": "Fechar",
-		"supportOnKofi": "Apoiar o Kronilo no Ko-fi",
+		"supportOnKofi": "Apoie o Kronilo no Ko-fi",
 		"maybeLater": "Talvez mais tarde"
 	}
 }

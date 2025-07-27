@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Prosty tłumacz Cron",
-		"description": "Natychmiast konwertuj między wyrażeniami cron a językiem naturalnym"
+		"description": "Natychmiastowa konwersja między wyrażeniami cron a językiem naturalnym."
 	},
 	"navigation": {
 		"modes": {
@@ -18,46 +18,45 @@
 		"label": "Wyrażenie Cron",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Wprowadź wyrażenie cron",
-		"infoTooltip": "*/5 * * * *  →  co 5 minut (minuta godzina dzień miesiąc dzień tygodnia)",
+		"infoTooltip": "*/5 * * * * → co 5 minut (minuta, godzina, dzień miesiąca, miesiąc, dzień tygodnia)",
 		"infoAriaLabel": "Informacje o formacie Cron"
 	},
 	"naturalLanguageInput": {
 		"label": "Język naturalny",
-		"placeholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w: angielskim, francuskim, niemieckim, hiszpańskim lub włoskim. Wsparcie dla innych języków może się różnić.",
-		"ariaLabel": "Wprowadź opis harmonogramu w języku naturalnym",
-		"languageSupport": "Najlepiej działa w: angielskim, francuskim, niemieckim, hiszpańskim, włoskim, niderlandzkim, portugalskim (brazylijskim i europejskim). Wsparcie dla innych języków może się różnić."
+		"placeholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w języku: angielskim, francuskim, niemieckim, hiszpańskim lub włoskim. Wsparcie dla innych języków może się różnić.",
+		"ariaLabel": "Wprowadź opis harmonogramu w języku naturalnym"
 	},
 	"translation": {
 		"title": "Tłumaczenie:",
 		"placeholder": "Wprowadź wyrażenie cron, aby zobaczyć tłumaczenie",
 		"loading": "Tłumaczenie...",
-		"error": "Błąd tłumaczenia wyrażenia"
+		"error": "Błąd podczas tłumaczenia wyrażenia"
 	},
 	"nextRuns": {
 		"title": "Następne 5 uruchomień:",
-		"placeholder": "Wprowadź poprawne wyrażenie cron, aby zobaczyć kolejne czasy wykonania",
+		"placeholder": "Wprowadź poprawne wyrażenie cron, aby zobaczyć kolejne czasy uruchomienia",
 		"loading": "Obliczanie...",
 		"noRuns": "Nie znaleziono nadchodzących uruchomień.",
-		"ambiguousSchedule": "To wyrażenie cron określa zarówno dzień miesiąca, jak i dzień tygodnia. Różne implementacje cron mogą to interpretować inaczej. Rozważ użycie tylko jednego z nich dla jasności."
+		"ambiguousSchedule": "To wyrażenie cron określa zarówno dzień miesiąca, jak i dzień tygodnia. Różne implementacje cron mogą interpretować to inaczej. Dla jasności użyj tylko jednego z nich."
 	},
 	"naturalLanguage": {
 		"title": "Harmonogram w języku naturalnym",
-		"inputPlaceholder": "np. \"uruchom raz w tygodniu w czwartek\"",
-		"retrying": "Ponawianie próby...",
+		"inputPlaceholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w języku: angielskim, francuskim, niemieckim i hiszpańskim. Wsparcie dla innych języków może się różnić.",
+		"retrying": "Ponawianie próby, proszę czekać...",
 		"unexpectedError": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
-		"generatedCron": "Wygenerowany Cron:",
-		"rateLimitedMsg": "Ograniczony dostęp. Spróbuj ponownie później.",
-		"rateLimitError": "Ograniczony dostęp. Spróbuj ponownie później.",
+		"generatedCron": "Wygenerowane wyrażenie Cron:",
+		"rateLimitedMsg": "Osiągnięto limit. Spróbuj ponownie później.",
+		"rateLimitError": "Osiągnięto limit. Spróbuj ponownie później.",
 		"translating": "Tłumaczenie...",
-		"generateCron": "Wygeneruj Cron",
+		"generateCron": "Generuj Cron",
 		"copy": "Kopiuj"
 	},
 	"actions": {
 		"copy": "Kopiuj",
 		"copied": "Skopiowano!",
-		"generateCron": "Wygeneruj Cron",
+		"generateCron": "Generuj Cron",
 		"translating": "Tłumaczenie...",
-		"rateLimited": "Ograniczony dostęp"
+		"rateLimited": "Osiągnięto limit"
 	},
 	"loading": {
 		"default": "Ładowanie...",
@@ -67,20 +66,20 @@
 	"errors": {
 		"invalidCron": "Nieprawidłowe wyrażenie cron",
 		"copyFailed": "Nie udało się skopiować do schowka",
-		"networkError": "Błąd połączenia. Sprawdź sieć i spróbuj ponownie.",
-		"rateLimitExceeded": "Przekroczono limit żądań. Spróbuj ponownie później.",
+		"networkError": "Błąd sieci. Sprawdź swoje połączenie.",
+		"rateLimitExceeded": "Przekroczono limit. Spróbuj ponownie później.",
 		"somethingWrong": "Coś poszło nie tak. Spróbuj ponownie.",
 		"inputTooLong": "Tekst jest za długi (maksymalnie 200 znaków)",
-		"inputEmpty": "Pole nie może być puste. Wprowadź opis harmonogramu.",
-		"translationFailed": "Nie udało się wygenerować poprawnego wyrażenia cron"
+		"inputEmpty": "Pole nie może być puste. Wprowadź opis harmonogramu w języku naturalnym.",
+		"translationFailed": "Nie udało się wygenerować poprawnego wyrażenia cron po kilku próbach."
 	},
 	"donation": {
 		"title": "Wesprzyj Kronilo",
-		"message": "Kronilo to darmowe, otwarte narzędzie szanujące Twoją prywatność—bez reklam, bez śledzenia, bez konta.",
-		"messageExtended": "Jeśli zaoszczędziło Ci czas, rozważ postawienie mi kawy. Każde wsparcie pozwala utrzymać Kronilo bez reklam.",
+		"message": "Kronilo to darmowe, otwarte narzędzie szanujące Twoją prywatność — bez reklam, bez śledzenia, bez konieczności zakładania konta.",
+		"messageExtended": "Jeśli zaoszczędziło Ci to czas, rozważ postawienie mi kawy. Każde wsparcie pomaga utrzymać Kronilo przy życiu i bez reklam.",
 		"buyMeCoffee": "☕ Postaw mi kawę",
 		"maybeLater": "Może później",
-		"close": "Zamknij"
+		"close": "Zamknij okno wsparcia"
 	},
 	"footer": {
 		"builtWith": "Stworzone z",
@@ -93,7 +92,7 @@
 	"notFound": {
 		"title": "404",
 		"message": "Nie znaleziono strony",
-		"goHome": "Powrót do strony głównej"
+		"goHome": "Przejdź do strony głównej"
 	},
 	"accessibility": {
 		"donationModal": "Okno wsparcia",

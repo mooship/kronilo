@@ -2,7 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Tradutor de Cron Simples",
-		"description": "Converta instantaneamente entre expressões cron e linguagem natural"
+		"description": "Converta instantaneamente entre expressões cron e linguagem natural."
 	},
 	"navigation": {
 		"modes": {
@@ -18,12 +18,12 @@
 		"label": "Expressão Cron",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Digite uma expressão cron",
-		"infoTooltip": "*/5 * * * *  →  a cada 5 minutos (minuto hora dia mês dia-da-semana)",
+		"infoTooltip": "*/5 * * * * → a cada 5 minutos (minuto, hora, dia do mês, mês, dia da semana)",
 		"infoAriaLabel": "Informações sobre o formato cron"
 	},
 	"naturalLanguageInput": {
 		"label": "Linguagem Natural",
-		"placeholder": "ex: \"executar uma vez por semana na quinta-feira\" — Funciona melhor em: inglês, francês, alemão, espanhol ou italiano. O suporte para outros idiomas pode variar.",
+		"placeholder": "ex: \"executar uma vez por semana na quinta-feira\" — Funciona melhor em inglês, francês, alemão, espanhol ou italiano. O suporte para outros idiomas pode variar.",
 		"ariaLabel": "Digite a descrição do agendamento em linguagem natural"
 	},
 	"translation": {
@@ -34,19 +34,19 @@
 	},
 	"nextRuns": {
 		"title": "Próximas 5 Execuções:",
-		"placeholder": "Digite uma expressão cron válida para ver os horários de execução",
+		"placeholder": "Digite uma expressão cron válida para ver os próximos horários de execução",
 		"loading": "Calculando...",
 		"noRuns": "Nenhuma execução futura encontrada.",
-		"ambiguousSchedule": "Esta expressão cron especifica tanto o dia do mês quanto o dia da semana. Implementações diferentes de cron podem interpretá-la de forma diferente. Considere usar apenas um para maior clareza."
+		"ambiguousSchedule": "Esta expressão cron especifica tanto o dia do mês quanto o dia da semana. Diferentes implementações de cron podem interpretá-la de forma diferente. Para maior clareza, use apenas um dos dois."
 	},
 	"naturalLanguage": {
 		"title": "Agendamento em Linguagem Natural",
-		"inputPlaceholder": "ex: \"executar uma vez por semana às quintas\" — Funciona melhor em: Inglês, Francês, Alemão e Espanhol. O suporte para outros idiomas pode variar.",
-		"retrying": "Aguarde, tentando novamente...",
-		"unexpectedError": "Ocorreu um erro inesperado. Tente novamente.",
-		"generatedCron": "Cron Gerado:",
-		"rateLimitedMsg": "Você atingiu o limite de uso. Tente novamente mais tarde.",
-		"rateLimitError": "Você atingiu o limite de uso. Tente novamente mais tarde.",
+		"inputPlaceholder": "ex: \"executar uma vez por semana na quinta-feira\" — Funciona melhor em inglês, francês, alemão e espanhol. O suporte para outros idiomas pode variar.",
+		"retrying": "Tentando novamente, por favor aguarde...",
+		"unexpectedError": "Ocorreu um erro inesperado. Por favor, tente novamente.",
+		"generatedCron": "Expressão Cron Gerada:",
+		"rateLimitedMsg": "Você atingiu o limite de uso. Por favor, tente novamente mais tarde.",
+		"rateLimitError": "Você atingiu o limite de uso. Por favor, tente novamente mais tarde.",
 		"translating": "Traduzindo...",
 		"generateCron": "Gerar Cron",
 		"copy": "Copiar"
@@ -66,17 +66,17 @@
 	"errors": {
 		"invalidCron": "Expressão cron inválida",
 		"copyFailed": "Falha ao copiar para a área de transferência",
-		"networkError": "Erro de rede. Verifique sua conexão.",
-		"rateLimitExceeded": "Limite de uso excedido. Tente novamente mais tarde.",
-		"somethingWrong": "Algo deu errado. Tente novamente.",
+		"networkError": "Erro de rede. Por favor, verifique sua conexão.",
+		"rateLimitExceeded": "Limite de uso excedido. Por favor, tente novamente mais tarde.",
+		"somethingWrong": "Algo deu errado. Por favor, tente novamente.",
 		"inputTooLong": "Entrada muito longa (máx. 200 caracteres)",
-		"inputEmpty": "A entrada não pode estar vazia. Digite um agendamento em linguagem natural.",
-		"translationFailed": "Não foi possível traduzir a entrada para uma expressão cron válida mesmo após várias tentativas"
+		"inputEmpty": "A entrada não pode estar vazia. Por favor, digite um agendamento em linguagem natural.",
+		"translationFailed": "Não foi possível traduzir a entrada para uma expressão cron válida após várias tentativas."
 	},
 	"donation": {
 		"title": "Apoie o Kronilo",
-		"message": "Kronilo é uma ferramenta gratuita e de código aberto que respeita sua privacidade—sem anúncios, rastreadores ou necessidade de conta.",
-		"messageExtended": "Se te ajudou a economizar tempo, considere me oferecer um café. Toda ajuda é bem-vinda para manter o Kronilo ativo e livre de anúncios.",
+		"message": "Kronilo é uma ferramenta gratuita e de código aberto que respeita sua privacidade — sem anúncios, rastreadores ou necessidade de conta.",
+		"messageExtended": "Se isso economizou seu tempo, considere me pagar um café. Qualquer ajuda é bem-vinda para manter o Kronilo ativo e livre de anúncios.",
 		"buyMeCoffee": "☕ Me pague um café",
 		"maybeLater": "Talvez depois",
 		"close": "Fechar janela de doação"
@@ -91,8 +91,8 @@
 	},
 	"notFound": {
 		"title": "404",
-		"message": "Página Não Encontrada",
-		"goHome": "Voltar para o Início"
+		"message": "Página não encontrada",
+		"goHome": "Voltar para a página inicial"
 	},
 	"accessibility": {
 		"donationModal": "Janela de Doação",
