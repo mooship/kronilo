@@ -1,6 +1,7 @@
 import clsx from "clsx";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useClickOutside } from "../hooks/useClickOutside";
 import { LOCALES } from "../locales";
 
 const LanguageSwitcher: React.FC = () => {
@@ -10,26 +11,15 @@ const LanguageSwitcher: React.FC = () => {
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
 
-	useEffect(() => {
-		function handleClickOutside(event: MouseEvent) {
-			if (
-				menuRef.current &&
-				!menuRef.current.contains(event.target as Node) &&
-				buttonRef.current &&
-				!buttonRef.current.contains(event.target as Node)
-			) {
-				setOpen(false);
+	useClickOutside(
+		menuRef as React.RefObject<HTMLElement>,
+		useCallback((event) => {
+			if (buttonRef.current?.contains(event.target as Node)) {
+				return;
 			}
-		}
-		if (open) {
-			document.addEventListener("mousedown", handleClickOutside);
-		} else {
-			document.removeEventListener("mousedown", handleClickOutside);
-		}
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, [open]);
+			setOpen(false);
+		}, []),
+	);
 
 	function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
 		if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
@@ -49,7 +39,10 @@ const LanguageSwitcher: React.FC = () => {
 		setOpen(false);
 	}
 
-	const LANGUAGES = LOCALES.map((l) => ({ code: l.code, label: l.name }));
+	const LANGUAGES = useMemo(
+		() => LOCALES.map((l) => ({ code: l.code, label: l.name })),
+		[],
+	);
 	const selected = LANGUAGES.find((l) => l.code === current) || LANGUAGES[0];
 
 	return (

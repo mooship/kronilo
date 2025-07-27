@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCopyToClipboard, useTimeout } from "usehooks-ts";
 import { usePressAnimation } from "../hooks/usePressAnimation";
@@ -11,14 +11,16 @@ const CopyButton: FC<CopyButtonProps> = ({
 	className = "",
 	label,
 	disabled = false,
+	size = "lg",
 }) => {
 	const { t } = useTranslation();
 	const [copiedText, copy] = useCopyToClipboard();
 	const [copied, setCopied] = useState(false);
 	const { isPressed, handlePressStart, handlePressEnd } = usePressAnimation();
+	const pressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const buttonLabel = label || t("actions.copy");
-	const isSmall = className.includes("btn-sm");
+	const isSmall = size === "sm";
 
 	useTimeout(
 		() => {
@@ -36,8 +38,22 @@ const CopyButton: FC<CopyButtonProps> = ({
 	function handleCopy() {
 		handlePressStart();
 		copy(value);
-		setTimeout(() => handlePressEnd(), 120);
+		if (pressTimeoutRef.current) {
+			clearTimeout(pressTimeoutRef.current);
+		}
+		pressTimeoutRef.current = setTimeout(() => {
+			handlePressEnd();
+			pressTimeoutRef.current = null;
+		}, 120);
 	}
+
+	useEffect(() => {
+		return () => {
+			if (pressTimeoutRef.current) {
+				clearTimeout(pressTimeoutRef.current);
+			}
+		};
+	}, []);
 
 	return (
 		<div className={clsx("relative inline-block", className)}>

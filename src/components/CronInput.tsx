@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { usePressAnimation } from "../hooks/usePressAnimation";
@@ -11,6 +11,11 @@ import { MemoizedCopyButton } from "./CopyButton";
 import { CronInputWarning } from "./CronInputWarning";
 import { MemoizedModeToggle } from "./ModeToggle";
 
+const inputClassName = clsx(
+	"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400",
+	"border-gray-200 hover:border-gray-400 focus:border-gray-600 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400",
+);
+
 const CronInput: FC<CronInputProps> = ({ error }) => {
 	const { t } = useTranslation();
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -19,8 +24,6 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 	const infoAnim = usePressAnimation();
 	const cron = useKroniloStore((s) => s.cron);
 	const setCron = useKroniloStore((s) => s.setCron);
-
-	const memoizedSuggestions = useMemo(() => CRON_SUGGESTIONS, []);
 
 	useEffect(() => {
 		function handleClick(event: MouseEvent) {
@@ -38,13 +41,6 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 			document.removeEventListener("mousedown", handleClick);
 		};
 	}, [showSuggestions]);
-
-	const inputClassName = useMemo(() => {
-		return clsx(
-			"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400",
-			"border-gray-200 hover:border-gray-400 focus:border-gray-600 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400",
-		);
-	}, []);
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.ctrlKey && e.key === "a") {
@@ -143,7 +139,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 shadow-lg dark:border-gray-600 dark:bg-gray-700"
 							style={{ position: "absolute" }}
 						>
-							{memoizedSuggestions.map((suggestion) => (
+							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button
 									key={suggestion.expression}
 									type="button"
@@ -166,6 +162,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 					label={t("actions.copy")}
 					disabled={!cron || !!error}
 					className="shrink-0"
+					size="sm"
 				/>
 				<Tooltip
 					id="cron-placeholder-tip"

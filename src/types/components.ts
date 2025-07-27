@@ -10,6 +10,7 @@ export interface CopyButtonProps {
 	className?: string;
 	label?: string;
 	disabled?: boolean;
+	size?: "sm" | "lg";
 }
 
 export interface CronInputProps {
