@@ -1,8 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Doodsimpele Cron Vertaler",
-		"description": "Converteer direct tussen cron-expressies en natuurlijke taal"
+		"subtitle": "Doodsimpele Cron-vertaler",
+		"description": "Converteer direct tussen cron-expressies en natuurlijke taal."
 	},
 	"navigation": {
 		"modes": {
@@ -10,44 +10,44 @@
 			"naturalToCron": "Natuurlijke Taal → Cron"
 		},
 		"switchMode": {
-			"toCronToNatural": "Schakel naar Cron → Natuurlijke Taal",
-			"toNaturalToCron": "Schakel naar Natuurlijke Taal → Cron"
+			"toCronToNatural": "Schakel over naar Cron → Natuurlijke Taal",
+			"toNaturalToCron": "Schakel over naar Natuurlijke Taal → Cron"
 		}
 	},
 	"cronInput": {
 		"label": "Cron-expressie",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Voer een cron-expressie in",
-		"infoTooltip": "*/5 * * * *  →  elke 5 minuten (minuut uur dag maand weekdag)",
+		"infoTooltip": "*/5 * * * * → elke 5 minuten (minuut, uur, dag van de maand, maand, dag van de week)",
 		"infoAriaLabel": "Informatie over cron-formaat"
 	},
 	"naturalLanguageInput": {
 		"label": "Natuurlijke Taal",
-		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in: Engels, Frans, Duits, Spaans of Italiaans. Ondersteuning voor andere talen kan variëren.",
+		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in Engels, Frans, Duits, Spaans of Italiaans. Ondersteuning voor andere talen kan variëren.",
 		"ariaLabel": "Voer een planningsbeschrijving in natuurlijke taal in"
 	},
 	"translation": {
 		"title": "Vertaling:",
 		"placeholder": "Voer een cron-expressie in om de vertaling te zien",
-		"loading": "Bezig met vertalen...",
+		"loading": "Vertalen...",
 		"error": "Fout bij het vertalen van de expressie"
 	},
 	"nextRuns": {
-		"title": "Volgende 5 Uitvoeringen:",
-		"placeholder": "Voer een geldige cron-expressie in om de volgende uitvoertijden te zien",
+		"title": "Volgende 5 uitvoeringen:",
+		"placeholder": "Voer een geldige cron-expressie in om de volgende uitvoeringen te zien",
 		"loading": "Bezig met berekenen...",
 		"noRuns": "Geen geplande uitvoeringen gevonden.",
-		"ambiguousSchedule": "Deze cron-expressie specificeert zowel dag van de maand als dag van de week. Verschillende cron-implementaties kunnen dit anders interpreteren. Gebruik bij voorkeur slechts één van de twee voor duidelijkheid."
+		"ambiguousSchedule": "Deze cron-expressie specificeert zowel de dag van de maand als de dag van de week. Verschillende cron-implementaties kunnen dit anders interpreteren. Gebruik bij voorkeur slechts één van de twee voor duidelijkheid."
 	},
 	"naturalLanguage": {
-		"title": "Schema in Natuurlijke Taal",
-		"inputPlaceholder": "bijv. \"voer eenmaal per week uit op donderdag\" — Werkt het beste in: Engels, Frans, Duits en Spaans. Ondersteuning voor andere talen kan variëren.",
+		"title": "Schema in natuurlijke taal",
+		"inputPlaceholder": "bijv. \"voer eenmaal per week uit op donderdag\" — Werkt het beste in Engels, Frans, Duits en Spaans. Ondersteuning voor andere talen kan variëren.",
 		"retrying": "Even geduld, probeer opnieuw...",
 		"unexpectedError": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
-		"generatedCron": "Gegenereerde Cron:",
-		"rateLimitedMsg": "Je bent momenteel gelimiteerd. Probeer het later opnieuw.",
-		"rateLimitError": "Je bent momenteel gelimiteerd. Probeer het later opnieuw.",
-		"translating": "Bezig met vertalen...",
+		"generatedCron": "Gegenereerde Cron-expressie:",
+		"rateLimitedMsg": "Je hebt het limiet bereikt. Probeer het later opnieuw.",
+		"rateLimitError": "Je hebt het limiet bereikt. Probeer het later opnieuw.",
+		"translating": "Vertalen...",
 		"generateCron": "Genereer Cron",
 		"copy": "Kopiëren"
 	},
@@ -55,31 +55,31 @@
 		"copy": "Kopiëren",
 		"copied": "Gekopieerd!",
 		"generateCron": "Genereer Cron",
-		"translating": "Bezig met vertalen...",
-		"rateLimited": "Limiet Bereikt"
+		"translating": "Vertalen...",
+		"rateLimited": "Limiet bereikt"
 	},
 	"loading": {
 		"default": "Laden...",
-		"mode": "Bezig met modus laden...",
+		"mode": "Modus laden...",
 		"calculating": "Bezig met berekenen..."
 	},
 	"errors": {
 		"invalidCron": "Ongeldige cron-expressie",
 		"copyFailed": "Kopiëren naar klembord mislukt",
 		"networkError": "Netwerkfout. Controleer je verbinding.",
-		"rateLimitExceeded": "Verzoeklimiet overschreden. Probeer het later opnieuw.",
+		"rateLimitExceeded": "Limiet overschreden. Probeer het later opnieuw.",
 		"somethingWrong": "Er is iets misgegaan. Probeer het opnieuw.",
 		"inputTooLong": "Invoer te lang (maximaal 200 tekens)",
 		"inputEmpty": "Invoer mag niet leeg zijn. Voer een planning in natuurlijke taal in.",
-		"translationFailed": "Kon invoer niet vertalen naar een geldige cron-expressie, zelfs na opnieuw proberen"
+		"translationFailed": "Kon invoer niet vertalen naar een geldige cron-expressie, zelfs na meerdere pogingen."
 	},
 	"donation": {
 		"title": "Steun Kronilo",
-		"message": "Kronilo is een gratis open-source tool die je privacy respecteert—geen advertenties, geen trackers, geen account nodig.",
+		"message": "Kronilo is een gratis open-source tool die je privacy respecteert — geen advertenties, geen trackers, geen account nodig.",
 		"messageExtended": "Als het je tijd heeft bespaard, overweeg dan om me een koffie te geven. Elke bijdrage helpt om Kronilo draaiende en advertentievrij te houden.",
-		"buyMeCoffee": "☕ Geef me een koffie",
-		"maybeLater": "Misschien Later",
-		"close": "Sluit donatiemodal"
+		"buyMeCoffee": "☕ Koop me een koffie",
+		"maybeLater": "Misschien later",
+		"close": "Sluit donatievenster"
 	},
 	"footer": {
 		"builtWith": "Gemaakt met",
@@ -91,11 +91,11 @@
 	},
 	"notFound": {
 		"title": "404",
-		"message": "Pagina Niet Gevonden",
-		"goHome": "Ga naar Startpagina"
+		"message": "Pagina niet gevonden",
+		"goHome": "Ga naar startpagina"
 	},
 	"accessibility": {
-		"donationModal": "Donatiemodal",
+		"donationModal": "Donatievenster",
 		"close": "Sluiten",
 		"supportOnKofi": "Steun Kronilo op Ko-fi",
 		"maybeLater": "Misschien later"
