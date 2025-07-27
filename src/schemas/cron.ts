@@ -107,47 +107,57 @@ export const CRON_FIELD_SCHEMAS = [
 	cronFieldSchema(0, 7),
 ];
 
-export function getCronValidationErrors(cron: string): string[] {
+export function getCronValidationErrors(
+	cron: string,
+): { key: string; values?: Record<string, string | number> }[] {
 	if (!cron || typeof cron !== "string") {
-		return [
-			"No cron expression provided. Please enter a cron schedule like '0 12 * * 1'.",
-		];
+		return [{ key: "cron.errors.noExpression" }];
 	}
 	const fields = cron.trim().split(/\s+/);
 	if (fields.length !== 5) {
 		return [
-			`A cron expression must have 5 fields (minute hour day month weekday), but got ${fields.length}. Example: '0 12 * * 1'`,
+			{
+				key: "cron.errors.invalidFieldCount",
+				values: { count: fields.length },
+			},
 		];
 	}
-	const errors: string[] = [];
+	const errors: { key: string; values?: Record<string, string | number> }[] =
+		[];
 	fields.forEach((field, i) => {
 		const result = CRON_FIELD_SCHEMAS[i].safeParse(field);
 		if (!result.success) {
-			let msg = result.error.issues[0]?.message || "Invalid value.";
+			let key = "cron.errors.invalidField";
+			let values: Record<string, string | number> = {
+				field: field,
+				fieldName: CRON_FIELD_NAMES[i],
+				fieldRange: CRON_FIELD_RANGES[i],
+			};
 			if (field === "") {
-				msg = `Missing value. Please provide a value for the ${CRON_FIELD_NAMES[i]} field (${CRON_FIELD_RANGES[i]}).`;
+				key = "cron.errors.missingValue";
 			} else if (CRON_FIELD_INVALID_CHAR_REGEX.test(field)) {
-				msg = `Contains invalid characters. Only numbers, ',', '-', '*', and '/' are allowed.`;
+				key = "cron.errors.invalidCharacters";
 			} else if (field.includes("/")) {
 				const step = field.split("/")[1];
 				if (!step || Number.isNaN(Number(step)) || Number(step) <= 0) {
-					msg = `Step value after '/' must be a positive integer.`;
+					key = "cron.errors.invalidStep";
 				}
 			} else if (field.includes("-")) {
 				const parts = field.split("-");
 				if (parts.length !== 2) {
-					msg = `Range must be in the form 'start-end', e.g. 1-5.`;
+					key = "cron.errors.invalidRangeFormat";
 				} else {
 					const [start, end] = parts;
 					if (Number(start) > Number(end)) {
-						msg = `Range start (${start}) should not be greater than end (${end}).`;
+						key = "cron.errors.rangeStartGreater";
+						values = { ...values, start, end };
 					} else if (i === 4) {
-						msg = `Day of week must be between 0-7 (0 or 7 = Sunday).`;
+						key = "cron.errors.dayOfWeekRange";
 					}
 				}
 			} else if (field.includes(",")) {
-				const values = field.split(",");
-				const invalids = values.filter((v) => {
+				const valuesArr = field.split(",");
+				const invalids = valuesArr.filter((v) => {
 					const trimmed = v.trim();
 					const num = Number(trimmed);
 					return (
@@ -159,9 +169,11 @@ export function getCronValidationErrors(cron: string): string[] {
 				});
 				if (invalids.length > 0) {
 					if (i === 4) {
-						msg = `Invalid value(s): ${invalids.join(", ")}. Allowed range for day of week: 0-7 (0 or 7 = Sunday).`;
+						key = "cron.errors.invalidDayOfWeekValues";
+						values = { ...values, invalids: invalids.join(", ") };
 					} else {
-						msg = `Invalid value(s): ${invalids.join(", ")}. Allowed range: ${CRON_FIELD_RANGES[i]}.`;
+						key = "cron.errors.invalidValues";
+						values = { ...values, invalids: invalids.join(", ") };
 					}
 				}
 			} else if (!Number.isNaN(Number(field))) {
@@ -169,17 +181,17 @@ export function getCronValidationErrors(cron: string): string[] {
 				const [min, max] = CRON_FIELD_RANGES[i].split("-").map(Number);
 				if (num < min || num > max || (i === 2 && num === 0)) {
 					if (i === 4) {
-						msg = `Day of week must be between 0-7 (0 or 7 = Sunday).`;
+						key = "cron.errors.dayOfWeekRange";
 					} else {
-						msg = `Value ${num} is out of range for ${CRON_FIELD_NAMES[i]} (${CRON_FIELD_RANGES[i]}).`;
+						key = "cron.errors.valueOutOfRange";
+						values = { ...values, num };
 					}
 				}
 			}
-			if (i === 4 && msg === "Invalid cron field value") {
-				msg = "Day of week must be between 0-7 (0 or 7 = Sunday).";
+			if (i === 4 && key === "cron.errors.invalidField") {
+				key = "cron.errors.dayOfWeekRange";
 			}
-			const cleanMsg = msg.endsWith(".") ? msg.slice(0, -1) : msg;
-			errors.push(`Invalid ${CRON_FIELD_NAMES[i]}: "${field}". ${cleanMsg}`);
+			errors.push({ key, values });
 		}
 	});
 	return errors;

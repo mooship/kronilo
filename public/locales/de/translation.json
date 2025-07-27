@@ -73,6 +73,22 @@
 		"inputEmpty": "Eingabe darf nicht leer sein. Bitte geben Sie einen Zeitplan in natürlicher Sprache ein.",
 		"translationFailed": "Die Eingabe konnte nach mehreren Versuchen nicht in einen gültigen Cron-Ausdruck übersetzt werden."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Kein Cron-Ausdruck angegeben. Bitte geben Sie einen Cron-Zeitplan wie '0 12 * * 1' ein.",
+			"invalidFieldCount": "Ein Cron-Ausdruck muss 5 Felder haben (Minute Stunde Tag Monat Wochentag), aber {{count}} erhalten. Beispiel: '0 12 * * 1'",
+			"invalidField": "Ungültiges {{fieldName}}: \"{{field}}\". Der Wert ist für dieses Feld nicht gültig (erlaubt: {{fieldRange}})",
+			"missingValue": "Fehlender Wert. Bitte geben Sie einen Wert für dieses Feld an.",
+			"invalidCharacters": "Enthält ungültige Zeichen. Nur Zahlen, ',', '-', '*' und '/' sind erlaubt.",
+			"invalidStep": "Der Schrittwert nach '/' muss eine positive ganze Zahl sein.",
+			"invalidRangeFormat": "Der Bereich muss in der Form 'Start-Ende' sein, z.B. 1-5.",
+			"rangeStartGreater": "Der Bereichsstart ({{start}}) sollte nicht größer als das Ende ({{end}}) sein.",
+			"dayOfWeekRange": "Der Wochentag muss zwischen 0-7 liegen (0 oder 7 = Sonntag).",
+			"invalidDayOfWeekValues": "Ungültige(r) Wert(e): {{invalids}}. Erlaubter Bereich für Wochentag: 0-7 (0 oder 7 = Sonntag).",
+			"invalidValues": "Ungültige(r) Wert(e): {{invalids}}. Erlaubter Bereich: {{fieldRange}}.",
+			"valueOutOfRange": "Wert {{num}} liegt außerhalb des Bereichs für {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Kronilo unterstützen",
 		"message": "Kronilo ist ein kostenloses Open-Source-Tool, das Ihre Privatsphäre respektiert — keine Werbung, keine Tracker, kein Konto.",

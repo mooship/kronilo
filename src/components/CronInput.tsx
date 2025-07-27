@@ -5,11 +5,21 @@ import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import { useKroniloStore } from "../stores/useKroniloStore";
+import type { I18nCronError } from "../types";
 import type { CronInputProps } from "../types/components";
 import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
 import { MemoizedCopyButton } from "./CopyButton";
 import { CronInputWarning } from "./CronInputWarning";
 import { MemoizedModeToggle } from "./ModeToggle";
+
+function isI18nCronError(obj: unknown): obj is I18nCronError {
+	return (
+		typeof obj === "object" &&
+		obj !== null &&
+		"key" in obj &&
+		typeof (obj as { key?: unknown }).key === "string"
+	);
+}
 
 const inputClassName = clsx(
 	"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400",
@@ -183,12 +193,20 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 					<CronInputWarning>
 						{Array.isArray(error) ? (
 							<ul className="list-disc pl-5">
-								{error.map((err) => (
-									<li key={err}>{err}</li>
-								))}
+								{error.map((err) =>
+									isI18nCronError(err) ? (
+										<li key={err.key + JSON.stringify(err.values)}>
+											{t(err.key, err.values)}
+										</li>
+									) : (
+										<li key={String(err)}>{err}</li>
+									),
+								)}
 							</ul>
+						) : isI18nCronError(error) ? (
+							t(error.key, error.values)
 						) : (
-							<span>{error}</span>
+							error
 						)}
 					</CronInputWarning>
 				</div>

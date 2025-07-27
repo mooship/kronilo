@@ -73,6 +73,22 @@
 		"inputEmpty": "Input cannot be empty. Please enter a schedule in natural language.",
 		"translationFailed": "Could not translate input to a valid cron expression after several attempts."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "No cron expression provided. Please enter a cron schedule like '0 12 * * 1'.",
+			"invalidFieldCount": "A cron expression must have 5 fields (minute hour day month weekday), but got {{count}}. Example: '0 12 * * 1'",
+			"invalidField": "Invalid {{fieldName}}: \"{{field}}\". Value is not valid for this field (allowed: {{fieldRange}})",
+			"missingValue": "Missing value. Please provide a value for this field.",
+			"invalidCharacters": "Contains invalid characters. Only numbers, ',', '-', '*', and '/' are allowed.",
+			"invalidStep": "Step value after '/' must be a positive integer.",
+			"invalidRangeFormat": "Range must be in the form 'start-end', e.g. 1-5.",
+			"rangeStartGreater": "Range start ({{start}}) should not be greater than end ({{end}}).",
+			"dayOfWeekRange": "Day of week must be between 0-7 (0 or 7 = Sunday).",
+			"invalidDayOfWeekValues": "Invalid value(s): {{invalids}}. Allowed range for day of week: 0-7 (0 or 7 = Sunday).",
+			"invalidValues": "Invalid value(s): {{invalids}}. Allowed range: {{fieldRange}}.",
+			"valueOutOfRange": "Value {{num}} is out of range for {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Support Kronilo",
 		"message": "Kronilo is a free, open-source tool that respects your privacy—no ads, no trackers, no account required.",

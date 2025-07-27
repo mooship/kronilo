@@ -73,6 +73,22 @@
 		"inputEmpty": "Enigo ne povas esti malplena. Bonvolu enigi horaron en natura lingvo.",
 		"translationFailed": "Ne eblis traduki la enigon al valida cron-esprimo post pluraj provoj."
 	},
+	"cron": {
+		"errors": {
+			"noExpression": "Neniu cron-esprimo provizita. Bonvolu enigi cron-horaron kiel '0 12 * * 1'.",
+			"invalidFieldCount": "Cron-esprimo devas havi 5 kampojn (minuto horo tago monato semajntago), sed ricevis {{count}}. Ekzemplo: '0 12 * * 1'",
+			"invalidField": "Nevalida {{fieldName}}: \"{{field}}\". Valoro ne estas valida por ĉi tiu kampo (permesitaj: {{fieldRange}})",
+			"missingValue": "Mankanta valoro. Bonvolu provizi valoron por ĉi tiu kampo.",
+			"invalidCharacters": "Enhavas nevalidajn signojn. Nur nombroj, ',', '-', '*', kaj '/' estas permesitaj.",
+			"invalidStep": "Paŝvaloro post '/' devas esti pozitiva entjero.",
+			"invalidRangeFormat": "Intervalo devas esti en la formo 'komenco-fino', ekz. 1-5.",
+			"rangeStartGreater": "Intervalkomenco ({{start}}) ne devus esti pli granda ol fino ({{end}}).",
+			"dayOfWeekRange": "Tago de la semajno devas esti inter 0-7 (0 aŭ 7 = dimanĉo).",
+			"invalidDayOfWeekValues": "Nevalida(j) valoro(j): {{invalids}}. Permesita intervalo por tago de la semajno: 0-7 (0 aŭ 7 = dimanĉo).",
+			"invalidValues": "Nevalida(j) valoro(j): {{invalids}}. Permesita intervalo: {{fieldRange}}.",
+			"valueOutOfRange": "Valoro {{num}} estas ekster la intervalo por {{fieldName}} ({{fieldRange}})."
+		}
+	},
 	"donation": {
 		"title": "Subtenu Kronilon",
 		"message": "Kronilo estas senpaga malfermitkoda ilo kiu respektas vian privatecon — neniuj reklamoj, spuriloj aŭ kontoj.",
