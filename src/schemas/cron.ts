@@ -1,4 +1,3 @@
-// Only numbers, ',', '-', '*', and '/' are allowed in cron fields
 const CRON_FIELD_INVALID_CHAR_REGEX = /[^\d\-,*/]/;
 export const cronCalculationResultSchema = z.object({
 	runs: z.array(z.string()),

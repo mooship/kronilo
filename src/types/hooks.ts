@@ -1,5 +1,5 @@
 export interface UseCronValidation {
-	error: string | string[] | undefined;
+	error: import("./i18n").I18nCronError[] | undefined;
 	clearError: () => void;
 }
 

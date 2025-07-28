@@ -27,6 +27,13 @@ const inputClassName = clsx(
 );
 
 const CronInput: FC<CronInputProps> = ({ error }) => {
+	const handleSuggestionClick = (
+		suggestion: (typeof CRON_SUGGESTIONS)[number],
+	) => {
+		setCron(suggestion.expression);
+		setShowSuggestions(false);
+		inputRef.current?.focus();
+	};
 	const { t } = useTranslation();
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
@@ -73,14 +80,6 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 		if (!cron) {
 			setShowSuggestions(true);
 		}
-	};
-
-	const handleSuggestionClick = (
-		suggestion: (typeof CRON_SUGGESTIONS)[number],
-	) => {
-		setCron(suggestion.expression);
-		setShowSuggestions(false);
-		inputRef.current?.focus();
 	};
 
 	return (
