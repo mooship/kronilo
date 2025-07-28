@@ -14,6 +14,8 @@ export const initI18n = () => {
 		fallbackLng: "en",
 		supportedLngs: SUPPORTED_LANGUAGE_CODES,
 		debug: false,
+		defaultNS: "translation",
+		keySeparator: ".",
 		interpolation: {
 			escapeValue: false,
 		},

@@ -38,7 +38,7 @@ const rootElement = document.getElementById("root");
 if (rootElement) {
 	const root = createRoot(rootElement);
 
-	initI18n().finally(() => {
+	initI18n().then(() => {
 		root.render(renderApp());
 		registerServiceWorker();
 	});
