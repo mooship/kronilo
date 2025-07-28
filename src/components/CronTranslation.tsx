@@ -1,6 +1,7 @@
 import type { FC } from "react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useUnmount } from "usehooks-ts";
 import { getLocaleConfig, LOCALES } from "../locales";
 import "cronstrue/locales/fr";
 import "cronstrue/locales/es";
@@ -32,6 +33,13 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	);
 
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
+	const timeoutRef = useRef<number | null>(null);
+
+	useUnmount(() => {
+		if (timeoutRef.current) {
+			clearTimeout(timeoutRef.current);
+		}
+	});
 	const CRONSTRUE_LOCALES: string[] = useMemo(
 		() =>
 			LOCALES.filter((l) => typeof l.cronstrueLocale === "string").map((l) =>
@@ -83,11 +91,13 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		}
 
 		setLoading(true);
-		const timeout = setTimeout(() => {
+		timeoutRef.current = setTimeout(() => {
 			translateCron();
 		}, 500);
 		return () => {
-			clearTimeout(timeout);
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
+			}
 		};
 	}, [cron, translateCron]);
 

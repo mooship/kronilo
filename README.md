@@ -25,7 +25,6 @@ Kronilo is fully localized and supports:
 - Ukrainian (`uk`)
 - Romanian (`ro`)
 - Turkish (`tr`)
-- Esperanto (`eo`)
 
 Kronilo automatically detects your browser language and allows you to switch languages on the fly.
 

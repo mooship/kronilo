@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
+import { useUnmount } from "usehooks-ts";
 import { usePressAnimation } from "../hooks/usePressAnimation";
 import type { DonationModalProps } from "../types/components";
 
@@ -19,11 +20,8 @@ export const DonationModal: FC<DonationModalProps> = ({
 	const coffeeBtnAnim = usePressAnimation();
 	const maybeBtnAnim = usePressAnimation();
 
-	useEffect(() => {
-		if (!open) {
-			return;
-		}
-		function handleKeyDown(e: KeyboardEvent) {
+	const handleKeyDown = useCallback(
+		(e: KeyboardEvent) => {
 			if (e.key === "Escape") {
 				onClose();
 			}
@@ -48,10 +46,21 @@ export const DonationModal: FC<DonationModalProps> = ({
 					}
 				}
 			}
+		},
+		[onClose],
+	);
+
+	useEffect(() => {
+		if (!open) {
+			return;
 		}
 		document.addEventListener("keydown", handleKeyDown);
 		return () => document.removeEventListener("keydown", handleKeyDown);
-	}, [open, onClose]);
+	}, [open, handleKeyDown]);
+
+	useUnmount(() => {
+		document.removeEventListener("keydown", handleKeyDown);
+	});
 
 	function handleBackdropClick(e: React.MouseEvent<HTMLDivElement>) {
 		if (e.target === modalRef.current) {

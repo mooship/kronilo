@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
-import { usePressAnimation } from "../hooks/usePressAnimation";
+import { useHover, useUnmount } from "usehooks-ts";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { I18nCronError } from "../types";
 import type { CronInputProps } from "../types/components";
@@ -31,26 +31,32 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const suggestionsRef = useRef<HTMLDivElement>(null);
 	const [showSuggestions, setShowSuggestions] = useState(false);
-	const infoAnim = usePressAnimation();
+	const infoRef = useRef<HTMLButtonElement>(null);
+	const isHovered = useHover(infoRef as React.RefObject<HTMLElement>);
 	const cron = useKroniloStore((s) => s.cron);
 	const setCron = useKroniloStore((s) => s.setCron);
 
-	useEffect(() => {
-		function handleClick(event: MouseEvent) {
-			if (
-				suggestionsRef.current &&
-				!suggestionsRef.current.contains(event.target as Node)
-			) {
-				setShowSuggestions(false);
-			}
+	const handleClick = useCallback((event: MouseEvent) => {
+		if (
+			suggestionsRef.current &&
+			!suggestionsRef.current.contains(event.target as Node)
+		) {
+			setShowSuggestions(false);
 		}
+	}, []);
+
+	useEffect(() => {
 		if (showSuggestions) {
 			document.addEventListener("mousedown", handleClick);
 		}
 		return () => {
 			document.removeEventListener("mousedown", handleClick);
 		};
-	}, [showSuggestions]);
+	}, [showSuggestions, handleClick]);
+
+	useUnmount(() => {
+		document.removeEventListener("mousedown", handleClick);
+	});
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.ctrlKey && e.key === "a") {
@@ -91,20 +97,15 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 			<div className="relative flex w-full items-center justify-center gap-3">
 				<button
 					type="button"
+					ref={infoRef}
 					className={clsx(
 						"flex shrink-0 items-center transition-transform duration-100 focus:outline-none",
-						infoAnim.isPressed && "scale-95",
+						isHovered && "scale-105",
 					)}
 					data-tooltip-id="cron-placeholder-tip"
 					data-tooltip-content={t("cronInput.infoTooltip")}
 					aria-label={t("cronInput.infoAriaLabel")}
 					tabIndex={0}
-					onMouseDown={infoAnim.handlePressStart}
-					onMouseUp={infoAnim.handlePressEnd}
-					onMouseLeave={infoAnim.handlePressEnd}
-					onBlur={infoAnim.handlePressEnd}
-					onTouchStart={infoAnim.handlePressStart}
-					onTouchEnd={infoAnim.handlePressEnd}
 				>
 					<svg
 						className="h-6 w-6 text-black transition-colors hover:text-gray-600 focus:text-gray-600 dark:text-gray-100 dark:focus:text-gray-400 dark:hover:text-gray-400"
