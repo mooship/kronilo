@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { I18nCronError } from "./i18n";
 
 export interface ActionButtonProps {
 	label: string;
@@ -14,7 +15,7 @@ export interface CopyButtonProps {
 }
 
 export interface CronInputProps {
-	error?: string | string[];
+	error?: string | string[] | I18nCronError[];
 }
 
 export interface CronTranslationProps {

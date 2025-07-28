@@ -1,0 +1,119 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Doodsimpel Cron Vertaler",
+		"description": "Vertaal onmiddellik tussen cron-uitdrukkings en natuurlike taal."
+	},
+	"navigation": {
+		"modes": {
+			"cronToNatural": "Cron → Natuurlike Taal",
+			"naturalToCron": "Natuurlike Taal → Cron"
+		},
+		"switchMode": {
+			"toCronToNatural": "Skakel na Cron → Natuurlike Taal",
+			"toNaturalToCron": "Skakel na Natuurlike Taal → Cron"
+		}
+	},
+	"cronInput": {
+		"label": "Cron Uitdrukking",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Voer 'n cron-uitdrukking in",
+		"infoTooltip": "*/5 * * * * → elke 5 minute (minuut, uur, dag van maand, maand, dag van week)",
+		"infoAriaLabel": "Cron-formaat inligting"
+	},
+	"naturalLanguageInput": {
+		"label": "Natuurlike Taal",
+		"placeholder": "bv. \"hardloop een keer per week op Donderdag\" — Werk die beste in Engels, Frans, Duits, Spaans, of Italiaans. Ondersteuning vir ander tale mag wissel.",
+		"ariaLabel": "Voer skedule beskrywing in natuurlike taal in"
+	},
+	"translation": {
+		"title": "Vertaal:",
+		"placeholder": "Voer 'n cron-uitdrukking in om die vertaling te sien",
+		"loading": "Besig om te vertaal...",
+		"error": "Fout met vertaling van uitdrukking"
+	},
+	"nextRuns": {
+		"title": "Volgende 5 Uitvoerings:",
+		"placeholder": "Voer 'n geldige cron-uitdrukking in om die volgende uitvoerings tyde te sien",
+		"loading": "Besig om te bereken...",
+		"noRuns": "Geen aanstaande uitvoerings gevind nie.",
+		"ambiguousSchedule": "Hierdie cron-uitdrukking spesifiseer beide 'n dag van die maand en 'n dag van die week. Verskillende cron-implementasies mag dit anders interpreteer. Vir duidelikheid, oorweeg om net een of die ander te gebruik."
+	},
+	"naturalLanguage": {
+		"title": "Natuurlike Taal Skedule",
+		"inputPlaceholder": "bv. \"hardloop een keer per week op Donderdag\" — Werk die beste in Engels, Frans, Duits, en Spaans. Ondersteuning vir ander tale mag wissel.",
+		"retrying": "Wag asseblief, probeer weer...",
+		"unexpectedError": "'n Onverwagte fout het voorgekom. Probeer asseblief weer.",
+		"generatedCron": "Gegenereerde Cron Uitdrukking:",
+		"rateLimitedMsg": "Jy het die tempo limiet bereik. Probeer asseblief later weer.",
+		"rateLimitError": "Jy het die tempo limiet bereik. Probeer asseblief later weer.",
+		"translating": "Besig om te vertaal...",
+		"generateCron": "Genereer Cron",
+		"copy": "Kopieer"
+	},
+	"actions": {
+		"copy": "Kopieer",
+		"copied": "Gekopieer!",
+		"generateCron": "Genereer Cron",
+		"translating": "Besig om te vertaal...",
+		"rateLimited": "Tempo Beperk"
+	},
+	"loading": {
+		"default": "Besig om te laai...",
+		"mode": "Besig om modus te laai...",
+		"calculating": "Besig om te bereken..."
+	},
+	"errors": {
+		"invalidCron": "Ongeldige cron-uitdrukking",
+		"copyFailed": "Kon nie na knipbord kopieer nie",
+		"networkError": "Netwerkfout. Kontroleer asseblief jou verbinding.",
+		"rateLimitExceeded": "Tempo limiet oorskry. Probeer asseblief later weer.",
+		"somethingWrong": "Iets het verkeerd geloop. Probeer asseblief weer.",
+		"inputTooLong": "Invoer te lank (maks 200 karakters)",
+		"inputEmpty": "Invoer kan nie leeg wees nie. Voer asseblief 'n skedule in natuurlike taal in.",
+		"translationFailed": "Kon nie invoer na 'n geldige cron-uitdrukking vertaal na verskeie pogings nie."
+	},
+	"cron": {
+		"errors": {
+			"noExpression": "Geen cron-uitdrukking verskaf nie. Voer asseblief 'n cron-skedule in soos '0 12 * * 1'.",
+			"invalidFieldCount": "'n Cron-uitdrukking moet 5 velde hê (minuut uur dag maand weekdag), maar het {{count}} gekry. Voorbeeld: '0 12 * * 1'",
+			"invalidField": "Ongeldige {{fieldName}}: \"{{field}}\". Waarde is nie geldig vir hierdie veld nie (toegelaat: {{fieldRange}})",
+			"missingValue": "Ontbrekende waarde. Verskaf asseblief 'n waarde vir hierdie veld.",
+			"invalidCharacters": "Bevat ongeldige karakters. Net syfers, ',', '-', '*', en '/' word toegelaat.",
+			"invalidStep": "Stapwaarde na '/' moet 'n positiewe heelgetal wees.",
+			"invalidRangeFormat": "Reeks moet in die vorm 'begin-einde' wees, bv. 1-5.",
+			"rangeStartGreater": "Reeks begin ({{start}}) mag nie groter as einde ({{end}}) wees nie.",
+			"dayOfWeekRange": "Dag van week moet tussen 0-7 wees (0 of 7 = Sondag).",
+			"invalidDayOfWeekValues": "Ongeldige waarde(s): {{invalids}}. Toegelate reeks vir dag van week: 0-7 (0 of 7 = Sondag).",
+			"invalidValues": "Ongeldige waarde(s): {{invalids}}. Toegelate reeks: {{fieldRange}}.",
+			"valueOutOfRange": "Waarde {{num}} is buite die reeks vir {{fieldName}} ({{fieldRange}})."
+		}
+	},
+	"donation": {
+		"title": "Steun Kronilo",
+		"message": "Kronilo is 'n gratis, oopbron-hulpmiddel wat jou privaatheid respekteer—geen advertensies, geen opsporers, geen rekening nodig nie.",
+		"messageExtended": "As dit jou tyd gered het, oorweeg asseblief om vir my 'n koffie te koop. Elke bietjie help om Kronilo lewend en advertensievry te hou.",
+		"buyMeCoffee": "☕ Koop vir my 'n koffie",
+		"maybeLater": "Miskien Later",
+		"close": "Maak skenkvenster toe"
+	},
+	"footer": {
+		"builtWith": "Gebou met",
+		"inSouthAfrica": "in Suid-Afrika",
+		"support": "Steun Kronilo",
+		"github": "GitHub",
+		"licensedUnder": "Gelisensieer onder",
+		"agplLicense": "AGPL v3"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Bladsy Nie Gevind Nie",
+		"goHome": "Gaan na Tuis"
+	},
+	"accessibility": {
+		"donationModal": "Skenkvenster",
+		"close": "Sluit",
+		"supportOnKofi": "Steun Kronilo op Ko-fi",
+		"maybeLater": "Miskien later"
+	}
+}
