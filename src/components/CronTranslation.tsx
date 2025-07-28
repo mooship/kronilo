@@ -19,6 +19,7 @@ import "cronstrue/locales/uk";
 import "cronstrue/locales/ro";
 import "cronstrue/locales/tr";
 import "cronstrue/locales/af";
+import "cronstrue/locales/el";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronstrueType, CronTranslationProps } from "../types/components";
 import { MemoizedCopyButton } from "./CopyButton";

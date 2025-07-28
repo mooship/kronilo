@@ -4,6 +4,7 @@ export const LOCALES: LocaleConfig[] = [
 	{ code: "af", name: "Afrikaans", cronstrueLocale: "af" },
 	{ code: "da", name: "Dansk", cronstrueLocale: "da" },
 	{ code: "de", name: "Deutsch", cronstrueLocale: "de" },
+	{ code: "el", name: "Ελληνικά", cronstrueLocale: "el" },
 	{ code: "en", name: "English", cronstrueLocale: "en" },
 	{ code: "es", name: "Español", cronstrueLocale: "es" },
 	{ code: "fi", name: "Suomi", cronstrueLocale: "fi" },
