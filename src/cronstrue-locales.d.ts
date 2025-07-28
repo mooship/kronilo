@@ -6,7 +6,7 @@ declare module "cronstrue/locales/nl";
 declare module "cronstrue/locales/pt_BR";
 declare module "cronstrue/locales/PT_PT";
 declare module "cronstrue/locales/pl";
-declare module "cronstrue/locales/sv";
+declare module "cronstrue/locales/cs";
 declare module "cronstrue/locales/da";
 declare module "cronstrue/locales/nb";
 declare module "cronstrue/locales/fi";

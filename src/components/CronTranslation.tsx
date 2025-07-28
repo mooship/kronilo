@@ -18,6 +18,7 @@ import "cronstrue/locales/fi";
 import "cronstrue/locales/uk";
 import "cronstrue/locales/ro";
 import "cronstrue/locales/tr";
+import "cronstrue/locales/cs";
 import "cronstrue/locales/af";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { CronstrueType, CronTranslationProps } from "../types/components";

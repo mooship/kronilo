@@ -2,6 +2,7 @@ import type { LocaleConfig } from "./types";
 
 export const LOCALES: LocaleConfig[] = [
 	{ code: "af", name: "Afrikaans", cronstrueLocale: "af" },
+	{ code: "cs", name: "Čeština", cronstrueLocale: "cs" },
 	{ code: "da", name: "Dansk", cronstrueLocale: "da" },
 	{ code: "de", name: "Deutsch", cronstrueLocale: "de" },
 	{ code: "en", name: "English", cronstrueLocale: "en" },
