@@ -4,7 +4,7 @@
 
 3. **Build/Run Restrictions**: Copilot must never build or run the app. Do not execute build, run, or start commands, and do not trigger any process that compiles or launches the application.
 
-4. **Code Comments**: Avoid most comments in code. However, use XML summary comments for C# and JSDoc comments for JavaScript/TypeScript where appropriate (e.g., for functions, classes, and exported symbols).
+4. **Code Comments**: Avoid most comments in code. However, use XML JSDoc comments for JavaScript/TypeScript where appropriate (e.g., for functions, classes, and exported symbols).
 
 5. **Dependencies**: Check `package.json` to see what dependencies are used. Copilot may suggest additional dependencies if they improve code quality, accessibility, or maintainability.
 
