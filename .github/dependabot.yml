@@ -7,13 +7,6 @@ updates:
       time: "17:00"
       timezone: "Africa/Johannesburg"
     target-branch: "main"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "17:00"
-      timezone: "Africa/Johannesburg"
-    target-branch: "dev"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -21,10 +14,3 @@ updates:
       time: "17:00"
       timezone: "Africa/Johannesburg"
     target-branch: "main"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "17:00"
-      timezone: "Africa/Johannesburg"
-    target-branch: "dev"
