@@ -86,19 +86,18 @@ Kronilo's natural language translation API is powered by [kronilo-worker](https:
 
 ### Prerequisites
 
-- Node.js (v22 or newer recommended)
-- npm (v11 or newer recommended)
+- Bun (v1 or newer recommended)
 
 ### Install dependencies
 
 ```sh
-npm install
+bun install
 ```
 
 ### Run the development server
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
@@ -106,13 +105,13 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ### Build for production
 
 ```sh
-npm run build
+bun run build
 ```
 
 ### Preview the production build
 
 ```sh
-npm run preview
+bun run preview
 ```
 
 ---
@@ -123,13 +122,13 @@ Kronilo includes comprehensive tests to ensure reliability and correctness:
 
 ```sh
 # Run tests once
-npm test
+bun test
 
 # Run tests in watch mode
-npm run test:ui
+bun run test:ui
 
 # Run tests with coverage
-npm run test:run
+bun run test:run
 ```
 
 
