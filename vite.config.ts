@@ -50,13 +50,6 @@ export default defineConfig(({ mode }) => ({
 			},
 		}),
 	],
-	test: {
-		environment: "jsdom",
-		setupFiles: ["./src/test/setup.ts"],
-		globals: true,
-		css: true,
-		threads: true,
-	},
 	build: {
 		cssCodeSplit: true,
 		minify: "esbuild",
@@ -113,6 +106,7 @@ export default defineConfig(({ mode }) => ({
 				},
 			},
 		},
+		// Optimized for Bun's faster filesystem operations
 		cacheDir: "node_modules/.vite_cache",
 		incremental: true,
 		clearScreen: false,

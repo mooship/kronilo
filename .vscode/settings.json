@@ -16,7 +16,6 @@
 	"[yaml]": {
 		"editor.defaultFormatter": "redhat.vscode-yaml"
 	},
-	"[instructions]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	}
+	"npm.packageManager": "bun",
+	"typescript.preferences.includePackageJsonAutoImports": "on"
 }

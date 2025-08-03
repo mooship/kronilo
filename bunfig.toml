@@ -1,0 +1,38 @@
+[install]
+# Install packages from npm registry
+registry = "https://registry.npmjs.org"
+
+# Automatically install peer dependencies
+auto = true
+
+# Use exact versions (equivalent to npm --save-exact)
+exact = false
+
+# Cache configuration
+cache = true
+
+# Production dependencies only for production builds
+production = false
+
+# Enable workspaces support if needed
+workspaces = true
+
+# Faster installs with parallel downloads
+parallel = true
+
+[install.scopes]
+"@types" = "https://registry.npmjs.org"
+
+[test]
+# Use jsdom environment for testing (equivalent to vitest config)
+preload = ["./src/test/setup.ts"]
+
+[run]
+# Shell to use for running scripts
+shell = "system"
+
+# Allow bun to run scripts in parallel
+silent = false
+
+# Faster script execution
+bun = true
