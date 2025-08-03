@@ -35,7 +35,7 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	);
 
 	const cronstrueRef = useRef<CronstrueType["default"] | null>(null);
-	const timeoutRef = useRef<number | null>(null);
+	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	useUnmount(() => {
 		if (timeoutRef.current) {
