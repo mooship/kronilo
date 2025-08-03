@@ -11,11 +11,6 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_URL = `${BASE_URL}/api/translate`;
 const HEALTH_URL = `${BASE_URL}/health`;
 
-/**
- * Check the API rate limit status by calling the health endpoint.
- *
- * @returns {Promise<RateLimitResult>} Rate limit status and details
- */
 export async function checkRateLimit(): Promise<RateLimitResult> {
 	const result = await apiRequest<HealthResponse>(HEALTH_URL, {
 		method: "GET",
@@ -67,13 +62,6 @@ export async function checkRateLimit(): Promise<RateLimitResult> {
 	};
 }
 
-/**
- * Translate a natural language input to a cron expression using the API.
- * Handles input validation, error, and rate limit responses.
- *
- * @param input The natural language schedule to translate
- * @returns {Promise<{data?: ApiSuccess; error?: string; status: number; rateLimitType?: "perUser" | "daily"}>}
- */
 export async function translateToCron(input: string): Promise<{
 	data?: ApiSuccess;
 	error?: string;

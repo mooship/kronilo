@@ -106,7 +106,6 @@ export default defineConfig(({ mode }) => ({
 				},
 			},
 		},
-		// Optimized for Bun's faster filesystem operations
 		cacheDir: "node_modules/.vite_cache",
 		incremental: true,
 		clearScreen: false,

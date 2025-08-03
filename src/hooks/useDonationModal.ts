@@ -2,12 +2,6 @@ import { useEffect } from "react";
 import { useKroniloStore } from "../stores/useKroniloStore";
 import type { UseDonationModal } from "../types/hooks";
 
-/**
- * React hook for managing the donation modal state and logic.
- * Handles open/close, usage counters, and dismiss logic for the modal.
- *
- * @returns {UseDonationModal} Modal state and action handlers
- */
 export function useDonationModal(): UseDonationModal {
 	const donationModalOpen = useKroniloStore((s) => s.donationModalOpen);
 	const setDonationModalOpen = useKroniloStore((s) => s.setDonationModalOpen);
@@ -50,27 +44,17 @@ export function useDonationModal(): UseDonationModal {
 		canShowDonationModal,
 	]);
 
-	/**
-	 * Handler for clicking the donate button in the footer.
-	 * @param e React mouse event
-	 */
 	const handleFooterDonateClick = (e: React.MouseEvent) => {
 		e.preventDefault();
 		setDonationModalOpen(true);
 	};
 
-	/**
-	 * Handler for closing the donation modal.
-	 */
 	const handleCloseModal = () => {
 		setDonationModalOpen(false);
 		resetCronToNaturalUsage();
 		resetNaturalToCronUsage();
 	};
 
-	/**
-	 * Handler for dismissing the modal for 14 days.
-	 */
 	const handleMaybeLater = () => {
 		const dismissUntil = new Date();
 		dismissUntil.setDate(dismissUntil.getDate() + 14);

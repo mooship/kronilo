@@ -1,10 +1,5 @@
 import { QueryClient } from "@tanstack/react-query";
 
-/**
- * Shared React Query client instance for the Kronilo app.
- *
- * Configures default options for queries and mutations.
- */
 export const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {

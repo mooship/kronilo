@@ -2,11 +2,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { checkRateLimit, translateToCron } from "../api/translate";
 import type { RateLimitResult } from "../types/api";
 
-/**
- * React Query hook for fetching and tracking API rate limit status.
- *
- * @returns Query result for rate limit status
- */
 export function useRateLimit() {
 	return useQuery({
 		queryKey: ["rateLimit"],
@@ -19,12 +14,6 @@ export function useRateLimit() {
 	});
 }
 
-/**
- * React Query mutation hook for translating natural language to cron.
- * Handles rate limit checks, retries, and error propagation.
- *
- * @returns Mutation object for translation
- */
 export function useTranslateToCron() {
 	const queryClient = useQueryClient();
 
