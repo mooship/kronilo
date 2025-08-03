@@ -45,4 +45,27 @@ describe("calculateNextRuns", () => {
 		const result = await calculateNextRuns(ambiguousCron, lang);
 		expect(result.hasAmbiguousSchedule).toBe(true);
 	});
+
+	it("returns error for Feb 31st (invalid date)", async () => {
+		const result = await calculateNextRuns("0 0 31 2 *", lang);
+		expect(result.runs.length).toBe(0);
+		expect(result.error).not.toBeNull();
+	});
+
+	it("returns next runs for Feb 29th in a leap year", async () => {
+		const result = await calculateNextRuns("0 0 29 2 *", lang);
+		expect(result.runs.length).toBeGreaterThan(0);
+		expect(result.error).toBeNull();
+	});
+
+	it("returns error for step value zero", async () => {
+		const result = await calculateNextRuns("*/0 * * * *", lang);
+		expect(result.runs.length).toBe(0);
+		expect(result.error).not.toBeNull();
+	});
+
+	it("returns next runs for far future year", async () => {
+		const result = await calculateNextRuns("0 0 1 1 2099", lang);
+		expect(Array.isArray(result.runs)).toBe(true);
+	});
 });

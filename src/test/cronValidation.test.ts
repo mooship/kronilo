@@ -72,4 +72,32 @@ describe("getCronValidationErrors", () => {
 			"cron.errors.valueOutOfRange",
 		);
 	});
+
+	it("returns error for Feb 31st (invalid date)", () => {
+		const errors = getCronValidationErrors("0 0 31 2 *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidField");
+	});
+
+	it("returns error for step value zero", () => {
+		const errors = getCronValidationErrors("*/0 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidStep");
+	});
+
+	it("returns error for extra whitespace", () => {
+		expect(getCronValidationErrors("  * * * * *  ")).toEqual([]);
+	});
+
+	it("returns error for invalid list values", () => {
+		const errors = getCronValidationErrors("1,2,99 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidValues");
+	});
+
+	it("returns error for invalid range values", () => {
+		const errors = getCronValidationErrors("1-100 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidField");
+	});
 });

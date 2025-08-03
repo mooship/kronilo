@@ -193,6 +193,31 @@ export function getCronValidationErrors(
 			errors.push({ key, values });
 		}
 	});
+
+	const dayField = fields[2];
+	const monthField = fields[3];
+	if (
+		!CRON_FIELD_INVALID_CHAR_REGEX.test(dayField) &&
+		!CRON_FIELD_INVALID_CHAR_REGEX.test(monthField)
+	) {
+		const day = Number(dayField);
+		const month = Number(monthField);
+		if (!Number.isNaN(day) && !Number.isNaN(month)) {
+			const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+			if (month >= 1 && month <= 12) {
+				let maxDay = daysInMonth[month - 1];
+				if (month === 2 && day === 29) {
+					maxDay = 29;
+				}
+				if (day > maxDay) {
+					errors.push({
+						key: "cron.errors.invalidField",
+						values: { day, month },
+					});
+				}
+			}
+		}
+	}
 	return errors;
 }
 
