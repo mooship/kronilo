@@ -86,19 +86,18 @@ Kronilo's natural language translation API is powered by [kronilo-worker](https:
 
 ### Prerequisites
 
-- Node.js (v22 or newer recommended)
-- npm (v11 or newer recommended)
+- [Bun](https://bun.sh/) (v1.0 or newer recommended)
 
 ### Install dependencies
 
 ```sh
-npm install
+bun install
 ```
 
 ### Run the development server
 
 ```sh
-npm run dev
+bun run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
@@ -106,45 +105,28 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 ### Build for production
 
 ```sh
-npm run build
+bun run build
 ```
 
 ### Preview the production build
 
 ```sh
-npm run preview
+bun run preview
 ```
 
 ---
 
 ## 🧪 Testing
 
+
 Kronilo includes comprehensive tests to ensure reliability and correctness:
 
 ```sh
 # Run tests once
-npm test
+bun test
 
 # Run tests in watch mode
-npm run test:ui
-
-# Run tests with coverage
-npm run test:run
-```
-
-
-The test suite covers:
-- **Cron validation:** Ensures accurate parsing and validation of cron expressions
-- **Schedule calculation:** Tests next run time calculations and ambiguous schedule detection
-- **Suggestions:** Verifies that built-in cron suggestions are present and correct
-- **Error messages:** Ensures robust handling and safe fallback for unknown or unsafe errors
-- **Storage:** Tests browser localStorage utility functions for reliability
-- **API client:** Covers success, timeout, network, and unknown error handling for all API requests
-- **Translation API:** Tests input validation, error handling, rate limit logic, and edge cases for cron translation
-- **Rate limit checks:** Verifies correct handling of rate limit information, service errors, and unknown error cases
-- **Edge cases:** Comprehensive testing of malformed inputs, boundary conditions, and error handling
-
----
+bun run test:ui
 
 ## 🛠️ Code Quality
 
