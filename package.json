@@ -2,9 +2,9 @@
 	"name": "kronilo",
 	"version": "1.1.2",
 	"private": true,
-	"packageManager": "bun@1.1.40",
+	"packageManager": "bun@1.2.19",
 	"engines": {
-		"bun": ">=1.1.40"
+		"bun": ">=1.12.19"
 	},
 	"author": "Timothy Brits",
 	"license": "AGPL-3.0-or-later",
