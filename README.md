@@ -1,4 +1,4 @@
-# Kronilo [![Node.js CI](https://github.com/mooship/kronilo/actions/workflows/node.js.yml/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/node.js.yml) [![CodeQL](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql)
+# Kronilo [![Bun CI](https://github.com/mooship/kronilo/actions/workflows/bun.yml/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/bun.yml) [![CodeQL](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mooship/kronilo/actions/workflows/github-code-scanning/codeql)
 
 **Kronilo** is the fastest, most user-friendly way to translate, understand, and work with cron expressions. Built with React, TypeScript, and Vite, Kronilo is designed for developers, sysadmins, and anyone who needs to make sense of cron schedules—instantly.
 
