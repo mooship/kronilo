@@ -2,17 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Traducător Cron simplu",
-		"description": "Convertește instantaneu între expresii cron și limbaj natural."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Limbaj natural",
-			"naturalToCron": "Limbaj natural → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Comută la Cron → Limbaj natural",
-			"toNaturalToCron": "Comută la Limbaj natural → Cron"
-		}
+		"description": "Validează și inspectează instantaneu expresii cron."
 	},
 	"cronInput": {
 		"label": "Expresie Cron",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → la fiecare 5 minute (minut, oră, zi, lună, zi a săptămânii)",
 		"infoAriaLabel": "Informații despre formatul cron"
 	},
-	"naturalLanguageInput": {
-		"label": "Limbaj natural",
-		"placeholder": "ex: „rulează o dată pe săptămână joi” — Funcționează cel mai bine în engleză, franceză, germană, spaniolă sau italiană. Suportul pentru alte limbi poate varia.",
-		"ariaLabel": "Introduceți o descriere a programului în limbaj natural"
-	},
-	"translation": {
-		"title": "Traducere:",
-		"placeholder": "Introduceți o expresie cron pentru a vedea traducerea",
-		"loading": "Se traduce...",
-		"error": "Eroare la traducerea expresiei"
-	},
 	"nextRuns": {
 		"title": "Următoarele 5 execuții:",
 		"placeholder": "Introduceți o expresie cron validă pentru a vedea următoarele ore de execuție",
@@ -39,24 +18,9 @@
 		"noRuns": "Nu au fost găsite execuții viitoare.",
 		"ambiguousSchedule": "Această expresie cron specifică atât ziua din lună, cât și ziua săptămânii. Diferite implementări cron pot interpreta acest lucru diferit. Pentru claritate, folosiți doar unul dintre ele."
 	},
-	"naturalLanguage": {
-		"title": "Program în limbaj natural",
-		"inputPlaceholder": "ex: „rulează o dată pe săptămână joi” — Funcționează cel mai bine în engleză, franceză, germană și spaniolă. Suportul pentru alte limbi poate varia.",
-		"retrying": "Se reîncearcă, vă rugăm să așteptați...",
-		"unexpectedError": "A apărut o eroare neașteptată. Vă rugăm să încercați din nou.",
-		"generatedCron": "Expresie Cron generată:",
-		"rateLimitedMsg": "Ați atins limita. Vă rugăm să încercați mai târziu.",
-		"rateLimitError": "Ați atins limita. Vă rugăm să încercați mai târziu.",
-		"translating": "Se traduce...",
-		"generateCron": "Generează Cron",
-		"copy": "Copiază"
-	},
 	"actions": {
 		"copy": "Copiază",
-		"copied": "Copiat!",
-		"generateCron": "Generează Cron",
-		"translating": "Se traduce...",
-		"rateLimited": "Limită atinsă"
+		"copied": "Copiat!"
 	},
 	"loading": {
 		"default": "Se încarcă...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Expresie cron nevalidă",
 		"copyFailed": "Copierea în clipboard a eșuat",
 		"networkError": "Eroare de rețea. Vă rugăm să verificați conexiunea.",
-		"rateLimitExceeded": "Limita de cereri a fost depășită. Vă rugăm să încercați din nou mai târziu.",
-		"somethingWrong": "Ceva nu a funcționat corect. Vă rugăm să încercați din nou.",
-		"inputTooLong": "Text prea lung (maxim 200 de caractere)",
-		"inputEmpty": "Câmpul nu poate fi gol. Vă rugăm să introduceți o descriere a programului.",
-		"translationFailed": "Nu s-a putut genera o expresie cron validă după mai multe încercări."
+		"somethingWrong": "Ceva nu a funcționat corect. Vă rugăm să încercați din nou."
 	},
 	"cron": {
 		"errors": {

@@ -2,17 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Velmi jednoduchý překladač Cron",
-		"description": "Okamžitě převádějte mezi cron výrazy a přirozeným jazykem."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Přirozený jazyk",
-			"naturalToCron": "Přirozený jazyk → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Přepnout na Cron → Přirozený jazyk",
-			"toNaturalToCron": "Přepnout na Přirozený jazyk → Cron"
-		}
+		"description": "Okamžitě ověřte a zkontrolujte cron výrazy."
 	},
 	"cronInput": {
 		"label": "Cron Výraz",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → každých 5 minut (minuta, hodina, den v měsíci, měsíc, den v týdnu)",
 		"infoAriaLabel": "Informace o formátu Cron"
 	},
-	"naturalLanguageInput": {
-		"label": "Přirozený jazyk",
-		"placeholder": "např. \"spusť jednou týdně ve čtvrtek\" — Nejlépe funguje v angličtině, francouzštině, němčině, španělštině nebo italštině. Podpora pro jiné jazyky se může lišit.",
-		"ariaLabel": "Zadejte popis plánu v přirozeném jazyce"
-	},
-	"translation": {
-		"title": "Překlad:",
-		"placeholder": "Zadejte cron výraz pro zobrazení překladu",
-		"loading": "Překládání...",
-		"error": "Chyba při překládání výrazu"
-	},
 	"nextRuns": {
 		"title": "Dalších 5 spuštění:",
 		"placeholder": "Zadejte platný cron výraz pro zobrazení dalších časů spuštění",
@@ -39,24 +18,9 @@
 		"noRuns": "Nenalezena žádná nadcházející spuštění.",
 		"ambiguousSchedule": "Tento cron výraz určuje jak den v měsíci, tak den v týdnu. Různé implementace cronu to mohou interpretovat různě. Pro jasnost zvažte použití pouze jednoho nebo druhého."
 	},
-	"naturalLanguage": {
-		"title": "Plánování v přirozeném jazyce",
-		"inputPlaceholder": "např. \"spusť jednou týdně ve čtvrtek\" — Nejlépe funguje v angličtině, francouzštině, němčině a španělštině. Podpora pro jiné jazyky se může lišit.",
-		"retrying": "Počkejte prosím, opakování...",
-		"unexpectedError": "Došlo k neočekávané chybě. Zkuste to prosím znovu.",
-		"generatedCron": "Vygenerovaný Cron Výraz:",
-		"rateLimitedMsg": "Dosáhli jste limitu požadavků. Zkuste to prosím později.",
-		"rateLimitError": "Dosáhli jste limitu požadavků. Zkuste to prosím později.",
-		"translating": "Překládání...",
-		"generateCron": "Vygenerovat Cron",
-		"copy": "Kopírovat"
-	},
 	"actions": {
 		"copy": "Kopírovat",
-		"copied": "Zkopírováno!",
-		"generateCron": "Vygenerovat Cron",
-		"translating": "Překládání...",
-		"rateLimited": "Omezení rychlosti"
+		"copied": "Zkopírováno!"
 	},
 	"loading": {
 		"default": "Načítání...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Neplatný cron výraz",
 		"copyFailed": "Zkopírování do schránky se nezdařilo",
 		"networkError": "Chyba sítě. Zkontrolujte prosím své připojení.",
-		"rateLimitExceeded": "Byl překročen limit rychlosti. Zkuste to prosím později.",
-		"somethingWrong": "Něco se pokazilo. Zkuste to prosím znovu.",
-		"inputTooLong": "Vstup je příliš dlouhý (maximum 200 znaků)",
-		"inputEmpty": "Vstup nesmí být prázdný. Zadejte prosím plán v přirozeném jazyce.",
-		"translationFailed": "Vstup se nepodařilo přeložit do platného cron výrazu po několika pokusech."
+		"somethingWrong": "Něco se pokazilo. Zkuste to prosím znovu."
 	},
 	"cron": {
 		"errors": {

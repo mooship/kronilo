@@ -3,8 +3,8 @@ import type { FC } from "react";
 import { memo, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useCopyToClipboard, useTimeout } from "usehooks-ts";
-import { usePressAnimation } from "../hooks/usePressAnimation";
-import type { CopyButtonProps } from "../types/components";
+import { usePressAnimation } from "../../hooks/usePressAnimation";
+import type { CopyButtonProps } from "../../types/components";
 
 const CopyButton: FC<CopyButtonProps> = ({
 	value,

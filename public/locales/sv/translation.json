@@ -4,33 +4,12 @@
 		"subtitle": "Enkel Cron-översättare",
 		"description": "Konvertera direkt mellan cron-uttryck och naturligt språk."
 	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Naturligt språk",
-			"naturalToCron": "Naturligt språk → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Växla till Cron → Naturligt språk",
-			"toNaturalToCron": "Växla till Naturligt språk → Cron"
-		}
-	},
 	"cronInput": {
 		"label": "Cron-uttryck",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Ange ett cron-uttryck",
 		"infoTooltip": "*/5 * * * * → var 5:e minut (minut, timme, dag, månad, veckodag)",
 		"infoAriaLabel": "Information om Cron-format"
-	},
-	"naturalLanguageInput": {
-		"label": "Naturligt språk",
-		"placeholder": "t.ex. \"kör en gång i veckan på torsdag\" — Fungerar bäst på engelska, franska, tyska, spanska eller italienska. Stöd för andra språk kan variera.",
-		"ariaLabel": "Ange en beskrivning av schemat i naturligt språk"
-	},
-	"translation": {
-		"title": "Översättning:",
-		"placeholder": "Ange ett cron-uttryck för att se översättningen",
-		"loading": "Översätter...",
-		"error": "Fel vid översättning av uttrycket"
 	},
 	"nextRuns": {
 		"title": "Nästa 5 körningar:",
@@ -39,24 +18,9 @@
 		"noRuns": "Inga kommande körningar hittades.",
 		"ambiguousSchedule": "Detta cron-uttryck specificerar både dag i månad och veckodag. Olika cron-implementationer kan tolka detta olika. För tydlighetens skull, använd endast en av dem."
 	},
-	"naturalLanguage": {
-		"title": "Schema i naturligt språk",
-		"inputPlaceholder": "t.ex. \"kör en gång i veckan på torsdag\" — Fungerar bäst på engelska, franska, tyska och spanska. Stöd för andra språk kan variera.",
-		"retrying": "Försöker igen, var god vänta...",
-		"unexpectedError": "Ett oväntat fel uppstod. Försök igen.",
-		"generatedCron": "Genererat Cron-uttryck:",
-		"rateLimitedMsg": "Du har nått gränsen. Försök igen senare.",
-		"rateLimitError": "Du har nått gränsen. Försök igen senare.",
-		"translating": "Översätter...",
-		"generateCron": "Generera Cron",
-		"copy": "Kopiera"
-	},
 	"actions": {
 		"copy": "Kopiera",
-		"copied": "Kopierat!",
-		"generateCron": "Generera Cron",
-		"translating": "Översätter...",
-		"rateLimited": "Gräns nådd"
+		"copied": "Kopierat!"
 	},
 	"loading": {
 		"default": "Laddar...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Ogiltigt cron-uttryck",
 		"copyFailed": "Kunde inte kopiera till urklipp",
 		"networkError": "Nätverksfel. Kontrollera din anslutning.",
-		"rateLimitExceeded": "Gräns överskriden. Försök igen senare.",
-		"somethingWrong": "Något gick fel. Försök igen.",
-		"inputTooLong": "Inmatning för lång (max 200 tecken)",
-		"inputEmpty": "Inmatning kan inte vara tom. Ange ett schema i naturligt språk.",
-		"translationFailed": "Kunde inte generera giltigt cron-uttryck efter flera försök."
+		"somethingWrong": "Något gick fel. Försök igen."
 	},
 	"cron": {
 		"errors": {

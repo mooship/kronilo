@@ -14,3 +14,4 @@ declare module "cronstrue/locales/uk";
 declare module "cronstrue/locales/ro";
 declare module "cronstrue/locales/tr";
 declare module "cronstrue/locales/af";
+declare module "cronstrue/locales/ru";

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import type { FC } from "react";
-import type { AppLayoutProps, AppMainProps } from "../types/components";
+import type { AppLayoutProps, AppMainProps } from "../../types/components";
 
 export const AppLayout: FC<AppLayoutProps> = ({
 	prefersReducedMotion,

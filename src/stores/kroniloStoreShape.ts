@@ -11,17 +11,11 @@ export const kroniloStoreShape: StateCreator<KroniloState> = (set, get) => ({
 	donationModalOpen: false,
 	setDonationModalOpen: (open) => set({ donationModalOpen: open }),
 	cronToNaturalUsageCount: 0,
-	naturalToCronUsageCount: 0,
 	incrementCronToNaturalUsage: () =>
 		set((state: KroniloState) => ({
 			cronToNaturalUsageCount: state.cronToNaturalUsageCount + 1,
 		})),
-	incrementNaturalToCronUsage: () =>
-		set((state: KroniloState) => ({
-			naturalToCronUsageCount: state.naturalToCronUsageCount + 1,
-		})),
 	resetCronToNaturalUsage: () => set({ cronToNaturalUsageCount: 0 }),
-	resetNaturalToCronUsage: () => set({ naturalToCronUsageCount: 0 }),
 	dismissedUntil: getStoredDismissedUntil(),
 	setDismissedUntil: (date) => {
 		setStoredDismissedUntil(date);

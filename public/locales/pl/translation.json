@@ -2,17 +2,7 @@
 	"app": {
 		"title": "Kronilo",
 		"subtitle": "Prosty tłumacz Cron",
-		"description": "Natychmiastowa konwersja między wyrażeniami cron a językiem naturalnym."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Język naturalny",
-			"naturalToCron": "Język naturalny → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Przełącz na Cron → Język naturalny",
-			"toNaturalToCron": "Przełącz na Język naturalny → Cron"
-		}
+		"description": "Natychmiastowa walidacja i inspekcja wyrażeń cron."
 	},
 	"cronInput": {
 		"label": "Wyrażenie Cron",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → co 5 minut (minuta, godzina, dzień miesiąca, miesiąc, dzień tygodnia)",
 		"infoAriaLabel": "Informacje o formacie Cron"
 	},
-	"naturalLanguageInput": {
-		"label": "Język naturalny",
-		"placeholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w języku: angielskim, francuskim, niemieckim, hiszpańskim lub włoskim. Wsparcie dla innych języków może się różnić.",
-		"ariaLabel": "Wprowadź opis harmonogramu w języku naturalnym"
-	},
-	"translation": {
-		"title": "Tłumaczenie:",
-		"placeholder": "Wprowadź wyrażenie cron, aby zobaczyć tłumaczenie",
-		"loading": "Tłumaczenie...",
-		"error": "Błąd podczas tłumaczenia wyrażenia"
-	},
 	"nextRuns": {
 		"title": "Następne 5 uruchomień:",
 		"placeholder": "Wprowadź poprawne wyrażenie cron, aby zobaczyć kolejne czasy uruchomienia",
@@ -39,24 +18,9 @@
 		"noRuns": "Nie znaleziono nadchodzących uruchomień.",
 		"ambiguousSchedule": "To wyrażenie cron określa zarówno dzień miesiąca, jak i dzień tygodnia. Różne implementacje cron mogą interpretować to inaczej. Dla jasności użyj tylko jednego z nich."
 	},
-	"naturalLanguage": {
-		"title": "Harmonogram w języku naturalnym",
-		"inputPlaceholder": "np. \"uruchom raz w tygodniu w czwartek\" — Najlepiej działa w języku: angielskim, francuskim, niemieckim i hiszpańskim. Wsparcie dla innych języków może się różnić.",
-		"retrying": "Ponawianie próby, proszę czekać...",
-		"unexpectedError": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie.",
-		"generatedCron": "Wygenerowane wyrażenie Cron:",
-		"rateLimitedMsg": "Osiągnięto limit. Spróbuj ponownie później.",
-		"rateLimitError": "Osiągnięto limit. Spróbuj ponownie później.",
-		"translating": "Tłumaczenie...",
-		"generateCron": "Generuj Cron",
-		"copy": "Kopiuj"
-	},
 	"actions": {
 		"copy": "Kopiuj",
-		"copied": "Skopiowano!",
-		"generateCron": "Generuj Cron",
-		"translating": "Tłumaczenie...",
-		"rateLimited": "Osiągnięto limit"
+		"copied": "Skopiowano!"
 	},
 	"loading": {
 		"default": "Ładowanie...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Nieprawidłowe wyrażenie cron",
 		"copyFailed": "Nie udało się skopiować do schowka",
 		"networkError": "Błąd sieci. Sprawdź swoje połączenie.",
-		"rateLimitExceeded": "Przekroczono limit. Spróbuj ponownie później.",
-		"somethingWrong": "Coś poszło nie tak. Spróbuj ponownie.",
-		"inputTooLong": "Tekst jest za długi (maksymalnie 200 znaków)",
-		"inputEmpty": "Pole nie może być puste. Wprowadź opis harmonogramu w języku naturalnym.",
-		"translationFailed": "Nie udało się wygenerować poprawnego wyrażenia cron po kilku próbach."
+		"somethingWrong": "Coś poszło nie tak. Spróbuj ponownie."
 	},
 	"cron": {
 		"errors": {

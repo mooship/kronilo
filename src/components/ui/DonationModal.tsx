@@ -4,8 +4,8 @@ import { useCallback, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { useUnmount } from "usehooks-ts";
-import { usePressAnimation } from "../hooks/usePressAnimation";
-import type { DonationModalProps } from "../types/components";
+import { usePressAnimation } from "../../hooks/usePressAnimation";
+import type { DonationModalProps } from "../../types/components";
 
 export const DonationModal: FC<DonationModalProps> = ({
 	open,
@@ -95,7 +95,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onKeyDown={handleBackdropKeyDown}
 		>
 			<div
-				className="relative mx-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 border-violet-400 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-violet-700 dark:bg-neutral-800 dark:text-neutral-50 animate-fade-in"
+				className="relative px-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 border-violet-400 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-violet-700 dark:bg-neutral-800 dark:text-neutral-50 animate-fade-in"
 				style={{ animation: "fadeInScale 0.5s cubic-bezier(0.4,0,0.2,1)" }}
 			>
 				<button

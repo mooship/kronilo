@@ -4,33 +4,12 @@
 		"subtitle": "Erittäin yksinkertainen cron-kääntäjä",
 		"description": "Muunna cron-lausekkeita ja luonnollista kieltä hetkessä."
 	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Luonnollinen kieli",
-			"naturalToCron": "Luonnollinen kieli → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Vaihda tilaan Cron → Luonnollinen kieli",
-			"toNaturalToCron": "Vaihda tilaan Luonnollinen kieli → Cron"
-		}
-	},
 	"cronInput": {
 		"label": "Cron-lauseke",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Syötä cron-lauseke",
 		"infoTooltip": "*/5 * * * * → joka 5. minuutti (minuutti, tunti, päivä, kuukausi, viikonpäivä)",
 		"infoAriaLabel": "Tietoja cron-muodosta"
-	},
-	"naturalLanguageInput": {
-		"label": "Luonnollinen kieli",
-		"placeholder": "esim. \"suorita kerran viikossa torstaina\" — Toimii parhaiten englanniksi, ranskaksi, saksaksi, espanjaksi tai italiaksi. Muiden kielten tuki voi vaihdella.",
-		"ariaLabel": "Syötä aikataulun kuvaus luonnollisella kielellä"
-	},
-	"translation": {
-		"title": "Käännös:",
-		"placeholder": "Syötä cron-lauseke nähdäksesi käännöksen",
-		"loading": "Käännetään...",
-		"error": "Virhe käännöksessä"
 	},
 	"nextRuns": {
 		"title": "Seuraavat 5 ajoa:",
@@ -39,24 +18,9 @@
 		"noRuns": "Tulevia ajoja ei löytynyt.",
 		"ambiguousSchedule": "Tämä cron-lauseke määrittää sekä kuukauden päivän että viikonpäivän. Eri cron-toteutukset voivat tulkita tämän eri tavoin. Käytä selkeyden vuoksi vain toista."
 	},
-	"naturalLanguage": {
-		"title": "Luonnollisen kielen aikataulu",
-		"inputPlaceholder": "esim. \"suorita kerran viikossa torstaina\" — Toimii parhaiten englanniksi, ranskaksi, saksaksi ja espanjaksi. Muiden kielten tuki voi vaihdella.",
-		"retrying": "Yritetään uudelleen, odota hetki...",
-		"unexpectedError": "Tapahtui odottamaton virhe. Yritä uudelleen.",
-		"generatedCron": "Luotu cron-lauseke:",
-		"rateLimitedMsg": "Olet saavuttanut rajoituksen. Yritä myöhemmin uudelleen.",
-		"rateLimitError": "Olet saavuttanut rajoituksen. Yritä myöhemmin uudelleen.",
-		"translating": "Käännetään...",
-		"generateCron": "Luo Cron",
-		"copy": "Kopioi"
-	},
 	"actions": {
 		"copy": "Kopioi",
-		"copied": "Kopioitu!",
-		"generateCron": "Luo Cron",
-		"translating": "Käännetään...",
-		"rateLimited": "Rajoitus saavutettu"
+		"copied": "Kopioitu!"
 	},
 	"loading": {
 		"default": "Ladataan...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Virheellinen cron-lauseke",
 		"copyFailed": "Kopiointi leikepöydälle epäonnistui",
 		"networkError": "Verkkovirhe. Tarkista yhteytesi.",
-		"rateLimitExceeded": "Rajoitus ylitetty. Yritä myöhemmin uudelleen.",
-		"somethingWrong": "Jotain meni pieleen. Yritä uudelleen.",
-		"inputTooLong": "Syöte liian pitkä (max 200 merkkiä)",
-		"inputEmpty": "Syöte ei voi olla tyhjä. Syötä aikataulu luonnollisella kielellä.",
-		"translationFailed": "Syötteen kääntäminen kelvolliseksi cron-lausekkeeksi epäonnistui useista yrityksistä huolimatta."
+		"somethingWrong": "Jotain meni pieleen. Yritä uudelleen."
 	},
 	"cron": {
 		"errors": {

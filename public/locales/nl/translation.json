@@ -1,18 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Doodsimpele Cron-vertaler",
-		"description": "Converteer direct tussen cron-expressies en natuurlijke taal."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Natuurlijke Taal",
-			"naturalToCron": "Natuurlijke Taal → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Schakel over naar Cron → Natuurlijke Taal",
-			"toNaturalToCron": "Schakel over naar Natuurlijke Taal → Cron"
-		}
+		"subtitle": "Doodsimpele Cron-validator",
+		"description": "Valideer en inspecteer direct cron-expressies."
 	},
 	"cronInput": {
 		"label": "Cron-expressie",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → elke 5 minuten (minuut, uur, dag van de maand, maand, dag van de week)",
 		"infoAriaLabel": "Informatie over cron-formaat"
 	},
-	"naturalLanguageInput": {
-		"label": "Natuurlijke Taal",
-		"placeholder": "bijv. \"een keer per week op donderdag uitvoeren\" — Werkt het beste in Engels, Frans, Duits, Spaans of Italiaans. Ondersteuning voor andere talen kan variëren.",
-		"ariaLabel": "Voer een planningsbeschrijving in natuurlijke taal in"
-	},
-	"translation": {
-		"title": "Vertaling:",
-		"placeholder": "Voer een cron-expressie in om de vertaling te zien",
-		"loading": "Vertalen...",
-		"error": "Fout bij het vertalen van de expressie"
-	},
 	"nextRuns": {
 		"title": "Volgende 5 uitvoeringen:",
 		"placeholder": "Voer een geldige cron-expressie in om de volgende uitvoeringen te zien",
@@ -39,24 +18,9 @@
 		"noRuns": "Geen geplande uitvoeringen gevonden.",
 		"ambiguousSchedule": "Deze cron-expressie specificeert zowel de dag van de maand als de dag van de week. Verschillende cron-implementaties kunnen dit anders interpreteren. Gebruik bij voorkeur slechts één van de twee voor duidelijkheid."
 	},
-	"naturalLanguage": {
-		"title": "Schema in natuurlijke taal",
-		"inputPlaceholder": "bijv. \"voer eenmaal per week uit op donderdag\" — Werkt het beste in Engels, Frans, Duits en Spaans. Ondersteuning voor andere talen kan variëren.",
-		"retrying": "Even geduld, probeer opnieuw...",
-		"unexpectedError": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
-		"generatedCron": "Gegenereerde Cron-expressie:",
-		"rateLimitedMsg": "Je hebt het limiet bereikt. Probeer het later opnieuw.",
-		"rateLimitError": "Je hebt het limiet bereikt. Probeer het later opnieuw.",
-		"translating": "Vertalen...",
-		"generateCron": "Genereer Cron",
-		"copy": "Kopiëren"
-	},
 	"actions": {
 		"copy": "Kopiëren",
-		"copied": "Gekopieerd!",
-		"generateCron": "Genereer Cron",
-		"translating": "Vertalen...",
-		"rateLimited": "Limiet bereikt"
+		"copied": "Gekopieerd!"
 	},
 	"loading": {
 		"default": "Laden...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Ongeldige cron-expressie",
 		"copyFailed": "Kopiëren naar klembord mislukt",
 		"networkError": "Netwerkfout. Controleer je verbinding.",
-		"rateLimitExceeded": "Limiet overschreden. Probeer het later opnieuw.",
-		"somethingWrong": "Er is iets misgegaan. Probeer het opnieuw.",
-		"inputTooLong": "Invoer te lang (maximaal 200 tekens)",
-		"inputEmpty": "Invoer mag niet leeg zijn. Voer een planning in natuurlijke taal in.",
-		"translationFailed": "Kon invoer niet vertalen naar een geldige cron-expressie, zelfs na meerdere pogingen."
+		"somethingWrong": "Er is iets misgegaan. Probeer het opnieuw."
 	},
 	"cron": {
 		"errors": {

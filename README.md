@@ -63,13 +63,13 @@ For questions or help, open an issue or ask in the repository discussions!
 
 ## ✨ Features
 
-- **Natural Language ↔ Cron Translation:** Instantly convert between cron expressions and human-readable schedules, both directions.
+- **Cron Translation:** Instantly convert cron expressions to human-readable schedules.
 - **Multi-language Cron Parsing:** See translations and next run times in your preferred language, including weekday/month names.
 - **Upcoming Run Times:** View the next 5 execution dates for any cron schedule, formatted for your timezone and language.
 - **Smart Error Handling:** Get clear, actionable feedback for invalid or ambiguous cron expressions. Unknown or unsafe errors are always replaced with a safe fallback message.
 - **Copy & Share:** One-click copy for cron expressions and translations—perfect for documentation or team chat.
 - **Modern, Responsive UI:** Beautiful, accessible design with dark mode, keyboard navigation, and mobile support.
-- **Privacy First:** No ads, no tracking, no accounts. Your data never leaves your browser except for translation API calls.
+- **Privacy First:** No ads, no tracking, no accounts. Your data never leaves your browser.
 - **Open Source:** Licensed AGPL v3—contributions welcome!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)

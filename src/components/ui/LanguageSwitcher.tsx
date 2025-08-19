@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { memo, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useOnClickOutside } from "usehooks-ts";
-import { LOCALES } from "../locales";
+import { LOCALES } from "../../locales";
 
 const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation();
@@ -48,7 +48,7 @@ const LanguageSwitcher: React.FC = () => {
 				ref={buttonRef}
 				type="button"
 				className={clsx(
-					"flex items-center justify-between w-40 sm:w-56 md:w-64 rounded-full border-2 px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
+					"flex items-center justify-between w-40 sm:w-56 md:w-64 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
 					"border-violet-400 dark:border-violet-500 focus:ring-2 focus:ring-violet-400 dark:focus:ring-violet-500 hover:border-violet-500 hover:shadow-lg",
 					{ "ring-2 ring-violet-400 dark:ring-violet-500": open },
 				)}
@@ -93,7 +93,7 @@ const LanguageSwitcher: React.FC = () => {
 							key={lang.code}
 							type="button"
 							className={clsx(
-								"w-full text-left px-4 sm:px-6 px-2 py-2 sm:py-2 py-1 text-base sm:text-base text-sm transition-colors duration-150 hover:bg-violet-100 dark:hover:bg-violet-900 focus:bg-violet-100 dark:focus:bg-violet-900",
+								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150 hover:bg-violet-100 dark:hover:bg-violet-900 focus:bg-violet-100 dark:focus:bg-violet-900",
 								{
 									"bg-emerald-100 dark:bg-emerald-900 font-semibold text-emerald-700 dark:text-emerald-300":
 										current === lang.code,

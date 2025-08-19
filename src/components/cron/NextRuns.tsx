@@ -2,12 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { cronCalculationResultSchema } from "../schemas/cron";
-import type { NextRunsProps } from "../types/components";
-import type { CronCalculationResult } from "../types/utils";
-import { calculateNextRuns } from "../utils/cronScheduleCalculator";
+import { cronCalculationResultSchema } from "../../schemas/cron";
+import type { NextRunsProps } from "../../types/components";
+import type { CronCalculationResult } from "../../types/utils";
+import { calculateNextRuns } from "../../utils/cronScheduleCalculator";
+import { MemoizedCopyButton } from "../ui/CopyButton";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
-import { MemoizedCopyButton } from "./CopyButton";
 import { MemoizedNextRunsList } from "./NextRunsList";
 
 const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {

@@ -1,18 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Supereinfacher Cron-Übersetzer",
-		"description": "Wandle sofort zwischen Cron-Ausdrücken und natürlicher Sprache um."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Natürliche Sprache",
-			"naturalToCron": "Natürliche Sprache → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Wechsle zu Cron → Natürliche Sprache",
-			"toNaturalToCron": "Wechsle zu Natürliche Sprache → Cron"
-		}
+		"subtitle": "Supereinfacher Cron-Validator",
+		"description": "Validiere und inspiziere sofort Cron-Ausdrücke."
 	},
 	"cronInput": {
 		"label": "Cron-Ausdruck",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → alle 5 Minuten (Minute, Stunde, Tag des Monats, Monat, Wochentag)",
 		"infoAriaLabel": "Informationen zum Cron-Format"
 	},
-	"naturalLanguageInput": {
-		"label": "Natürliche Sprache",
-		"placeholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten auf Englisch, Französisch, Deutsch, Spanisch oder Italienisch. Unterstützung für andere Sprachen kann variieren.",
-		"ariaLabel": "Geben Sie die Beschreibung des Zeitplans in natürlicher Sprache ein"
-	},
-	"translation": {
-		"title": "Übersetzung:",
-		"placeholder": "Geben Sie einen Cron-Ausdruck ein, um die Übersetzung zu sehen",
-		"loading": "Wird übersetzt...",
-		"error": "Fehler beim Übersetzen des Ausdrucks"
-	},
 	"nextRuns": {
 		"title": "Nächste 5 Ausführungen:",
 		"placeholder": "Geben Sie einen gültigen Cron-Ausdruck ein, um die nächsten Ausführungen zu sehen",
@@ -39,24 +18,9 @@
 		"noRuns": "Keine bevorstehenden Ausführungen gefunden.",
 		"ambiguousSchedule": "Dieser Cron-Ausdruck spezifiziert sowohl den Tag des Monats als auch den Wochentag. Unterschiedliche Cron-Implementierungen können dies unterschiedlich interpretieren. Verwenden Sie zur Klarheit vorzugsweise nur eines von beiden."
 	},
-	"naturalLanguage": {
-		"title": "Zeitplan in natürlicher Sprache",
-		"inputPlaceholder": "z. B. „einmal pro Woche am Donnerstag ausführen“ — Funktioniert am besten auf Englisch, Französisch, Deutsch und Spanisch. Unterstützung für andere Sprachen kann variieren.",
-		"retrying": "Neuer Versuch, bitte warten...",
-		"unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-		"generatedCron": "Generierter Cron-Ausdruck:",
-		"rateLimitedMsg": "Sie haben Ihr Limit erreicht. Bitte versuchen Sie es später erneut.",
-		"rateLimitError": "Sie haben Ihr Limit erreicht. Bitte versuchen Sie es später erneut.",
-		"translating": "Wird übersetzt...",
-		"generateCron": "Cron generieren",
-		"copy": "Kopieren"
-	},
 	"actions": {
 		"copy": "Kopieren",
-		"copied": "Kopiert!",
-		"generateCron": "Cron generieren",
-		"translating": "Wird übersetzt...",
-		"rateLimited": "Limit erreicht"
+		"copied": "Kopiert!"
 	},
 	"loading": {
 		"default": "Wird geladen...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Ungültiger Cron-Ausdruck",
 		"copyFailed": "Kopieren in die Zwischenablage fehlgeschlagen",
 		"networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
-		"rateLimitExceeded": "Limit erreicht. Bitte versuchen Sie es später erneut.",
-		"somethingWrong": "Entschuldigung, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
-		"inputTooLong": "Eingabe zu lang (max. 200 Zeichen)",
-		"inputEmpty": "Eingabe darf nicht leer sein. Bitte geben Sie einen Zeitplan in natürlicher Sprache ein.",
-		"translationFailed": "Die Eingabe konnte nach mehreren Versuchen nicht in einen gültigen Cron-Ausdruck übersetzt werden."
+		"somethingWrong": "Entschuldigung, etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
 	},
 	"cron": {
 		"errors": {

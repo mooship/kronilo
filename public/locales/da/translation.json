@@ -1,18 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Simpel Cron-oversætter",
-		"description": "Konverter med det samme mellem cron-udtryk og naturligt sprog."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Naturligt sprog",
-			"naturalToCron": "Naturligt sprog → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Skift til Cron → Naturligt sprog",
-			"toNaturalToCron": "Skift til Naturligt sprog → Cron"
-		}
+		"subtitle": "Simpel Cron Validator",
+		"description": "Valider og inspicér cron-udtryk øjeblikkeligt."
 	},
 	"cronInput": {
 		"label": "Cron-udtryk",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → hver 5. minut (minut, time, dag i måneden, måned, ugedag)",
 		"infoAriaLabel": "Information om cron-format"
 	},
-	"naturalLanguageInput": {
-		"label": "Naturligt sprog",
-		"placeholder": "f.eks. \"kør én gang om ugen på torsdag\" — Fungerer bedst på engelsk, fransk, tysk, spansk eller italiensk. Understøttelse af andre sprog kan variere.",
-		"ariaLabel": "Indtast en beskrivelse af tidsplanen i naturligt sprog"
-	},
-	"translation": {
-		"title": "Oversættelse:",
-		"placeholder": "Indtast et cron-udtryk for at se oversættelsen",
-		"loading": "Oversætter...",
-		"error": "Fejl ved oversættelse af udtrykket"
-	},
 	"nextRuns": {
 		"title": "Næste 5 kørsler:",
 		"placeholder": "Indtast et gyldigt cron-udtryk for at se de næste kørsler",
@@ -39,24 +18,9 @@
 		"noRuns": "Ingen kommende kørsler fundet.",
 		"ambiguousSchedule": "Dette cron-udtryk angiver både en dag i måneden og en ugedag. Forskellige cron-implementeringer kan tolke dette forskelligt. For klarhedens skyld bør du kun bruge én af delene."
 	},
-	"naturalLanguage": {
-		"title": "Skema i naturligt sprog",
-		"inputPlaceholder": "f.eks. \"kør én gang om ugen på torsdag\" — Fungerer bedst på engelsk, fransk, tysk og spansk. Understøttelse af andre sprog kan variere.",
-		"retrying": "Vent venligst, prøver igen...",
-		"unexpectedError": "Der opstod en uventet fejl. Prøv igen.",
-		"generatedCron": "Genereret cron-udtryk:",
-		"rateLimitedMsg": "Du har nået din grænse. Prøv igen senere.",
-		"rateLimitError": "Du har nået din grænse. Prøv igen senere.",
-		"translating": "Oversætter...",
-		"generateCron": "Generer Cron",
-		"copy": "Kopiér"
-	},
 	"actions": {
 		"copy": "Kopiér",
-		"copied": "Kopieret!",
-		"generateCron": "Generer Cron",
-		"translating": "Oversætter...",
-		"rateLimited": "Grænse nået"
+		"copied": "Kopieret!"
 	},
 	"loading": {
 		"default": "Indlæser...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Ugyldigt cron-udtryk",
 		"copyFailed": "Kunne ikke kopiere til udklipsholder",
 		"networkError": "Netværksfejl. Tjek din forbindelse.",
-		"rateLimitExceeded": "Grænse overskredet. Prøv igen senere.",
-		"somethingWrong": "Beklager, noget gik galt. Prøv igen.",
-		"inputTooLong": "Input for langt (maks. 200 tegn)",
-		"inputEmpty": "Input må ikke være tomt. Indtast en tidsplan i naturligt sprog.",
-		"translationFailed": "Kunne ikke oversætte input til et gyldigt cron-udtryk efter flere forsøg."
+		"somethingWrong": "Beklager, noget gik galt. Prøv igen."
 	},
 	"cron": {
 		"errors": {

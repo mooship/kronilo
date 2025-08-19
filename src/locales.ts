@@ -15,6 +15,7 @@ export const LOCALES: LocaleConfig[] = [
 	{ code: "pl", name: "Polski", cronstrueLocale: "pl" },
 	{ code: "pt-BR", name: "Português (Brasil)", cronstrueLocale: "pt_BR" },
 	{ code: "pt-PT", name: "Português (Portugal)", cronstrueLocale: "pt_PT" },
+	{ code: "ru", name: "Русский", cronstrueLocale: "ru" },
 	{ code: "ro", name: "Română", cronstrueLocale: "ro" },
 	{ code: "sv", name: "Svenska", cronstrueLocale: "sv" },
 	{ code: "tr", name: "Türkçe", cronstrueLocale: "tr" },

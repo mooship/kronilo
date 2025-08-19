@@ -4,13 +4,12 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { useHover, useUnmount } from "usehooks-ts";
-import { useKroniloStore } from "../stores/useKroniloStore";
-import type { I18nCronError } from "../types";
-import type { CronInputProps } from "../types/components";
-import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
-import { MemoizedCopyButton } from "./CopyButton";
+import { useKroniloStore } from "../../stores/useKroniloStore";
+import type { I18nCronError } from "../../types";
+import type { CronInputProps } from "../../types/components";
+import { CRON_SUGGESTIONS } from "../../utils/cronSuggestions";
+import { MemoizedCopyButton } from "../ui/CopyButton";
 import { CronInputWarning } from "./CronInputWarning";
-import { MemoizedModeToggle } from "./ModeToggle";
 
 function isI18nCronError(obj: unknown): obj is I18nCronError {
 	return (
@@ -91,7 +90,6 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 				>
 					{t("cronInput.label")}
 				</label>
-				<MemoizedModeToggle />
 			</div>
 			<div className="relative flex w-full items-center justify-center gap-3">
 				<button

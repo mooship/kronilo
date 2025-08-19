@@ -4,33 +4,12 @@
 		"subtitle": "Çok Kolay Cron Çevirici",
 		"description": "Cron ifadeleri ile doğal dil arasında anında dönüşüm yapın."
 	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Doğal Dil",
-			"naturalToCron": "Doğal Dil → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Cron → Doğal Dil moduna geç",
-			"toNaturalToCron": "Doğal Dil → Cron moduna geç"
-		}
-	},
 	"cronInput": {
 		"label": "Cron İfadesi",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Bir cron ifadesi girin",
 		"infoTooltip": "*/5 * * * * → her 5 dakikada bir (dakika, saat, gün, ay, haftanın günü)",
 		"infoAriaLabel": "Cron formatı bilgisi"
-	},
-	"naturalLanguageInput": {
-		"label": "Doğal Dil",
-		"placeholder": "örn. \"her Perşembe çalıştır\" — En iyi sonuç: İngilizce, Fransızca, Almanca, İspanyolca veya İtalyanca. Diğer dillerde destek sınırlı olabilir.",
-		"ariaLabel": "Doğal dilde zamanlama açıklaması girin"
-	},
-	"translation": {
-		"title": "Çeviri:",
-		"placeholder": "Çeviriyi görmek için bir cron ifadesi girin",
-		"loading": "Çevriliyor...",
-		"error": "İfade çevrilirken hata oluştu"
 	},
 	"nextRuns": {
 		"title": "Sonraki 5 Çalıştırma:",
@@ -39,24 +18,9 @@
 		"noRuns": "Yaklaşan çalıştırma bulunamadı.",
 		"ambiguousSchedule": "Bu cron ifadesi hem ayın gününü hem de haftanın gününü belirtir. Farklı cron uygulamaları bunu farklı şekilde yorumlayabilir. Netlik için yalnızca birini kullanın."
 	},
-	"naturalLanguage": {
-		"title": "Doğal Dil Zamanlaması",
-		"inputPlaceholder": "örn. \"her Perşembe çalıştır\" — En iyi sonuç: İngilizce, Fransızca, Almanca ve İspanyolca. Diğer dillerde destek sınırlı olabilir.",
-		"retrying": "Lütfen bekleyin, yeniden deneniyor...",
-		"unexpectedError": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
-		"generatedCron": "Oluşturulan Cron:",
-		"rateLimitedMsg": "Şu anda kullanım sınırınız aşıldı. Lütfen daha sonra tekrar deneyin.",
-		"rateLimitError": "Şu anda kullanım sınırınız aşıldı. Lütfen daha sonra tekrar deneyin.",
-		"translating": "Çevriliyor...",
-		"generateCron": "Cron Oluştur",
-		"copy": "Kopyala"
-	},
 	"actions": {
 		"copy": "Kopyala",
-		"copied": "Kopyalandı!",
-		"generateCron": "Cron Oluştur",
-		"translating": "Çevriliyor...",
-		"rateLimited": "Kullanım Sınırı Aşıldı"
+		"copied": "Kopyalandı!"
 	},
 	"loading": {
 		"default": "Yükleniyor...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Geçersiz cron ifadesi",
 		"copyFailed": "Panoya kopyalanamadı",
 		"networkError": "Ağ hatası. Lütfen bağlantınızı kontrol edin.",
-		"rateLimitExceeded": "Kullanım sınırı aşıldı. Lütfen daha sonra tekrar deneyin.",
-		"somethingWrong": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin.",
-		"inputTooLong": "Girdi çok uzun (maksimum 200 karakter)",
-		"inputEmpty": "Girdi boş olamaz. Lütfen doğal dilde bir zamanlama girin.",
-		"translationFailed": "Girdi, birkaç denemeden sonra geçerli bir cron ifadesine çevrilemedi."
+		"somethingWrong": "Bir şeyler yanlış gitti. Lütfen tekrar deneyin."
 	},
 	"cron": {
 		"errors": {

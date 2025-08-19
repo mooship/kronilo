@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "usehooks-ts";
-import { usePressAnimation } from "../hooks/usePressAnimation";
+import { usePressAnimation } from "../../hooks/usePressAnimation";
 
 export const NotFoundCard: FC = () => {
 	const { t } = useTranslation();

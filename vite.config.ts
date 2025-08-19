@@ -82,9 +82,6 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("zustand")) {
 						return "state";
 					}
-					if (id.includes("ofetch")) {
-						return "fetch";
-					}
 					if (id.includes("node_modules/react/") || id.includes("react-dom")) {
 						return "react-core";
 					}

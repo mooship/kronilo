@@ -1,21 +1,19 @@
 import { lazy, Suspense } from "react";
-import { useLocation } from "react-router-dom";
 import { useMediaQuery } from "usehooks-ts";
 import { AppRouter } from "./AppRouter";
-import { AppFooter } from "./components/AppFooter";
-import { AppHeader } from "./components/AppHeader";
-import { AppLayout, AppMain } from "./components/AppLayout";
-import { MemoizedCronInput } from "./components/CronInput";
-import { MemoizedCronTranslation } from "./components/CronTranslation";
-import { MemoizedLanguageSwitcher } from "./components/LanguageSwitcher";
-import { NaturalLanguageToCron } from "./components/NaturalLanguageToCron";
-import { MemoizedNextRuns } from "./components/NextRuns";
+import { MemoizedCronInput } from "./components/cron/CronInput";
+import { MemoizedCronTranslation } from "./components/cron/CronTranslation";
+import { MemoizedNextRuns } from "./components/cron/NextRuns";
+import { AppFooter } from "./components/layout/AppFooter";
+import { AppHeader } from "./components/layout/AppHeader";
+import { AppLayout, AppMain } from "./components/layout/AppLayout";
+import { MemoizedLanguageSwitcher } from "./components/ui/LanguageSwitcher";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
 import { useKroniloStore } from "./stores/useKroniloStore";
 
 const DonationModal = lazy(() =>
-	import("./components/DonationModal").then((m) => ({
+	import("./components/ui/DonationModal").then((m) => ({
 		default: m.DonationModal,
 	})),
 );
@@ -23,11 +21,8 @@ const DonationModal = lazy(() =>
 export function MainContent() {
 	const cron = useKroniloStore((s) => s.cron);
 	const { error } = useCronValidation(cron);
-	const location = useLocation();
 
-	return location.pathname === "/natural-language-to-cron" ? (
-		<NaturalLanguageToCron />
-	) : (
+	return (
 		<div className="p-0">
 			<MemoizedCronInput error={error} />
 			<MemoizedCronTranslation cron={cron} />

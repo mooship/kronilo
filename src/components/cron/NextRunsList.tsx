@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import type { NextRunsListProps } from "../types";
+import type { NextRunsListProps } from "../../types";
 
 const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 	const { t } = useTranslation();

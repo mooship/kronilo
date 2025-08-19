@@ -4,7 +4,7 @@ import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
-import { MemoizedAppLoader } from "./components/AppLoader";
+import { MemoizedAppLoader } from "./components/layout/AppLoader";
 import { initI18n } from "./i18n";
 import { queryClient } from "./lib/queryClient";
 

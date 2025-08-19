@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useUnmount } from "usehooks-ts";
-import { getLocaleConfig, LOCALES } from "../locales";
+import { getLocaleConfig, LOCALES } from "../../locales";
 import "cronstrue/locales/fr";
 import "cronstrue/locales/es";
 import "cronstrue/locales/de";
@@ -20,9 +20,13 @@ import "cronstrue/locales/ro";
 import "cronstrue/locales/tr";
 import "cronstrue/locales/cs";
 import "cronstrue/locales/af";
-import { useKroniloStore } from "../stores/useKroniloStore";
-import type { CronstrueType, CronTranslationProps } from "../types/components";
-import { MemoizedCopyButton } from "./CopyButton";
+import "cronstrue/locales/ru";
+import { useKroniloStore } from "../../stores/useKroniloStore";
+import type {
+	CronstrueType,
+	CronTranslationProps,
+} from "../../types/components";
+import { MemoizedCopyButton } from "../ui/CopyButton";
 
 const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const { t, i18n } = useTranslation();

@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowSize } from "usehooks-ts";
-import type { AppFooterProps } from "../types/components";
+import type { AppFooterProps } from "../../types/components";
 
 export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 	const { t } = useTranslation();

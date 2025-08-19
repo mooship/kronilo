@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import type { LoadingSpinnerProps } from "../types/components";
+import type { LoadingSpinnerProps } from "../../types/components";
 
 const LoadingSpinner = ({
 	message,

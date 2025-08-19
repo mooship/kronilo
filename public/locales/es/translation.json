@@ -1,18 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Traductor de Cron súper simple",
-		"description": "Convierte al instante entre expresiones cron y lenguaje natural."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Lenguaje natural",
-			"naturalToCron": "Lenguaje natural → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Cambiar a Cron → Lenguaje natural",
-			"toNaturalToCron": "Cambiar a Lenguaje natural → Cron"
-		}
+		"subtitle": "Validador de Cron súper simple",
+		"description": "Valida e inspecciona expresiones cron al instante."
 	},
 	"cronInput": {
 		"label": "Expresión Cron",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → cada 5 minutos (minuto, hora, día del mes, mes, día de la semana)",
 		"infoAriaLabel": "Información sobre el formato Cron"
 	},
-	"naturalLanguageInput": {
-		"label": "Lenguaje natural",
-		"placeholder": "ej: \"ejecutar una vez a la semana el jueves\" — Funciona mejor en inglés, francés, alemán, español o italiano. El soporte para otros idiomas puede variar.",
-		"ariaLabel": "Introduce la descripción del horario en lenguaje natural"
-	},
-	"translation": {
-		"title": "Traducción:",
-		"placeholder": "Introduce una expresión cron para ver la traducción",
-		"loading": "Traduciendo...",
-		"error": "Error al traducir la expresión"
-	},
 	"nextRuns": {
 		"title": "Próximas 5 ejecuciones:",
 		"placeholder": "Introduce una expresión cron válida para ver las próximas ejecuciones",
@@ -39,24 +18,9 @@
 		"noRuns": "No se encontraron próximas ejecuciones.",
 		"ambiguousSchedule": "Esta expresión cron especifica tanto el día del mes como el día de la semana. Diferentes implementaciones de cron pueden interpretarla de manera distinta. Para mayor claridad, se recomienda usar solo uno de los dos."
 	},
-	"naturalLanguage": {
-		"title": "Horario en lenguaje natural",
-		"inputPlaceholder": "ej: \"ejecutar una vez a la semana el jueves\" — Funciona mejor en inglés, francés, alemán y español. El soporte para otros idiomas puede variar.",
-		"retrying": "Reintentando, por favor espera...",
-		"unexpectedError": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo.",
-		"generatedCron": "Expresión Cron generada:",
-		"rateLimitedMsg": "Actualmente estás limitado. Por favor, inténtalo más tarde.",
-		"rateLimitError": "Actualmente estás limitado. Por favor, inténtalo más tarde.",
-		"translating": "Traduciendo...",
-		"generateCron": "Generar Cron",
-		"copy": "Copiar"
-	},
 	"actions": {
 		"copy": "Copiar",
-		"copied": "¡Copiado!",
-		"generateCron": "Generar Cron",
-		"translating": "Traduciendo...",
-		"rateLimited": "Limitado"
+		"copied": "¡Copiado!"
 	},
 	"loading": {
 		"default": "Cargando...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Expresión Cron inválida",
 		"copyFailed": "Error al copiar al portapapeles",
 		"networkError": "Error de red. Por favor, revisa tu conexión",
-		"rateLimitExceeded": "Límite excedido. Por favor, inténtalo más tarde",
-		"somethingWrong": "Lo sentimos, algo salió mal. Por favor, inténtalo de nuevo",
-		"inputTooLong": "Entrada demasiado larga (máx. 200 caracteres)",
-		"inputEmpty": "La entrada no puede estar vacía. Por favor, introduce un horario en lenguaje natural",
-		"translationFailed": "No se pudo traducir la entrada a una expresión cron válida tras varios intentos"
+		"somethingWrong": "Lo sentimos, algo salió mal. Por favor, inténtalo de nuevo"
 	},
 	"cron": {
 		"errors": {

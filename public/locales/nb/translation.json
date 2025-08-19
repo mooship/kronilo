@@ -4,33 +4,12 @@
 		"subtitle": "Enkel Cron-oversetter",
 		"description": "Konverter umiddelbart mellom cron-uttrykk og naturlig språk."
 	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Naturlig språk",
-			"naturalToCron": "Naturlig språk → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Bytt til Cron → Naturlig språk",
-			"toNaturalToCron": "Bytt til Naturlig språk → Cron"
-		}
-	},
 	"cronInput": {
 		"label": "Cron-uttrykk",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Skriv inn et cron-uttrykk",
 		"infoTooltip": "*/5 * * * * → hver 5. minutt (minutt, time, dag, måned, ukedag)",
 		"infoAriaLabel": "Informasjon om Cron-format"
-	},
-	"naturalLanguageInput": {
-		"label": "Naturlig språk",
-		"placeholder": "f.eks. \"kjør én gang i uken på torsdag\" — Fungerer best på engelsk, fransk, tysk, spansk eller italiensk. Støtte for andre språk kan variere.",
-		"ariaLabel": "Skriv inn en tidsplanbeskrivelse på naturlig språk"
-	},
-	"translation": {
-		"title": "Oversettelse:",
-		"placeholder": "Skriv inn et cron-uttrykk for å se oversettelsen",
-		"loading": "Oversetter...",
-		"error": "Feil ved oversettelse av uttrykket"
 	},
 	"nextRuns": {
 		"title": "Neste 5 kjøringer:",
@@ -39,24 +18,9 @@
 		"noRuns": "Ingen kommende kjøringer funnet.",
 		"ambiguousSchedule": "Dette cron-uttrykket spesifiserer både en dag i måneden og en ukedag. Ulike cron-implementasjoner kan tolke dette forskjellig. Bruk bare én av dem for klarhet."
 	},
-	"naturalLanguage": {
-		"title": "Tidsplan i naturlig språk",
-		"inputPlaceholder": "f.eks. \"kjør én gang i uken på torsdag\" — Fungerer best på engelsk, fransk, tysk og spansk. Støtte for andre språk kan variere.",
-		"retrying": "Prøver igjen, vennligst vent...",
-		"unexpectedError": "En uventet feil oppstod. Prøv igjen.",
-		"generatedCron": "Generert Cron-uttrykk:",
-		"rateLimitedMsg": "Du har nådd din grense. Prøv igjen senere.",
-		"rateLimitError": "Du har nådd din grense. Prøv igjen senere.",
-		"translating": "Oversetter...",
-		"generateCron": "Generer Cron",
-		"copy": "Kopier"
-	},
 	"actions": {
 		"copy": "Kopier",
-		"copied": "Kopiert!",
-		"generateCron": "Generer Cron",
-		"translating": "Oversetter...",
-		"rateLimited": "Grense nådd"
+		"copied": "Kopiert!"
 	},
 	"loading": {
 		"default": "Laster...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Ugyldig cron-uttrykk",
 		"copyFailed": "Kunne ikke kopiere til utklippstavlen",
 		"networkError": "Nettverksfeil. Sjekk tilkoblingen din.",
-		"rateLimitExceeded": "Grense overskredet. Prøv igjen senere.",
-		"somethingWrong": "Noe gikk galt. Prøv igjen.",
-		"inputTooLong": "Inndata for lang (maks 200 tegn)",
-		"inputEmpty": "Inndata kan ikke være tom. Skriv inn en tidsplan.",
-		"translationFailed": "Kunne ikke generere et gyldig cron-uttrykk etter flere forsøk."
+		"somethingWrong": "Noe gikk galt. Prøv igjen."
 	},
 	"cron": {
 		"errors": {

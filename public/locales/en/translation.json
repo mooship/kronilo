@@ -1,18 +1,8 @@
 {
 	"app": {
 		"title": "Kronilo",
-		"subtitle": "Dead Simple Cron Translator",
-		"description": "Instantly convert between cron expressions and natural language."
-	},
-	"navigation": {
-		"modes": {
-			"cronToNatural": "Cron → Natural Language",
-			"naturalToCron": "Natural Language → Cron"
-		},
-		"switchMode": {
-			"toCronToNatural": "Switch to Cron → Natural Language",
-			"toNaturalToCron": "Switch to Natural Language → Cron"
-		}
+		"subtitle": "Dead Simple Cron Validator",
+		"description": "Instantly validate and inspect cron expressions."
 	},
 	"cronInput": {
 		"label": "Cron Expression",
@@ -21,17 +11,6 @@
 		"infoTooltip": "*/5 * * * * → every 5 minutes (minute, hour, day of month, month, day of week)",
 		"infoAriaLabel": "Cron format information"
 	},
-	"naturalLanguageInput": {
-		"label": "Natural Language",
-		"placeholder": "e.g., \"run once a week on Thursday\" — Works best in English, French, German, Spanish, or Italian. Support for other languages may vary.",
-		"ariaLabel": "Enter schedule description in natural language"
-	},
-	"translation": {
-		"title": "Translation:",
-		"placeholder": "Enter a cron expression to see the translation",
-		"loading": "Translating...",
-		"error": "Error translating expression"
-	},
 	"nextRuns": {
 		"title": "Next 5 Runs:",
 		"placeholder": "Enter a valid cron expression to see the next execution times",
@@ -39,24 +18,9 @@
 		"noRuns": "No upcoming runs found.",
 		"ambiguousSchedule": "This cron expression specifies both a day of the month and a day of the week. Different cron implementations may interpret this differently. For clarity, consider using only one or the other."
 	},
-	"naturalLanguage": {
-		"title": "Natural Language Schedule",
-		"inputPlaceholder": "e.g., \"run once a week on Thursday\" — Works best in English, French, German, and Spanish. Support for other languages may vary.",
-		"retrying": "Please wait, retrying...",
-		"unexpectedError": "An unexpected error occurred. Please try again.",
-		"generatedCron": "Generated Cron Expression:",
-		"rateLimitedMsg": "You have reached the rate limit. Please try again later.",
-		"rateLimitError": "You have reached the rate limit. Please try again later.",
-		"translating": "Translating...",
-		"generateCron": "Generate Cron",
-		"copy": "Copy"
-	},
 	"actions": {
 		"copy": "Copy",
-		"copied": "Copied!",
-		"generateCron": "Generate Cron",
-		"translating": "Translating...",
-		"rateLimited": "Rate Limited"
+		"copied": "Copied!"
 	},
 	"loading": {
 		"default": "Loading...",
@@ -67,11 +31,7 @@
 		"invalidCron": "Invalid cron expression",
 		"copyFailed": "Failed to copy to clipboard",
 		"networkError": "Network error. Please check your connection.",
-		"rateLimitExceeded": "Rate limit exceeded. Please try again later.",
-		"somethingWrong": "Something went wrong. Please try again.",
-		"inputTooLong": "Input too long (max 200 characters)",
-		"inputEmpty": "Input cannot be empty. Please enter a schedule in natural language.",
-		"translationFailed": "Could not translate input to a valid cron expression after several attempts."
+		"somethingWrong": "Something went wrong. Please try again."
 	},
 	"cron": {
 		"errors": {

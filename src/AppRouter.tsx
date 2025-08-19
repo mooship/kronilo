@@ -2,10 +2,10 @@ import type { FC } from "react";
 import { lazy, Suspense } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { MainContent } from "./App";
-import { MemoizedLoadingSpinner } from "./components/LoadingSpinner";
+import { MemoizedLoadingSpinner } from "./components/ui/LoadingSpinner";
 
 const NotFoundCard = lazy(() =>
-	import("./components/NotFoundCard").then((m) => ({
+	import("./components/pages/NotFoundCard").then((m) => ({
 		default: m.NotFoundCard,
 	})),
 );
@@ -16,7 +16,6 @@ export const AppRouter: FC = () => {
 			<Suspense fallback={<MemoizedLoadingSpinner />}>
 				<Routes>
 					<Route path="/" element={<MainContent />} />
-					<Route path="/natural-language-to-cron" element={<MainContent />} />
 					<Route
 						path="*"
 						element={

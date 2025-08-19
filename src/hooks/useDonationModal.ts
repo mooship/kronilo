@@ -8,14 +8,8 @@ export function useDonationModal(): UseDonationModal {
 	const cronToNaturalUsageCount = useKroniloStore(
 		(s) => s.cronToNaturalUsageCount,
 	);
-	const naturalToCronUsageCount = useKroniloStore(
-		(s) => s.naturalToCronUsageCount,
-	);
 	const resetCronToNaturalUsage = useKroniloStore(
 		(s) => s.resetCronToNaturalUsage,
-	);
-	const resetNaturalToCronUsage = useKroniloStore(
-		(s) => s.resetNaturalToCronUsage,
 	);
 	const canShowDonationModal = useKroniloStore((s) => s.canShowDonationModal);
 	const setDismissedUntil = useKroniloStore((s) => s.setDismissedUntil);
@@ -32,18 +26,6 @@ export function useDonationModal(): UseDonationModal {
 		canShowDonationModal,
 	]);
 
-	useEffect(() => {
-		if (naturalToCronUsageCount === 2 && canShowDonationModal()) {
-			setDonationModalOpen(true);
-			resetNaturalToCronUsage();
-		}
-	}, [
-		naturalToCronUsageCount,
-		setDonationModalOpen,
-		resetNaturalToCronUsage,
-		canShowDonationModal,
-	]);
-
 	const handleFooterDonateClick = (e: React.MouseEvent) => {
 		e.preventDefault();
 		setDonationModalOpen(true);
@@ -52,7 +34,6 @@ export function useDonationModal(): UseDonationModal {
 	const handleCloseModal = () => {
 		setDonationModalOpen(false);
 		resetCronToNaturalUsage();
-		resetNaturalToCronUsage();
 	};
 
 	const handleMaybeLater = () => {
@@ -61,7 +42,6 @@ export function useDonationModal(): UseDonationModal {
 		setDismissedUntil(dismissUntil);
 		setDonationModalOpen(false);
 		resetCronToNaturalUsage();
-		resetNaturalToCronUsage();
 	};
 
 	return {
