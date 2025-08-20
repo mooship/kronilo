@@ -76,6 +76,11 @@
 		"supportOnKofi": "Susține Kronilo pe Ko-fi",
 		"maybeLater": "Poate mai târziu"
 	},
+	"translation": {
+		"title": "Traducere Lizibilă",
+		"placeholder": "Introduceți o expresie cron pentru a traduce",
+		"loading": "Se traduce..."
+	},
 	"ambiguousScheduleWarning": {
 		"title": "Program ambiguu",
 		"description": "Această expresie cron poate fi interpretată diferit în medii diferite."

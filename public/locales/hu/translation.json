@@ -1,0 +1,84 @@
+{
+	"app": {
+		"title": "Kronilo",
+		"subtitle": "Egyszerű Cron Ellenőrző",
+		"description": "Azonnal ellenőrizd és vizsgáld meg a cron kifejezéseket."
+	},
+	"cronInput": {
+		"label": "Cron Kifejezés",
+		"placeholder": "*/5 * * * *",
+		"ariaLabel": "Adj meg egy cron kifejezést",
+		"infoTooltip": "*/5 * * * * → 5 percenként (perc, óra, hónap napja, hónap, hét napja)",
+		"infoAriaLabel": "Cron formátum információ"
+	},
+	"nextRuns": {
+		"title": "Következő 5 Futás:",
+		"placeholder": "Adj meg egy érvényes cron kifejezést a következő végrehajtási idők megtekintéséhez",
+		"loading": "Számítás...",
+		"noRuns": "Nem találhatók közelgő futások.",
+		"ambiguousSchedule": "Ez a cron kifejezés egyszerre határozza meg a hónap napját és a hét napját. A különböző cron implementációk eltérően értelmezhetik ezt. Az egyértelműség érdekében érdemes csak az egyiket használni."
+	},
+	"actions": {
+		"copy": "Másolás",
+		"copied": "Másolva!"
+	},
+	"loading": {
+		"default": "Betöltés...",
+		"mode": "Mód betöltése...",
+		"calculating": "Számítás..."
+	},
+	"errors": {
+		"invalidCron": "Érvénytelen cron kifejezés",
+		"copyFailed": "Nem sikerült a vágólapra másolni",
+		"networkError": "Hálózati hiba. Kérlek ellenőrizd a kapcsolatot.",
+		"somethingWrong": "Valami hiba történt. Kérlek próbáld újra."
+	},
+	"cron": {
+		"errors": {
+			"noExpression": "Nincs megadva cron kifejezés. Kérlek adj meg egy cron ütemezést, például: '0 12 * * 1'.",
+			"invalidFieldCount": "Egy cron kifejezésnek 5 mezőből kell állnia (perc óra nap hónap hét_napja), de {{count}} darab érkezett. Példa: '0 12 * * 1'",
+			"invalidField": "Érvénytelen {{fieldName}}: \"{{field}}\". Az érték nem érvényes ehhez a mezőhöz (megengedett: {{fieldRange}})",
+			"missingValue": "Hiányzó érték. Kérlek adj meg egy értéket ehhez a mezőhöz.",
+			"invalidCharacters": "Érvénytelen karaktereket tartalmaz. Csak számok, ',', '-', '*', és '/' karakterek használhatók.",
+			"invalidStep": "A '/' után megadott lépésérték pozitív egész szám kell legyen.",
+			"invalidRangeFormat": "A tartománynak 'kezdet-vég' formátumúnak kell lennie, például 1-5.",
+			"rangeStartGreater": "A tartomány kezdete ({{start}}) nem lehet nagyobb a végénél ({{end}}).",
+			"dayOfWeekRange": "A hét napja 0-7 között kell legyen (0 vagy 7 = vasárnap).",
+			"invalidDayOfWeekValues": "Érvénytelen érték(ek): {{invalids}}. A hét napjához megengedett tartomány: 0-7 (0 vagy 7 = vasárnap).",
+			"invalidValues": "Érvénytelen érték(ek): {{invalids}}. Megengedett tartomány: {{fieldRange}}.",
+			"valueOutOfRange": "A {{num}} érték kívül esik a {{fieldName}} tartományán ({{fieldRange}})."
+		}
+	},
+	"donation": {
+		"title": "Támogasd a Kronilot",
+		"message": "A Kronilo egy ingyenes, nyílt forráskódú eszköz, amely tiszteletben tartja a magánszférádat—nincsenek reklámok, követők vagy regisztráció.",
+		"messageExtended": "Ha időt spórolt neked, kérlek fontold meg, hogy vegyél nekem egy kávét. Minden kis támogatás segít a Kronilo életben tartásában és reklámmentességében.",
+		"buyMeCoffee": "☕ Vegyél nekem egy kávét",
+		"maybeLater": "Talán Később",
+		"close": "Támogatási ablak bezárása"
+	},
+	"footer": {
+		"builtWith": "Készült",
+		"inSouthAfrica": "Dél-Afrikában",
+		"support": "Támogasd a Kronilot",
+		"github": "GitHub",
+		"licensedUnder": "Licencelve",
+		"agplLicense": "AGPL v3 alatt"
+	},
+	"notFound": {
+		"title": "404",
+		"message": "Az oldal nem található",
+		"goHome": "Vissza a főoldalra"
+	},
+	"accessibility": {
+		"donationModal": "Támogatási Ablak",
+		"close": "Bezárás",
+		"supportOnKofi": "Támogasd a Kronilot a Ko-fi-n",
+		"maybeLater": "Talán később"
+	},
+	"translation": {
+		"title": "Emberbarát Fordítás",
+		"placeholder": "Írjon be egy cron kifejezést fordításhoz",
+		"loading": "Fordítás..."
+	}
+}

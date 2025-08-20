@@ -75,5 +75,10 @@
 		"close": "Zamknij",
 		"supportOnKofi": "Wesprzyj Kronilo na Ko-fi",
 		"maybeLater": "Może później"
+	},
+	"translation": {
+		"title": "Czytelne Tłumaczenie",
+		"placeholder": "Wprowadź wyrażenie cron do przetłumaczenia",
+		"loading": "Tłumaczenie..."
 	}
 }

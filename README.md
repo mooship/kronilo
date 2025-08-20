@@ -20,6 +20,7 @@ Kronilo is fully localized and supports:
  - Finnish (`fi`)
  - French (`fr`)
  - German (`de`)
+ - Hungarian (`hu`)
  - Italian (`it`)
  - Norwegian Bokmål (`nb`)
  - Polish (`pl`)

@@ -75,5 +75,10 @@
 		"close": "Sluiten",
 		"supportOnKofi": "Steun Kronilo op Ko-fi",
 		"maybeLater": "Misschien later"
+	},
+	"translation": {
+		"title": "Leesbare Vertaling",
+		"placeholder": "Voer een cron-uitdrukking in om te vertalen",
+		"loading": "Wordt vertaald..."
 	}
 }

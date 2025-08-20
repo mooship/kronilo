@@ -21,6 +21,7 @@ import "cronstrue/locales/tr";
 import "cronstrue/locales/cs";
 import "cronstrue/locales/af";
 import "cronstrue/locales/ru";
+import "cronstrue/locales/hu";
 import { useKroniloStore } from "../../stores/useKroniloStore";
 import type {
 	CronstrueType,

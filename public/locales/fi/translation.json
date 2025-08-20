@@ -75,5 +75,10 @@
 		"close": "Sulje",
 		"supportOnKofi": "Tue Kroniloa Ko-fi-palvelussa",
 		"maybeLater": "Ehkä myöhemmin"
+	},
+	"translation": {
+		"title": "Luettava Käännös",
+		"placeholder": "Syötä cron-lauseke käännettäväksi",
+		"loading": "Käännetään..."
 	}
 }

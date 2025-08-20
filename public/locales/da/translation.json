@@ -75,5 +75,10 @@
 		"close": "Luk",
 		"supportOnKofi": "Støt Kronilo på Ko-fi",
 		"maybeLater": "Måske senere"
+	},
+	"translation": {
+		"title": "Læsbar Oversættelse",
+		"placeholder": "Indtast et cron-udtryk for at oversætte",
+		"loading": "Oversætter..."
 	}
 }

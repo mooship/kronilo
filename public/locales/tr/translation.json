@@ -75,5 +75,10 @@
 		"close": "Kapat",
 		"supportOnKofi": "Kronilo'yu Ko-fi'de Destekle",
 		"maybeLater": "Belki sonra"
+	},
+	"translation": {
+		"title": "Okunabilir Çeviri",
+		"placeholder": "Çevrilecek cron ifadesini girin",
+		"loading": "Çeviriliyor..."
 	}
 }

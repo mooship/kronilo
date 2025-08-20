@@ -75,5 +75,10 @@
 		"close": "Zavřít",
 		"supportOnKofi": "Podpořte Kronilo na Ko-fi",
 		"maybeLater": "Možná později"
+	},
+	"translation": {
+		"title": "Čitelný Překlad",
+		"placeholder": "Zadejte cron výraz k překladu",
+		"loading": "Překládá se..."
 	}
 }
