@@ -148,8 +148,5 @@ Or run Biome directly:
 biome ci .
 ```
 
----
    <a href="https://ko-fi.com/T6T31HRCAR"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Buy me a coffee on Ko-fi"/></a>
 </p>
-
----
