@@ -2,6 +2,13 @@ import clsx from "clsx";
 import { memo } from "react";
 import { useWindowSize } from "usehooks-ts";
 
+/**
+ * AppLoader
+ *
+ * Full-screen loading splash used while the app is initializing. It adapts
+ * the spinner size to window width and renders a prominent centered loader
+ * with an app name and simple loading label. Memoized for stable renders.
+ */
 const AppLoader = () => {
 	const { width } = useWindowSize();
 	const loaderSize = width < 400 ? "w-8 h-8" : "w-12 h-12";

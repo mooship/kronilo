@@ -68,4 +68,39 @@ describe("calculateNextRuns", () => {
 		const result = await calculateNextRuns("0 0 1 1 2099", lang);
 		expect(Array.isArray(result.runs)).toBe(true);
 	});
+	it("returns next runs for valid cron with list", async () => {
+		const result = await calculateNextRuns("1,2,3 * * * *", lang);
+		expect(result.runs.length).toBeGreaterThan(0);
+		expect(result.error).toBeNull();
+	});
+
+	it("returns next runs for valid cron with range", async () => {
+		const result = await calculateNextRuns("1-5 * * * *", lang);
+		expect(result.runs.length).toBeGreaterThan(0);
+		expect(result.error).toBeNull();
+	});
+
+	it("returns error for invalid cron with negative step", async () => {
+		const result = await calculateNextRuns("*/-1 * * * *", lang);
+		expect(result.runs.length).toBe(0);
+		expect(result.error).not.toBeNull();
+	});
+
+	it("returns error for invalid cron with too many fields", async () => {
+		const result = await calculateNextRuns("* * * * * *", lang);
+		expect(result.runs.length).toBe(0);
+		expect(result.error).not.toBeNull();
+	});
+
+	it("returns next runs for all fields set to max values", async () => {
+		const result = await calculateNextRuns("59 23 31 12 7", lang);
+		expect(Array.isArray(result.runs)).toBe(true);
+		expect(result.error).toBeNull();
+	});
+
+	it("returns next runs for all fields set to min values", async () => {
+		const result = await calculateNextRuns("0 0 1 1 0", lang);
+		expect(Array.isArray(result.runs)).toBe(true);
+		expect(result.error).toBeNull();
+	});
 });

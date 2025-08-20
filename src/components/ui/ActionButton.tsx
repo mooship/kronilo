@@ -7,6 +7,19 @@ interface ExtendedActionButtonProps
 	extends ActionButtonProps,
 		ButtonHTMLAttributes<HTMLButtonElement> {}
 
+/**
+ * ActionButton
+ *
+ * Reusable primary button used across the app. Accepts standard button
+ * attributes (type, disabled, onClick, etc.) as well as a `label` prop for
+ * display. The button includes focus styles and an accessible role via the
+ * native `<button>` element.
+ *
+ * Props
+ * - label: visible button text
+ * - className: optional additional class names
+ * - ...props: forwarded native button attributes
+ */
 const ActionButton: FC<ExtendedActionButtonProps> = ({
 	label,
 	className = "",

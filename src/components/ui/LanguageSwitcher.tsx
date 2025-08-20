@@ -4,6 +4,14 @@ import { useTranslation } from "react-i18next";
 import { useOnClickOutside } from "usehooks-ts";
 import { LOCALES } from "../../locales";
 
+/**
+ * LanguageSwitcher
+ *
+ * Small dropdown control that allows users to change the app language.
+ * Implements keyboard interaction (ArrowDown / Enter / Space to open, Escape
+ * to close) and writes the chosen language to localStorage. It closes when
+ * a click outside is detected.
+ */
 const LanguageSwitcher: React.FC = () => {
 	const { i18n } = useTranslation();
 	const current = i18n.language;

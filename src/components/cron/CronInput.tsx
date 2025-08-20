@@ -11,6 +11,16 @@ import { CRON_SUGGESTIONS } from "../../utils/cronSuggestions";
 import { MemoizedCopyButton } from "../ui/CopyButton";
 import { CronInputWarning } from "./CronInputWarning";
 
+/**
+ * Type guard for localized cron error objects.
+ *
+ * The project's validation can return either plain strings or objects that
+ * reference i18n translation keys. This helper narrows an unknown value to the
+ * I18nCronError shape used by the app.
+ *
+ * @param obj - The value to test.
+ * @returns True if the value looks like an I18nCronError.
+ */
 function isI18nCronError(obj: unknown): obj is I18nCronError {
 	return (
 		typeof obj === "object" &&
@@ -25,6 +35,20 @@ const inputClassName = clsx(
 	"border-border hover:border-border-hover focus:border-border-active",
 );
 
+/**
+ * CronInput
+ *
+ * Text input for editing a cron expression. Provides:
+ * - placeholder, max length, and accessible labels
+ * - keyboard shortcuts (Ctrl+A to select all)
+ * - suggestion list of common cron expressions
+ * - copy button for the current value
+ * - displays validation errors using `CronInputWarning`
+ *
+ * Props
+ * @param {CronInputProps} props - Component props from `types/components`.
+ * - error: validation errors (string | string[] | I18nCronError | I18nCronError[])
+ */
 const CronInput: FC<CronInputProps> = ({ error }) => {
 	const handleSuggestionClick = (
 		suggestion: (typeof CRON_SUGGESTIONS)[number],

@@ -24,7 +24,7 @@ parallel = true
 "@types" = "https://registry.npmjs.org"
 
 [test]
-# Use jsdom environment for testing (equivalent to vitest config)
+# Use jsdom environment for testing
 preload = ["./src/test/setup.ts"]
 
 [run]

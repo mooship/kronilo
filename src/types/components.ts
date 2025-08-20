@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import type { I18nCronError } from "./i18n";
 
+/**
+ * UI component prop types
+ */
 export interface ActionButtonProps {
 	label: string;
 	className?: string;
@@ -15,6 +18,10 @@ export interface CopyButtonProps {
 }
 
 export interface CronInputProps {
+	/**
+	 * Validation error(s) for the cron input. Can be raw strings or
+	 * i18n-friendly error objects.
+	 */
 	error?: string | string[] | I18nCronError[];
 }
 
@@ -65,4 +72,8 @@ export interface NextRunsListProps {
 	loading: boolean;
 }
 
+/**
+ * Type of the dynamically-imported `cronstrue` module used by the translation
+ * component.
+ */
 export type CronstrueType = typeof import("cronstrue");

@@ -3,6 +3,21 @@ import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import type { AmbiguousScheduleWarningProps } from "../../types/components";
 
+/**
+ * AmbiguousScheduleWarning
+ *
+ * Visual warning that indicates a cron expression produces an ambiguous schedule
+ * (for example when daylight saving time transitions or conflicting fields make
+ * the schedule unclear). The component is purely presentational and is only
+ * rendered when the `show` prop is true.
+ *
+ * Props
+ * @param {boolean} show - Whether to show the warning box. When false the
+ * component returns null.
+ *
+ * Accessible notes: the icon and text are grouped and styled to be readable by
+ * screen readers; the component does not manage focus.
+ */
 export const AmbiguousScheduleWarning: FC<AmbiguousScheduleWarningProps> = ({
 	show,
 }) => {

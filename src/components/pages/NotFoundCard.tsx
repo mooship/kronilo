@@ -5,6 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "usehooks-ts";
 import { usePressAnimation } from "../../hooks/usePressAnimation";
 
+/**
+ * NotFoundCard
+ *
+ * Simple, presentational page shown when a route is not found (404). Renders a
+ * prominent title, a supporting message and a button that navigates back to
+ * the home page. The button uses `usePressAnimation` to provide a tactile
+ * press effect and the component adapts typography for small screens.
+ *
+ * Accessibility: the action button includes an `aria-label` and visible focus
+ * styles; content is semantic (heading, paragraph, button) to work well with
+ * screen readers.
+ */
 export const NotFoundCard: FC = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();

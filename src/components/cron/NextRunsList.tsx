@@ -4,6 +4,20 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { NextRunsListProps } from "../../types";
 
+/**
+ * NextRunsList
+ *
+ * Presentational list component responsible for rendering the computed next
+ * run timestamps. Handles three states:
+ * - error: renders an alert box with the error message
+ * - loading: renders a spinner with a loading label
+ * - empty: renders a placeholder when no runs are available
+ *
+ * Props
+ * @param {string[]} runs - Array of human-readable run timestamps.
+ * @param {string | null} error - Optional error message to display.
+ * @param {boolean} loading - Whether the runs are currently being loaded.
+ */
 const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 	const { t } = useTranslation();
 

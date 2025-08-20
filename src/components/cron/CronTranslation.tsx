@@ -28,6 +28,21 @@ import type {
 } from "../../types/components";
 import { MemoizedCopyButton } from "../ui/CopyButton";
 
+/**
+ * CronTranslation
+ *
+ * Converts a cron expression into a human-readable natural language sentence
+ * using the `cronstrue` library. The component lazy-loads `cronstrue` to keep
+ * initial bundle size small and re-renders when the `cron` prop or user's
+ * language changes. It debounces translations by 500ms to avoid spamming
+ * expensive conversions while the user types.
+ *
+ * Accessibility: when no cron is provided a helpful placeholder is shown;
+ * when translation is in progress a loading indicator is displayed.
+ *
+ * Props
+ * @param {string} cron - The cron expression to translate.
+ */
 const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];

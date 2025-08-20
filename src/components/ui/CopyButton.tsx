@@ -6,6 +6,19 @@ import { useCopyToClipboard, useTimeout } from "usehooks-ts";
 import { usePressAnimation } from "../../hooks/usePressAnimation";
 import type { CopyButtonProps } from "../../types/components";
 
+/**
+ * CopyButton
+ *
+ * Small utility button that copies a provided string to the clipboard.
+ * Shows a temporary "copied" state after a successful copy. Uses a tactile
+ * press animation hook for a responsive feel.
+ *
+ * Props
+ * - value: the string that will be copied to the clipboard
+ * - label: optional aria/visible label for the button
+ * - disabled: disables the button
+ * - size: "sm" | "lg" controls padding/spacing
+ */
 const CopyButton: FC<CopyButtonProps> = ({
 	value,
 	className = "",

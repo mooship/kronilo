@@ -1,3 +1,10 @@
+/**
+ * CRON_SUGGESTIONS
+ *
+ * Small, curated list of common cron expressions and human-readable
+ * descriptions shown in the suggestions dropdown. Declared `as const` so
+ * callers can rely on literal types.
+ */
 export const CRON_SUGGESTIONS = [
 	{ expression: "*/5 * * * *", description: "Every 5 minutes" },
 	{ expression: "0 * * * *", description: "Every hour" },

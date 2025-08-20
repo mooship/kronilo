@@ -100,4 +100,45 @@ describe("getCronValidationErrors", () => {
 		expect(errors.length).toBeGreaterThan(0);
 		expect(errors[0].key).toBe("cron.errors.invalidField");
 	});
+	it("returns a single error for multiple issues", () => {
+		const errors = getCronValidationErrors("a b c d");
+		expect(errors.length).toBe(1);
+	});
+
+	it("returns error for negative step value", () => {
+		const errors = getCronValidationErrors("*/-1 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidStep");
+	});
+
+	it("returns error for too many fields", () => {
+		const errors = getCronValidationErrors("* * * * * *");
+		expect(errors[0].key).toBe("cron.errors.invalidFieldCount");
+	});
+
+	it("returns error for invalid list with out-of-range value", () => {
+		const errors = getCronValidationErrors("1,2,100 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.invalidValues");
+	});
+
+	it("returns no error for valid cron with extra whitespace between fields", () => {
+		expect(getCronValidationErrors(" 0   0  *  *  * ")).toEqual([]);
+	});
+
+	it("returns error for invalid range (start > end)", () => {
+		const errors = getCronValidationErrors("5-1 * * * *");
+		expect(errors.length).toBeGreaterThan(0);
+		expect(errors[0].key).toBe("cron.errors.rangeStartGreater");
+	});
+
+	it("returns error for all fields set to max values", () => {
+		const errors = getCronValidationErrors("59 23 31 12 7");
+		expect(errors.length).toBe(0);
+	});
+
+	it("returns error for all fields set to min values", () => {
+		const errors = getCronValidationErrors("0 0 1 1 0");
+		expect(errors.length).toBe(0);
+	});
 });

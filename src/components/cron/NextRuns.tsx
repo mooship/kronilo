@@ -10,6 +10,20 @@ import { MemoizedCopyButton } from "../ui/CopyButton";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
 import { MemoizedNextRunsList } from "./NextRunsList";
 
+/**
+ * NextRuns
+ *
+ * Calculates and displays the upcoming run times for a supplied cron
+ * expression. Uses React Query to asynchronously compute runs via
+ * `calculateNextRuns` and validates the result shape. Shows a placeholder
+ * when disabled or when there is no cron expression, and a copy button to
+ * copy the runs as plain text.
+ *
+ * Props
+ * @param {string} cron - Cron expression to evaluate.
+ * @param {boolean} disabled - If true, calculation and UI are disabled and a
+ * placeholder is shown instead.
+ */
 const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];

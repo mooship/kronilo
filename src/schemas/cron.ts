@@ -1,4 +1,15 @@
+/**
+ * Regex used to quickly detect characters not allowed in a cron field.
+ * Disallows anything that isn't a digit, comma, dash, asterisk, slash.
+ */
 const CRON_FIELD_INVALID_CHAR_REGEX = /[^\d\-,*/]/;
+
+/**
+ * Shape of the result returned by the cron schedule calculator utility.
+ * - runs: human-readable run timestamps
+ * - error: optional error message
+ * - hasAmbiguousSchedule: flag used to indicate DST/ambiguity issues
+ */
 export const cronCalculationResultSchema = z.object({
 	runs: z.array(z.string()),
 	error: z.string().nullable(),
@@ -8,6 +19,26 @@ export const cronCalculationResultSchema = z.object({
 import type { ZodString } from "zod";
 import { z } from "zod";
 
+/**
+ * cronFieldSchema
+ *
+ * Builds a Zod string schema for a single cron field (minute, hour, day of
+ * month, month, day of week). The returned schema validates:
+ * - single numeric values within [min, max]
+ * - comma-separated lists of numeric values
+ * - ranges using `start-end`
+ * - step values using star/slash notation (for example: star/5) or range/step
+ * - optionally accepts `*` when `allowAsterisk` is true
+ *
+ * Edge cases handled:
+ * - day-of-week can accept `7` as Sunday when max === 7
+ * - negative numbers and malformed ranges/steps are rejected
+ *
+ * @param min - minimum numeric value allowed for the field
+ * @param max - maximum numeric value allowed for the field
+ * @param allowAsterisk - whether `*` is permitted
+ * @returns ZodString - a Zod string schema with a refine validator
+ */
 export function cronFieldSchema(
 	min: number,
 	max: number,
@@ -82,6 +113,9 @@ export function cronFieldSchema(
 	);
 }
 
+/**
+ * Human-readable field names for error messages and UI labels.
+ */
 export const CRON_FIELD_NAMES = [
 	"minute",
 	"hour",
@@ -90,6 +124,10 @@ export const CRON_FIELD_NAMES = [
 	"day of week",
 ];
 
+/**
+ * Human-readable field ranges used when constructing helpful validation
+ * messages.
+ */
 export const CRON_FIELD_RANGES = [
 	"0-59",
 	"0-23",
@@ -98,6 +136,9 @@ export const CRON_FIELD_RANGES = [
 	"0-7 (0 or 7 = Sunday)",
 ];
 
+/**
+ * Zod schemas for each cron field in order: minute, hour, day, month, weekday.
+ */
 export const CRON_FIELD_SCHEMAS = [
 	cronFieldSchema(0, 59),
 	cronFieldSchema(0, 23),
@@ -106,6 +147,18 @@ export const CRON_FIELD_SCHEMAS = [
 	cronFieldSchema(0, 7),
 ];
 
+/**
+ * getCronValidationErrors
+ *
+ * Validates a full cron expression string and returns an array of
+ * i18n-keyed error objects describing what went wrong. The function performs
+ * per-field validation, detects invalid characters, malformed ranges/steps,
+ * and some semantic checks (like invalid day/month combinations).
+ *
+ * @param cron - full cron expression (5 fields)
+ * @returns array of objects with `key` (i18n key) and optional `values`
+ * for interpolation in translation strings.
+ */
 export function getCronValidationErrors(
 	cron: string,
 ): { key: string; values?: Record<string, string | number> }[] {
@@ -221,6 +274,10 @@ export function getCronValidationErrors(
 	return errors;
 }
 
+/**
+ * Tuple schema combining all field validators. Used to transform a 5-field
+ * cron string into a typed tuple via `cronSchema` below.
+ */
 const CRON_SCHEMA_TUPLE = z.tuple([
 	cronFieldSchema(0, 59),
 	cronFieldSchema(0, 23),
@@ -229,6 +286,15 @@ const CRON_SCHEMA_TUPLE = z.tuple([
 	cronFieldSchema(0, 7),
 ]);
 
+/**
+ * cronSchema
+ *
+ * Top-level Zod schema for a cron expression string. It:
+ * - trims the input
+ * - enforces there are exactly 5 fields
+ * - transforms the string into an array and validates each element against
+ *   their respective field schemas
+ */
 export const cronSchema = z
 	.string()
 	.trim()
