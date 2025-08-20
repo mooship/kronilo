@@ -49,7 +49,7 @@ const LanguageSwitcher: React.FC = () => {
 				type="button"
 				className={clsx(
 					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-background text-foreground shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
-					"border-blue-8 focus:ring-2 focus:ring-blue-8 focus:ring-offset-background hover:border-blue-9 hover:shadow-lg",
+					"border-blue-8 focus:ring-2 focus:ring-blue-8 hover:border-blue-9 hover:shadow-lg",
 					{ "ring-2 ring-blue-8": open },
 				)}
 				aria-haspopup="listbox"
