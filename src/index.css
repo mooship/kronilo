@@ -56,35 +56,7 @@
 	/* Font Family */
 	--font-family-sans: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	/* Background Colors */
-	--color-background: 0 0% 100%;
-	--color-background-secondary: 0 0% 99%;
-
-	/* Foreground Colors */
-	--color-foreground: 0 0% 9%;
-	--color-foreground-secondary: 0 0% 45%;
-	--color-foreground-tertiary: 0 0% 62%;
-
-	/* Border Colors */
-	--color-border: 0 0% 90%;
-	--color-border-hover: 0 0% 87%;
-	--color-border-active: 0 0% 81%;
-
-	/* Gray Scale */
-	--color-gray-1: 0 0% 99%;
-	--color-gray-2: 0 0% 97%;
-	--color-gray-3: 0 0% 95%;
-	--color-gray-4: 0 0% 93%;
-	--color-gray-5: 0 0% 90%;
-	--color-gray-6: 0 0% 87%;
-	--color-gray-7: 0 0% 81%;
-	--color-gray-8: 0 0% 73%;
-	--color-gray-9: 0 0% 43%;
-	--color-gray-10: 0 0% 38%;
-	--color-gray-11: 0 0% 32%;
-	--color-gray-12: 0 0% 9%;
-
-	/* Blue Scale */
+	/* Static color scales */
 	--color-blue-1: 210 100% 99%;
 	--color-blue-2: 210 100% 97%;
 	--color-blue-3: 210 100% 95%;
@@ -98,7 +70,6 @@
 	--color-blue-11: 210 100% 45%;
 	--color-blue-12: 210 100% 9%;
 
-	/* Green Scale */
 	--color-green-1: 120 85% 98%;
 	--color-green-2: 120 60% 96%;
 	--color-green-3: 120 48% 92%;
@@ -112,7 +83,6 @@
 	--color-green-11: 120 100% 25%;
 	--color-green-12: 120 100% 5%;
 
-	/* Red Scale */
 	--color-red-1: 0 100% 99%;
 	--color-red-2: 0 100% 97%;
 	--color-red-3: 0 100% 94%;
@@ -126,7 +96,6 @@
 	--color-red-11: 0 84% 45%;
 	--color-red-12: 0 84% 5%;
 
-	/* Amber Scale */
 	--color-amber-1: 39 100% 99%;
 	--color-amber-2: 39 100% 96%;
 	--color-amber-3: 39 100% 92%;
@@ -143,6 +112,58 @@
 	/* Animations */
 	--animate-fade-in: fadeIn 0.2s ease-out;
 	--animate-scale-in: scaleIn 0.2s ease-out;
+}
+
+/* Light mode (default) */
+:root {
+	--color-background: 0 0% 100%;
+	--color-background-secondary: 0 0% 99%;
+	--color-foreground: 0 0% 9%;
+	--color-foreground-secondary: 0 0% 45%;
+	--color-foreground-tertiary: 0 0% 62%;
+	--color-border: 0 0% 90%;
+	--color-border-hover: 0 0% 87%;
+	--color-border-active: 0 0% 81%;
+
+	--color-gray-1: 0 0% 99%;
+	--color-gray-2: 0 0% 97%;
+	--color-gray-3: 0 0% 95%;
+	--color-gray-4: 0 0% 93%;
+	--color-gray-5: 0 0% 90%;
+	--color-gray-6: 0 0% 87%;
+	--color-gray-7: 0 0% 81%;
+	--color-gray-8: 0 0% 73%;
+	--color-gray-9: 0 0% 43%;
+	--color-gray-10: 0 0% 38%;
+	--color-gray-11: 0 0% 32%;
+	--color-gray-12: 0 0% 9%;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-background: 0 0% 9%;
+		--color-background-secondary: 0 0% 11%;
+		--color-foreground: 0 0% 98%;
+		--color-foreground-secondary: 0 0% 62%;
+		--color-foreground-tertiary: 0 0% 45%;
+		--color-border: 0 0% 17%;
+		--color-border-hover: 0 0% 20%;
+		--color-border-active: 0 0% 26%;
+
+		--color-gray-1: 0 0% 9%;
+		--color-gray-2: 0 0% 11%;
+		--color-gray-3: 0 0% 13%;
+		--color-gray-4: 0 0% 15%;
+		--color-gray-5: 0 0% 17%;
+		--color-gray-6: 0 0% 20%;
+		--color-gray-7: 0 0% 26%;
+		--color-gray-8: 0 0% 34%;
+		--color-gray-9: 0 0% 43%;
+		--color-gray-10: 0 0% 50%;
+		--color-gray-11: 0 0% 62%;
+		--color-gray-12: 0 0% 98%;
+	}
 }
 
 @keyframes fadeIn {
@@ -162,31 +183,5 @@
 	100% {
 		opacity: 1;
 		transform: scale(1);
-	}
-}
-
-/* Dark mode theme overrides */
-@media (prefers-color-scheme: dark) {
-	@theme {
-		--color-background: 0 0% 9%;
-		--color-background-secondary: 0 0% 11%;
-		--color-foreground: 0 0% 98%;
-		--color-foreground-secondary: 0 0% 62%;
-		--color-foreground-tertiary: 0 0% 45%;
-		--color-border: 0 0% 17%;
-		--color-border-hover: 0 0% 20%;
-		--color-border-active: 0 0% 26%;
-		--color-gray-1: 0 0% 9%;
-		--color-gray-2: 0 0% 11%;
-		--color-gray-3: 0 0% 13%;
-		--color-gray-4: 0 0% 15%;
-		--color-gray-5: 0 0% 17%;
-		--color-gray-6: 0 0% 20%;
-		--color-gray-7: 0 0% 26%;
-		--color-gray-8: 0 0% 34%;
-		--color-gray-9: 0 0% 43%;
-		--color-gray-10: 0 0% 50%;
-		--color-gray-11: 0 0% 62%;
-		--color-gray-12: 0 0% 98%;
 	}
 }
