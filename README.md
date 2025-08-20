@@ -120,6 +120,7 @@ Kronilo includes comprehensive tests to ensure reliability and correctness:
 ```sh
 # Run tests once
 ## 🧪 Testing
+```
 
 Tests are run with Bun.
 
@@ -128,7 +129,9 @@ Kronilo includes comprehensive tests to ensure reliability and correctness:
 ```sh
 # Run tests once
 bun test
+```
 
+```sh
 # Run tests in watch mode
 bun run test:ui
 ```
