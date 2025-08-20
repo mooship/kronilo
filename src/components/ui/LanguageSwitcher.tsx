@@ -48,7 +48,7 @@ const LanguageSwitcher: React.FC = () => {
 				ref={buttonRef}
 				type="button"
 				className={clsx(
-					"flex items-center justify-between w-40 sm:w-56 md:w-64 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
+					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
 					"border-violet-400 dark:border-violet-500 focus:ring-2 focus:ring-violet-400 dark:focus:ring-violet-500 hover:border-violet-500 hover:shadow-lg",
 					{ "ring-2 ring-violet-400 dark:ring-violet-500": open },
 				)}
@@ -85,7 +85,7 @@ const LanguageSwitcher: React.FC = () => {
 			{open && (
 				<div
 					className={clsx(
-						"absolute z-50 mt-2 w-40 sm:w-56 md:w-64 rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-violet-200 dark:border-violet-700 overflow-hidden animate-fade-in",
+						"absolute z-50 mt-2 min-w-full rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-violet-200 dark:border-violet-700 overflow-hidden animate-fade-in",
 					)}
 				>
 					{LANGUAGES.map((lang) => (
