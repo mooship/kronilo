@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { memo, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useOnClickOutside } from "usehooks-ts";
+import { usePressAnimation } from "../../hooks/usePressAnimation";
 import { LOCALES } from "../../locales";
 
 /**
@@ -18,6 +19,7 @@ const LanguageSwitcher: React.FC = () => {
 	const [open, setOpen] = useState(false);
 	const buttonRef = useRef<HTMLButtonElement>(null);
 	const menuRef = useRef<HTMLDivElement>(null);
+	const switcherBtnAnim = usePressAnimation();
 
 	useOnClickOutside(menuRef as React.RefObject<HTMLElement>, (event) => {
 		if (buttonRef.current?.contains(event.target as Node)) {
@@ -59,6 +61,7 @@ const LanguageSwitcher: React.FC = () => {
 					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-background text-foreground shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
 					"border-blue-8 focus:ring-2 focus:ring-blue-8 hover:border-blue-9 hover:shadow-lg",
 					{ "ring-2 ring-blue-8": open },
+					switcherBtnAnim.isPressed && "scale-95",
 				)}
 				aria-haspopup="listbox"
 				aria-expanded={open}
@@ -66,6 +69,11 @@ const LanguageSwitcher: React.FC = () => {
 				tabIndex={0}
 				onClick={() => setOpen((o) => !o)}
 				onKeyDown={handleKeyDown}
+				onMouseDown={switcherBtnAnim.handlePressStart}
+				onMouseUp={switcherBtnAnim.handlePressEnd}
+				onMouseLeave={switcherBtnAnim.handlePressEnd}
+				onTouchStart={switcherBtnAnim.handlePressStart}
+				onTouchEnd={switcherBtnAnim.handlePressEnd}
 			>
 				<span className="font-semibold text-green-9">{selected.label}</span>
 				<svg
