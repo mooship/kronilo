@@ -11,8 +11,8 @@
 
 ### 2. **Code Quality & Standards**
 
-- **Formatting**: Strictly adhere to project's formatting rules (Prettier, ESLint, etc.)
-- **Linting**: Address all linting errors and warnings before finalizing suggestions
+- **Formatting**: Strictly adhere to project's Biome formatting rules
+- **Linting**: Address all Biome linting errors and warnings before finalizing suggestions
 - **Best Practices**: Follow language-specific conventions and industry standards
 - **Performance**: Optimize for performance while maintaining readability
 - **DRY Principle**: Don't Repeat Yourself - extract reusable logic into functions, hooks, or utilities
