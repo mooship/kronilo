@@ -52,104 +52,141 @@
 		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-:root {
-	font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+@theme {
+	/* Font Family */
+	--font-family-sans: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-	--background: 0 0% 100%;
-	--background-secondary: 0 0% 99%;
-	--foreground: 0 0% 9%;
-	--foreground-secondary: 0 0% 45%;
-	--foreground-tertiary: 0 0% 62%;
-	--border: 0 0% 90%;
-	--border-hover: 0 0% 87%;
-	--border-active: 0 0% 81%;
-	--gray-1: 0 0% 99%;
-	--gray-2: 0 0% 97%;
-	--gray-3: 0 0% 95%;
-	--gray-4: 0 0% 93%;
-	--gray-5: 0 0% 90%;
-	--gray-6: 0 0% 87%;
-	--gray-7: 0 0% 81%;
-	--gray-8: 0 0% 73%;
-	--gray-9: 0 0% 43%;
-	--gray-10: 0 0% 38%;
-	--gray-11: 0 0% 32%;
-	--gray-12: 0 0% 9%;
+	/* Background Colors */
+	--color-background: 0 0% 100%;
+	--color-background-secondary: 0 0% 99%;
+
+	/* Foreground Colors */
+	--color-foreground: 0 0% 9%;
+	--color-foreground-secondary: 0 0% 45%;
+	--color-foreground-tertiary: 0 0% 62%;
+
+	/* Border Colors */
+	--color-border: 0 0% 90%;
+	--color-border-hover: 0 0% 87%;
+	--color-border-active: 0 0% 81%;
+
+	/* Gray Scale */
+	--color-gray-1: 0 0% 99%;
+	--color-gray-2: 0 0% 97%;
+	--color-gray-3: 0 0% 95%;
+	--color-gray-4: 0 0% 93%;
+	--color-gray-5: 0 0% 90%;
+	--color-gray-6: 0 0% 87%;
+	--color-gray-7: 0 0% 81%;
+	--color-gray-8: 0 0% 73%;
+	--color-gray-9: 0 0% 43%;
+	--color-gray-10: 0 0% 38%;
+	--color-gray-11: 0 0% 32%;
+	--color-gray-12: 0 0% 9%;
+
+	/* Blue Scale */
+	--color-blue-1: 210 100% 99%;
+	--color-blue-2: 210 100% 97%;
+	--color-blue-3: 210 100% 95%;
+	--color-blue-4: 210 98% 91%;
+	--color-blue-5: 210 97% 87%;
+	--color-blue-6: 210 95% 81%;
+	--color-blue-7: 210 100% 75%;
+	--color-blue-8: 210 100% 68%;
+	--color-blue-9: 210 100% 57%;
+	--color-blue-10: 210 100% 52%;
+	--color-blue-11: 210 100% 45%;
+	--color-blue-12: 210 100% 9%;
+
+	/* Green Scale */
+	--color-green-1: 120 85% 98%;
+	--color-green-2: 120 60% 96%;
+	--color-green-3: 120 48% 92%;
+	--color-green-4: 120 43% 87%;
+	--color-green-5: 120 40% 81%;
+	--color-green-6: 120 38% 74%;
+	--color-green-7: 120 37% 64%;
+	--color-green-8: 120 36% 52%;
+	--color-green-9: 120 100% 32%;
+	--color-green-10: 120 100% 29%;
+	--color-green-11: 120 100% 25%;
+	--color-green-12: 120 100% 5%;
+
+	/* Red Scale */
+	--color-red-1: 0 100% 99%;
+	--color-red-2: 0 100% 97%;
+	--color-red-3: 0 100% 94%;
+	--color-red-4: 0 100% 90%;
+	--color-red-5: 0 96% 85%;
+	--color-red-6: 0 93% 78%;
+	--color-red-7: 0 91% 67%;
+	--color-red-8: 0 89% 54%;
+	--color-red-9: 0 84% 60%;
+	--color-red-10: 0 84% 55%;
+	--color-red-11: 0 84% 45%;
+	--color-red-12: 0 84% 5%;
+
+	/* Amber Scale */
+	--color-amber-1: 39 100% 99%;
+	--color-amber-2: 39 100% 96%;
+	--color-amber-3: 39 100% 92%;
+	--color-amber-4: 39 100% 86%;
+	--color-amber-5: 39 97% 79%;
+	--color-amber-6: 39 95% 69%;
+	--color-amber-7: 39 92% 56%;
+	--color-amber-8: 39 90% 49%;
+	--color-amber-9: 39 85% 40%;
+	--color-amber-10: 39 85% 35%;
+	--color-amber-11: 39 85% 25%;
+	--color-amber-12: 39 85% 5%;
+
+	/* Animations */
+	--animate-fade-in: fadeIn 0.2s ease-out;
+	--animate-scale-in: scaleIn 0.2s ease-out;
 }
 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: 0 0% 9%;
-		--background-secondary: 0 0% 11%;
-		--foreground: 0 0% 98%;
-		--foreground-secondary: 0 0% 62%;
-		--foreground-tertiary: 0 0% 45%;
-		--border: 0 0% 17%;
-		--border-hover: 0 0% 20%;
-		--border-active: 0 0% 26%;
-		--gray-1: 0 0% 9%;
-		--gray-2: 0 0% 11%;
-		--gray-3: 0 0% 13%;
-		--gray-4: 0 0% 15%;
-		--gray-5: 0 0% 17%;
-		--gray-6: 0 0% 20%;
-		--gray-7: 0 0% 26%;
-		--gray-8: 0 0% 34%;
-		--gray-9: 0 0% 43%;
-		--gray-10: 0 0% 50%;
-		--gray-11: 0 0% 62%;
-		--gray-12: 0 0% 98%;
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 
-.bg-background {
-	background-color: hsl(var(--background));
+@keyframes scaleIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
-.bg-background-secondary {
-	background-color: hsl(var(--background-secondary));
-}
-
-.text-foreground {
-	color: hsl(var(--foreground));
-}
-
-.text-foreground-secondary {
-	color: hsl(var(--foreground-secondary));
-}
-
-.text-foreground-tertiary {
-	color: hsl(var(--foreground-tertiary));
-}
-
-.border-border {
-	border-color: hsl(var(--border));
-}
-
-.border-border-hover {
-	border-color: hsl(var(--border-hover));
-}
-
-.border-border-active {
-	border-color: hsl(var(--border-active));
-}
-
-.hover\:bg-background-secondary:hover {
-	background-color: hsl(var(--background-secondary));
-}
-
-.hover\:border-border-hover:hover {
-	border-color: hsl(var(--border-hover));
-}
-
-.hover\:text-foreground:hover {
-	color: hsl(var(--foreground));
-}
-
-.focus\:border-border-active:focus {
-	border-color: hsl(var(--border-active));
-}
-
-.focus\:text-foreground:focus {
-	color: hsl(var(--foreground));
+/* Dark mode theme overrides */
+@media (prefers-color-scheme: dark) {
+	@theme {
+		--color-background: 0 0% 9%;
+		--color-background-secondary: 0 0% 11%;
+		--color-foreground: 0 0% 98%;
+		--color-foreground-secondary: 0 0% 62%;
+		--color-foreground-tertiary: 0 0% 45%;
+		--color-border: 0 0% 17%;
+		--color-border-hover: 0 0% 20%;
+		--color-border-active: 0 0% 26%;
+		--color-gray-1: 0 0% 9%;
+		--color-gray-2: 0 0% 11%;
+		--color-gray-3: 0 0% 13%;
+		--color-gray-4: 0 0% 15%;
+		--color-gray-5: 0 0% 17%;
+		--color-gray-6: 0 0% 20%;
+		--color-gray-7: 0 0% 26%;
+		--color-gray-8: 0 0% 34%;
+		--color-gray-9: 0 0% 43%;
+		--color-gray-10: 0 0% 50%;
+		--color-gray-11: 0 0% 62%;
+		--color-gray-12: 0 0% 98%;
+	}
 }
