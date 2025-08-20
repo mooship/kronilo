@@ -1,11 +1,14 @@
 # Kronilo
 
-**Kronilo** is the fastest, most user-friendly way to translate, understand, and work with cron expressions. Built with React, TypeScript, and Vite, Kronilo is designed for developers, sysadmins, and anyone who needs to make sense of cron schedules—instantly.
+Kronilo is a small, fast web app for translating and understanding cron expressions. Built with React, TypeScript, and Vite, it helps developers and operators read, validate, and preview cron schedules in seconds.
+
+If Kronilo saves you time, consider buying the project a coffee to help maintenance and translations:
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
 
 ---
 
 ## 🌍 Internationalization
-
 
 Kronilo is fully localized and supports:
 
@@ -73,8 +76,6 @@ For questions or help, open an issue or ask in the repository discussions!
 - **Privacy First:** No ads, no tracking, no accounts. Your data never leaves your browser.
 - **Open Source:** Licensed AGPL v3—contributions welcome!
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
-
 ---
 
 ## 🚀 Getting Started
@@ -118,17 +119,27 @@ Kronilo includes comprehensive tests to ensure reliability and correctness:
 
 ```sh
 # Run tests once
+## 🧪 Testing
+
+Tests are run with Bun.
+
+Kronilo includes comprehensive tests to ensure reliability and correctness:
+
+```sh
+# Run tests once
 bun test
 
 # Run tests in watch mode
 bun run test:ui
+```
 
 ## 🛠️ Code Quality
+
 
 Kronilo uses [Biome](https://biomejs.dev/) for formatting and linting. To check code quality:
 
 ```sh
-npm run biome
+bun run biome
 ```
 
 Or run Biome directly:
@@ -138,9 +149,7 @@ biome ci .
 ```
 
 ---
-
-## 📄 License
-
-Kronilo is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0). See the [LICENSE](LICENSE) file for details.
+   <a href="https://ko-fi.com/T6T31HRCAR"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Buy me a coffee on Ko-fi"/></a>
+</p>
 
 ---

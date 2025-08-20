@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-We as members, contributors, and leaders pledge to make participation in Kronilo a welcoming, inclusive, and respectful experience for everyone.
+Please help make participation in Kronilo welcoming, inclusive, and respectful for everyone. This Code of Conduct explains expected behavior and how we handle issues.
 
 ## Our Standards
 
@@ -23,7 +23,7 @@ Examples of unacceptable behavior:
 
 ## Our Responsibilities
 
-Project maintainers are responsible for clarifying standards of acceptable behavior and will take appropriate action in response to any behavior they deem inappropriate.
+Project maintainers will clarify standards of acceptable behavior and take appropriate action when issues arise. If you see something that doesn't follow this Code of Conduct, please let the maintainers know.
 
 ## Scope
 
@@ -31,7 +31,9 @@ This Code of Conduct applies within project spaces and in public spaces when an 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the maintainers at [timothybrits@icloud.com]. All complaints will be reviewed and investigated promptly and fairly.
+If you need to report abusive, harassing, or otherwise unacceptable behavior, email the maintainers at timothybrits@icloud.com. We'll respond within a few business days and investigate promptly and fairly.
+
+Thank you for helping keep the Kronilo community welcoming.
 
 ## Attribution
 

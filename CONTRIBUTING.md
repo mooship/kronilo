@@ -1,39 +1,38 @@
 # Contributing to Kronilo
 
-Thank you for your interest in contributing to Kronilo!
+Thanks for wanting to contribute!
 
-## How to Contribute
+## How to contribute
 
-1. **Create an Issue First**
+1. **Create an issue first**
 
-   - Before opening a pull request (PR), please create an issue describing your proposed change, bug fix, or feature request.
-   - Use the issue template if available and provide as much detail as possible.
-   - Wait for feedback or approval from the maintainer before proceeding.
+   - Open an issue describing your change, bug fix, or feature request.
+   - Use the issue template when available and include reproduction steps or examples.
+   - Wait for maintainer feedback or approval before starting major work.
 
-2. **Fork the Repository**
+2. **Fork and branch**
 
-   - Fork Kronilo to your own GitHub account.
-   - Clone your fork locally and create a new branch for your changes.
+   - Fork the repo, clone your fork, and create a feature branch for your work.
 
-3. **Make Your Changes**
+3. **Make changes & tests**
 
-   - Follow the coding standards and best practices used in the project.
-   - Write clear, concise commit messages.
-   - If applicable, add or update tests.
+   - Follow the project's coding conventions and add or update tests where appropriate.
+   - Keep commits focused and write clear commit messages.
 
-4. **Open a Pull Request**
-   - Ensure your PR references the related issue (e.g., "Closes #123").
-   - Fill out the PR template and describe your changes.
-   - Be ready to respond to feedback and make requested changes.
+4. **Open a pull request**
 
-## Code of Conduct
+   - Reference the related issue (e.g., "Closes #123").
+   - Fill the PR template and explain the intent and scope of the change.
+   - Respond to review feedback and iterate as needed.
 
-Please be respectful and considerate in all interactions. See the CODE_OF_CONDUCT.md for details.
+## Code of conduct
 
-## Need Help?
+Please be respectful and constructive in all interactions. See `CODE_OF_CONDUCT.md` for details.
 
-If you have questions, open an issue or contact the maintainer.
+## Need help?
+
+Open an issue or contact the maintainer at timothybrits@icloud.com.
 
 ---
 
-Thank you for helping make Kronilo better!
+Thanks for helping make Kronilo better!
