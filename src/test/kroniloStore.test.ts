@@ -76,7 +76,6 @@ describe("kroniloStoreShape (Zustand store, test shape)", () => {
 
 	it("canShowDonationModal returns true if dismissedUntil is null or in the past", () => {
 		expect(store.getState().canShowDonationModal()).toBe(true);
-		// Set dismissedUntil to a past date
 		store.getState().setDismissedUntil(new Date(Date.now() - 10000));
 		expect(store.getState().canShowDonationModal()).toBe(true);
 	});
