@@ -107,7 +107,8 @@ const LanguageSwitcher: React.FC = () => {
 							key={lang.code}
 							type="button"
 							className={clsx(
-								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150 hover:bg-background-secondary focus:bg-background-secondary",
+								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150",
+								"hover:bg-blue-9 hover:text-white focus:bg-blue-9 focus:text-white",
 								{
 									"bg-green-1 font-semibold text-green-9":
 										current === lang.code,
