@@ -23,6 +23,7 @@ Kronilo is fully localized and supports:
  - Portuguese (Brazilian) (`pt-BR`)
  - Portuguese (European) (`pt-PT`)
  - Romanian (`ro`)
+ - Russian (`ru`)
  - Spanish (`es`)
  - Swedish (`sv`)
  - Turkish (`tr`)
@@ -73,12 +74,6 @@ For questions or help, open an issue or ask in the repository discussions!
 - **Open Source:** Licensed AGPL v3—contributions welcome!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T31HRCAR)
-
----
-
-## 🖥️ Backend
-
-Kronilo's natural language translation API is powered by [kronilo-worker](https://github.com/mooship/kronilo-worker), an open-source backend designed for privacy and speed. You can self-host or contribute to the backend as well.
 
 ---
 
