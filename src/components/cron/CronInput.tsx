@@ -21,8 +21,8 @@ function isI18nCronError(obj: unknown): obj is I18nCronError {
 }
 
 const inputClassName = clsx(
-	"input input-bordered bg-gray-50 text-gray-900 placeholder-gray-500 font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none dark:bg-neutral-800 dark:text-neutral-50 dark:placeholder-gray-400",
-	"border-gray-200 hover:border-gray-400 focus:border-gray-600 dark:border-neutral-700 dark:hover:border-neutral-500 dark:focus:border-neutral-400",
+	"input input-bordered bg-background text-foreground placeholder-foreground-tertiary font-mono text-lg px-4 py-3 flex-1 min-w-0 h-12 rounded-xl border-2 transition-colors duration-200 focus:outline-none",
+	"border-border hover:border-border-hover focus:border-border-active",
 );
 
 const CronInput: FC<CronInputProps> = ({ error }) => {
@@ -86,7 +86,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 			<div className="mb-6 flex w-full items-center justify-between">
 				<label
 					htmlFor="cron-input"
-					className="block font-semibold text-black text-xl dark:text-neutral-50"
+					className="block font-semibold text-foreground text-xl"
 				>
 					{t("cronInput.label")}
 				</label>
@@ -105,7 +105,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 					tabIndex={0}
 				>
 					<svg
-						className="h-6 w-6 text-black transition-colors hover:text-gray-600 focus:text-gray-600 dark:text-gray-100 dark:focus:text-gray-400 dark:hover:text-gray-400"
+						className="h-6 w-6 text-foreground transition-colors hover:text-foreground-secondary focus:text-foreground-secondary"
 						fill="currentColor"
 						viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg"
@@ -144,20 +144,20 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						<div
 							ref={suggestionsRef}
 							id="cron-suggestions-list"
-							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 shadow-lg dark:border-gray-600 dark:bg-gray-700"
+							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-border bg-background shadow-lg"
 							style={{ position: "absolute" }}
 						>
 							{CRON_SUGGESTIONS.map((suggestion) => (
 								<button
 									key={suggestion.expression}
 									type="button"
-									className="flex w-full flex-col gap-1 border-gray-200 border-b px-4 py-3 text-left first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-gray-100 dark:border-gray-500 dark:hover:bg-gray-600"
+									className="flex w-full flex-col gap-1 border-border border-b px-4 py-3 text-left first:rounded-t-lg last:rounded-b-lg last:border-b-0 hover:bg-background-secondary"
 									onClick={() => handleSuggestionClick(suggestion)}
 								>
-									<code className="font-mono text-gray-800 dark:text-gray-300">
+									<code className="font-mono text-foreground">
 										{suggestion.expression}
 									</code>
-									<span className="text-gray-500 text-sm dark:text-gray-400">
+									<span className="text-foreground-secondary text-sm">
 										{suggestion.description}
 									</span>
 								</button>

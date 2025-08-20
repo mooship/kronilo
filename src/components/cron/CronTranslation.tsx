@@ -110,7 +110,7 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 	return (
 		<div className="mb-8">
 			<div className="mb-4 flex items-center justify-between">
-				<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
+				<h3 className="font-semibold text-foreground text-lg sm:text-xl md:text-2xl">
 					{t("translation.title")}
 				</h3>
 				<MemoizedCopyButton
@@ -120,24 +120,24 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 					className="btn-sm"
 				/>
 			</div>
-			<div className="rounded-xl border border-gray-200 bg-gray-50 p-6 dark:border-neutral-600 dark:bg-neutral-700 min-h-[4rem]">
+			<div className="rounded-xl border border-border bg-background-secondary p-6 min-h-[4rem]">
 				{!cron.trim() ? (
 					<div className="flex items-center justify-center h-12">
-						<span className="text-gray-500 text-lg dark:text-gray-300">
+						<span className="text-foreground-secondary text-lg">
 							{t("translation.placeholder")}
 						</span>
 					</div>
 				) : loading ? (
-					<div className="flex items-center gap-2 font-medium text-black text-xl leading-relaxed dark:text-neutral-50 h-12">
-						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-black border-t-transparent dark:border-neutral-50 dark:border-t-transparent"></span>
+					<div className="flex items-center gap-2 font-medium text-foreground text-xl leading-relaxed h-12">
+						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-foreground border-t-transparent"></span>
 						{t("translation.loading")}
 					</div>
 				) : error ? (
-					<p className="font-medium text-black text-xl leading-relaxed min-h-[3rem] flex items-center dark:text-neutral-50">
+					<p className="font-medium text-foreground text-xl leading-relaxed min-h-[3rem] flex items-center">
 						{error}
 					</p>
 				) : (
-					<p className="font-medium text-black text-xl leading-relaxed min-h-[3rem] flex items-center dark:text-neutral-50">
+					<p className="font-medium text-foreground text-xl leading-relaxed min-h-[3rem] flex items-center">
 						{translation}
 					</p>
 				)}

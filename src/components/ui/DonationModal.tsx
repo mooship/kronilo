@@ -87,7 +87,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 	return createPortal(
 		<div
 			ref={modalRef}
-			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 dark:bg-black/70"
+			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
 			role="dialog"
 			aria-modal="true"
 			aria-label={t("donation.title")}
@@ -95,12 +95,12 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onKeyDown={handleBackdropKeyDown}
 		>
 			<div
-				className="relative px-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 border-violet-400 bg-gray-50 p-8 text-gray-900 shadow-2xl dark:border-violet-700 dark:bg-neutral-800 dark:text-neutral-50 animate-fade-in"
+				className="relative px-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 border-blue-8 bg-background p-8 text-foreground shadow-2xl animate-fade-in"
 				style={{ animation: "fadeInScale 0.5s cubic-bezier(0.4,0,0.2,1)" }}
 			>
 				<button
 					type="button"
-					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-violet-700 text-xl transition-colors hover:bg-violet-100 hover:text-violet-900 dark:text-violet-300 dark:hover:text-violet-400 dark:hover:bg-violet-900${
+					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-blue-9 text-xl transition-colors hover:bg-background-secondary hover:text-blue-10${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
 					aria-label={t("donation.close")}
@@ -115,13 +115,13 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
-					<h2 className="mb-2 font-bold text-2xl text-emerald-700 dark:text-emerald-400">
+					<h2 className="mb-2 font-bold text-2xl text-green-9">
 						{t("donation.title")}
 					</h2>
-					<p className="mb-4 text-gray-900 leading-relaxed dark:text-neutral-50">
+					<p className="mb-4 text-foreground leading-relaxed">
 						{t("donation.message")}
 					</p>
-					<p className="mb-6 text-gray-900 leading-relaxed dark:text-neutral-50">
+					<p className="mb-6 text-foreground leading-relaxed">
 						{t("donation.messageExtended")}
 					</p>
 
@@ -130,7 +130,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							href="https://ko-fi.com/mooship"
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`btn btn-lg flex items-center gap-2 rounded-xl bg-violet-700 px-6 py-3 font-semibold text-white hover:bg-violet-800 dark:bg-violet-400 dark:text-neutral-900 dark:hover:bg-violet-500${
+							className={`btn btn-lg flex items-center gap-2 rounded-xl bg-blue-9 px-6 py-3 font-semibold text-white hover:bg-blue-10${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
 							aria-label={t("donation.buyMeCoffee")}
@@ -149,9 +149,8 @@ export const DonationModal: FC<DonationModalProps> = ({
 							type="button"
 							onClick={onMaybeLater}
 							className={clsx(
-								"btn btn-ghost rounded-xl text-emerald-700 transition-colors duration-200",
-								"hover:text-emerald-900 focus:text-emerald-900",
-								"dark:text-emerald-400 dark:hover:text-emerald-300 dark:focus:text-emerald-300",
+								"btn btn-ghost rounded-xl text-green-9 transition-colors duration-200",
+								"hover:text-green-10 focus:text-green-10",
 								maybeBtnAnim.isPressed && "scale-95",
 							)}
 							style={{ background: "none" }}

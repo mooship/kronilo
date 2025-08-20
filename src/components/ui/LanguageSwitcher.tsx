@@ -48,9 +48,9 @@ const LanguageSwitcher: React.FC = () => {
 				ref={buttonRef}
 				type="button"
 				className={clsx(
-					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-white dark:bg-neutral-800 dark:text-neutral-50 shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
-					"border-violet-400 dark:border-violet-500 focus:ring-2 focus:ring-violet-400 dark:focus:ring-violet-500 hover:border-violet-500 hover:shadow-lg",
-					{ "ring-2 ring-violet-400 dark:ring-violet-500": open },
+					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-background text-foreground shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
+					"border-blue-8 focus:ring-2 focus:ring-blue-8 focus:ring-offset-background hover:border-blue-9 hover:shadow-lg",
+					{ "ring-2 ring-blue-8": open },
 				)}
 				aria-haspopup="listbox"
 				aria-expanded={open}
@@ -59,9 +59,7 @@ const LanguageSwitcher: React.FC = () => {
 				onClick={() => setOpen((o) => !o)}
 				onKeyDown={handleKeyDown}
 			>
-				<span className="font-semibold text-emerald-700 dark:text-emerald-400">
-					{selected.label}
-				</span>
+				<span className="font-semibold text-green-9">{selected.label}</span>
 				<svg
 					width="20"
 					height="20"
@@ -85,7 +83,7 @@ const LanguageSwitcher: React.FC = () => {
 			{open && (
 				<div
 					className={clsx(
-						"absolute z-50 mt-2 min-w-full rounded-2xl bg-white dark:bg-neutral-800 shadow-xl border-2 border-violet-200 dark:border-violet-700 overflow-hidden animate-fade-in",
+						"absolute z-50 mt-2 min-w-full rounded-2xl bg-background shadow-xl border-2 border-border overflow-hidden animate-fade-in",
 					)}
 				>
 					{LANGUAGES.map((lang) => (
@@ -93,9 +91,9 @@ const LanguageSwitcher: React.FC = () => {
 							key={lang.code}
 							type="button"
 							className={clsx(
-								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150 hover:bg-violet-100 dark:hover:bg-violet-900 focus:bg-violet-100 dark:focus:bg-violet-900",
+								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150 hover:bg-background-secondary focus:bg-background-secondary",
 								{
-									"bg-emerald-100 dark:bg-emerald-900 font-semibold text-emerald-700 dark:text-emerald-300":
+									"bg-green-1 font-semibold text-green-9":
 										current === lang.code,
 								},
 							)}

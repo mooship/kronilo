@@ -71,6 +71,9 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("clsx")) {
 						return "clsx";
 					}
+					if (id.includes("lucide-react")) {
+						return "lucide";
+					}
 					if (
 						id.includes("i18next-http-backend") ||
 						id.includes("i18next-browser-languagedetector")

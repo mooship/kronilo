@@ -9,8 +9,7 @@ export const CronInputWarning: FC<CronInputWarningProps> = ({ children }) => (
 	<div
 		className={clsx(
 			"mb-4 rounded-xl border p-4",
-			"border-yellow-300 bg-yellow-100 text-yellow-800",
-			"dark:border-yellow-400 dark:bg-yellow-300/20 dark:text-yellow-200",
+			"border-amber-3 bg-amber-1 text-amber-9",
 		)}
 		role="alert"
 		aria-live="polite"

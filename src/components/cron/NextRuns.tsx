@@ -41,7 +41,7 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		return (
 			<div className="mb-6 min-h-[20rem]" aria-live="polite">
 				<div className="mb-4 flex items-center justify-between">
-					<h3 className="font-semibold text-black text-lg sm:text-xl md:text-2xl dark:text-neutral-50">
+					<h3 className="font-semibold text-foreground text-lg sm:text-xl md:text-2xl">
 						{t("nextRuns.title")}
 					</h3>
 					<MemoizedCopyButton
@@ -51,7 +51,7 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 						disabled
 					/>
 				</div>
-				<div className="rounded-xl bg-gray-50 p-6 text-center text-gray-500 dark:bg-neutral-700 dark:text-gray-400 min-h-[16rem] flex items-center justify-center">
+				<div className="rounded-xl bg-background-secondary p-6 text-center text-foreground-secondary min-h-[16rem] flex items-center justify-center">
 					{t("nextRuns.placeholder")}
 				</div>
 			</div>
@@ -61,7 +61,7 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	return (
 		<div className="mb-6 min-h-[20rem]" aria-live="polite">
 			<div className="mb-4 flex items-center justify-between">
-				<h3 className="font-semibold text-black text-xl dark:text-neutral-50">
+				<h3 className="font-semibold text-foreground text-xl">
 					{t("nextRuns.title")}
 				</h3>
 				<MemoizedCopyButton

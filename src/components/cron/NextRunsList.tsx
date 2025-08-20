@@ -12,8 +12,7 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 			<div
 				className={clsx(
 					"rounded-xl border p-4",
-					"bg-yellow-100 text-yellow-700 border-yellow-300",
-					"dark:bg-yellow-900 dark:text-yellow-300 dark:border-yellow-700",
+					"bg-amber-1 text-amber-9 border-amber-3",
 				)}
 			>
 				<span>{error}</span>
@@ -26,15 +25,13 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 			<div
 				className={clsx(
 					"flex items-center gap-2 rounded-xl p-6",
-					"bg-gray-50 text-black",
-					"dark:bg-neutral-700 dark:text-neutral-50",
+					"bg-background-secondary text-foreground",
 				)}
 			>
 				<span
 					className={clsx(
 						"inline-block h-5 w-5 animate-spin rounded-full border-2",
-						"border-black border-t-transparent",
-						"dark:border-neutral-50 dark:border-t-transparent",
+						"border-foreground border-t-transparent",
 					)}
 				></span>
 				{t("nextRuns.loading")}
@@ -47,8 +44,7 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 			<div
 				className={clsx(
 					"rounded-xl p-6 text-center",
-					"bg-gray-50 text-gray-500",
-					"dark:bg-neutral-700 dark:text-gray-400",
+					"bg-background-secondary text-foreground-secondary",
 				)}
 			>
 				{t("nextRuns.noRuns")}
@@ -57,28 +53,14 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 	}
 
 	return (
-		<div
-			className={clsx("rounded-xl p-6", "bg-gray-50", "dark:bg-neutral-700")}
-		>
+		<div className={clsx("rounded-xl p-6", "bg-background-secondary")}>
 			<ul className="space-y-3">
 				{runs.map((run, index) => (
 					<li key={run} className="flex items-center gap-3">
-						<span
-							className={clsx(
-								"font-bold text-lg",
-								"text-black",
-								"dark:text-neutral-50",
-							)}
-						>
+						<span className={clsx("font-bold text-lg", "text-foreground")}>
 							{index + 1}.
 						</span>
-						<span
-							className={clsx(
-								"font-mono text-base",
-								"text-black",
-								"dark:text-neutral-50",
-							)}
-						>
+						<span className={clsx("font-mono text-base", "text-foreground")}>
 							{run}
 						</span>
 					</li>

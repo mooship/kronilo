@@ -54,4 +54,102 @@
 
 :root {
 	font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+	--background: 0 0% 100%;
+	--background-secondary: 0 0% 99%;
+	--foreground: 0 0% 9%;
+	--foreground-secondary: 0 0% 45%;
+	--foreground-tertiary: 0 0% 62%;
+	--border: 0 0% 90%;
+	--border-hover: 0 0% 87%;
+	--border-active: 0 0% 81%;
+	--gray-1: 0 0% 99%;
+	--gray-2: 0 0% 97%;
+	--gray-3: 0 0% 95%;
+	--gray-4: 0 0% 93%;
+	--gray-5: 0 0% 90%;
+	--gray-6: 0 0% 87%;
+	--gray-7: 0 0% 81%;
+	--gray-8: 0 0% 73%;
+	--gray-9: 0 0% 43%;
+	--gray-10: 0 0% 38%;
+	--gray-11: 0 0% 32%;
+	--gray-12: 0 0% 9%;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: 0 0% 9%;
+		--background-secondary: 0 0% 11%;
+		--foreground: 0 0% 98%;
+		--foreground-secondary: 0 0% 62%;
+		--foreground-tertiary: 0 0% 45%;
+		--border: 0 0% 17%;
+		--border-hover: 0 0% 20%;
+		--border-active: 0 0% 26%;
+		--gray-1: 0 0% 9%;
+		--gray-2: 0 0% 11%;
+		--gray-3: 0 0% 13%;
+		--gray-4: 0 0% 15%;
+		--gray-5: 0 0% 17%;
+		--gray-6: 0 0% 20%;
+		--gray-7: 0 0% 26%;
+		--gray-8: 0 0% 34%;
+		--gray-9: 0 0% 43%;
+		--gray-10: 0 0% 50%;
+		--gray-11: 0 0% 62%;
+		--gray-12: 0 0% 98%;
+	}
+}
+
+.bg-background {
+	background-color: hsl(var(--background));
+}
+
+.bg-background-secondary {
+	background-color: hsl(var(--background-secondary));
+}
+
+.text-foreground {
+	color: hsl(var(--foreground));
+}
+
+.text-foreground-secondary {
+	color: hsl(var(--foreground-secondary));
+}
+
+.text-foreground-tertiary {
+	color: hsl(var(--foreground-tertiary));
+}
+
+.border-border {
+	border-color: hsl(var(--border));
+}
+
+.border-border-hover {
+	border-color: hsl(var(--border-hover));
+}
+
+.border-border-active {
+	border-color: hsl(var(--border-active));
+}
+
+.hover\:bg-background-secondary:hover {
+	background-color: hsl(var(--background-secondary));
+}
+
+.hover\:border-border-hover:hover {
+	border-color: hsl(var(--border-hover));
+}
+
+.hover\:text-foreground:hover {
+	color: hsl(var(--foreground));
+}
+
+.focus\:border-border-active:focus {
+	border-color: hsl(var(--border-active));
+}
+
+.focus\:text-foreground:focus {
+	color: hsl(var(--foreground));
 }

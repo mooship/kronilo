@@ -25,14 +25,14 @@ export const NotFoundCard: FC = () => {
 				className={clsx(
 					"mb-2 font-bold",
 					isSmallScreen ? "text-3xl" : "text-3xl sm:text-5xl",
-					"text-black dark:text-neutral-50",
+					"text-foreground",
 				)}
 			>
 				{t("notFound.title")}
 			</h1>
 			<p
 				className={clsx(
-					"mb-8 text-black opacity-80 dark:text-neutral-50 dark:opacity-80",
+					"mb-8 text-foreground opacity-80",
 					isSmallScreen ? "text-base" : "text-base sm:text-lg",
 				)}
 			>
@@ -48,10 +48,10 @@ export const NotFoundCard: FC = () => {
 				onTouchEnd={handlePressEnd}
 				onClick={() => navigate("/")}
 				className={clsx(
-					"rounded-xl bg-neutral-900 px-6 py-3 font-medium text-neutral-50 shadow-xl transition-all duration-200 hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-400 active:scale-95 dark:bg-gray-100 dark:text-black dark:focus:bg-gray-200 dark:focus:ring-gray-600 dark:hover:bg-gray-200",
-					"focus:shadow-lg focus:shadow-primary/30",
+					"rounded-xl bg-blue-9 px-6 py-3 font-medium text-white shadow-xl transition-all duration-200 hover:bg-blue-10 focus:bg-blue-10 focus:outline-none focus:ring-2 focus:ring-blue-8 focus:ring-offset-background active:scale-95",
+					"focus:shadow-lg focus:shadow-blue-8/30",
 					isSmallScreen ? "text-base" : "text-base sm:text-lg",
-					isPressed && "scale-95 bg-neutral-800 dark:bg-gray-200",
+					isPressed && "scale-95 bg-blue-10",
 				)}
 			>
 				{t("notFound.goHome")}

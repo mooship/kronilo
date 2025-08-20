@@ -11,7 +11,7 @@ export const AppLayout: FC<AppLayoutProps> = ({
 			className={clsx(
 				"min-h-screen flex flex-col",
 				!prefersReducedMotion && "transition-colors duration-200",
-				"bg-gray-50 text-black dark:bg-neutral-900 dark:text-neutral-50",
+				"bg-background text-foreground",
 			)}
 		>
 			{children}
@@ -25,8 +25,8 @@ export const AppMain: FC<AppMainProps> = ({ children }) => {
 			<div className="w-full max-w-3xl mx-auto">
 				<div
 					className={clsx(
-						"shadow-2xl border rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
-						"bg-white border-gray-200 dark:bg-neutral-800 dark:border-neutral-700",
+						"shadow-lg border rounded-xl sm:rounded-2xl px-2 sm:px-6 py-2 sm:py-8",
+						"bg-background border-border",
 					)}
 					style={{ minHeight: "600px" }}
 				>
