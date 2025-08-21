@@ -1,6 +1,10 @@
+// Tests that validate our simple, mocked persistence helpers.
+// These helpers simulate `localStorage`-like behavior using a plain
+// object so tests can run deterministically without a browser.
 import { beforeEach, describe, expect, it } from "bun:test";
 import { isValidCronFormat } from "../utils/cronValidation";
 
+// In-memory mock storage used by the helper functions below.
 let storage: Record<string, string> = {};
 const getItem = (key: string) => storage[key] ?? null;
 const setItem = (key: string, value: string) => {
@@ -10,6 +14,9 @@ const removeItem = (key: string) => {
 	delete storage[key];
 };
 
+// Helper wrappers that mirror the real app's persistence helpers.
+// They convert to/from ISO strings for dates and validate cron
+// strings before persisting.
 const getStoredDismissedUntil = (): Date | null => {
 	const stored = getItem("kronilo-dismissed-until");
 	return stored ? new Date(stored) : null;

@@ -1,3 +1,7 @@
+// Tests for a test-shaped Zustand store used in unit tests.
+// The `testStoreShape` below mirrors the real `kronilo` store shape but
+// keeps state isolated and synchronous so tests can assert behaviors
+// like persistence hooks, modal open/close, and the donation modal logic.
 import { beforeEach, describe, expect, it } from "bun:test";
 import type { StateCreator, StoreApi } from "zustand";
 import { create } from "zustand";
@@ -32,6 +36,7 @@ const testStoreShape: StateCreator<KroniloState> = (set, get) => ({
 	},
 });
 
+// The top-level suite checks basic store initialization and operations.
 describe("kroniloStoreShape (Zustand store, test shape)", () => {
 	let store: StoreApi<KroniloState>;
 	beforeEach(() => {
