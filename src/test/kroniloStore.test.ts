@@ -1,7 +1,9 @@
-// Tests for a test-shaped Zustand store used in unit tests.
-// Provides an isolated, synchronous store shape mirroring the real app
-// store so unit tests can exercise state transitions and persistence
-// behavior deterministically.
+/**
+ * Unit tests for a test-shaped Zustand store used in unit tests.
+ *
+ * These tests provide an isolated, synchronous store shape mirroring the real app
+ * store so unit tests can exercise state transitions and persistence behavior deterministically.
+ */
 import { beforeEach, describe, expect, it } from "bun:test";
 import type { StateCreator, StoreApi } from "zustand";
 import { create } from "zustand";
@@ -36,7 +38,7 @@ const testStoreShape: StateCreator<KroniloState> = (set, get) => ({
 	},
 });
 
-// The top-level suite checks basic store initialization and operations.
+// The top-level suite checks basic store initialization and all core state operations.
 describe("kroniloStoreShape (Zustand store, test shape)", () => {
 	let store: StoreApi<KroniloState>;
 	beforeEach(() => {

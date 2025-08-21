@@ -1,7 +1,10 @@
-// Tests for cron schedule calculation helpers.
-// Verifies next-run calculation and ambiguity detection across valid,
-// invalid and edge-case cron expressions. These are pure, deterministic
-// tests and do not touch external systems.
+/**
+ * Unit tests for cron schedule calculation helpers.
+ *
+ * These tests verify next-run calculation and ambiguity detection for a variety
+ * of valid, invalid, and edge-case cron expressions. All tests are pure and
+ * deterministic, with no external dependencies.
+ */
 import { describe, expect, it } from "bun:test";
 import {
 	calculateNextRuns,
@@ -12,13 +15,13 @@ const ambiguousCrons = ["0 0 1 1 1", "* * 15 * 2"];
 const nonAmbiguousCrons = ["* * * * *", "0 0 * * 0", "0 0 1 * *"];
 
 describe("detectAmbiguousSchedule", () => {
-	it("returns true for ambiguous schedules", () => {
+	it("returns true for ambiguous schedules (multiple interpretations)", () => {
 		for (const cron of ambiguousCrons) {
 			expect(detectAmbiguousSchedule(cron)).toBe(true);
 		}
 	});
 
-	it("returns false for non-ambiguous schedules", () => {
+	it("returns false for non-ambiguous schedules (single interpretation)", () => {
 		for (const cron of nonAmbiguousCrons) {
 			expect(detectAmbiguousSchedule(cron)).toBe(false);
 		}
@@ -31,32 +34,32 @@ const ambiguousCron = "0 0 1 1 1";
 const lang = "en-US";
 
 describe("calculateNextRuns", () => {
-	it("returns next runs for a valid cron", async () => {
+	it("returns next runs for a valid cron expression", async () => {
 		const result = await calculateNextRuns(validCron, lang);
 		expect(result.runs.length).toBeGreaterThan(0);
 		expect(result.error).toBeNull();
 		expect(result.hasAmbiguousSchedule).toBe(false);
 	});
 
-	it("returns error for an invalid cron", async () => {
+	it("returns error for an invalid cron expression", async () => {
 		const result = await calculateNextRuns(invalidCron, lang);
 		expect(result.runs.length).toBe(0);
 		expect(result.error).not.toBeNull();
 		expect(result.hasAmbiguousSchedule).toBe(false);
 	});
 
-	it("detects ambiguous schedule", async () => {
+	it("detects ambiguous schedule (flag is set)", async () => {
 		const result = await calculateNextRuns(ambiguousCron, lang);
 		expect(result.hasAmbiguousSchedule).toBe(true);
 	});
 
-	it("returns error for Feb 31st (invalid date)", async () => {
+	it("returns error for Feb 31st (invalid calendar date)", async () => {
 		const result = await calculateNextRuns("0 0 31 2 *", lang);
 		expect(result.runs.length).toBe(0);
 		expect(result.error).not.toBeNull();
 	});
 
-	it("returns next runs for Feb 29th in a leap year", async () => {
+	it("returns next runs for Feb 29th in a leap year (valid edge case)", async () => {
 		const result = await calculateNextRuns("0 0 29 2 *", lang);
 		expect(result.runs.length).toBeGreaterThan(0);
 		expect(result.error).toBeNull();

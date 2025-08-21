@@ -1,7 +1,10 @@
-// Unit tests for cron validation utilities.
-// Verifies field-level and expression-level validation (formats, ranges,
-// steps, lists) and a few date edge cases. Tests focus on pure functions
-// and avoid external systems so they remain fast and deterministic.
+/**
+ * Unit tests for cron validation utilities.
+ *
+ * These tests verify field-level and expression-level validation, including
+ * formats, ranges, steps, lists, and date edge cases. All tests focus on pure
+ * functions and avoid external systems to remain fast and deterministic.
+ */
 import { describe, expect, it } from "bun:test";
 import { getCronValidationErrors } from "../schemas/cron";
 import { getCronErrors, isValidCronFormat } from "../utils/cronValidation";
@@ -25,13 +28,13 @@ const invalidCrons = [
 ];
 
 describe("isValidCronFormat", () => {
-	it("returns true for valid cron expressions", () => {
+	it("returns true for valid cron expressions (basic format check)", () => {
 		for (const cron of validCrons) {
 			expect(isValidCronFormat(cron)).toBe(true);
 		}
 	});
 
-	it("returns false for invalid cron expressions", () => {
+	it("returns false for invalid cron expressions (basic format check)", () => {
 		for (const cron of invalidCrons) {
 			expect(isValidCronFormat(cron)).toBe(false);
 		}
@@ -39,13 +42,13 @@ describe("isValidCronFormat", () => {
 });
 
 describe("getCronErrors", () => {
-	it("returns no errors for valid cron expressions", () => {
+	it("returns no errors for valid cron expressions (should be empty)", () => {
 		for (const cron of validCrons) {
 			expect(getCronErrors(cron)).toEqual([]);
 		}
 	});
 
-	it("returns errors for invalid cron expressions", () => {
+	it("returns errors for invalid cron expressions (should be non-empty)", () => {
 		for (const cron of invalidCrons) {
 			expect(getCronErrors(cron).length).toBeGreaterThan(0);
 		}
@@ -53,31 +56,31 @@ describe("getCronErrors", () => {
 });
 
 describe("getCronValidationErrors", () => {
-	it("returns error for empty string", () => {
+	it("returns error for empty string (no expression)", () => {
 		expect(getCronValidationErrors("")).toEqual([
 			{ key: "cron.errors.noExpression" },
 		]);
 	});
 
-	it("returns error for too few fields", () => {
+	it("returns error for too few fields (not enough fields)", () => {
 		expect(getCronValidationErrors("* * * *")[0].key).toBe(
 			"cron.errors.invalidFieldCount",
 		);
 	});
 
-	it("returns error for invalid characters", () => {
+	it("returns error for invalid characters (non-numeric or special)", () => {
 		expect(getCronValidationErrors("* * * * $")[0].key).toBe(
 			"cron.errors.invalidCharacters",
 		);
 	});
 
-	it("returns error for out of range values", () => {
+	it("returns error for out of range values (numeric bounds)", () => {
 		expect(getCronValidationErrors("60 24 32 13 8")[0].key).toBe(
 			"cron.errors.valueOutOfRange",
 		);
 	});
 
-	it("returns error for Feb 31st (invalid date)", () => {
+	it("returns error for Feb 31st (invalid calendar date)", () => {
 		const errors = getCronValidationErrors("0 0 31 2 *");
 		expect(errors.length).toBeGreaterThan(0);
 		expect(errors[0].key).toBe("cron.errors.invalidField");
