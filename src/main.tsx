@@ -1,6 +1,6 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { StrictMode, Suspense } from "react";
+import React, { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
@@ -17,6 +17,32 @@ const registerServiceWorker = () => {
 		});
 	}
 };
+
+const devToolsInit: Promise<void> =
+	import.meta.env.MODE === "development" && typeof window !== "undefined"
+		? import("@welldone-software/why-did-you-render")
+				.then((mod) => {
+					const whyDidYouRender =
+						(
+							mod as unknown as {
+								default?: (
+									r: typeof React,
+									opts?: Record<string, unknown>,
+								) => void;
+							}
+						).default ||
+						(mod as unknown as (
+							r: typeof React,
+							opts?: Record<string, unknown>,
+						) => void);
+					whyDidYouRender(React, {
+						trackAllPureComponents: true,
+						trackHooks: true,
+						logOwnerReasons: true,
+					});
+				})
+				.catch(() => {})
+		: Promise.resolve();
 
 const renderApp = () => {
 	return (
@@ -38,7 +64,8 @@ const rootElement = document.getElementById("root");
 if (rootElement) {
 	const root = createRoot(rootElement);
 
-	initI18n().then(() => {
+	// Wait for both i18n initialization and dev tools init (if any)
+	Promise.all([initI18n(), devToolsInit]).then(() => {
 		root.render(renderApp());
 		registerServiceWorker();
 	});

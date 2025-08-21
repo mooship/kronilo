@@ -108,12 +108,15 @@ export const DonationModal: FC<DonationModalProps> = ({
 			onKeyDown={handleBackdropKeyDown}
 		>
 			<div
-				className="relative px-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 border-blue-8 bg-background p-8 text-foreground shadow-2xl animate-fade-in"
-				style={{ animation: "fadeInScale 0.5s cubic-bezier(0.4,0,0.2,1)" }}
+				className="relative px-4 max-h-[90vh] w-full max-w-2xl mx-auto overflow-y-auto rounded-xl border-2 bg-background p-8 text-foreground shadow-2xl animate-fade-in"
+				style={{
+					animation: "fadeInScale 0.5s cubic-bezier(0.4,0,0.2,1)",
+					borderColor: "var(--color-border)",
+				}}
 			>
 				<button
 					type="button"
-					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-blue-9 text-xl transition-colors hover:bg-background-secondary hover:text-blue-10${
+					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-foreground-tertiary text-xl transition-colors hover:bg-background-secondary hover:text-foreground${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
 					aria-label={t("donation.close")}
@@ -128,7 +131,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 					✕
 				</button>
 				<div className="text-center">
-					<h2 className="mb-2 font-bold text-2xl text-green-9">
+					<h2 className="mb-2 font-bold text-2xl text-foreground">
 						{t("donation.title")}
 					</h2>
 					<p className="mb-4 text-foreground leading-relaxed">
@@ -162,8 +165,8 @@ export const DonationModal: FC<DonationModalProps> = ({
 							type="button"
 							onClick={onMaybeLater}
 							className={clsx(
-								"btn btn-ghost rounded-xl text-green-9 transition-colors duration-200",
-								"hover:text-green-10 focus:text-green-10",
+								"btn btn-ghost rounded-xl text-foreground-secondary transition-colors duration-200",
+								"hover:text-foreground focus:text-foreground",
 								maybeBtnAnim.isPressed && "scale-95",
 							)}
 							style={{ background: "none" }}

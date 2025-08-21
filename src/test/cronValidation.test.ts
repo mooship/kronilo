@@ -109,6 +109,35 @@ describe("getCronValidationErrors", () => {
 		expect(errors.length).toBe(1);
 	});
 
+	it("deduplicates identical errors across multiple fields", () => {
+		const errors = getCronValidationErrors("1 1 a a a");
+		expect(errors.length).toBe(1);
+		expect(errors[0].key).toBe("cron.errors.invalidCharacters");
+		expect(errors[0].values?.field).toBe("a");
+	});
+
+	it("deduplicates identical invalid character errors across all fields", () => {
+		const errors = getCronValidationErrors("$ $ $ $ $");
+		expect(errors.length).toBe(1);
+		expect(errors[0].key).toBe("cron.errors.invalidCharacters");
+		expect(errors[0].values?.field).toBe("$");
+	});
+
+	it("does not deduplicate different out-of-range values", () => {
+		const errors = getCronValidationErrors("100 200 300 400 500");
+		expect(errors.length).toBe(5);
+
+		const valueOutOfRangeErrors = errors.filter(
+			(error) => error.key === "cron.errors.valueOutOfRange",
+		);
+		const dayOfWeekErrors = errors.filter(
+			(error) => error.key === "cron.errors.dayOfWeekRange",
+		);
+
+		expect(valueOutOfRangeErrors.length).toBe(4);
+		expect(dayOfWeekErrors.length).toBe(1);
+	});
+
 	it("returns error for negative step value", () => {
 		const errors = getCronValidationErrors("*/-1 * * * *");
 		expect(errors.length).toBeGreaterThan(0);

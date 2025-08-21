@@ -21,6 +21,7 @@ export const CronInputWarning: FC<CronInputWarningProps> = ({ children }) => (
 		className={clsx(
 			"mb-4 rounded-xl border p-4",
 			"border-amber-3 bg-amber-1 text-amber-9",
+			"dark:bg-[rgba(255,199,77,0.04)] dark:border-[rgba(255,170,40,0.12)] dark:text-[rgb(217,119,6)]",
 		)}
 		role="alert"
 		aria-live="polite"

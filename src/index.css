@@ -1,26 +1,26 @@
 @import "tailwindcss";
 
 :root {
-	--base-background: 255 255 255;
-	--base-background-secondary: 252 252 252;
-	--base-foreground: 23 23 23;
-	--base-foreground-secondary: 115 115 115;
-	--base-foreground-tertiary: 158 158 158;
-	--base-border: 229 229 229;
-	--base-border-hover: 212 212 212;
-	--base-border-active: 207 207 207;
+	--base-background: #ffffff;
+	--base-background-secondary: #fcfcfc;
+	--base-foreground: #171717;
+	--base-foreground-secondary: #737373;
+	--base-foreground-tertiary: #9e9e9e;
+	--base-border: #e5e5e5;
+	--base-border-hover: #d4d4d4;
+	--base-border-active: #cfcfcf;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--base-background: 23 23 23;
-		--base-background-secondary: 28 28 28;
-		--base-foreground: 250 250 250;
-		--base-foreground-secondary: 158 158 158;
-		--base-foreground-tertiary: 115 115 115;
-		--base-border: 43 43 43;
-		--base-border-hover: 51 51 51;
-		--base-border-active: 66 66 66;
+		--base-background: #171717;
+		--base-background-secondary: #1c1c1c;
+		--base-foreground: #fafafa;
+		--base-foreground-secondary: #9e9e9e;
+		--base-foreground-tertiary: #737373;
+		--base-border: #2b2b2b;
+		--base-border-hover: #333333;
+		--base-border-active: #424242;
 	}
 }
 
@@ -94,14 +94,14 @@
 	--color-gray-11: #525252;
 	--color-gray-12: #171717;
 
-	--color-background: rgb(var(--base-background));
-	--color-background-secondary: rgb(var(--base-background-secondary));
-	--color-foreground: rgb(var(--base-foreground));
-	--color-foreground-secondary: rgb(var(--base-foreground-secondary));
-	--color-foreground-tertiary: rgb(var(--base-foreground-tertiary));
-	--color-border: rgb(var(--base-border));
-	--color-border-hover: rgb(var(--base-border-hover));
-	--color-border-active: rgb(var(--base-border-active));
+	--color-background: var(--base-background);
+	--color-background-secondary: var(--base-background-secondary);
+	--color-foreground: var(--base-foreground);
+	--color-foreground-secondary: var(--base-foreground-secondary);
+	--color-foreground-tertiary: var(--base-foreground-tertiary);
+	--color-border: var(--base-border);
+	--color-border-hover: var(--base-border-hover);
+	--color-border-active: var(--base-border-active);
 
 	--animate-fade-in: fadeIn 0.2s ease-out;
 	--animate-scale-in: scaleIn 0.2s ease-out;
@@ -151,7 +151,7 @@
 
 @media (prefers-color-scheme: dark) {
 	.language-dropdown-item:where(.bg-green-1) {
-		background-color: rgba(var(--base-background-secondary), 0.05);
+		background-color: rgba(28, 28, 28, 0.05);
 		color: var(--color-green-7);
 	}
 	.language-dropdown-item:where(.bg-green-1).selected,

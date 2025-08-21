@@ -248,8 +248,14 @@ export function getCronValidationErrors(
 			},
 		];
 	}
-	const errors: { key: string; values?: Record<string, string | number> }[] =
-		[];
+
+	const fieldErrors: Array<{
+		fieldIndex: number;
+		key: string;
+		values: Record<string, string | number>;
+		reason: string;
+	}> = [];
+
 	fields.forEach((field, i) => {
 		const detailed = validateCronFieldDetailed(
 			field,
@@ -316,9 +322,44 @@ export function getCronValidationErrors(
 				default:
 					key = "cron.errors.invalidField";
 			}
-			errors.push({ key, values });
+			fieldErrors.push({ fieldIndex: i, key, values, reason: detailed.reason });
 		}
 	});
+
+	const errors: { key: string; values?: Record<string, string | number> }[] =
+		[];
+	const uniqueErrors = new Map<
+		string,
+		{ key: string; values?: Record<string, string | number> }
+	>();
+
+	for (const error of fieldErrors) {
+		let errorKey: string;
+
+		if (
+			error.reason === "invalidCharacters" ||
+			error.reason === "missingValue" ||
+			error.reason === "invalidStep" ||
+			error.reason === "invalidRangeFormat"
+		) {
+			errorKey = error.key;
+		} else {
+			const {
+				fieldName: _fieldName,
+				fieldRange: _fieldRange,
+				...coreValues
+			} = error.values;
+			errorKey = error.key + JSON.stringify(coreValues);
+		}
+
+		if (!uniqueErrors.has(errorKey)) {
+			uniqueErrors.set(errorKey, { key: error.key, values: error.values });
+		}
+	}
+
+	for (const error of uniqueErrors.values()) {
+		errors.push(error);
+	}
 
 	const dayField = fields[2];
 	const monthField = fields[3];

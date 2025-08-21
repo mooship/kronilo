@@ -27,6 +27,7 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 				className={clsx(
 					"rounded-xl border p-4",
 					"bg-amber-1 text-amber-9 border-amber-3",
+					"dark:bg-[rgba(255,199,77,0.04)] dark:border-[rgba(255,170,40,0.12)] dark:text-[rgb(217,119,6)]",
 				)}
 			>
 				<span>{error}</span>
