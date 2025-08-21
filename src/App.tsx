@@ -10,7 +10,7 @@ import { AppLayout, AppMain } from "./components/layout/AppLayout";
 import { MemoizedLanguageSwitcher } from "./components/ui/LanguageSwitcher";
 import { useCronValidation } from "./hooks/useCronValidation";
 import { useDonationModal } from "./hooks/useDonationModal";
-import { useKroniloStore } from "./stores/useKroniloStore";
+import { useKroniloStore } from "./hooks/useKroniloStore";
 
 const DonationModal = lazy(() =>
 	import("./components/ui/DonationModal").then((m) => ({

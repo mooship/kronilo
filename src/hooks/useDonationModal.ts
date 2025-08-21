@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useKroniloStore } from "../stores/useKroniloStore";
 import type { UseDonationModal } from "../types/hooks";
+import { useKroniloStore } from "./useKroniloStore";
 
 /**
  * useDonationModal

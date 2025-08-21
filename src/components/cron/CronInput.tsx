@@ -4,7 +4,7 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { useHover, useUnmount } from "usehooks-ts";
-import { useKroniloStore } from "../../stores/useKroniloStore";
+import { useKroniloStore } from "../../hooks/useKroniloStore";
 import type { I18nCronError } from "../../types";
 import type { CronInputProps } from "../../types/components";
 import { CRON_SUGGESTIONS } from "../../utils/cronSuggestions";
