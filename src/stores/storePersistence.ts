@@ -1,4 +1,5 @@
-import { isValidCronFormat } from "../utils/cronValidation";
+import { cronSchema } from "../schemas/cron";
+import { persistedSchema } from "../schemas/persisted";
 import { getItem, removeItem, setItem } from "../utils/storage";
 
 /**
@@ -9,7 +10,14 @@ import { getItem, removeItem, setItem } from "../utils/storage";
  */
 export const getStoredDismissedUntil = (): Date | null => {
 	const stored = getItem("kronilo-dismissed-until");
-	return stored ? new Date(stored) : null;
+	if (!stored) {
+		return null;
+	}
+	const parsed = persistedSchema.shape.dismissedUntil.safeParse(stored);
+	if (!parsed.success) {
+		return null;
+	}
+	return new Date(stored);
 };
 
 /**
@@ -34,7 +42,9 @@ export const setStoredDismissedUntil = (date: Date | null): void => {
  */
 export const getStoredCron = (): string => {
 	const stored = getItem("kronilo-cron");
-	return stored ?? "*/5 * * * *";
+	if (!stored) return "*/5 * * * *";
+	// prefer cronSchema for validation (gives stronger guarantees than the lightweight check)
+	return cronSchema.safeParse(stored).success ? stored : "*/5 * * * *";
 };
 
 /**
@@ -44,7 +54,8 @@ export const getStoredCron = (): string => {
  * validation. When the value is invalid the stored key is removed.
  */
 export const setStoredCron = (cron: string): void => {
-	if (isValidCronFormat(cron)) {
+	// Use the stronger cronSchema to decide persistence
+	if (cronSchema.safeParse(cron).success) {
 		setItem("kronilo-cron", cron);
 	} else {
 		removeItem("kronilo-cron");

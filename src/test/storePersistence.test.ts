@@ -1,6 +1,6 @@
-// Tests that validate our simple, mocked persistence helpers.
-// These helpers simulate `localStorage`-like behavior using a plain
-// object so tests can run deterministically without a browser.
+// Tests for mocked persistence helpers.
+// Simulates `localStorage` using an in-memory object so persistence helpers
+// can be validated deterministically in unit tests without a browser.
 import { beforeEach, describe, expect, it } from "bun:test";
 import { isValidCronFormat } from "../utils/cronValidation";
 

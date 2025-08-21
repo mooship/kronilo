@@ -1,9 +1,7 @@
 // Tests for cron schedule calculation helpers.
-// These tests verify that next-run calculation and ambiguity detection
-// behave correctly for a range of cron expressions (valid, invalid,
-// ambiguous, and edge-case dates such as Feb 29th).
-// The tests intentionally don't touch external systems — they exercise
-// pure functions in `utils/cronScheduleCalculator`.
+// Verifies next-run calculation and ambiguity detection across valid,
+// invalid and edge-case cron expressions. These are pure, deterministic
+// tests and do not touch external systems.
 import { describe, expect, it } from "bun:test";
 import {
 	calculateNextRuns,
