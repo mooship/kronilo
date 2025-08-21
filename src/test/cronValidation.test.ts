@@ -103,7 +103,7 @@ describe("getCronValidationErrors", () => {
 	it("returns error for invalid range values", () => {
 		const errors = getCronValidationErrors("1-100 * * * *");
 		expect(errors.length).toBeGreaterThan(0);
-		expect(errors[0].key).toBe("cron.errors.invalidField");
+		expect(errors[0].key).toBe("cron.errors.valueOutOfRange");
 	});
 	it("returns a single error for multiple issues", () => {
 		const errors = getCronValidationErrors("a b c d");

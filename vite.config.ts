@@ -6,9 +6,10 @@ import { VitePWA } from "vite-plugin-pwa";
 
 const options = {
 	fallbacks: [
-		"Poppins",
-		"Poppins Variable",
+		"Geist Variable",
+		"Geist",
 		"Inter",
+		"-apple-system",
 		"system-ui",
 		"Segoe UI",
 		"Roboto",

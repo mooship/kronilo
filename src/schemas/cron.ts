@@ -1,8 +1,35 @@
+import { type ZodString, z } from "zod";
+
 /**
  * Regex used to quickly detect characters not allowed in a cron field.
  * Disallows anything that isn't a digit, comma, dash, asterisk, slash.
+ * Note: escape `*` and `/` inside the character class.
  */
-const CRON_FIELD_INVALID_CHAR_REGEX = /[^\d\-,*/]/;
+const CRON_FIELD_INVALID_CHAR_REGEX = /[^\d,*\u002F-]/;
+
+/**
+ * Human-readable field ranges used when constructing helpful validation
+ * messages.
+ */
+export const CRON_FIELD_RANGES = [
+	"0-59",
+	"0-23",
+	"1-31",
+	"1-12",
+	"0-7 (0 or 7 = Sunday)",
+];
+
+/**
+ * Machine-friendly numeric min/max for each field (minute, hour, day, month, dow).
+ * Use this for programmatic validation instead of parsing the display strings.
+ */
+export const CRON_FIELD_MIN_MAX: [number, number][] = [
+	[0, 59],
+	[0, 23],
+	[1, 31],
+	[1, 12],
+	[0, 7],
+];
 
 /**
  * Shape of the result returned by the cron schedule calculator utility.
@@ -15,9 +42,6 @@ export const cronCalculationResultSchema = z.object({
 	error: z.string().nullable(),
 	hasAmbiguousSchedule: z.boolean(),
 });
-
-import type { ZodString } from "zod";
-import { z } from "zod";
 
 /**
  * cronFieldSchema
@@ -44,74 +68,136 @@ export function cronFieldSchema(
 	max: number,
 	allowAsterisk = true,
 ): ZodString {
-	return z.string().refine(
-		(field: string): boolean => {
-			if (allowAsterisk && field === "*") {
-				return true;
-			}
-			if (field.includes("/")) {
-				const [range, step] = field.split("/");
-				if (!step || Number.isNaN(Number(step)) || Number(step) <= 0)
-					return false;
-				if (range === "*" && allowAsterisk) {
-					return true;
-				}
-				return cronFieldSchema(min, max, false).safeParse(range).success;
-			}
-			if (field.includes("-")) {
-				if (field.startsWith("-")) {
-					const num = Number(field);
-					if (Number.isNaN(num)) {
-						return false;
-					}
-					if (max === 7 && num === 7) {
-						return true;
-					}
-					return num >= min && num <= max;
-				}
-				const parts = field.split("-");
-				if (parts.length !== 2) {
-					return false;
-				}
-				const [start, end] = parts;
-				const startNum = Number(start);
-				const endNum = Number(end);
-				if (Number.isNaN(startNum) || Number.isNaN(endNum)) {
-					return false;
-				}
-				return (
-					startNum >= min &&
-					startNum <= max &&
-					endNum >= min &&
-					endNum <= max &&
-					startNum <= endNum
-				);
-			}
-			if (field.includes(",")) {
-				const values = field.split(",");
-				return values.every((value) => {
-					const trimmedValue = value.trim();
-					if (trimmedValue === "") {
-						return false;
-					}
-					const num = Number(trimmedValue);
-					return !Number.isNaN(num) && num >= min && num <= max;
-				});
-			}
+	return z.string().superRefine((field: string, ctx) => {
+		const res = validateCronFieldDetailed(field, min, max, allowAsterisk);
+		if (!res.valid) {
+			ctx.addIssue({ code: z.ZodIssueCode.custom, message: res.reason });
+		}
+	});
+}
+
+/**
+ * Pure helper that validates a single cron field string against numeric
+ * bounds and allowed patterns. Extracted for testability and clarity.
+ */
+export function validateCronField(
+	field: string,
+	min: number,
+	max: number,
+	allowAsterisk = true,
+): boolean {
+	return validateCronFieldDetailed(field, min, max, allowAsterisk).valid;
+}
+
+/**
+ * Detailed validator which returns a reason code used to map to i18n keys.
+ */
+export function validateCronFieldDetailed(
+	field: string,
+	min: number,
+	max: number,
+	allowAsterisk = true,
+):
+	| { valid: true }
+	| {
+			valid: false;
+			reason: string;
+			details?: Record<string, string | number | string[]>;
+	  } {
+	if (!field || field === "") {
+		return { valid: false, reason: "missingValue" };
+	}
+	if (allowAsterisk && field === "*") {
+		return { valid: true };
+	}
+	if (CRON_FIELD_INVALID_CHAR_REGEX.test(field))
+		return { valid: false, reason: "invalidCharacters" };
+
+	if (field.includes("/")) {
+		const [range, step] = field.split("/");
+		if (!step || Number.isNaN(Number(step)) || Number(step) <= 0) {
+			return { valid: false, reason: "invalidStep" };
+		}
+		if (range === "*" && allowAsterisk) {
+			return { valid: true };
+		}
+		const sub = validateCronFieldDetailed(range, min, max, false);
+		return sub.valid ? { valid: true } : sub;
+	}
+
+	if (field.includes("-")) {
+		if (field.startsWith("-")) {
 			const num = Number(field);
 			if (Number.isNaN(num)) {
-				return false;
+				return { valid: false, reason: "invalidField" };
 			}
 			if (max === 7 && num === 7) {
-				return true;
+				return { valid: true };
 			}
-			return num >= min && num <= max;
-		},
-		{
-			message: `Invalid cron field value`,
-		},
-	);
+			return num >= min && num <= max
+				? { valid: true }
+				: { valid: false, reason: "valueOutOfRange", details: { num } };
+		}
+		const parts = field.split("-");
+		if (parts.length !== 2) {
+			return { valid: false, reason: "invalidRangeFormat" };
+		}
+		const [start, end] = parts;
+		const startNum = Number(start);
+		const endNum = Number(end);
+		if (Number.isNaN(startNum) || Number.isNaN(endNum)) {
+			return { valid: false, reason: "invalidRangeFormat" };
+		}
+		if (startNum > endNum)
+			return {
+				valid: false,
+				reason: "rangeStartGreater",
+				details: { start: startNum, end: endNum },
+			};
+		if (startNum < min || endNum > max)
+			return {
+				valid: false,
+				reason: "valueOutOfRange",
+				details: { start: startNum, end: endNum },
+			};
+		return { valid: true };
+	}
+
+	if (field.includes(",")) {
+		const values = field.split(",");
+		const invalids: string[] = [];
+		for (const v of values) {
+			const trimmed = v.trim();
+			if (trimmed === "") {
+				invalids.push(v);
+				continue;
+			}
+			const num = Number(trimmed);
+			if (Number.isNaN(num) || num < min || num > max) {
+				invalids.push(trimmed);
+			}
+		}
+		if (invalids.length > 0) {
+			return { valid: false, reason: "invalidValues", details: { invalids } };
+		}
+		return { valid: true };
+	}
+
+	const num = Number(field);
+	if (Number.isNaN(num)) {
+		return { valid: false, reason: "invalidField" };
+	}
+	if (max === 7 && num === 7) {
+		return { valid: true };
+	}
+	if (num < min || num > max || (min === 1 && num === 0)) {
+		return { valid: false, reason: "valueOutOfRange", details: { num } };
+	}
+	return { valid: true };
 }
+
+export type CronTuple = z.infer<typeof CRON_SCHEMA_TUPLE>;
+export type CronCalculationResult = z.infer<typeof cronCalculationResultSchema>;
 
 /**
  * Human-readable field names for error messages and UI labels.
@@ -122,18 +208,6 @@ export const CRON_FIELD_NAMES = [
 	"day of month",
 	"month",
 	"day of week",
-];
-
-/**
- * Human-readable field ranges used when constructing helpful validation
- * messages.
- */
-export const CRON_FIELD_RANGES = [
-	"0-59",
-	"0-23",
-	"1-31",
-	"1-12",
-	"0-7 (0 or 7 = Sunday)",
 ];
 
 /**
@@ -177,71 +251,70 @@ export function getCronValidationErrors(
 	const errors: { key: string; values?: Record<string, string | number> }[] =
 		[];
 	fields.forEach((field, i) => {
-		const result = CRON_FIELD_SCHEMAS[i].safeParse(field);
-		if (!result.success) {
+		const detailed = validateCronFieldDetailed(
+			field,
+			CRON_FIELD_MIN_MAX[i][0],
+			CRON_FIELD_MIN_MAX[i][1],
+			true,
+		);
+		if (!detailed.valid) {
 			let key = "cron.errors.invalidField";
 			let values: Record<string, string | number> = {
 				field: field,
 				fieldName: CRON_FIELD_NAMES[i],
 				fieldRange: CRON_FIELD_RANGES[i],
 			};
-			if (field === "") {
-				key = "cron.errors.missingValue";
-			} else if (CRON_FIELD_INVALID_CHAR_REGEX.test(field)) {
-				key = "cron.errors.invalidCharacters";
-			} else if (field.includes("/")) {
-				const step = field.split("/")[1];
-				if (!step || Number.isNaN(Number(step)) || Number(step) <= 0) {
+			switch (detailed.reason) {
+				case "missingValue":
+					key = "cron.errors.missingValue";
+					break;
+				case "invalidCharacters":
+					key = "cron.errors.invalidCharacters";
+					break;
+				case "invalidStep":
 					key = "cron.errors.invalidStep";
-				}
-			} else if (field.includes("-")) {
-				const parts = field.split("-");
-				if (parts.length !== 2) {
+					break;
+				case "invalidRangeFormat":
 					key = "cron.errors.invalidRangeFormat";
-				} else {
-					const [start, end] = parts;
-					if (Number(start) > Number(end)) {
-						key = "cron.errors.rangeStartGreater";
-						values = { ...values, start, end };
-					} else if (i === 4) {
-						key = "cron.errors.dayOfWeekRange";
-					}
-				}
-			} else if (field.includes(",")) {
-				const valuesArr = field.split(",");
-				const invalids = valuesArr.filter((v) => {
-					const trimmed = v.trim();
-					const num = Number(trimmed);
-					return (
-						trimmed &&
-						(Number.isNaN(num) ||
-							num < Number(CRON_FIELD_RANGES[i].split("-")[0]) ||
-							num > Number(CRON_FIELD_RANGES[i].split("-")[1]))
-					);
-				});
-				if (invalids.length > 0) {
+					break;
+				case "rangeStartGreater":
+					key = "cron.errors.rangeStartGreater";
+					values = {
+						...values,
+						...(detailed.details as Record<string, string | number>),
+					};
+					break;
+				case "invalidValues":
 					if (i === 4) {
 						key = "cron.errors.invalidDayOfWeekValues";
-						values = { ...values, invalids: invalids.join(", ") };
 					} else {
 						key = "cron.errors.invalidValues";
-						values = { ...values, invalids: invalids.join(", ") };
 					}
-				}
-			} else if (!Number.isNaN(Number(field))) {
-				const num = Number(field);
-				const [min, max] = CRON_FIELD_RANGES[i].split("-").map(Number);
-				if (num < min || num > max || (i === 2 && num === 0)) {
+					{
+						const invalidsRaw = detailed.details?.invalids;
+						if (Array.isArray(invalidsRaw)) {
+							values = {
+								...values,
+								invalids: (invalidsRaw as string[]).join(", "),
+							};
+						} else {
+							values = { ...values, invalids: String(invalidsRaw ?? "") };
+						}
+					}
+					break;
+				case "valueOutOfRange":
 					if (i === 4) {
 						key = "cron.errors.dayOfWeekRange";
 					} else {
 						key = "cron.errors.valueOutOfRange";
-						values = { ...values, num };
+						values = {
+							...values,
+							...(detailed.details as Record<string, string | number>),
+						};
 					}
-				}
-			}
-			if (i === 4 && key === "cron.errors.invalidField") {
-				key = "cron.errors.dayOfWeekRange";
+					break;
+				default:
+					key = "cron.errors.invalidField";
 			}
 			errors.push({ key, values });
 		}

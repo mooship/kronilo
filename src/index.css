@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-	/* Base semantic colors - Light mode defaults */
 	--base-background: 255 255 255;
 	--base-background-secondary: 252 252 252;
 	--base-foreground: 23 23 23;
@@ -12,7 +11,6 @@
 	--base-border-active: 207 207 207;
 }
 
-/* Dark mode */
 @media (prefers-color-scheme: dark) {
 	:root {
 		--base-background: 23 23 23;
@@ -27,7 +25,9 @@
 }
 
 @theme {
-	--font-family-sans: Poppins, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	--font-family-sans:
+		"Geist Variable", Geist, Inter, -apple-system, system-ui, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, sans-serif;
 
 	--color-blue-1: #f0f7ff;
 	--color-blue-2: #e6f0ff;
@@ -108,55 +108,14 @@
 }
 
 @font-face {
-	font-family: "Poppins";
+	font-family: "Geist Variable";
 	font-style: normal;
 	font-display: swap;
-	font-weight: 400;
-	src: url("@fontsource/poppins/files/poppins-latin-ext-400-normal.woff2")
-		format("woff2");
+	font-weight: 100 900;
+	src: url("@fontsource-variable/geist/files/geist-latin-ext-wght-normal.woff2")
+		format("woff2-variations");
 	unicode-range:
-		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-		U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-	font-family: "Poppins";
-	font-style: normal;
-	font-display: swap;
-	font-weight: 500;
-	src: url("@fontsource/poppins/files/poppins-latin-ext-500-normal.woff2")
-		format("woff2");
-	unicode-range:
-		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-		U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-	font-family: "Poppins";
-	font-style: normal;
-	font-display: swap;
-	font-weight: 600;
-	src: url("@fontsource/poppins/files/poppins-latin-ext-600-normal.woff2")
-		format("woff2");
-	unicode-range:
-		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-		U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-@font-face {
-	font-family: "Poppins";
-	font-style: normal;
-	font-display: swap;
-	font-weight: 700;
-	src: url("@fontsource/poppins/files/poppins-latin-ext-700-normal.woff2")
-		format("woff2");
-	unicode-range:
-		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
-		U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
-		U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+		U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @keyframes fadeIn {
