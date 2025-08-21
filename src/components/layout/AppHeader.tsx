@@ -23,7 +23,7 @@ export const AppHeader: FC = () => {
 					className={clsx(
 						"font-bold mb-2 sm:mb-4 break-words leading-tight",
 						isSmallScreen ? "text-2xl" : "text-2xl xs:text-3xl sm:text-5xl",
-						"text-blue-9",
+						"text-blue-6",
 					)}
 					style={{ minHeight: isSmallScreen ? "2.5rem" : "3.5rem" }}
 				>

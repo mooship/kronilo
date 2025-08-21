@@ -41,7 +41,7 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 				>
 					{t("footer.builtWith")}{" "}
 					<Heart
-						className={clsx("inline-block w-4 h-4 align-middle text-red-9")}
+						className={clsx("inline-block w-4 h-4 align-middle text-red-6")}
 						fill="currentColor"
 						stroke="none"
 						aria-hidden="true"
@@ -49,7 +49,7 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 					{t("footer.inSouthAfrica")} ·{" "}
 					<button
 						type="button"
-						className="underline text-blue-9 hover:text-blue-10 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer min-w-10 min-h-10 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-8 focus:ring-offset-background"
+						className="underline text-blue-6 hover:text-blue-7 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer min-w-10 min-h-10 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-6 focus:ring-offset-background"
 						onClick={onDonateClick}
 					>
 						{t("footer.support")} <span aria-hidden="true">☕</span>
@@ -59,7 +59,7 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 						href="https://github.com/mooship/kronilo"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="underline text-green-9 hover:text-green-10 hover:no-underline transition-colors text-xs sm:text-base font-semibold"
+						className="underline text-green-6 hover:text-green-7 hover:no-underline transition-colors text-xs sm:text-base font-semibold"
 					>
 						{t("footer.github")}
 					</a>

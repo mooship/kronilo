@@ -74,7 +74,7 @@ const CopyButton: FC<CopyButtonProps> = ({
 				type="button"
 				className={clsx(
 					"btn rounded-xl border-2 font-medium shadow-xl transition-all duration-200 active:scale-95 disabled:opacity-50",
-					"border-blue-8 bg-transparent text-blue-9 hover:border-blue-9 hover:bg-blue-1 focus:border-blue-9 focus:bg-blue-1",
+					"border-blue-6 bg-transparent text-blue-6 hover:border-blue-6 hover:bg-blue-2 focus:border-blue-6 focus:bg-blue-2",
 					isSmall ? "btn-sm px-4 py-2" : "btn-lg px-6 py-3",
 					"focus:outline-none focus:ring-2 focus:ring-blue-8 focus:ring-offset-2 focus:ring-offset-background",
 					"transition-colors duration-200",
@@ -91,7 +91,10 @@ const CopyButton: FC<CopyButtonProps> = ({
 				onTouchEnd={handlePressEnd}
 			>
 				{copied ? (
-					<span aria-live="polite" className="flex items-center gap-2">
+					<span
+						aria-live="polite"
+						className="flex items-center gap-2 text-red-6"
+					>
 						<span>✓</span> {t("actions.copied")}
 					</span>
 				) : (

@@ -68,8 +68,8 @@ const LanguageSwitcher: React.FC = () => {
 				type="button"
 				className={clsx(
 					"flex items-center justify-between min-w-32 rounded-full border-2 px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base bg-background text-foreground shadow-md focus:outline-none transition-all duration-200 cursor-pointer select-none",
-					"border-blue-8 focus:ring-2 focus:ring-blue-8 hover:border-blue-9 hover:shadow-lg",
-					{ "ring-2 ring-blue-8": open },
+					"border-blue-6 focus:ring-2 focus:ring-blue-6 hover:border-blue-6 hover:shadow-lg",
+					{ "ring-2 ring-blue-6": open },
 					switcherBtnAnim.isPressed && "scale-95",
 				)}
 				aria-haspopup="listbox"
@@ -84,7 +84,8 @@ const LanguageSwitcher: React.FC = () => {
 				onTouchStart={switcherBtnAnim.handlePressStart}
 				onTouchEnd={switcherBtnAnim.handlePressEnd}
 			>
-				<span className="font-semibold text-green-9">{selected.label}</span>
+				{/* Use a brighter green (green-6) to stand out on dark backgrounds */}
+				<span className="font-semibold text-green-6">{selected.label}</span>
 				<svg
 					width="20"
 					height="20"
@@ -117,9 +118,10 @@ const LanguageSwitcher: React.FC = () => {
 							type="button"
 							className={clsx(
 								"w-full text-left px-2 sm:px-6 py-1 sm:py-2 text-sm sm:text-base transition-colors duration-150",
-								"hover:bg-blue-9 hover:text-white focus:bg-blue-9 focus:text-white",
+								"hover:bg-blue-6 hover:text-white focus:bg-blue-6 focus:text-white",
 								{
-									"bg-green-1 font-semibold text-green-9":
+									/* selected item: gentle green background and brighter -6 text */
+									"bg-green-3 font-semibold text-green-6":
 										current === lang.code,
 								},
 							)}
