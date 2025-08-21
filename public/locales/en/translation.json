@@ -8,7 +8,7 @@
 		"label": "Cron Expression",
 		"placeholder": "*/5 * * * *",
 		"ariaLabel": "Enter a cron expression",
-		"infoTooltip": "*/5 * * * * → every 5 minutes (minute, hour, day of month, month, day of week)",
+		"infoTooltip": "Supported syntax: * (any value), , (list), - (range), / (step). Also supports non-standard shortcuts: @yearly, @annually, @monthly, @weekly, @daily, @hourly, @reboot. Enter a standard 5-field cron or use a shortcut.",
 		"infoAriaLabel": "Cron format information"
 	},
 	"nextRuns": {
