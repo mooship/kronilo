@@ -10,24 +10,23 @@ import "./setup"; // Import DOM setup
 import { useCronValidation } from "../hooks/useCronValidation";
 import { useDonationModal } from "../hooks/useDonationModal";
 import { usePressAnimation } from "../hooks/usePressAnimation";
+import type { KroniloState } from "../types/store";
 
-// Mock the useKroniloStore hook to isolate hook logic from global state
-const mockStore = {
+let mockStore: KroniloState;
+
+const createMockStore = (): KroniloState => ({
 	donationModalOpen: false,
 	setDonationModalOpen: mock(() => {}),
 	cronToNaturalUsageCount: 0,
+	incrementCronToNaturalUsage: mock(() => {}),
 	resetCronToNaturalUsage: mock(() => {}),
+	dismissedUntil: null,
+	setDismissedUntil: mock((_date: Date | null) => {}),
 	canShowDonationModal: mock(() => true),
-	setDismissedUntil: mock((_date: Date) => {}),
-};
+	cron: "",
+	setCron: mock(() => {}),
+});
 
-mock.module("../stores/useKroniloStore", () => ({
-	useKroniloStore: mock((selector: (state: typeof mockStore) => unknown) =>
-		selector(mockStore),
-	),
-}));
-
-// Mock usehooks-ts to avoid side effects and external dependencies
 mock.module("usehooks-ts", () => ({
 	useDebounceValue: mock((value: string) => [value]),
 	useCopyToClipboard: mock(() => [null, mock(() => {})]),
@@ -104,14 +103,12 @@ describe("useCronValidation", () => {
 
 describe("useDonationModal", () => {
 	beforeEach(() => {
-		// Reset mock store state
-		mockStore.donationModalOpen = false;
-		mockStore.cronToNaturalUsageCount = 0;
-		mockStore.setDonationModalOpen.mockClear();
-		mockStore.resetCronToNaturalUsage.mockClear();
-		mockStore.canShowDonationModal.mockClear();
-		mockStore.setDismissedUntil.mockClear();
-		mockStore.canShowDonationModal.mockReturnValue(true);
+		mockStore = createMockStore();
+		mock.module("../hooks/useKroniloStore", () => ({
+			useKroniloStore: mock((selector: (state: KroniloState) => unknown) =>
+				selector(mockStore),
+			),
+		}));
 	});
 
 	it("returns initial donation modal state", () => {
@@ -165,8 +162,10 @@ describe("useDonationModal", () => {
 		expect(mockStore.setDismissedUntil).toHaveBeenCalled();
 
 		// Verify the date is approximately 14 days from now
-		const dismissedDate = mockStore.setDismissedUntil.mock
-			.calls[0]?.[0] as unknown as Date;
+		const setDismissedUntilMock = mockStore.setDismissedUntil as unknown as {
+			mock: { calls: unknown[][] };
+		};
+		const dismissedDate = setDismissedUntilMock.mock.calls[0]?.[0] as Date;
 		if (dismissedDate) {
 			const diffInDays = Math.floor(
 				(dismissedDate.getTime() - beforeDate.getTime()) /
@@ -178,7 +177,11 @@ describe("useDonationModal", () => {
 
 	it("opens modal when usage count reaches 5 and modal can be shown", () => {
 		mockStore.cronToNaturalUsageCount = 5;
-		mockStore.canShowDonationModal.mockReturnValue(true);
+		(
+			mockStore.canShowDonationModal as unknown as {
+				mockReturnValue: (v: boolean) => void;
+			}
+		).mockReturnValue(true);
 
 		renderHook(() => useDonationModal());
 
@@ -188,7 +191,11 @@ describe("useDonationModal", () => {
 
 	it("does not open modal when usage count is 5 but modal cannot be shown", () => {
 		mockStore.cronToNaturalUsageCount = 5;
-		mockStore.canShowDonationModal.mockReturnValue(false);
+		(
+			mockStore.canShowDonationModal as unknown as {
+				mockReturnValue: (v: boolean) => void;
+			}
+		).mockReturnValue(false);
 
 		renderHook(() => useDonationModal());
 
