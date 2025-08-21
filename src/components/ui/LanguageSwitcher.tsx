@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { memo, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useOnClickOutside } from "usehooks-ts";
 import { usePressAnimation } from "../../hooks/usePressAnimation";
@@ -28,29 +28,38 @@ const LanguageSwitcher: React.FC = () => {
 		setOpen(false);
 	});
 
-	function handleKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
-		if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
-			e.preventDefault();
-			setOpen((o) => !o);
-		}
-		if (e.key === "Escape") {
-			setOpen(false);
-		}
-	}
+	const handleKeyDown = useCallback(
+		(e: React.KeyboardEvent<HTMLButtonElement>) => {
+			if (e.key === "ArrowDown" || e.key === "Enter" || e.key === " ") {
+				e.preventDefault();
+				setOpen((o) => !o);
+			}
+			if (e.key === "Escape") {
+				setOpen(false);
+			}
+		},
+		[],
+	);
 
-	function handleSelect(lang: string) {
-		i18n.changeLanguage(lang);
-		try {
-			window.localStorage.setItem("i18nextLng", lang);
-		} catch {}
-		setOpen(false);
-	}
+	const handleSelect = useCallback(
+		(lang: string) => {
+			i18n.changeLanguage(lang);
+			try {
+				window.localStorage.setItem("i18nextLng", lang);
+			} catch {}
+			setOpen(false);
+		},
+		[i18n],
+	);
 
 	const LANGUAGES = useMemo(
 		() => LOCALES.map((l) => ({ code: l.code, label: l.name })),
 		[],
 	);
-	const selected = LANGUAGES.find((l) => l.code === current) || LANGUAGES[0];
+	const selected = useMemo(
+		() => LANGUAGES.find((l) => l.code === current) || LANGUAGES[0],
+		[LANGUAGES, current],
+	);
 
 	return (
 		<div className="relative inline-block text-left" ref={menuRef}>

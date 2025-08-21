@@ -84,4 +84,10 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 	);
 };
 
-export const MemoizedNextRunsList = memo(NextRunsList);
+export const MemoizedNextRunsList = memo(
+	NextRunsList,
+	(prev, next) =>
+		prev.loading === next.loading &&
+		prev.error === next.error &&
+		prev.runs === next.runs,
+);

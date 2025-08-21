@@ -27,6 +27,7 @@ import { MemoizedNextRunsList } from "./NextRunsList";
 const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];
+	const EMPTY_RUNS: string[] = useMemo(() => [], []);
 
 	const isEnabled = !!cron.trim() && !disabled;
 	const { data, error, isLoading } = useQuery<CronCalculationResult, Error>({
@@ -45,7 +46,7 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		retry: 1,
 	});
 
-	const runs = isEnabled && data ? data.runs : [];
+	const runs = isEnabled && data ? data.runs : EMPTY_RUNS;
 	const hasAmbiguousSchedule =
 		isEnabled && data ? data.hasAmbiguousSchedule : false;
 
