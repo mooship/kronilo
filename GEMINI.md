@@ -1,4 +1,4 @@
-# GitHub Copilot Instructions
+# Gemini Instructions
 
 ## 🔧 Core Behavior Rules
 
