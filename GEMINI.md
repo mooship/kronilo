@@ -31,7 +31,6 @@
 ### 4. **Strategic Commenting**
 
 - **Minimize** inline comments - prefer self-documenting code
-- **Use JSDoc/TSDoc** for functions, classes, and exported symbols
 - **Document complex algorithms** and business logic when necessary
 - **Add TODO/FIXME** comments for known issues or future improvements
 
