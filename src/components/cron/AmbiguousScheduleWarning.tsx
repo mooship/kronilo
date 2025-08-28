@@ -28,7 +28,12 @@ export const AmbiguousScheduleWarning: FC<AmbiguousScheduleWarningProps> = ({
 				/>
 				<div>
 					<p className="mb-1 font-medium">Ambiguous Schedule Detected</p>
-					<p className="text-sm">{t("nextRuns.ambiguousSchedule")}</p>
+					<p className="text-sm">
+						{t(
+							"nextRuns.ambiguousSchedule",
+							"This cron expression specifies both a day of the month and a day of the week. Different cron implementations may interpret this differently. For clarity, consider using only one or the other.",
+						)}
+					</p>
 				</div>
 			</div>
 		</div>

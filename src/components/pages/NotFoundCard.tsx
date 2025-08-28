@@ -28,7 +28,7 @@ export const NotFoundCard: FC = () => {
 					"text-foreground",
 				)}
 			>
-				{t("notFound.title")}
+				{t("notFound.title", "404")}
 			</h1>
 			<p
 				className={clsx(
@@ -36,11 +36,11 @@ export const NotFoundCard: FC = () => {
 					isSmallScreen ? "text-base" : "text-base sm:text-lg",
 				)}
 			>
-				{t("notFound.message")}
+				{t("notFound.message", "Page Not Found")}
 			</p>
 			<button
 				type="button"
-				aria-label={t("notFound.goHome")}
+				aria-label={t("notFound.goHome", "Go to Home")}
 				onMouseDown={handlePressStart}
 				onMouseUp={handlePressEnd}
 				onMouseLeave={handlePressEnd}
@@ -54,7 +54,7 @@ export const NotFoundCard: FC = () => {
 					isPressed && "scale-95 bg-blue-10",
 				)}
 			>
-				{t("notFound.goHome")}
+				{t("notFound.goHome", "Go to Home")}
 			</button>
 			<style>{`
 			@keyframes fadeInScale {

@@ -90,7 +90,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 					htmlFor={`cron-input-${id}`}
 					className="block font-semibold text-foreground text-xl"
 				>
-					{t("cronInput.label")}
+					{t("cronInput.label", "Cron Expression")}
 				</label>
 			</div>
 			<div className="relative flex w-full items-center justify-center gap-3">
@@ -102,8 +102,11 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						isHovered && "scale-105",
 					)}
 					data-tooltip-id={`cron-placeholder-tip-${id}`}
-					data-tooltip-content={t("cronInput.infoTooltip")}
-					aria-label={t("cronInput.infoAriaLabel")}
+					data-tooltip-content={t(
+						"cronInput.infoTooltip",
+						"Supported syntax: * (any value), , (list), - (range), / (step). Also supports non-standard shortcuts: @yearly, @annually, @monthly, @weekly, @daily, @hourly, @reboot. Enter a standard 5-field cron or use a shortcut.",
+					)}
+					aria-label={t("cronInput.infoAriaLabel", "Cron format information")}
 					tabIndex={0}
 				>
 					<Info
@@ -118,9 +121,9 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						name={`cron-input-${id}`}
 						type="text"
 						className={clsx(inputClassName, "w-full")}
-						placeholder={t("cronInput.placeholder")}
+						placeholder={t("cronInput.placeholder", "*/5 * * * *")}
 						maxLength={100}
-						aria-label={t("cronInput.ariaLabel")}
+						aria-label={t("cronInput.ariaLabel", "Enter a cron expression")}
 						value={cron}
 						onChange={(e) => setCron(e.target.value)}
 						onKeyDown={handleKeyDown}
@@ -160,7 +163,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 				</div>
 				<MemoizedCopyButton
 					value={cron}
-					label={t("actions.copy")}
+					label={t("actions.copy", "Copy")}
 					disabled={!cron || !!error}
 					className="shrink-0"
 					size="sm"

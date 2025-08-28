@@ -19,7 +19,7 @@ export const AppHeader: FC = () => {
 					)}
 					style={{ minHeight: isSmallScreen ? "2.5rem" : "3.5rem" }}
 				>
-					{t("app.title")}
+					{t("app.title", "Kronilo")}
 				</h1>
 				<h2
 					className={clsx(
@@ -28,7 +28,7 @@ export const AppHeader: FC = () => {
 						"text-foreground",
 					)}
 				>
-					{t("app.subtitle")}
+					{t("app.subtitle", "Dead Simple Cron Validator")}
 				</h2>
 				<p
 					className={clsx(
@@ -37,7 +37,10 @@ export const AppHeader: FC = () => {
 						"text-foreground-secondary",
 					)}
 				>
-					{t("app.description")}
+					{t(
+						"app.description",
+						"Instantly validate and inspect cron expressions.",
+					)}
 				</p>
 			</div>
 		</header>

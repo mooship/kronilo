@@ -112,11 +112,11 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 		<div className="mb-8">
 			<div className="mb-4 flex items-center justify-between">
 				<h3 className="font-semibold text-foreground text-lg sm:text-xl md:text-2xl">
-					{t("translation.title")}
+					{t("translation.title", "Human-Readable Translation")}
 				</h3>
 				<MemoizedCopyButton
 					value={translation}
-					label={t("actions.copy")}
+					label={t("actions.copy", "Copy")}
 					disabled={!translation || !cron.trim()}
 					className="btn-sm"
 				/>
@@ -125,13 +125,16 @@ const CronTranslation: FC<CronTranslationProps> = ({ cron }) => {
 				{!cron.trim() ? (
 					<div className="flex items-center justify-center h-12">
 						<span className="text-foreground-secondary text-lg">
-							{t("translation.placeholder")}
+							{t(
+								"translation.placeholder",
+								"Enter a cron expression to translate",
+							)}
 						</span>
 					</div>
 				) : loading ? (
 					<div className="flex items-center gap-2 font-medium text-foreground text-xl leading-relaxed h-12">
 						<span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-foreground border-t-transparent"></span>
-						{t("translation.loading")}
+						{t("translation.loading", "Translating...")}
 					</div>
 				) : error ? (
 					<p className="font-medium text-foreground text-xl leading-relaxed min-h-[3rem] flex items-center">

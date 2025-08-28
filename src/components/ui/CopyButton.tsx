@@ -19,7 +19,7 @@ const CopyButton: FC<CopyButtonProps> = ({
 	const { isPressed, handlePressStart, handlePressEnd } = usePressAnimation();
 	const pressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const buttonLabel = label || t("actions.copy");
+	const buttonLabel = label || t("actions.copy", "Copy");
 	const isSmall = size === "sm";
 
 	useTimeout(
@@ -82,7 +82,7 @@ const CopyButton: FC<CopyButtonProps> = ({
 						aria-live="polite"
 						className="flex items-center gap-2 text-red-6"
 					>
-						<span>✓</span> {t("actions.copied")}
+						<span>✓</span> {t("actions.copied", "Copied!")}
 					</span>
 				) : (
 					<span className="flex items-center gap-2">{buttonLabel}</span>

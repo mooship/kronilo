@@ -25,20 +25,21 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 						"text-foreground",
 					)}
 				>
-					{t("footer.builtWith")}{" "}
+					{t("footer.builtWith", "Built with")}{" "}
 					<Heart
 						className={clsx("inline-block w-4 h-4 align-middle text-red-6")}
 						fill="currentColor"
 						stroke="none"
 						aria-hidden="true"
 					/>{" "}
-					{t("footer.inSouthAfrica")} ·{" "}
+					{t("footer.inSouthAfrica", "in South Africa")} ·{" "}
 					<button
 						type="button"
 						className="underline text-blue-6 hover:text-blue-7 hover:no-underline transition-colors text-xs sm:text-base font-semibold cursor-pointer min-w-10 min-h-10 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-6 focus:ring-offset-background"
 						onClick={onDonateClick}
 					>
-						{t("footer.support")} <span aria-hidden="true">☕</span>
+						{t("footer.support", "Support Kronilo")}{" "}
+						<span aria-hidden="true">☕</span>
 					</button>{" "}
 					·{" "}
 					<a
@@ -47,7 +48,7 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 						rel="noopener noreferrer"
 						className="underline text-green-6 hover:text-green-7 hover:no-underline transition-colors text-xs sm:text-base font-semibold"
 					>
-						{t("footer.github")}
+						{t("footer.github", "GitHub")}
 					</a>
 					<br />
 					<span
@@ -56,14 +57,14 @@ export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 							"text-foreground-secondary",
 						)}
 					>
-						{t("footer.licensedUnder")}{" "}
+						{t("footer.licensedUnder", "Licensed under")}{" "}
 						<a
 							href="https://www.gnu.org/licenses/agpl-3.0.html"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="underline text-blue-9 hover:text-blue-10 hover:no-underline transition-colors text-xs sm:text-base font-semibold min-w-10 min-h-10 px-2 py-1 inline-flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-8 focus:ring-offset-background"
 						>
-							{t("footer.agplLicense")}
+							{t("footer.agplLicense", "AGPL v3")}
 						</a>
 					</span>
 				</p>

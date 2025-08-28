@@ -90,7 +90,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 			className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50"
 			role="dialog"
 			aria-modal="true"
-			aria-label={t("donation.title")}
+			aria-label={t("donation.title", "Support Kronilo")}
 			onClick={handleBackdropClick}
 			onKeyDown={handleBackdropKeyDown}
 		>
@@ -106,7 +106,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 					className={`absolute top-3 right-3 z-10 flex h-8 w-8 items-center justify-center rounded-full text-foreground-tertiary text-xl transition-colors hover:bg-background-secondary hover:text-foreground${
 						closeBtnAnim.isPressed ? " scale-95" : ""
 					}`}
-					aria-label={t("donation.close")}
+					aria-label={t("donation.close", "Close donation window")}
 					onClick={onClose}
 					onMouseDown={closeBtnAnim.handlePressStart}
 					onMouseUp={closeBtnAnim.handlePressEnd}
@@ -119,13 +119,19 @@ export const DonationModal: FC<DonationModalProps> = ({
 				</button>
 				<div className="text-center">
 					<h2 className="mb-2 font-bold text-2xl text-foreground">
-						{t("donation.title")}
+						{t("donation.title", "Support Kronilo")}
 					</h2>
 					<p className="mb-4 text-foreground leading-relaxed">
-						{t("donation.message")}
+						{t(
+							"donation.message",
+							"Kronilo is a free, open-source tool that respects your privacy—no ads, no trackers, no account required.",
+						)}
 					</p>
 					<p className="mb-6 text-foreground leading-relaxed">
-						{t("donation.messageExtended")}
+						{t(
+							"donation.messageExtended",
+							"If it saved you time, please consider buying me a coffee. Every little bit helps keep Kronilo alive and ad-free.",
+						)}
 					</p>
 
 					<div className="mb-6 flex justify-center">
@@ -136,14 +142,14 @@ export const DonationModal: FC<DonationModalProps> = ({
 							className={`btn btn-lg flex items-center gap-2 rounded-xl bg-blue-9 px-6 py-3 font-semibold text-white hover:bg-blue-10${
 								coffeeBtnAnim.isPressed ? " scale-95" : ""
 							}`}
-							aria-label={t("donation.buyMeCoffee")}
+							aria-label={t("donation.buyMeCoffee", "☕ Buy me a coffee")}
 							onMouseDown={coffeeBtnAnim.handlePressStart}
 							onMouseUp={coffeeBtnAnim.handlePressEnd}
 							onMouseLeave={coffeeBtnAnim.handlePressEnd}
 							onTouchStart={coffeeBtnAnim.handlePressStart}
 							onTouchEnd={coffeeBtnAnim.handlePressEnd}
 						>
-							{t("donation.buyMeCoffee")}
+							{t("donation.buyMeCoffee", "☕ Buy me a coffee")}
 						</a>
 					</div>
 
@@ -157,7 +163,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 								maybeBtnAnim.isPressed && "scale-95",
 							)}
 							style={{ background: "none" }}
-							aria-label={t("donation.maybeLater")}
+							aria-label={t("donation.maybeLater", "Maybe later")}
 							onMouseDown={maybeBtnAnim.handlePressStart}
 							onMouseUp={maybeBtnAnim.handlePressEnd}
 							onMouseLeave={maybeBtnAnim.handlePressEnd}
@@ -165,7 +171,7 @@ export const DonationModal: FC<DonationModalProps> = ({
 							onTouchEnd={maybeBtnAnim.handlePressEnd}
 							ref={lastFocusable}
 						>
-							{t("donation.maybeLater")}
+							{t("donation.maybeLater", "Maybe later")}
 						</button>
 					</div>
 				</div>

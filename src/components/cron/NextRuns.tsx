@@ -43,17 +43,20 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			<div className="mb-6 min-h-[20rem]" aria-live="polite">
 				<div className="mb-4 flex items-center justify-between">
 					<h3 className="font-semibold text-foreground text-lg sm:text-xl md:text-2xl">
-						{t("nextRuns.title")}
+						{t("nextRuns.title", "Next 5 Runs:")}
 					</h3>
 					<MemoizedCopyButton
 						value=""
-						label={t("actions.copy")}
+						label={t("actions.copy", "Copy")}
 						className="btn-sm"
 						disabled
 					/>
 				</div>
 				<div className="rounded-xl bg-background-secondary p-6 text-center text-foreground-secondary min-h-[16rem] flex items-center justify-center">
-					{t("nextRuns.placeholder")}
+					{t(
+						"nextRuns.placeholder",
+						"Enter a valid cron expression to see upcoming execution times",
+					)}
 				</div>
 			</div>
 		);
@@ -63,11 +66,11 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 		<div className="mb-6 min-h-[20rem]" aria-live="polite">
 			<div className="mb-4 flex items-center justify-between">
 				<h3 className="font-semibold text-foreground text-xl">
-					{t("nextRuns.title")}
+					{t("nextRuns.title", "Next 5 Runs:")}
 				</h3>
 				<MemoizedCopyButton
 					value={runsCopyValue}
-					label={t("actions.copy")}
+					label={t("actions.copy", "Copy")}
 					className="btn-sm"
 				/>
 			</div>

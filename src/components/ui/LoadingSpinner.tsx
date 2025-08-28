@@ -8,7 +8,7 @@ const LoadingSpinner = ({
 	minHeight = "400px",
 }: LoadingSpinnerProps) => {
 	const { t } = useTranslation();
-	const displayMessage = message || t("loading.default");
+	const displayMessage = message || t("loading.default", "Loading...");
 
 	return (
 		<div className="flex items-center justify-center" style={{ minHeight }}>

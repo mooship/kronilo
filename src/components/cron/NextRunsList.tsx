@@ -35,7 +35,7 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 						"border-foreground border-t-transparent",
 					)}
 				></span>
-				{t("nextRuns.loading")}
+				{t("nextRuns.loading", "Calculating...")}
 			</div>
 		);
 	}
@@ -48,7 +48,10 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 					"bg-background-secondary text-foreground-secondary",
 				)}
 			>
-				{t("nextRuns.noRuns")}
+				{t(
+					"nextRuns.noRuns",
+					"No upcoming runs found for this cron expression.",
+				)}
 			</div>
 		);
 	}
