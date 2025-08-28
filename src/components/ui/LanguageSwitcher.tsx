@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { ChevronDown } from "lucide-react";
 import { memo, useCallback, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useOnClickOutside } from "usehooks-ts";
@@ -86,25 +87,12 @@ const LanguageSwitcher: React.FC = () => {
 			>
 				{/* Use a brighter green (green-6) to stand out on dark backgrounds */}
 				<span className="font-semibold text-green-6">{selected.label}</span>
-				<svg
-					width="20"
-					height="20"
-					fill="none"
-					viewBox="0 0 24 24"
+				<ChevronDown
 					aria-hidden="true"
 					className={clsx("ml-2 transition-transform duration-200", {
 						"rotate-180": open,
 					})}
-				>
-					<title>Open language dropdown</title>
-					<path
-						d="M7 10l5 5 5-5"
-						stroke="currentColor"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					/>
-				</svg>
+				/>
 			</button>
 			{open && (
 				<div
