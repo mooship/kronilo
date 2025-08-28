@@ -1,10 +1,3 @@
-/**
- * Unit tests for cron validation utilities.
- *
- * These tests verify field-level and expression-level validation, including
- * formats, ranges, steps, lists, and date edge cases. All tests focus on pure
- * functions and avoid external systems to remain fast and deterministic.
- */
 import { describe, expect, it } from "bun:test";
 import { getCronValidationErrors } from "../schemas/cron";
 import { getCronErrors, isValidCronFormat } from "../utils/cronValidation";

@@ -1,10 +1,3 @@
-/**
- * Unit tests for persisted data schemas using Zod validation.
- *
- * These tests verify that the persistence layer correctly validates cron expressions
- * and date strings before accepting them for storage. Both valid and invalid cases
- * are covered to ensure robust schema enforcement.
- */
 import { describe, expect, it } from "bun:test";
 import { persistedSchema } from "../schemas/persisted";
 
@@ -75,7 +68,7 @@ describe("persistedSchema", () => {
 			const validDates = [
 				"2099-01-01T00:00:00.000Z",
 				"2025-12-31T23:59:59.999Z",
-				"2024-02-29T12:00:00.000Z", // leap year
+				"2024-02-29T12:00:00.000Z",
 				new Date().toISOString(),
 			];
 
@@ -108,12 +101,12 @@ describe("persistedSchema", () => {
 
 		it("rejects various invalid cron formats", () => {
 			const invalidCrons = [
-				"* * * *", // too few fields
-				"* * * * * *", // too many fields
-				"60 24 32 13 8", // out of range
-				"a b c d e", // invalid characters
-				"", // empty string
-				"*/0 * * * *", // zero step
+				"* * * *",
+				"* * * * * *",
+				"60 24 32 13 8",
+				"a b c d e",
+				"",
+				"*/0 * * * *",
 			];
 
 			for (const cron of invalidCrons) {
@@ -125,10 +118,10 @@ describe("persistedSchema", () => {
 
 		it("rejects various invalid date strings", () => {
 			const invalidDates = [
-				"2025-13-01", // invalid month
-				"2025-01-32", // invalid day
+				"2025-13-01",
+				"2025-01-32",
 				"not-a-date",
-				"", // empty string
+				"",
 				"invalid-format",
 				"abc123",
 			];
@@ -142,8 +135,8 @@ describe("persistedSchema", () => {
 
 		it("handles mixed valid/invalid data", () => {
 			const data = {
-				cron: "*/5 * * * *", // valid
-				dismissedUntil: "not a date", // invalid
+				cron: "*/5 * * * *",
+				dismissedUntil: "not a date",
 			};
 			const result = persistedSchema.safeParse(data);
 			expect(result.success).toBe(false);
@@ -153,9 +146,9 @@ describe("persistedSchema", () => {
 	describe("edge cases", () => {
 		it("accepts complex cron expressions", () => {
 			const complexCrons = [
-				"15,45 9-17 * * 1-5", // specific minutes, work hours, weekdays
-				"0 */2 1-15 * *", // every 2 hours, first half of month
-				"30 6 * * 1,3,5", // specific weekdays
+				"15,45 9-17 * * 1-5",
+				"0 */2 1-15 * *",
+				"30 6 * * 1,3,5",
 			];
 
 			for (const cron of complexCrons) {
@@ -167,9 +160,9 @@ describe("persistedSchema", () => {
 
 		it("handles date edge cases", () => {
 			const edgeCaseDates = [
-				"2024-02-29T00:00:00.000Z", // leap year Feb 29
-				"1970-01-01T00:00:00.000Z", // Unix epoch
-				"2099-12-31T23:59:59.999Z", // far future
+				"2024-02-29T00:00:00.000Z",
+				"1970-01-01T00:00:00.000Z",
+				"2099-12-31T23:59:59.999Z",
 			];
 
 			for (const dismissedUntil of edgeCaseDates) {

@@ -1,14 +1,6 @@
-/**
- * Unit tests for mocked persistence helpers.
- *
- * Simulates `localStorage` using an in-memory object so persistence helpers
- * can be validated deterministically in unit tests without a browser. These tests
- * ensure correct behavior for storing and retrieving cron and dismissed-until values.
- */
 import { beforeEach, describe, expect, it } from "bun:test";
 import { isValidCronFormat } from "../utils/cronValidation";
 
-// In-memory mock storage used by the helper functions below to simulate browser storage
 let storage: Record<string, string> = {};
 const getItem = (key: string) => storage[key] ?? null;
 const setItem = (key: string, value: string) => {
@@ -18,9 +10,6 @@ const removeItem = (key: string) => {
 	delete storage[key];
 };
 
-// Helper wrappers that mirror the real app's persistence helpers.
-// They convert to/from ISO strings for dates and validate cron
-// strings before persisting, ensuring only valid data is stored.
 const getStoredDismissedUntil = (): Date | null => {
 	const stored = getItem("kronilo-dismissed-until");
 	return stored ? new Date(stored) : null;

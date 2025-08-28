@@ -1,6 +1,3 @@
-/**
- * Hook return shapes
- */
 export interface UseCronValidation {
 	error: import("./i18n").I18nCronError[] | undefined;
 	clearError: () => void;

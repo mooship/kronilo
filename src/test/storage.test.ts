@@ -1,14 +1,6 @@
-/**
- * Unit tests for storage utility functions.
- *
- * These tests verify that the safe localStorage wrapper functions handle various error cases
- * and provide consistent behavior when localStorage is unavailable. Uses mocked localStorage
- * to simulate different scenarios and edge cases.
- */
 import { beforeEach, describe, expect, it, mock } from "bun:test";
 import { getItem, removeItem, setItem } from "../utils/storage";
 
-// Mock localStorage to simulate browser storage in a controlled way
 const createMockStorage = () => {
 	const storage: Record<string, string> = {};
 	return {
@@ -79,7 +71,6 @@ describe("storage utilities", () => {
 				throw new Error("Storage quota exceeded");
 			});
 
-			// Should not throw
 			expect(() => setItem("testKey", "test-value")).not.toThrow();
 		});
 
@@ -120,7 +111,6 @@ describe("storage utilities", () => {
 				throw new Error("Storage access denied");
 			});
 
-			// Should not throw
 			expect(() => removeItem("testKey")).not.toThrow();
 		});
 
@@ -140,26 +130,21 @@ describe("storage utilities", () => {
 
 	describe("integration scenarios", () => {
 		it("handles complete storage workflow", () => {
-			// Set multiple items
 			setItem("cron", "*/5 * * * *");
 			setItem("theme", "dark");
 
-			// Verify they exist
 			expect(getItem("cron")).toBe("*/5 * * * *");
 			expect(getItem("theme")).toBe("dark");
 
-			// Remove one
 			removeItem("cron");
 			expect(getItem("cron")).toBe(null);
 			expect(getItem("theme")).toBe("dark");
 
-			// Remove the other
 			removeItem("theme");
 			expect(getItem("theme")).toBe(null);
 		});
 
 		it("handles storage unavailable scenario", () => {
-			// Simulate localStorage being completely unavailable
 			mockLocalStorage.getItem.mockImplementation(() => {
 				throw new Error("Storage disabled");
 			});
@@ -170,14 +155,12 @@ describe("storage utilities", () => {
 				throw new Error("Storage disabled");
 			});
 
-			// All operations should work gracefully
 			expect(() => setItem("key", "value")).not.toThrow();
 			expect(getItem("key")).toBe(null);
 			expect(() => removeItem("key")).not.toThrow();
 		});
 
 		it("handles mixed success/failure scenarios", () => {
-			// setItem works, but getItem fails
 			setItem("key", "value");
 			mockLocalStorage.getItem.mockImplementation(() => {
 				throw new Error("Read access denied");

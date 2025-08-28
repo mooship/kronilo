@@ -48,7 +48,6 @@
 		"@types/react": "^19.1.12",
 		"@types/react-dom": "^19.1.8",
 		"@vitejs/plugin-react-swc": "^4.0.1",
-		"@welldone-software/why-did-you-render": "^10.0.1",
 		"autoprefixer": "^10.4.21",
 		"fontaine": "^0.6.0",
 		"globals": "^16.3.0",

@@ -3,14 +3,6 @@ import type { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useWindowSize } from "usehooks-ts";
 
-/**
- * AppHeader
- *
- * Top-of-page header that renders the app title, subtitle and description.
- * It adapts typography based on window width to remain readable on small
- * screens. This component is purely presentational and reads translations
- * from `react-i18next`.
- */
 export const AppHeader: FC = () => {
 	const { t } = useTranslation();
 	const { width } = useWindowSize();

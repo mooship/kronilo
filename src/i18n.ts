@@ -4,15 +4,6 @@ import HttpBackend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 import { SUPPORTED_LANGUAGE_CODES } from "./locales";
 
-/**
- * i18n initialization
- *
- * Exposes a configured i18next instance and a convenience `initI18n` function
- * that initializes the instance with sensible defaults for this app. It
- * leverages `i18next-http-backend` to load locale files and the browser
- * language detector to choose a language, with `localStorage` used for
- * caching the user's selection.
- */
 const i18nInstance = i18n
 	.use(HttpBackend)
 	.use(LanguageDetector)

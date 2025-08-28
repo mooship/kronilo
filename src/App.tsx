@@ -18,16 +18,6 @@ const DonationModal = lazy(() =>
 	})),
 );
 
-/**
- * MainContent
- *
- * Small, focused component that composes the main cron-related UI used on
- * the root route. It reads the current cron expression from the global
- * store and passes validation state into the child components.
- *
- * This separation keeps `App` responsible for layout and global concerns
- * while `MainContent` concentrates on the cron editing/preview UI.
- */
 export function MainContent() {
 	const cron = useKroniloStore((s) => s.cron);
 	const { error } = useCronValidation(cron);
@@ -41,15 +31,6 @@ export function MainContent() {
 	);
 }
 
-/**
- * App
- *
- * Top-level application component that wires layout, routing and global
- * UI pieces. It reads user preferences (reduced motion) and donation modal
- * state from hooks and composes the header, main content, footer and
- * ancillary controls like language switching. The donation modal is
- * lazy-loaded to keep the initial bundle smaller.
- */
 function App() {
 	const prefersReducedMotion = useMediaQuery(
 		"(prefers-reduced-motion: reduce)",

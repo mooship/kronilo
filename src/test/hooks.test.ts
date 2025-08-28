@@ -1,12 +1,6 @@
-/**
- * Unit tests for custom React hooks used throughout the application.
- *
- * These tests verify hook logic and state transitions in isolation using React Testing Library.
- * All tests avoid external systems to remain fast, deterministic, and focused on hook behavior.
- */
 import { beforeEach, describe, expect, it, mock } from "bun:test";
 import { act, renderHook } from "@testing-library/react";
-import "./setup"; // Import DOM setup
+import "./setup";
 import { useCronValidation } from "../hooks/useCronValidation";
 import { useDonationModal } from "../hooks/useDonationModal";
 import { usePressAnimation } from "../hooks/usePressAnimation";
@@ -161,7 +155,6 @@ describe("useDonationModal", () => {
 		expect(mockStore.resetCronToNaturalUsage).toHaveBeenCalled();
 		expect(mockStore.setDismissedUntil).toHaveBeenCalled();
 
-		// Verify the date is approximately 14 days from now
 		const setDismissedUntilMock = mockStore.setDismissedUntil as unknown as {
 			mock: { calls: unknown[][] };
 		};

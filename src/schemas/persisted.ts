@@ -1,12 +1,6 @@
 import { z } from "zod";
 import { cronSchema } from "./cron";
 
-/**
- * persistedSchema
- * Small Zod schema describing the persisted pieces we keep in localStorage.
- * We keep the human-friendly cron string (validated via `cronSchema`) and
- * an optional ISO datetime for the dismissed-until value.
- */
 export const persistedSchema = z.object({
 	cron: z
 		.string()

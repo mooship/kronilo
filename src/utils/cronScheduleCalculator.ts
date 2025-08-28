@@ -1,17 +1,6 @@
 import type { CronCalculationResult } from "../types";
 import { isValidCronFormat, WHITESPACE_REGEX } from "./cronValidation";
 
-/**
- * detectAmbiguousSchedule
- *
- * Heuristic to detect when a cron expression might be ambiguous because both
- * day-of-month and day-of-week are specified (and neither uses ranges, lists
- * or steps). This is useful to warn users when DST or overlapping rules could
- * produce surprising results.
- *
- * @param cron - cron expression string
- * @returns boolean - true when the schedule is considered ambiguous
- */
 export function detectAmbiguousSchedule(cron: string): boolean {
 	const cronParts = cron.trim().split(WHITESPACE_REGEX);
 
@@ -46,19 +35,6 @@ const DATE_FORMAT_OPTIONS: Intl.DateTimeFormatOptions = {
 	timeZoneName: "long",
 };
 
-/**
- * calculateNextRuns
- *
- * Asynchronously calculates the next run timestamps for a cron expression.
- * Uses `cron-parser` via dynamic import to avoid including it in the initial
- * bundle. Returns formatted, localized timestamp strings and flags whether
- * the schedule may be ambiguous.
- *
- * @param cron - cron expression
- * @param lang - locale used for `toLocaleString` formatting
- * @returns Promise<CronCalculationResult> containing runs, optional error and
- *          ambiguity flag
- */
 export async function calculateNextRuns(
 	cron: string,
 	lang: string,

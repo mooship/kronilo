@@ -5,20 +5,6 @@ import { useTranslation } from "react-i18next";
 import { useWindowSize } from "usehooks-ts";
 import type { AppFooterProps } from "../../types/components";
 
-/**
- * AppFooter
- *
- * Page footer used across the application. Renders build attribution, license
- * link, GitHub link and a donate/support button. The layout adapts to window
- * size (small screens show compact text).
- *
- * Props
- * @param {(e: React.MouseEvent<HTMLButtonElement>) => void} onDonateClick -
- * callback invoked when the donate/support button is clicked.
- *
- * Accessibility: interactive elements use focus outlines and descriptive
- * labels so keyboard and screen reader users can operate them.
- */
 export const AppFooter: FC<AppFooterProps> = ({ onDonateClick }) => {
 	const { t } = useTranslation();
 	const { width } = useWindowSize();

@@ -1,11 +1,3 @@
-/**
- * Unit tests for cron field validation helpers.
- *
- * These tests cover the pure validation functions exported from
- * `src/schemas/cron.ts`, ensuring correct validation of cron field values,
- * error reason mapping, and the presence of exported types. All tests are
- * deterministic, fast, and avoid any external dependencies.
- */
 import { describe, expect, it } from "bun:test";
 import type { CronCalculationResult, CronTuple } from "../schemas/cron";
 import { validateCronField, validateCronFieldDetailed } from "../schemas/cron";
@@ -21,13 +13,13 @@ describe("validateCronField (pure)", () => {
 
 	it("validates numeric ranges and step values", () => {
 		expect(validateCronField("1-5", 0, 59)).toBe(true);
-		expect(validateCronField("5-1", 0, 59)).toBe(false); // reversed range
-		expect(validateCronField("*/0", 0, 59)).toBe(false); // zero step
+		expect(validateCronField("5-1", 0, 59)).toBe(false);
+		expect(validateCronField("*/0", 0, 59)).toBe(false);
 	});
 
 	it("validates comma-separated lists of values", () => {
 		expect(validateCronField("1,2,3", 0, 59)).toBe(true);
-		expect(validateCronField("1,99", 0, 59)).toBe(false); // out of range
+		expect(validateCronField("1,99", 0, 59)).toBe(false);
 	});
 });
 
@@ -47,9 +39,6 @@ describe("validateCronFieldDetailed reasons", () => {
 	});
 });
 
-/**
- * Type-level smoke tests to ensure exported types are usable and have expected structure.
- */
 const _tupleExample: CronTuple = ["0", "0", "1", "1", "0"];
 const _calcExample: CronCalculationResult = {
 	runs: ["now"],

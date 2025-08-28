@@ -10,13 +10,6 @@ const NotFoundCard = lazy(() =>
 	})),
 );
 
-/**
- * AppRouter
- *
- * Application router that defines top-level routes. The root path renders the
- * main cron UI while unknown paths render a lazily-loaded `NotFoundCard`.
- * Suspense fallbacks are provided to show a spinner while lazy chunks load.
- */
 export const AppRouter: FC = () => {
 	return (
 		<Router>

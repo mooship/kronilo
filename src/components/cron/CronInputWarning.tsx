@@ -2,17 +2,6 @@ import clsx from "clsx";
 import { AlertTriangle } from "lucide-react";
 import type { ReactNode } from "react";
 
-/**
- * CronInputWarning
- *
- * Small presentational component used to show validation warnings related to
- * the cron input. It wraps the content in a visually prominent alert box and
- * sets `role="alert"` with `aria-live="polite"` so screen readers will
- * receive the message when it appears.
- *
- * Props
- * @param {ReactNode} children - Warning content (text or list of errors).
- */
 export function CronInputWarning({ children }: { children: ReactNode }) {
 	return (
 		<div

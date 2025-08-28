@@ -3,17 +3,6 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoadingSpinnerProps } from "../../types/components";
 
-/**
- * LoadingSpinner
- *
- * Visual spinner with an optional message used during async loading states.
- * - `message` allows overriding the default localized loading text
- * - `minHeight` lets callers reserve vertical space to avoid layout jump
- *
- * Props
- * - message?: optional custom message to display
- * - minHeight?: CSS min-height for the spinner container
- */
 const LoadingSpinner = ({
 	message,
 	minHeight = "400px",

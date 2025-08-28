@@ -1,10 +1,3 @@
-/**
- * Unit tests for cron schedule calculation helpers.
- *
- * These tests verify next-run calculation and ambiguity detection for a variety
- * of valid, invalid, and edge-case cron expressions. All tests are pure and
- * deterministic, with no external dependencies.
- */
 import { describe, expect, it } from "bun:test";
 import {
 	calculateNextRuns,

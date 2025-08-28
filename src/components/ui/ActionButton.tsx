@@ -1,30 +1,12 @@
 import clsx from "clsx";
-import type { ButtonHTMLAttributes, FC } from "react";
 import { memo } from "react";
-import type { ActionButtonProps } from "../../types/components";
+import type { ExtendedActionButtonProps } from "../../types/components";
 
-interface ExtendedActionButtonProps
-	extends ActionButtonProps,
-		ButtonHTMLAttributes<HTMLButtonElement> {}
-
-/**
- * ActionButton
- *
- * Reusable primary button used across the app. Accepts standard button
- * attributes (type, disabled, onClick, etc.) as well as a `label` prop for
- * display. The button includes focus styles and an accessible role via the
- * native `<button>` element.
- *
- * Props
- * - label: visible button text
- * - className: optional additional class names
- * - ...props: forwarded native button attributes
- */
-const ActionButton: FC<ExtendedActionButtonProps> = ({
+function ActionButton({
 	label,
 	className = "",
 	...props
-}) => {
+}: ExtendedActionButtonProps) {
 	return (
 		<button
 			type="button"
@@ -38,6 +20,6 @@ const ActionButton: FC<ExtendedActionButtonProps> = ({
 			{label}
 		</button>
 	);
-};
+}
 
 export const MemoizedActionButton = memo(ActionButton);

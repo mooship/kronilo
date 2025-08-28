@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Info } from "lucide-react";
 import type { FC } from "react";
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Tooltip } from "react-tooltip";
 import { useHover, useUnmount } from "usehooks-ts";
@@ -12,16 +12,6 @@ import { CRON_SUGGESTIONS } from "../../utils/cronSuggestions";
 import { MemoizedCopyButton } from "../ui/CopyButton";
 import { CronInputWarning } from "./CronInputWarning";
 
-/**
- * Type guard for localized cron error objects.
- *
- * The project's validation can return either plain strings or objects that
- * reference i18n translation keys. This helper narrows an unknown value to the
- * I18nCronError shape used by the app.
- *
- * @param obj - The value to test.
- * @returns True if the value looks like an I18nCronError.
- */
 function isI18nCronError(obj: unknown): obj is I18nCronError {
 	return (
 		typeof obj === "object" &&
@@ -36,21 +26,8 @@ const inputClassName = clsx(
 	"border-border hover:border-border-hover focus:border-border-active",
 );
 
-/**
- * CronInput
- *
- * Text input for editing a cron expression. Provides:
- * - placeholder, max length, and accessible labels
- * - keyboard shortcuts (Ctrl+A to select all)
- * - suggestion list of common cron expressions
- * - copy button for the current value
- * - displays validation errors using `CronInputWarning`
- *
- * Props
- * @param {CronInputProps} props - Component props from `types/components`.
- * - error: validation errors (string | string[] | I18nCronError | I18nCronError[])
- */
 const CronInput: FC<CronInputProps> = ({ error }) => {
+	const id = useId();
 	const handleSuggestionClick = (
 		suggestion: (typeof CRON_SUGGESTIONS)[number],
 	) => {
@@ -110,7 +87,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 		<div className="mb-8 flex w-full flex-col">
 			<div className="mb-6 flex w-full items-center justify-between">
 				<label
-					htmlFor="cron-input"
+					htmlFor={`cron-input-${id}`}
 					className="block font-semibold text-foreground text-xl"
 				>
 					{t("cronInput.label")}
@@ -124,7 +101,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						"flex shrink-0 items-center transition-transform duration-100 focus:outline-none",
 						isHovered && "scale-105",
 					)}
-					data-tooltip-id="cron-placeholder-tip"
+					data-tooltip-id={`cron-placeholder-tip-${id}`}
 					data-tooltip-content={t("cronInput.infoTooltip")}
 					aria-label={t("cronInput.infoAriaLabel")}
 					tabIndex={0}
@@ -137,8 +114,8 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 				<div className="relative w-full min-w-0 flex-1">
 					<input
 						ref={inputRef}
-						id="cron-input"
-						name="cron-input"
+						id={`cron-input-${id}`}
+						name={`cron-input-${id}`}
 						type="text"
 						className={clsx(inputClassName, "w-full")}
 						placeholder={t("cronInput.placeholder")}
@@ -150,16 +127,16 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 						onFocus={handleFocus}
 						autoComplete="off"
 						aria-invalid={!!error}
-						aria-describedby={error ? "cron-error" : undefined}
+						aria-describedby={error ? `cron-error-${id}` : undefined}
 						aria-autocomplete="list"
 						aria-controls={
-							showSuggestions ? "cron-suggestions-list" : undefined
+							showSuggestions ? `cron-suggestions-list-${id}` : undefined
 						}
 					/>
 					{showSuggestions && (
 						<div
 							ref={suggestionsRef}
-							id="cron-suggestions-list"
+							id={`cron-suggestions-list-${id}`}
 							className="absolute top-full right-0 left-0 z-10 mt-1 max-h-60 overflow-y-auto rounded-xl border border-border bg-background shadow-lg"
 							style={{ position: "absolute" }}
 						>
@@ -189,7 +166,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 					size="sm"
 				/>
 				<Tooltip
-					id="cron-placeholder-tip"
+					id={`cron-placeholder-tip-${id}`}
 					place="top"
 					className="!bg-[#282a36] !text-[#f8f8f2] !border-[#44475a] !rounded-xl !shadow-xl !px-4 !py-2 max-w-xs text-sm"
 					border="#44475a"
@@ -203,7 +180,7 @@ const CronInput: FC<CronInputProps> = ({ error }) => {
 				/>
 			</div>
 			{error && (
-				<div id="cron-error" className="mt-4 w-full">
+				<div id={`cron-error-${id}`} className="mt-4 w-full">
 					<CronInputWarning>
 						{Array.isArray(error) ? (
 							<ul className="list-disc pl-5">

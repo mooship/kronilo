@@ -2,17 +2,6 @@ import clsx from "clsx";
 import type { FC } from "react";
 import type { AppLayoutProps, AppMainProps } from "../../types/components";
 
-/**
- * AppLayout
- *
- * Page-level layout wrapper that provides the outermost structure for the
- * application. It applies theme/background and an optional reduced-motion
- * toggle to control transitions.
- *
- * Props
- * @param {boolean} prefersReducedMotion - If true, transition classes are
- * omitted to honor user preference for reduced motion.
- */
 export const AppLayout: FC<AppLayoutProps> = ({
 	prefersReducedMotion,
 	children,
@@ -30,13 +19,6 @@ export const AppLayout: FC<AppLayoutProps> = ({
 	);
 };
 
-/**
- * AppMain
- *
- * Layout container for the main content area. Centers content and provides
- * a card-like wrapper used by the application's primary pages. Children are
- * rendered inside a bordered, rounded container with a minimum height.
- */
 export const AppMain: FC<AppMainProps> = ({ children }) => {
 	return (
 		<main className="flex-1 flex flex-col items-center justify-center px-2 sm:px-6 pt-0 sm:pt-2 pb-1 sm:pb-6 lg:pb-8 min-h-0 mb-1 sm:mb-0">

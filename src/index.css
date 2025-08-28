@@ -24,6 +24,7 @@
 	}
 }
 
+/* biome-ignore lint/suspicious/noUnknownAtRules: <false positive> */
 @theme {
 	--font-family-sans:
 		"Geist Variable", Geist, Inter, -apple-system, system-ui, "Segoe UI", Roboto,

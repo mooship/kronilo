@@ -7,19 +7,6 @@ import { useUnmount } from "usehooks-ts";
 import { usePressAnimation } from "../../hooks/usePressAnimation";
 import type { DonationModalProps } from "../../types/components";
 
-/**
- * DonationModal
- *
- * Modal dialog that asks the user to support the project. Built with a
- * portal to `document.body` and implements basic focus trapping and keyboard
- * handling (Escape to close, Tab cycling). First and last focusable elements
- * are tracked to keep focus within the dialog while open.
- *
- * Props
- * - open: whether the modal is visible
- * - onClose: called when the user dismisses/closes the modal
- * - onMaybeLater: called when the user chooses to postpone donating
- */
 export const DonationModal: FC<DonationModalProps> = ({
 	open,
 	onClose,

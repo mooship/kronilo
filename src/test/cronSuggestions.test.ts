@@ -1,10 +1,3 @@
-/**
- * Unit tests for cron suggestions constants and utilities.
- *
- * These tests verify that the predefined cron suggestions are valid,
- * properly structured, and human-readable. All tests are pure and focus
- * on data integrity and consistency.
- */
 import { describe, expect, it } from "bun:test";
 import { CRON_SUGGESTIONS } from "../utils/cronSuggestions";
 import { isValidCronFormat } from "../utils/cronValidation";
@@ -35,20 +28,17 @@ describe("CRON_SUGGESTIONS", () => {
 	it("contains expected common patterns", () => {
 		const expressions = CRON_SUGGESTIONS.map((s) => s.expression);
 
-		// Should contain these common patterns
-		expect(expressions).toContain("*/5 * * * *"); // Every 5 minutes
-		expect(expressions).toContain("0 * * * *"); // Every hour
-		expect(expressions).toContain("0 0 * * *"); // Every day
-		expect(expressions).toContain("0 0 * * 0"); // Every Sunday
+		expect(expressions).toContain("*/5 * * * *");
+		expect(expressions).toContain("0 * * * *");
+		expect(expressions).toContain("0 0 * * *");
+		expect(expressions).toContain("0 0 * * 0");
 	});
 
 	it("descriptions are human-readable", () => {
 		for (const suggestion of CRON_SUGGESTIONS) {
-			// Should be sentence-like (start with capital, contain spaces)
 			expect(suggestion.description[0]).toMatch(/[A-Z]/);
 			expect(suggestion.description).toMatch(/\s/);
 
-			// Should not be too long or too short
 			expect(suggestion.description.length).toBeGreaterThan(5);
 			expect(suggestion.description.length).toBeLessThan(100);
 		}
@@ -67,11 +57,9 @@ describe("CRON_SUGGESTIONS", () => {
 	});
 
 	it("maintains consistent structure as const array", () => {
-		// Verify CRON_SUGGESTIONS is properly structured
 		expect(Array.isArray(CRON_SUGGESTIONS)).toBe(true);
 		expect(CRON_SUGGESTIONS.length).toBeGreaterThan(0);
 
-		// Verify first item has expected structure (testing const works)
 		const firstItem = CRON_SUGGESTIONS[0];
 		expect(firstItem).toHaveProperty("expression");
 		expect(firstItem).toHaveProperty("description");
