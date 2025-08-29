@@ -2,7 +2,7 @@
 	"name": "kronilo",
 	"version": "1.2.0",
 	"private": true,
-	"packageManager": "bun@1.2.21",
+	"packageManager": "bun@1.2.20",
 	"engines": {
 		"bun": ">=1.2.20"
 	},
