@@ -66,9 +66,6 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("cronstrue")) {
 						return "cronstrue";
 					}
-					if (id.includes("@tanstack/react-query-devtools")) {
-						return "react-query-devtools";
-					}
 					if (id.includes("clsx")) {
 						return "clsx";
 					}
@@ -91,9 +88,6 @@ export default defineConfig(({ mode }) => ({
 					}
 					if (id.includes("react-router")) {
 						return "react-router";
-					}
-					if (id.includes("@tanstack/react-query")) {
-						return "react-query";
 					}
 					if (id.includes("usehooks-ts") || id.includes("react-tooltip")) {
 						return "react-utils";

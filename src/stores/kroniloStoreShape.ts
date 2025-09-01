@@ -18,6 +18,15 @@ export const kroniloStoreShape: StateCreator<KroniloState> = (set, get) => {
 
 	return {
 		...hydrated,
+		runs: [],
+		setRuns: (runs: string[]) => set({ runs }),
+		error: null,
+		setError: (error: string | null) => set({ error }),
+		loading: false,
+		setLoading: (loading: boolean) => set({ loading }),
+		hasAmbiguousSchedule: false,
+		setHasAmbiguousSchedule: (hasAmbiguousSchedule: boolean) =>
+			set({ hasAmbiguousSchedule }),
 		setDonationModalOpen: (open) => set({ donationModalOpen: open }),
 		incrementCronToNaturalUsage: () =>
 			set((state: KroniloState) => ({

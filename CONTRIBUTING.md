@@ -14,9 +14,9 @@ Thanks for wanting to contribute!
 
    - Fork the repo, clone your fork, and create a feature branch for your work.
 
-3. **Make changes & tests**
+3. **Make changes**
 
-   - Follow the project's coding conventions and add or update tests where appropriate.
+   - Follow the project's coding conventions.
    - Keep commits focused and write clear commit messages.
 
 4. **Open a pull request**

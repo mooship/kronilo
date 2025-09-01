@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import type { FC } from "react";
-import { memo, useMemo } from "react";
+import { memo, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
+import { useKroniloStore } from "../../hooks/useKroniloStore";
 import { cronCalculationResultSchema } from "../../schemas/cron";
 import type { NextRunsProps } from "../../types/components";
-import type { CronCalculationResult } from "../../types/utils";
 import { calculateNextRuns } from "../../utils/cronScheduleCalculator";
 import { MemoizedCopyButton } from "../ui/CopyButton";
 import { AmbiguousScheduleWarning } from "./AmbiguousScheduleWarning";
@@ -13,28 +12,62 @@ import { MemoizedNextRunsList } from "./NextRunsList";
 const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 	const { t, i18n } = useTranslation();
 	const lang = (i18n.language || "en").split("-")[0];
-	const EMPTY_RUNS: string[] = useMemo(() => [], []);
-
 	const isEnabled = !!cron.trim() && !disabled;
-	const { data, error, isLoading } = useQuery<CronCalculationResult, Error>({
-		queryKey: ["nextRuns", cron, lang],
-		queryFn: async () => {
-			const result = await calculateNextRuns(cron, lang);
-			const validation = cronCalculationResultSchema.safeParse(result);
-			if (!validation.success) {
-				throw new Error("Invalid data shape from calculateNextRuns");
-			}
-			return validation.data;
-		},
-		enabled: isEnabled,
-		staleTime: 0,
-		refetchOnWindowFocus: false,
-		retry: 1,
-	});
+	const runs = useKroniloStore((s) => s.runs);
+	const setRuns = useKroniloStore((s) => s.setRuns);
+	const error = useKroniloStore((s) => s.error);
+	const setError = useKroniloStore((s) => s.setError);
+	const loading = useKroniloStore((s) => s.loading);
+	const setLoading = useKroniloStore((s) => s.setLoading);
+	const hasAmbiguousSchedule = useKroniloStore((s) => s.hasAmbiguousSchedule);
+	const setHasAmbiguousSchedule = useKroniloStore(
+		(s) => s.setHasAmbiguousSchedule,
+	);
 
-	const runs = isEnabled && data ? data.runs : EMPTY_RUNS;
-	const hasAmbiguousSchedule =
-		isEnabled && data ? data.hasAmbiguousSchedule : false;
+	useEffect(() => {
+		let ignore = false;
+		if (!isEnabled) {
+			setRuns([]);
+			setError(null);
+			setLoading(false);
+			setHasAmbiguousSchedule(false);
+			return;
+		}
+		setLoading(true);
+		setError(null);
+		calculateNextRuns(cron, lang)
+			.then((result) => {
+				const validation = cronCalculationResultSchema.safeParse(result);
+				if (!validation.success) {
+					throw new Error("Invalid data shape from calculateNextRuns");
+				}
+				if (!ignore) {
+					setRuns(validation.data.runs);
+					setHasAmbiguousSchedule(validation.data.hasAmbiguousSchedule);
+				}
+			})
+			.catch((err) => {
+				if (!ignore) {
+					setError(err.message || "Unknown error");
+					setRuns([]);
+					setHasAmbiguousSchedule(false);
+				}
+			})
+			.finally(() => {
+				if (!ignore) setLoading(false);
+			});
+		return () => {
+			ignore = true;
+		};
+	}, [
+		cron,
+		lang,
+		isEnabled,
+		setRuns,
+		setError,
+		setLoading,
+		setHasAmbiguousSchedule,
+	]);
 
 	const runsCopyValue = useMemo(() => runs.join("\n\n"), [runs]);
 
@@ -78,11 +111,7 @@ const NextRuns: FC<NextRunsProps> = ({ cron, disabled }) => {
 			<AmbiguousScheduleWarning show={hasAmbiguousSchedule} />
 
 			<div className="min-h-[16rem]">
-				<MemoizedNextRunsList
-					runs={runs}
-					error={error ? error.message : data?.error || null}
-					loading={isLoading}
-				/>
+				<MemoizedNextRunsList runs={runs} error={error} loading={loading} />
 			</div>
 		</div>
 	);
