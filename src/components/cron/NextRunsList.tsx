@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { isEmpty } from "radash";
 import type { FC } from "react";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
@@ -40,7 +41,7 @@ const NextRunsList: FC<NextRunsListProps> = ({ runs, error, loading }) => {
 		);
 	}
 
-	if (runs.length === 0) {
+	if (isEmpty(runs)) {
 		return (
 			<div
 				className={clsx(

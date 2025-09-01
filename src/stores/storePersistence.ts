@@ -24,7 +24,9 @@ export const setStoredDismissedUntil = (date: Date | null): void => {
 
 export const getStoredCron = (): string => {
 	const stored = getItem("kronilo-cron");
-	if (!stored) return "*/5 * * * *";
+	if (!stored) {
+		return "*/5 * * * *";
+	}
 	return cronSchema.safeParse(stored).success ? stored : "*/5 * * * *";
 };
 

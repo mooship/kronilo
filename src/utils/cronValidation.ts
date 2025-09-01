@@ -1,3 +1,4 @@
+import { isEmpty } from "radash";
 import { CRON_FIELD_SCHEMAS, getCronValidationErrors } from "../schemas/cron";
 import type { I18nCronError } from "../types/i18n";
 
@@ -13,8 +14,8 @@ export function isValidCronFormat(cron: string): boolean {
 		return false;
 	}
 
-	for (let i = 0; i < fields.length; i++) {
-		const result = CRON_FIELD_SCHEMAS[i].safeParse(fields[i]);
+	for (const [i, field] of fields.entries()) {
+		const result = CRON_FIELD_SCHEMAS[i].safeParse(field);
 		if (!result.success) {
 			return false;
 		}
@@ -23,5 +24,6 @@ export function isValidCronFormat(cron: string): boolean {
 }
 
 export function getCronErrors(cron: string): I18nCronError[] {
-	return getCronValidationErrors(cron);
+	const errors = getCronValidationErrors(cron);
+	return isEmpty(errors) ? [] : errors;
 }

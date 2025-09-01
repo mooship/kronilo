@@ -1,3 +1,4 @@
+import { try as radashTry, range } from "radash";
 import type { CronCalculationResult } from "../types";
 import { isValidCronFormat, WHITESPACE_REGEX } from "./cronValidation";
 
@@ -46,35 +47,36 @@ export async function calculateNextRuns(
 			hasAmbiguousSchedule: false,
 		};
 	}
-	try {
-		const hasAmbiguousSchedule = detectAmbiguousSchedule(cron);
 
+	const [err, result] = await radashTry(async () => {
+		const hasAmbiguousSchedule = detectAmbiguousSchedule(cron);
 		const mod = await import("cron-parser");
 		const parser = mod.default;
-
 		if (!parser) {
 			throw new Error("cron-parser not loaded");
 		}
-
 		const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
 		const interval = parser.parse(cron, { tz });
 		const nextDates: string[] = [];
-
-		for (let i = 0; i < NEXT_RUNS_COUNT; i++) {
+		for (const _ of range(0, NEXT_RUNS_COUNT - 1)) {
 			const date = interval.next().toDate();
 			nextDates.push(date.toLocaleString(lang, DATE_FORMAT_OPTIONS));
 		}
-
 		return {
 			runs: nextDates,
 			error: null,
 			hasAmbiguousSchedule,
 		};
-	} catch (e) {
+	})();
+
+	if (err) {
 		return {
 			runs: [],
-			error: e instanceof Error ? e.message : "Invalid cron expression",
+			error: err instanceof Error ? err.message : "Invalid cron expression",
 			hasAmbiguousSchedule: false,
 		};
 	}
+	return (
+		result ?? { runs: [], error: "Unknown error", hasAmbiguousSchedule: false }
+	);
 }
