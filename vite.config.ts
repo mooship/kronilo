@@ -69,8 +69,11 @@ export default defineConfig(({ mode }) => ({
 					if (id.includes("clsx")) {
 						return "clsx";
 					}
-					if (id.includes("lucide-react")) {
-						return "lucide";
+					if (id.includes("lucide-react") || id.includes("react-tooltip")) {
+						return "lucide-tooltip";
+					}
+					if (id.includes("usehooks-ts") || id.includes("radash")) {
+						return "hooks-utils";
 					}
 					if (
 						id.includes("i18next-http-backend") ||
@@ -88,9 +91,6 @@ export default defineConfig(({ mode }) => ({
 					}
 					if (id.includes("react-router")) {
 						return "react-router";
-					}
-					if (id.includes("usehooks-ts") || id.includes("react-tooltip")) {
-						return "react-utils";
 					}
 					if (id.includes("zod")) {
 						return "zod";

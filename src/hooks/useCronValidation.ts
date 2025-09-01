@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounceValue } from "usehooks-ts";
+import { isEmpty } from "radash";
 import type { UseCronValidation } from "../types/hooks";
 import type { I18nCronError } from "../types/i18n";
 import { getCronErrors } from "../utils/cronValidation";
@@ -13,7 +14,7 @@ export function useCronValidation(cron: string): UseCronValidation {
 			setErrors([{ key: "errors.inputTooLong", values: { max: 200 } }]);
 		} else if (debouncedCron) {
 			const cronErrors = getCronErrors(debouncedCron);
-			setErrors(cronErrors.length > 0 ? cronErrors : undefined);
+			setErrors(!isEmpty(cronErrors) ? cronErrors : undefined);
 		} else {
 			setErrors(undefined);
 		}
