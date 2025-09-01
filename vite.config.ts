@@ -2,7 +2,6 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { FontaineTransform } from "fontaine";
 import { defineConfig } from "vite";
-import { VitePWA } from "vite-plugin-pwa";
 
 const options = {
 	fallbacks: [
@@ -21,36 +20,7 @@ const options = {
 };
 
 export default defineConfig(({ mode }) => ({
-	plugins: [
-		react(),
-		tailwindcss(),
-		FontaineTransform.vite(options),
-		VitePWA({
-			registerType: "autoUpdate",
-			manifest: {
-				name: "Kronilo",
-				short_name: "Kronilo",
-				icons: [
-					{
-						src: "/android-chrome-192x192.png",
-						sizes: "192x192",
-						type: "image/png",
-					},
-					{
-						src: "/android-chrome-512x512.png",
-						sizes: "512x512",
-						type: "image/png",
-					},
-				],
-				theme_color: "#171717",
-				background_color: "#171717",
-				display: "standalone",
-			},
-			devOptions: {
-				enabled: mode === "development",
-			},
-		}),
-	],
+	plugins: [react(), tailwindcss(), FontaineTransform.vite(options)],
 	build: {
 		cssCodeSplit: true,
 		minify: "esbuild",
@@ -70,7 +40,7 @@ export default defineConfig(({ mode }) => ({
 						return "clsx";
 					}
 					if (id.includes("lucide-react") || id.includes("react-tooltip")) {
-						return "lucide-tooltip";
+						return "react-visuals";
 					}
 					if (id.includes("usehooks-ts") || id.includes("radash")) {
 						return "hooks-utils";

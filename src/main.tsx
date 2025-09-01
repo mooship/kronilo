@@ -5,15 +5,6 @@ import App from "./App.tsx";
 import { MemoizedAppLoader } from "./components/layout/AppLoader";
 import { initI18n } from "./i18n";
 
-const registerServiceWorker = () => {
-	if ("serviceWorker" in navigator) {
-		window.addEventListener("load", () => {
-			import("virtual:pwa-register").then(({ registerSW }) => {
-				registerSW({ immediate: true });
-			});
-		});
-	}
-};
 const renderApp = () => {
 	return (
 		<StrictMode>
@@ -31,6 +22,5 @@ if (rootElement) {
 
 	initI18n().then(() => {
 		root.render(renderApp());
-		registerServiceWorker();
 	});
 }
